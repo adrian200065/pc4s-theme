@@ -1,0 +1,326 @@
+{
+    "key": "group_history_page",
+    "title": "Our History Page",
+    "fields": [
+        {
+            "key": "field_hp_tab_history",
+            "label": "History Content Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hp_history_badge",
+            "label": "Badge Text",
+            "name": "hp_history_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label displayed above the section heading, e.g. \"Our Story\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 1,
+            "default_value": "Our Story",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hp_history_heading",
+            "label": "Section Heading",
+            "name": "hp_history_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main <h2> heading for the history section. Leave blank to hide the entire section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 2,
+            "default_value": "From Roots to Coalition",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hp_history_subtitle",
+            "label": "Section Subtitle",
+            "name": "hp_history_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph displayed below the heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 3,
+            "default_value": "Over three decades of community dedication, partnership, and progress in Rutherford County.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_hp_timeline",
+            "label": "Timeline Milestones",
+            "name": "hp_timeline",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Ordered list of historical milestones rendered as a vertical timeline. Each row is one milestone card.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 4,
+            "layout": "block",
+            "button_label": "Add Milestone",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_hp_timeline_title",
+            "rows_per_page": 10,
+            "sub_fields": [
+                {
+                    "key": "field_hp_timeline_year",
+                    "label": "Year \/ Era Label",
+                    "name": "hp_timeline_year",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Short label for the timeline marker, e.g. \"1990\" or \"Later\". Displayed in the marker bubble.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": 20,
+                    "allow_in_bindings": 1,
+                    "placeholder": "e.g. 1990",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hp_timeline"
+                },
+                {
+                    "key": "field_hp_timeline_title",
+                    "label": "Card Title",
+                    "name": "hp_timeline_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "<h3> heading displayed on the milestone card.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "65",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "e.g. Drug Elimination Task Force",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hp_timeline"
+                },
+                {
+                    "key": "field_hp_timeline_body",
+                    "label": "Card Body",
+                    "name": "hp_timeline_body",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Descriptive content for this milestone. Supports basic formatting.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "rows": 4,
+                    "placeholder": "",
+                    "new_lines": "wpautop",
+                    "parent_repeater": "field_hp_timeline"
+                }
+            ]
+        },
+        {
+            "key": "field_hp_tab_cta",
+            "label": "Page CTA Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 10,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hp_cta_badge",
+            "label": "Badge Text",
+            "name": "hp_cta_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the CTA heading, e.g. \"Join Us\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 11,
+            "default_value": "Join Us",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hp_cta_heading",
+            "label": "CTA Heading",
+            "name": "hp_cta_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main <h2> heading for the page CTA section. Leave blank to hide the entire CTA section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 12,
+            "default_value": "Partners in Prevention",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hp_cta_subtitle",
+            "label": "CTA Subtitle",
+            "name": "hp_cta_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the CTA heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 13,
+            "default_value": "PC4S partners with people like you! Our neighbors and friends who share our mission for a safe and healthy Rutherford County.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_hp_cta_primary",
+            "label": "Primary CTA Link",
+            "name": "hp_cta_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Primary action button (URL, label, and optional target). e.g. \"Get Involved\" linking to the Contact page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 14,
+            "return_format": "array"
+        },
+        {
+            "key": "field_hp_cta_secondary",
+            "label": "Secondary CTA Link",
+            "name": "hp_cta_secondary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary action button (URL, label, and optional target). e.g. \"Meet Our Team\" linking to the Our People page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 15,
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/history-page.php"
+            }
+        ]
+    ],
+    "menu_order": 9,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Fields for the Our History page template. Manages the timeline milestones and page CTA. All content is editable without touching code.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772796322
+}

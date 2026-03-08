@@ -1,0 +1,380 @@
+// =============================================================================
+// Search — form + results page
+// _search.scss
+// Styles both the floating search form (searchform.php) and the full
+// search results page (search.php / parts/content/content-search.php).
+// =============================================================================
+
+// =============================================================================
+// Search Form
+// Used on the search results page, sidebar, and anywhere get_search_form()
+// is called. Composed of an input + icon button inside a flex wrapper.
+// =============================================================================
+.search-form {
+	inline-size: 100%;
+	max-inline-size: 42rem;
+	margin-inline: auto;
+
+	&__inner {
+		background-color: var(--clr-neutral-100);
+		display: flex;
+		align-items: stretch;
+		border: 2px solid var(--clr-border);
+		border-radius: var(--radius-full);
+		overflow: hidden;
+		transition:
+			border-color var(--transition-fast),
+			box-shadow var(--transition-fast);
+
+		&:focus-within {
+			border-color: var(--clr-secondary-500);
+			box-shadow: 0 0 0 3px hsl(230, 97%, 40%, 0.15);
+		}
+	}
+
+	&__input {
+		color: var(--clr-text);
+		background-color: transparent;
+		font-family: var(--ff-base);
+		font-size: var(--fs-300);
+		flex: 1;
+		padding-block: var(--size-300);
+		padding-inline: var(--size-400);
+		min-inline-size: 0;
+		border: none;
+		outline: none;
+
+		&::placeholder {
+			color: var(--clr-neutral-400);
+		}
+
+		&::-webkit-search-decoration,
+		&::-webkit-search-cancel-button {
+			display: none;
+		}
+	}
+
+	&__btn {
+		color: hsl(0, 0%, 100%);
+		background-color: var(--clr-secondary-500);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		inline-size: 3rem;
+		border: none;
+		transition: background-color var(--transition-fast);
+		cursor: pointer;
+
+		&:hover {
+			background-color: var(--clr-secondary-600);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--clr-secondary-500);
+			outline-offset: -4px;
+		}
+	}
+
+	&__icon {
+		inline-size: 1.25rem;
+		block-size: 1.25rem;
+		pointer-events: none;
+	}
+}
+
+// =============================================================================
+// Search Results Page
+// =============================================================================
+.search-page {
+	background-color: var(--clr-bg);
+
+	&__form-wrap {
+		margin-block-end: var(--size-600);
+	}
+
+	&__summary {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-200);
+		margin-block-end: var(--size-500);
+
+		strong {
+			color: var(--clr-text);
+		}
+
+		em {
+			font-style: italic;
+		}
+	}
+
+	&__results {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-400);
+		padding: 0;
+		margin: 0;
+	}
+
+	&__pagination {
+		margin-block-start: var(--size-700);
+
+		.nav-links {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			align-items: center;
+			gap: var(--size-200);
+		}
+
+		.page-numbers {
+			color: var(--clr-secondary-500);
+			font-family: var(--ff-heading);
+			font-size: var(--fs-200);
+			font-weight: 600;
+			text-decoration: none;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-inline-size: 2.5rem;
+			block-size: 2.5rem;
+			padding-inline: var(--size-300);
+			border: 2px solid var(--clr-border);
+			border-radius: var(--radius-full);
+			transition:
+				color var(--transition-fast),
+				background-color var(--transition-fast),
+				border-color var(--transition-fast);
+
+			&:hover {
+				color: hsl(0, 0%, 100%);
+				background-color: var(--clr-secondary-500);
+				border-color: var(--clr-secondary-500);
+			}
+
+			&:focus-visible {
+				outline: 2px solid var(--clr-secondary-500);
+				outline-offset: 2px;
+			}
+
+			&.current {
+				color: hsl(0, 0%, 100%);
+				background-color: var(--clr-secondary-500);
+				border-color: var(--clr-secondary-500);
+				pointer-events: none;
+			}
+
+			&.dots {
+				border-color: transparent;
+				pointer-events: none;
+			}
+		}
+	}
+
+	// =============================================================================
+	// Empty State
+	// =============================================================================
+	&__empty {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--size-400);
+		padding-block: var(--size-700);
+	}
+
+	&__empty-icon {
+		color: var(--clr-neutral-400);
+		inline-size: clamp(4rem, 10vw, 6rem);
+		block-size: clamp(4rem, 10vw, 6rem);
+
+		svg {
+			inline-size: 100%;
+			block-size: 100%;
+		}
+	}
+
+	&__empty-title {
+		color: var(--clr-neutral-900);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-600);
+		font-weight: 700;
+		line-height: 1.1;
+		margin-block-end: 0;
+	}
+
+	&__empty-text {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-300);
+		line-height: 1.6;
+		max-inline-size: 42ch;
+	}
+
+	&__empty-actions {
+		margin-block-start: var(--size-200);
+	}
+}
+
+// =============================================================================
+// Search Result Card  (content-search.php)
+// =============================================================================
+.search-result {
+	background-color: var(--clr-neutral-100);
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0;
+	border: 1px solid var(--clr-border);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+	overflow: hidden;
+	transition:
+		box-shadow var(--transition-fast),
+		border-color var(--transition-fast);
+
+	@media (min-width: 40rem) {
+		grid-template-columns: 1fr auto;
+	}
+
+	&:hover {
+		box-shadow: var(--shadow-md);
+		border-color: var(--clr-neutral-400);
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-200);
+		padding: var(--size-500);
+	}
+
+	&__type {
+		color: var(--clr-secondary-600);
+		background-color: var(--clr-secondary-100);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-100);
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		line-height: 1;
+		display: inline-block;
+		align-self: flex-start;
+		padding-block: 0.2em;
+		padding-inline: 0.65em;
+		border-radius: var(--radius-full);
+	}
+
+	&__title {
+		color: var(--clr-neutral-900);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-500);
+		font-weight: 700;
+		line-height: 1.2;
+		margin-block-end: 0;
+	}
+
+	&__title-link {
+		color: inherit;
+		text-decoration: none;
+		transition: color var(--transition-fast);
+
+		&:hover,
+		&:focus-visible {
+			color: var(--clr-secondary-500);
+			text-decoration: underline;
+			text-underline-offset: 0.15em;
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--clr-secondary-500);
+			outline-offset: 2px;
+			border-radius: var(--radius-sm);
+		}
+	}
+
+	&__meta {
+		display: flex;
+		align-items: center;
+		gap: var(--size-200);
+	}
+
+	&__date {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-200);
+	}
+
+	&__excerpt {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-300);
+		line-height: 1.6;
+
+		// Clamp to three lines
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	// Read-more link
+	&__read-more {
+		color: var(--clr-secondary-500);
+		font-size: var(--fs-200);
+		font-weight: 600;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		gap: var(--size-100);
+		margin-block-start: auto;
+		transition: color var(--transition-fast);
+
+		svg {
+			flex-shrink: 0;
+			inline-size: 1rem;
+			block-size: 1rem;
+			transition: transform var(--transition-fast);
+		}
+
+		&:hover,
+		&:focus-visible {
+			color: var(--clr-secondary-600);
+			text-decoration: underline;
+			text-underline-offset: 0.15em;
+
+			svg {
+				transform: translateX(0.25em);
+			}
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--clr-secondary-500);
+			outline-offset: 2px;
+			border-radius: var(--radius-sm);
+		}
+	}
+
+	&__thumbnail {
+		display: none;
+
+		@media (min-width: 40rem) {
+			display: block;
+			inline-size: 12rem;
+			flex-shrink: 0;
+		}
+
+		a {
+			display: block;
+			block-size: 100%;
+		}
+	}
+
+	&__img {
+		display: block;
+		inline-size: 100%;
+		block-size: 100%;
+		object-fit: cover;
+	}
+}

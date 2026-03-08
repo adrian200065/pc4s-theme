@@ -1,0 +1,382 @@
+{
+    "key": "group_communication_page",
+    "title": "Communication Page",
+    "fields": [
+        {
+            "key": "field_copp_tab_hero",
+            "label": "Hero Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_copp_hero_badge",
+            "label": "Badge Text",
+            "name": "copp_hero_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short label above the heading, e.g. \"Social • Community • Updates\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 1,
+            "default_value": "Social • Community • Updates",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_copp_hero_heading",
+            "label": "Section Heading",
+            "name": "copp_hero_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main h2 heading for the hero strip.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 2,
+            "default_value": "Stay in the Loop with PC4S",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_copp_hero_lead",
+            "label": "Lead Paragraph",
+            "name": "copp_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Short introductory paragraph displayed below the heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 3,
+            "default_value": "Follow us on Facebook for real-time updates, event announcements, and community stories.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_copp_hero_fb_label",
+            "label": "Facebook Link Label",
+            "name": "copp_hero_fb_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Label for the Facebook button in the hero social nav. Default: \"Facebook\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 4,
+            "default_value": "Facebook",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_copp_hero_msg_label",
+            "label": "Message Us Link Label",
+            "name": "copp_hero_msg_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Label for the secondary social nav link. Default: \"Message Us\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 5,
+            "default_value": "Message Us",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_copp_hero_msg_url",
+            "label": "Message Us URL",
+            "name": "copp_hero_msg_url",
+            "aria-label": "",
+            "type": "page_link",
+            "instructions": "Destination URL for the \"Message Us\" button (e.g. the Contact Us page).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": "",
+            "post_status": "",
+            "taxonomy": "",
+            "allow_archives": 1,
+            "multiple": 0,
+            "allow_null": 0,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_copp_tab_feed",
+            "label": "Feed Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 7,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_copp_feed_label",
+            "label": "Feed Column Label",
+            "name": "copp_feed_label",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small heading displayed above the embedded Facebook timeline. Default: \"PC4S on Facebook\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 8,
+            "default_value": "PC4S on Facebook",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_copp_feed_sidebar_title",
+            "label": "Sidebar Heading",
+            "name": "copp_feed_sidebar_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading for the \"More Ways to Connect\" sidebar. Default: \"More Ways to Connect\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 9,
+            "default_value": "More Ways to Connect",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_copp_feed_fb_handle",
+            "label": "Facebook Handle",
+            "name": "copp_feed_fb_handle",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Facebook handle or username shown in the sidebar channel card, e.g. \"@pc4s.org\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 10,
+            "default_value": "@pc4s.org",
+            "placeholder": "@yourpage",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_copp_tab_cta",
+            "label": "Page CTA",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 11,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_copp_cta_badge",
+            "label": "Badge Text",
+            "name": "copp_cta_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short label above the CTA heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 12,
+            "default_value": "Get Involved",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_copp_cta_heading",
+            "label": "CTA Heading",
+            "name": "copp_cta_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main h2 heading for the call-to-action section.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 13,
+            "default_value": "Have Something to Say?",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_copp_cta_subtitle",
+            "label": "CTA Subtitle",
+            "name": "copp_cta_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the CTA heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 14,
+            "default_value": "We’d love to hear from you. Reach out directly or join us at an upcoming event.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_copp_cta_primary",
+            "label": "Primary Button",
+            "name": "copp_cta_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Primary call-to-action button (e.g. Contact Us).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 15,
+            "return_format": "array"
+        },
+        {
+            "key": "field_copp_cta_secondary",
+            "label": "Secondary Button",
+            "name": "copp_cta_secondary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary call-to-action button (e.g. View Events).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 16,
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/communication-page.php"
+            }
+        ]
+    ],
+    "menu_order": 14,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Fields for the Communication page template.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772813976
+}

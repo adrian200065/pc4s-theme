@@ -1,0 +1,335 @@
+{
+    "key": "group_news_page",
+    "title": "News Archive Page",
+    "fields": [
+        {
+            "key": "field_np_tab_featured",
+            "label": "Featured Story Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_np_featured_badge",
+            "label": "Badge Text",
+            "name": "np_featured_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small badge label above the Featured Story heading, e.g. \"Latest Update\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 1,
+            "default_value": "Latest Update",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_np_featured_heading",
+            "label": "Section Heading",
+            "name": "np_featured_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Section <h2> above the featured hero card. Leave blank to hide the heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 2,
+            "default_value": "Featured Story",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_np_tab_recent",
+            "label": "Recent Updates Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 10,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_np_recent_badge",
+            "label": "Badge Text",
+            "name": "np_recent_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small badge label above the Recent Updates heading, e.g. \"From the Coalition\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 11,
+            "default_value": "From the Coalition",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_np_recent_heading",
+            "label": "Section Heading",
+            "name": "np_recent_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Section <h2> for the Recent Updates grid. Leave blank to hide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 12,
+            "default_value": "Recent Updates",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_np_recent_subtitle",
+            "label": "Section Subtitle",
+            "name": "np_recent_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the Recent Updates heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 13,
+            "default_value": "Updates and stories from our community and coalition partners.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_np_tab_archive",
+            "label": "More Stories Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 20,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_np_archive_heading",
+            "label": "Section Heading",
+            "name": "np_archive_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading shown above the compact archive list of older posts. Defaults to \"More Stories\" if left blank.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 21,
+            "default_value": "More Stories",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_np_tab_cta",
+            "label": "Page CTA Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 30,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_np_cta_badge",
+            "label": "Badge Text",
+            "name": "np_cta_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small badge label above the CTA heading, e.g. \"Get Involved\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 31,
+            "default_value": "Get Involved",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_np_cta_heading",
+            "label": "CTA Heading",
+            "name": "np_cta_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<h2> for the page CTA block. Leave blank to hide the entire CTA section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 32,
+            "default_value": "Partners in Prevention",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_np_cta_subtitle",
+            "label": "CTA Subtitle",
+            "name": "np_cta_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the CTA heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 33,
+            "default_value": "PC4S partners with people like you — neighbors and friends who share our mission for a safe and healthy Rutherford County.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_np_cta_primary",
+            "label": "Primary CTA Link",
+            "name": "np_cta_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Primary action button. Provide a URL, label, and optional target.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 34,
+            "return_format": "array"
+        },
+        {
+            "key": "field_np_cta_secondary",
+            "label": "Secondary CTA Link",
+            "name": "np_cta_secondary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary (outline) action button. Provide a URL, label, and optional target.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 35,
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_type",
+                "operator": "==",
+                "value": "posts_page"
+            }
+        ]
+    ],
+    "menu_order": 13,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Fields for the News archive (Posts Page). Controls section headings, badges, and the page CTA. Attached via page_type == posts_page. Field prefix: np_.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772807405
+}

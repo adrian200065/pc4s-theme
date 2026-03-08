@@ -1,0 +1,532 @@
+{
+    "key": "group_people_page",
+    "title": "Our People Page",
+    "fields": [
+        {
+            "key": "field_pp_tab_staff",
+            "label": "Staff Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_pp_staff_badge",
+            "label": "Badge Text",
+            "name": "pp_staff_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the staff section heading, e.g. \"Meet the Team\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 1,
+            "default_value": "Meet the Team",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_pp_staff_heading",
+            "label": "Section Heading",
+            "name": "pp_staff_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main <h2> heading for the staff section. Leave blank to hide the entire staff section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 2,
+            "default_value": "Our Staff",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_pp_staff_subtitle",
+            "label": "Section Subtitle",
+            "name": "pp_staff_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph displayed below the staff section heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 3,
+            "default_value": "Dedicated professionals working every day to strengthen our community and prevent substance misuse across Rutherford County.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_pp_tab_governing",
+            "label": "Governing Board Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 10,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_pp_gov_badge",
+            "label": "Badge Text",
+            "name": "pp_gov_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the governing board heading, e.g. \"Leadership\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 11,
+            "default_value": "Leadership",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_pp_gov_heading",
+            "label": "Section Heading",
+            "name": "pp_gov_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main <h2> heading for the governing board section. Leave blank to hide the entire section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 12,
+            "default_value": "Governing Board Members",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_pp_gov_subtitle",
+            "label": "Section Subtitle",
+            "name": "pp_gov_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph displayed below the governing board heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 13,
+            "default_value": "Our governing board provides strategic leadership and oversight to ensure PC4S fulfills its mission and serves our community with integrity.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_pp_gov_members",
+            "label": "Governing Board Members",
+            "name": "pp_gov_members",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "List of governing board members. Each row renders one board card.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 14,
+            "layout": "table",
+            "button_label": "Add Board Member",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_pp_gov_board_name",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_pp_gov_board_name",
+                    "label": "Name",
+                    "name": "pp_board_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Full name of the board member, including credentials, e.g. \"Lisa Schrader, EdD, MPH, MCHES\".",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "45",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. Lisa Schrader, EdD, MPH, MCHES",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_pp_gov_members"
+                },
+                {
+                    "key": "field_pp_gov_board_affiliation",
+                    "label": "Affiliation",
+                    "name": "pp_board_affiliation",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Organisation or role affiliation, e.g. \"MTSU Health and Human Performance\".",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "55",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. MTSU Health and Human Performance",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_pp_gov_members"
+                }
+            ]
+        },
+        {
+            "key": "field_pp_tab_advisory",
+            "label": "Advisory Board Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 20,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_pp_adv_badge",
+            "label": "Badge Text",
+            "name": "pp_adv_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the advisory board heading, e.g. \"Advisors\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 21,
+            "default_value": "Advisors",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_pp_adv_heading",
+            "label": "Section Heading",
+            "name": "pp_adv_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main <h2> heading for the advisory board section. Leave blank to hide the entire section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 22,
+            "default_value": "Advisory Board Members",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_pp_adv_subtitle",
+            "label": "Section Subtitle",
+            "name": "pp_adv_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph displayed below the advisory board heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 23,
+            "default_value": "Community experts and advocates who guide PC4S programs, partnerships, and strategic initiatives across Rutherford County.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_pp_adv_members",
+            "label": "Advisory Board Members",
+            "name": "pp_adv_members",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "List of advisory board members. Each row renders one board card.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 24,
+            "layout": "table",
+            "button_label": "Add Advisory Member",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_pp_adv_board_name",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_pp_adv_board_name",
+                    "label": "Name",
+                    "name": "pp_board_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Full name of the advisory board member, including credentials or roles, e.g. \"Mal Ferrell, LCSW, LADAC II, CCTP\".",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "45",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. Mal Ferrell, LCSW, LADAC II, CCTP",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_pp_adv_members"
+                },
+                {
+                    "key": "field_pp_adv_board_affiliation",
+                    "label": "Affiliation",
+                    "name": "pp_board_affiliation",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Organisation or role affiliation, e.g. \"Chair Therapist, AthensCare\".",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "55",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. Chair Therapist, AthensCare",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_pp_adv_members"
+                }
+            ]
+        },
+        {
+            "key": "field_pp_tab_cta",
+            "label": "Page CTA Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 30,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_pp_cta_badge",
+            "label": "Badge Text",
+            "name": "pp_cta_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the CTA heading, e.g. \"Get Involved\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 31,
+            "default_value": "Get Involved",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_pp_cta_heading",
+            "label": "CTA Heading",
+            "name": "pp_cta_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main <h2> heading for the page CTA. Leave blank to hide the entire CTA section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 32,
+            "default_value": "Join Our Mission",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_pp_cta_subtitle",
+            "label": "CTA Subtitle",
+            "name": "pp_cta_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the CTA heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 33,
+            "default_value": "PC4S partners with people like you — our neighbors and friends who share our mission for a safe and healthy Rutherford County.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_pp_cta_primary",
+            "label": "Primary CTA Link",
+            "name": "pp_cta_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Primary action button (URL, label, and optional target). e.g. \"Contact Us\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 34,
+            "return_format": "array"
+        },
+        {
+            "key": "field_pp_cta_secondary",
+            "label": "Secondary CTA Link",
+            "name": "pp_cta_secondary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary action button (URL, label, and optional target). e.g. \"Our History\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 35,
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/people-page.php"
+            }
+        ]
+    ],
+    "menu_order": 11,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Page-level fields for the Our People template: staff section header, governing board members (repeater), advisory board members (repeater), and CTA. Staff card data (job title, phone, email) is managed separately in group_staff.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772797781
+}

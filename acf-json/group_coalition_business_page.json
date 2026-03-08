@@ -1,0 +1,676 @@
+{
+	"key": "group_coalition_business_page",
+	"title": "Coalition Business & Title VI Page",
+	"fields": [
+		{
+			"key": "field_cbp_tab_intro",
+			"label": "Intro Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 0,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_cbp_intro_badge",
+			"label": "Badge Text",
+			"name": "cbp_intro_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small label above the heading, e.g. \"Coalition Resources\".",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 1,
+			"default_value": "Coalition Resources",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cbp_intro_heading",
+			"label": "Section Heading",
+			"name": "cbp_intro_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main <h2> heading for the intro section. Leave blank to hide the entire intro.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 2,
+			"default_value": "Partnering for a Healthier Community",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cbp_intro_subtitle",
+			"label": "Subtitle Paragraph",
+			"name": "cbp_intro_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short subtitle rendered directly below the heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 3,
+			"default_value": "PC4S actively engages the business community and public partners to amplify our prevention mission across Rutherford County.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_cbp_intro_body",
+			"label": "Body Paragraph",
+			"name": "cbp_intro_body",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Longer body paragraph below the subtitle.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 4,
+			"default_value": "Through sponsorship opportunities, resource table participation, and coalition membership, local businesses and organizations become vital allies in our work. Every partnership strengthens our ability to reach families, fund programs, and create lasting change.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 4,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_cbp_intro_cta_label",
+			"label": "CTA Button Label",
+			"name": "cbp_intro_cta_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Label for the anchor button that scrolls to the documents section. Leave blank to hide.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 5,
+			"default_value": "View Documents",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cbp_intro_panel_heading",
+			"label": "Panel Heading",
+			"name": "cbp_intro_panel_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Heading inside the right-hand benefits panel, e.g. \"Why Partner with PC4S?\".",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 6,
+			"default_value": "Why Partner with PC4S?",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cbp_intro_panel_items",
+			"label": "Panel Bullet Points",
+			"name": "cbp_intro_panel_items",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "Add each benefit/bullet point shown in the right-hand panel.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 7,
+			"layout": "block",
+			"min": 0,
+			"max": 10,
+			"collapsed": "",
+			"button_label": "Add Bullet Point",
+			"sub_fields": [
+				{
+					"key": "field_cbp_panel_item_text",
+					"label": "Bullet Text",
+					"name": "cbp_panel_item_text",
+					"aria-label": "",
+					"type": "textarea",
+					"instructions": "",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"order_no": 0,
+					"default_value": "",
+					"placeholder": "",
+					"maxlength": "",
+					"rows": 2,
+					"new_lines": "br"
+				}
+			]
+		},
+		{
+			"key": "field_cbp_tab_docs",
+			"label": "Coalition Documents",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 8,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_cbp_docs_badge",
+			"label": "Badge Text",
+			"name": "cbp_docs_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small label above the documents section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 9,
+			"default_value": "Coalition Documents",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cbp_docs_heading",
+			"label": "Section Heading",
+			"name": "cbp_docs_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main <h2> heading for the documents section.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 10,
+			"default_value": "Coalition Resources",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cbp_docs_subtitle",
+			"label": "Subtitle",
+			"name": "cbp_docs_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short description below the heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 11,
+			"default_value": "Access meeting minutes, the coalition membership form, and Title VI & grievance documents for PC4S coalition members and partners.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_cbp_documents",
+			"label": "Documents",
+			"name": "cbp_documents",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "Add each downloadable document. A row is skipped if Title or File is missing.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 12,
+			"layout": "block",
+			"min": 0,
+			"max": 20,
+			"collapsed": "",
+			"button_label": "Add Document",
+			"sub_fields": [
+				{
+					"key": "field_cbp_doc_title",
+					"label": "Document Title",
+					"name": "cbp_doc_title",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "70",
+						"class": "",
+						"id": ""
+					},
+					"order_no": 0,
+					"default_value": "",
+					"placeholder": "e.g. Meeting Minutes and Agenda",
+					"prepend": "",
+					"append": "",
+					"maxlength": ""
+				},
+				{
+					"key": "field_cbp_doc_tag",
+					"label": "File Type Tag",
+					"name": "cbp_doc_tag",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Short badge label, e.g. PDF or DOC.",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "30",
+						"class": "",
+						"id": ""
+					},
+					"order_no": 1,
+					"default_value": "PDF",
+					"placeholder": "PDF",
+					"prepend": "",
+					"append": "",
+					"maxlength": 10
+				},
+				{
+					"key": "field_cbp_doc_desc",
+					"label": "Short Description",
+					"name": "cbp_doc_desc",
+					"aria-label": "",
+					"type": "textarea",
+					"instructions": "One or two sentence description shown below the title.",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"order_no": 2,
+					"default_value": "",
+					"placeholder": "",
+					"maxlength": "",
+					"rows": 2,
+					"new_lines": "br"
+				},
+				{
+					"key": "field_cbp_doc_file",
+					"label": "Document URL",
+					"name": "cbp_doc_file",
+					"aria-label": "",
+					"type": "url",
+					"instructions": "Paste the Google Drive (or other) link for this document. The URL must be publicly accessible.",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"order_no": 3,
+					"default_value": "",
+					"placeholder": "https://drive.google.com/file/d/..."
+				}
+			]
+		},
+		{
+			"key": "field_cbp_tab_title6",
+			"label": "Title VI",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 17,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_cbp_t6_badge",
+			"label": "Badge Text",
+			"name": "cbp_t6_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small label above the Title VI section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 18,
+			"default_value": "Civil Rights Compliance",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cbp_t6_heading",
+			"label": "Section Heading",
+			"name": "cbp_t6_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main <h2> heading for the Title VI section.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 19,
+			"default_value": "Title VI Commitment",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cbp_t6_subtitle",
+			"label": "Subtitle",
+			"name": "cbp_t6_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short description below the heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 20,
+			"default_value": "PC4S is committed to ensuring equal access to all programs and services in compliance with Title VI of the Civil Rights Act of 1964.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_cbp_t6_cards",
+			"label": "Title VI Cards",
+			"name": "cbp_t6_cards",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "Add each compliance/commitment card shown in the grid. In the card text, use {{contact_email}} as a placeholder — it will be replaced automatically with the email from PC4S → Footer Settings.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 21,
+			"layout": "block",
+			"min": 0,
+			"max": 6,
+			"collapsed": "",
+			"button_label": "Add Card",
+			"sub_fields": [
+				{
+					"key": "field_cbp_t6_card_title",
+					"label": "Card Title",
+					"name": "cbp_t6_card_title",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"order_no": 0,
+					"default_value": "",
+					"placeholder": "e.g. Non-Discrimination",
+					"prepend": "",
+					"append": "",
+					"maxlength": ""
+				},
+				{
+					"key": "field_cbp_t6_card_text",
+					"label": "Card Text",
+					"name": "cbp_t6_card_text",
+					"aria-label": "",
+					"type": "textarea",
+					"instructions": "Body text for this card. Use {{contact_email}} to insert the grievance contact email dynamically.",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"order_no": 1,
+					"default_value": "",
+					"placeholder": "",
+					"maxlength": "",
+					"rows": 3,
+					"new_lines": "br"
+				}
+			]
+		},
+		{
+			"key": "field_cbp_tab_cta",
+			"label": "CTA Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 30,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_cbp_cta_badge",
+			"label": "Badge Text",
+			"name": "cbp_cta_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small label above the CTA heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 31,
+			"default_value": "Get Involved",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cbp_cta_heading",
+			"label": "CTA Heading",
+			"name": "cbp_cta_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main <h2> for the CTA section. Leave blank to hide the entire CTA.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 32,
+			"default_value": "Ready to Make an Impact?",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cbp_cta_subtitle",
+			"label": "CTA Subtitle",
+			"name": "cbp_cta_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short paragraph below the CTA heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 33,
+			"default_value": "Become a coalition business partner and help us build a healthier, safer Rutherford County for everyone.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_cbp_cta_primary",
+			"label": "Primary CTA Link",
+			"name": "cbp_cta_primary",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Primary action button (URL, label, and optional target). E.g. Contact Us Today.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 34,
+			"return_format": "array"
+		},
+		{
+			"key": "field_cbp_cta_secondary",
+			"label": "Secondary CTA Link",
+			"name": "cbp_cta_secondary",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Secondary action button (URL, label, and optional target). E.g. Donate to PC4S.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 35,
+			"return_format": "array"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "templates/coalition-business-page.php"
+			}
+		]
+	],
+	"menu_order": 7,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": [
+		"the_content",
+		"excerpt",
+		"discussion",
+		"comments",
+		"revisions",
+		"slug",
+		"author",
+		"format",
+		"categories",
+		"tags",
+		"send-trackbacks"
+	],
+	"active": true,
+	"description": "Fields for the Coalition Business & Title VI page template. Contact email for the Title VI grievance section is sourced automatically from PC4S → Footer Settings — use {{contact_email}} as a placeholder in card text.",
+	"show_in_rest": 0,
+	"display_title": "",
+	"modified": 1741132800
+}

@@ -1,0 +1,725 @@
+{
+	"key": "group_donate_page",
+	"title": "Donate Page",
+	"fields": [
+		{
+			"key": "field_dp_tab_why",
+			"label": "Why Give Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 0,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_dp_why_badge",
+			"label": "Badge Text",
+			"name": "dp_why_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short label above the heading, e.g. \"Make a Difference\".",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 1,
+			"default_value": "Make a Difference",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_why_title",
+			"label": "Section Heading",
+			"name": "dp_why_title",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main <h2> heading for the Why Give section.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 2,
+			"default_value": "Your Gift Builds Healthier Communities",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_why_body",
+			"label": "Body Content",
+			"name": "dp_why_body",
+			"aria-label": "",
+			"type": "wysiwyg",
+			"instructions": "Descriptive paragraph(s) explaining the impact of donations.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 3,
+			"default_value": "",
+			"tabs": "all",
+			"toolbar": "basic",
+			"media_upload": 0,
+			"delay": 0
+		},
+		{
+			"key": "field_dp_why_cta_label",
+			"label": "CTA Button Label",
+			"name": "dp_why_cta_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Label for the call-to-action button that scrolls down to the donation form.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 4,
+			"default_value": "Donate Now",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_tab_form",
+			"label": "Donation Form",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 10,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_dp_form_badge",
+			"label": "Form Section Badge",
+			"name": "dp_form_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small badge/label above the form section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 11,
+			"default_value": "Secure Donation",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_form_heading",
+			"label": "Form Section Heading",
+			"name": "dp_form_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main heading above the donation form card.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 12,
+			"default_value": "Choose Your Gift Amount",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_form_subtitle",
+			"label": "Form Section Subtitle",
+			"name": "dp_form_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short paragraph below the form heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 13,
+			"default_value": "Select a suggested amount or enter your own. All donations are processed securely.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_dp_amount_presets",
+			"label": "Preset Donation Amounts",
+			"name": "dp_amount_presets",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "List of quick-select donation amounts displayed as buttons. At least one amount required.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 14,
+			"layout": "table",
+			"button_label": "Add Amount",
+			"min": 1,
+			"max": 8,
+			"collapsed": "",
+			"rows_per_page": 10,
+			"sub_fields": [
+				{
+					"key": "field_dp_preset_amount",
+					"label": "Amount ($)",
+					"name": "dp_preset_amount",
+					"aria-label": "",
+					"type": "number",
+					"instructions": "Dollar amount for this preset button.",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"default_value": 25,
+					"placeholder": "",
+					"prepend": "$",
+					"append": "",
+					"min": 1,
+					"max": "",
+					"step": 1,
+					"parent_repeater": "field_dp_amount_presets"
+				}
+			]
+		},
+		{
+			"key": "field_dp_default_preset_amount",
+			"label": "Default Selected Amount ($)",
+			"name": "dp_default_preset_amount",
+			"aria-label": "",
+			"type": "number",
+			"instructions": "Which preset amount should be selected by default (must match one of the preset amounts above). Set to 0 for no default.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 15,
+			"default_value": 50,
+			"placeholder": "",
+			"prepend": "$",
+			"append": "",
+			"min": 0,
+			"max": "",
+			"step": 1
+		},
+		{
+			"key": "field_dp_personal_heading",
+			"label": "Personal Info Heading",
+			"name": "dp_personal_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Heading above the donor personal information fields.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 16,
+			"default_value": "Personal Info",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_company_question",
+			"label": "Company Question Label",
+			"name": "dp_company_question",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Label for the radio question asking if the donation is on behalf of a company.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 17,
+			"default_value": "Is this donation on behalf of a company?",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_total_label",
+			"label": "Donation Total Label",
+			"name": "dp_total_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Label displayed next to the running donation total.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 18,
+			"default_value": "Donation Total:",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_submit_label",
+			"label": "Submit Button Label",
+			"name": "dp_submit_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Label on the donate submit button.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 19,
+			"default_value": "Donate Now",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_privacy_text",
+			"label": "Privacy Note",
+			"name": "dp_privacy_text",
+			"aria-label": "",
+			"type": "wysiwyg",
+			"instructions": "Privacy and tax-deductibility note below the submit button. Leave blank to use the auto-generated default (links the Privacy Policy page).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 20,
+			"default_value": "",
+			"tabs": "all",
+			"toolbar": "basic",
+			"media_upload": 0,
+			"delay": 0
+		},
+		{
+			"key": "field_dp_tab_trust",
+			"label": "Trust Sidebar",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 30,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_dp_trust_heading",
+			"label": "Trust Card Heading",
+			"name": "dp_trust_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Heading inside the sidebar trust card.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 31,
+			"default_value": "Why PC4S?",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_trust_items",
+			"label": "Trust Items",
+			"name": "dp_trust_items",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "Checkmark-bullet trust points displayed in the sidebar card.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 32,
+			"layout": "table",
+			"button_label": "Add Trust Item",
+			"min": 0,
+			"max": 10,
+			"collapsed": "",
+			"rows_per_page": 10,
+			"sub_fields": [
+				{
+					"key": "field_dp_trust_text",
+					"label": "Trust Statement",
+					"name": "dp_trust_text",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Single trust bullet point, e.g. \"501(c)(3) recognized non-profit organization\".",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. 501(c)(3) recognized non-profit organization",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_dp_trust_items"
+				}
+			]
+		},
+		{
+			"key": "field_dp_tab_events",
+			"label": "Events Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 40,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_dp_events_badge",
+			"label": "Events Badge",
+			"name": "dp_events_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Badge text above the events section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 41,
+			"default_value": "True Blue Peers 4 Success",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_events_heading",
+			"label": "Events Section Heading",
+			"name": "dp_events_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Heading for the upcoming events section. Leave blank to hide the section entirely.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 42,
+			"default_value": "Upcoming True Blue Events",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_events_subtitle",
+			"label": "Events Section Subtitle",
+			"name": "dp_events_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Optional subtitle below the events heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 43,
+			"default_value": "",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_dp_events_count",
+			"label": "Number of Events to Show",
+			"name": "dp_events_count",
+			"aria-label": "",
+			"type": "number",
+			"instructions": "Maximum number of True Blue events to display in the slider. Defaults to 4.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "40",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 44,
+			"default_value": 4,
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"min": 1,
+			"max": 12,
+			"step": 1
+		},
+		{
+			"key": "field_dp_events_view_all_url",
+			"label": "View All Events URL",
+			"name": "dp_events_view_all_url",
+			"aria-label": "",
+			"type": "page_link",
+			"instructions": "Optional link to the full events page.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 45,
+			"post_type": [],
+			"taxonomy": [],
+			"allow_archives": 1,
+			"allow_null": 1,
+			"multiple": 0
+		},
+		{
+			"key": "field_dp_tab_cta",
+			"label": "CTA Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 50,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_dp_cta_badge",
+			"label": "CTA Badge",
+			"name": "dp_cta_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Badge/label above the CTA heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 51,
+			"default_value": "Get Involved",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_cta_heading",
+			"label": "CTA Heading",
+			"name": "dp_cta_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main heading for the More Ways to Support section. Leave blank to hide this section.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 52,
+			"default_value": "More Ways to Support PC4S",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dp_cta_subtitle",
+			"label": "CTA Subtitle",
+			"name": "dp_cta_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short paragraph below the CTA heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 53,
+			"default_value": "Can't donate right now? There are other powerful ways to support our mission and strengthen communities across Rutherford County.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_dp_cta_primary",
+			"label": "Primary CTA Link",
+			"name": "dp_cta_primary",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Primary action button (URL, label, and optional target).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 54,
+			"return_format": "array"
+		},
+		{
+			"key": "field_dp_cta_secondary",
+			"label": "Secondary CTA Link",
+			"name": "dp_cta_secondary",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Secondary action button (URL, label, and optional target).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 55,
+			"return_format": "array"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "templates\/donate-page.php"
+			}
+		]
+	],
+	"menu_order": 5,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": [
+		"the_content",
+		"excerpt",
+		"discussion",
+		"comments",
+		"revisions",
+		"slug",
+		"author",
+		"format",
+		"categories",
+		"tags",
+		"send-trackbacks"
+	],
+	"active": true,
+	"description": "Fields for the Donate page template. Contact PayPal Hosted Button ID is configured at PC4S \u2192 Settings.",
+	"show_in_rest": 0,
+	"display_title": "",
+	"modified": 1772737600
+}

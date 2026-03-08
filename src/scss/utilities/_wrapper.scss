@@ -1,0 +1,7 @@
+// ------------------------------------------
+// Wrapper Style
+// ------------------------------------------
+.wrapper {
+	inline-size: min(100% - (var(--padding-inline) * 2), var(--max-width));
+	margin-inline: auto;
+}

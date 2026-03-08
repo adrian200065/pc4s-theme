@@ -1,0 +1,244 @@
+{
+	"key": "group_contact_page",
+	"title": "Contact Page",
+	"fields": [
+		{
+			"key": "field_cp_tab_intro",
+			"label": "Intro Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 0,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_cp_intro_badge",
+			"label": "Badge Text",
+			"name": "cp_intro_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short label above the heading, e.g. “We’d Love to Hear From You”.",
+			"required": 0,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 1,
+			"default_value": "We’d Love to Hear From You",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cp_intro_title",
+			"label": "Section Heading",
+			"name": "cp_intro_title",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main <h2> heading in the intro column.",
+			"required": 1,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 2,
+			"default_value": "Get in Touch with PC4S",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cp_intro_lead",
+			"label": "Lead Paragraph",
+			"name": "cp_intro_lead",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Supporting paragraph below the heading.",
+			"required": 0,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 3,
+			"default_value": "",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_cp_tab_form",
+			"label": "Form Labels",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 11,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_cp_form_title",
+			"label": "Form Heading",
+			"name": "cp_form_title",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Heading above the contact form.",
+			"required": 0,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 12,
+			"default_value": "Leave a Message",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cp_form_subtitle",
+			"label": "Form Subtitle",
+			"name": "cp_form_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short paragraph below the form heading.",
+			"required": 0,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 13,
+			"default_value": "Fill out the form below and we’ll get back to you within one business day.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_cp_form_required_note",
+			"label": "Required Note",
+			"name": "cp_form_required_note",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small note indicating all fields are required.",
+			"required": 0,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 14,
+			"default_value": "All fields are required",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cp_form_privacy_text",
+			"label": "Privacy Note",
+			"name": "cp_form_privacy_text",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Privacy notice text below the submit button. Leave blank to auto-link the Privacy Policy page.",
+			"required": 0,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 15,
+			"default_value": "",
+			"placeholder": "By submitting this form you agree to our Privacy Policy.",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_cp_form_submit_label",
+			"label": "Submit Button Label",
+			"name": "cp_form_submit_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Label on the form submit button.",
+			"required": 0,
+			"conditional_logic": false,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 16,
+			"default_value": "Submit",
+			"placeholder": "Submit",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "templates\/contact-page.php"
+			}
+		]
+	],
+	"menu_order": 4,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": [
+		"the_content",
+		"excerpt",
+		"discussion",
+		"comments",
+		"revisions",
+		"slug",
+		"author",
+		"format",
+		"categories",
+		"tags",
+		"send-trackbacks"
+	],
+	"active": true,
+	"description": "Fields for the Contact Us page template.",
+	"show_in_rest": 0,
+	"display_title": "",
+	"modified": 1772737523
+}

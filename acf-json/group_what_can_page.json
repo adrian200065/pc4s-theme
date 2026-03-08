@@ -1,0 +1,439 @@
+{
+    "key": "group_what_can_page",
+    "title": "What Can We Do Page",
+    "fields": [
+        {
+            "key": "field_wcwd_tab_hero",
+            "label": "Hero Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_wcwd_hero_badge",
+            "label": "Badge Text",
+            "name": "wcwd_hero_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short label above the heading, e.g. \"Parents • Community • Action\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 1,
+            "default_value": "Parents • Community • Action",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_wcwd_hero_heading",
+            "label": "Hero Heading",
+            "name": "wcwd_hero_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main h2 heading for the hero strip.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 2,
+            "default_value": "Six Ways to Keep Your Kids Safe",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_wcwd_hero_lead",
+            "label": "Lead Paragraph",
+            "name": "wcwd_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Short introductory paragraph below the hero heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 3,
+            "default_value": "Teens often turn to drugs when they’re bored and unsupervised. Here’s what you can do right now to change that.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_wcwd_hero_primary",
+            "label": "Primary Button",
+            "name": "wcwd_hero_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Primary CTA button in the hero (e.g. Get Involved).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 4,
+            "return_format": "array"
+        },
+        {
+            "key": "field_wcwd_hero_secondary",
+            "label": "Secondary Button",
+            "name": "wcwd_hero_secondary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary CTA button in the hero (e.g. Talk to Us).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 5,
+            "return_format": "array"
+        },
+        {
+            "key": "field_wcwd_hero_pill_1",
+            "label": "Accent Pill 1 Label",
+            "name": "wcwd_hero_pill_1",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text for the first decorative accent pill (e.g. \"Community Driven\").",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 6,
+            "default_value": "Community Driven",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_wcwd_hero_pill_2",
+            "label": "Accent Pill 2 Label",
+            "name": "wcwd_hero_pill_2",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text for the second decorative accent pill (e.g. \"Prevention First\").",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 7,
+            "default_value": "Prevention First",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_wcwd_tab_steps",
+            "label": "Action Steps",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 8,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_wcwd_steps_badge",
+            "label": "Section Badge",
+            "name": "wcwd_steps_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small badge label above the section heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 9,
+            "default_value": "Take Action",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_wcwd_steps_heading",
+            "label": "Section Heading",
+            "name": "wcwd_steps_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "h2 heading for the action steps section.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 10,
+            "default_value": "Steps You Can Take Today",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_wcwd_steps_subtitle",
+            "label": "Section Subtitle",
+            "name": "wcwd_steps_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the section heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 11,
+            "default_value": "Small actions, big impact. Here’s how to show up for the young people in your life.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_wcwd_steps_items",
+            "label": "Action Steps",
+            "name": "wcwd_steps_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add each numbered action step. Steps are displayed in list order.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 12,
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_wcwd_step_title",
+            "button_label": "Add Step",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_wcwd_step_title",
+                    "label": "Step Title",
+                    "name": "step_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Short h3 title for this step.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. Give Information",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_wcwd_steps_items"
+                },
+                {
+                    "key": "field_wcwd_step_desc",
+                    "label": "Step Description",
+                    "name": "step_desc",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Supporting paragraph for this step.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": "br",
+                    "parent_repeater": "field_wcwd_steps_items"
+                }
+            ]
+        },
+        {
+            "key": "field_wcwd_tab_callout",
+            "label": "Callout \/ CTA",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 13,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_wcwd_callout_heading",
+            "label": "Callout Heading",
+            "name": "wcwd_callout_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "h2 heading inside the callout box.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 14,
+            "default_value": "You Don’t Have to Do This Alone",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_wcwd_callout_text",
+            "label": "Callout Text",
+            "name": "wcwd_callout_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph inside the callout box.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 15,
+            "default_value": "PC4S connects parents, educators, and community members with the tools and support they need. Reach out to learn more about our programs and monthly coalition meetings.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_wcwd_callout_primary",
+            "label": "Primary Button",
+            "name": "wcwd_callout_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Primary action button in the callout (e.g. Get Involved).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 16,
+            "return_format": "array"
+        },
+        {
+            "key": "field_wcwd_callout_secondary",
+            "label": "Secondary Button",
+            "name": "wcwd_callout_secondary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary action button in the callout (e.g. View Events).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 17,
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/what-can-page.php"
+            }
+        ]
+    ],
+    "menu_order": 15,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Fields for the What Can We Do page template.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772814024
+}

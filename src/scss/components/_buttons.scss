@@ -1,0 +1,68 @@
+// ------------------------------------------
+// Buttons
+// ------------------------------------------
+.btn {
+	font-family: var(--ff-heading);
+	font-size: var(--fs-300);
+	font-weight: 600;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--size-200);
+	padding: 0.5em 1em;
+	border-radius: var(--radius-full);
+	border: 2px solid transparent;
+	transition:
+		color var(--transition-base),
+		background-color var(--transition-base),
+		border-color var(--transition-base);
+	cursor: pointer;
+
+	&:focus-visible {
+		outline: 2px solid var(--clr-primary-400);
+		outline-offset: 2px;
+	}
+
+	&--primary {
+		color: hsl(0, 0%, 100%);
+		background-color: var(--clr-primary-500);
+
+		&:hover {
+			color: hsl(0, 0%, 100%);
+			background-color: var(--clr-primary-600);
+		}
+	}
+
+	&--secondary {
+		color: hsl(0, 0%, 100%);
+		background-color: var(--clr-secondary-400);
+
+		&:hover {
+			color: hsl(0, 0%, 100%);
+			background-color: var(--clr-secondary-500);
+		}
+	}
+
+	&--outline {
+		color: var(--clr-primary-500);
+		background-color: transparent;
+		border-color: var(--clr-primary-400);
+
+		&:hover {
+			color: hsl(0, 0%, 100%);
+			background-color: var(--clr-primary-400);
+		}
+	}
+
+	&--ghost {
+		color: hsl(0, 0%, 100%);
+		background-color: transparent;
+		border-color: hsl(0, 0%, 100%);
+
+		&:hover {
+			color: var(--clr-neutral-900);
+			background-color: hsl(0, 0%, 100%);
+		}
+	}
+}

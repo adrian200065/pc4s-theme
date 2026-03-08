@@ -1,0 +1,355 @@
+// ==========================================
+// Communication Page
+// ==========================================
+
+// ------------------------------------------
+// Hero / Intro
+// ------------------------------------------
+.comm-hero {
+	background-color: var(--clr-dark-blue);
+	position: relative;
+	overflow: hidden;
+	padding-block: var(--size-700);
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset-block-start: 0;
+		inset-inline-end: 0;
+		inline-size: 50%;
+		block-size: 100%;
+		background: linear-gradient(145deg, var(--clr-secondary-600) 0%, hsl(230, 97%, 15%) 100%);
+		clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+	}
+
+	&__inner {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--size-500);
+		align-items: center;
+
+		@media (min-width: 50em) {
+			grid-template-columns: 1fr auto;
+		}
+	}
+
+	&__copy {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__badge {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--size-100);
+		background-color: var(--clr-primary-500);
+		color: var(--clr-neutral-100);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-100);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		padding-block: var(--size-100);
+		padding-inline: var(--size-300);
+		border-radius: var(--radius-full);
+		margin-block-end: var(--size-400);
+		align-self: flex-start;
+	}
+
+	&__title {
+		font-family: var(--ff-heading);
+		font-size: var(--fs-800);
+		font-weight: 800;
+		color: var(--clr-neutral-100);
+		line-height: 1.1;
+		margin-block-end: var(--size-300);
+	}
+
+	&__lead {
+		font-size: var(--fs-400);
+		color: hsl(210, 15%, 82%);
+		max-inline-size: 46ch;
+		line-height: 1.65;
+	}
+
+	// Floating social pill — right column on desktop
+	&__social-pill {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		gap: var(--size-300);
+
+		@media (min-width: 50em) {
+			flex-direction: column;
+			flex-wrap: nowrap;
+		}
+	}
+
+	&__social-link {
+		display: flex;
+		align-items: center;
+		gap: var(--size-200);
+		background-color: hsl(0, 0%, 100%, 0.08);
+		color: var(--clr-neutral-100);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-200);
+		font-weight: 600;
+		text-decoration: none;
+		padding-block: var(--size-200);
+		padding-inline: var(--size-400);
+		border-radius: var(--radius-full);
+		border: 1px solid hsl(0, 0%, 100%, 0.15);
+		transition:
+			background-color var(--transition-fast),
+			border-color var(--transition-fast);
+
+		svg {
+			inline-size: 1.125rem;
+			block-size: 1.125rem;
+			flex-shrink: 0;
+		}
+
+		&:hover {
+			background-color: hsl(0, 0%, 100%, 0.16);
+			border-color: hsl(0, 0%, 100%, 0.35);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--clr-primary-400);
+			outline-offset: 2px;
+		}
+	}
+}
+
+// ------------------------------------------
+// Facebook Feed Section
+// ------------------------------------------
+.comm-feed {
+	background-color: var(--clr-bg);
+
+	&__inner {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--size-600);
+		align-items: start;
+
+		@media (min-width: 56em) {
+			grid-template-columns: 2fr 1fr;
+		}
+	}
+
+	// Left — Facebook embed
+	&__embed-col {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-400);
+	}
+
+	&__embed-label {
+		display: flex;
+		align-items: center;
+		gap: var(--size-200);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-300);
+		font-weight: 700;
+		color: var(--clr-text);
+
+		svg {
+			inline-size: 1.375rem;
+			block-size: 1.375rem;
+			color: hsl(221, 44%, 41%); // Facebook blue — no new token; inline HSL
+			flex-shrink: 0;
+		}
+	}
+
+	&__embed-frame {
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		box-shadow: var(--shadow-lg);
+		background-color: var(--clr-neutral-200);
+		min-block-size: 30rem;
+		display: flex;
+		align-items: stretch;
+
+		iframe,
+		.fb-page {
+			inline-size: 100%;
+			min-inline-size: 0;
+			max-inline-size: 100%;
+			border: none;
+			display: block;
+		}
+	}
+
+	&__embed-fallback {
+		display: none; // shown via JS if iframe fails
+		padding: var(--size-600);
+		text-align: center;
+		color: var(--clr-text-muted);
+
+		svg {
+			inline-size: 3rem;
+			block-size: 3rem;
+			margin-block-end: var(--size-300);
+			color: var(--clr-neutral-400);
+		}
+
+		p {
+			font-size: var(--fs-300);
+			margin-block-end: var(--size-400);
+		}
+	}
+
+	// Right — sidebar links / ways to connect
+	&__sidebar {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-400);
+	}
+
+	&__sidebar-title {
+		font-family: var(--ff-heading);
+		font-size: var(--fs-500);
+		font-weight: 800;
+		color: var(--clr-dark-blue);
+		line-height: 1.2;
+	}
+
+	&__channel-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-300);
+	}
+
+	&__channel-card {
+		display: flex;
+		align-items: flex-start;
+		gap: var(--size-300);
+		padding: var(--size-400);
+		background-color: var(--clr-neutral-200);
+		border-radius: var(--radius-lg);
+		text-decoration: none;
+		color: var(--clr-text);
+		border: 1px solid var(--clr-border);
+		transition:
+			background-color var(--transition-fast),
+			box-shadow var(--transition-fast),
+			border-color var(--transition-fast);
+
+		&:hover {
+			background-color: var(--clr-neutral-100);
+			box-shadow: var(--shadow-md);
+			border-color: var(--clr-secondary-400);
+		}
+
+		&:focus-visible {
+			outline: 2px solid var(--clr-primary-400);
+			outline-offset: 2px;
+			border-radius: var(--radius-lg);
+		}
+	}
+
+	&__channel-icon {
+		flex-shrink: 0;
+		inline-size: 2.5rem;
+		block-size: 2.5rem;
+		border-radius: var(--radius-md);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		svg {
+			inline-size: 1.25rem;
+			block-size: 1.25rem;
+		}
+
+		&--facebook {
+			background-color: hsl(221, 44%, 15%);
+			color: hsl(221, 44%, 70%);
+		}
+
+		&--email {
+			background-color: hsl(0, 85%, 12%);
+			color: var(--clr-primary-300);
+		}
+
+		&--phone {
+			background-color: hsl(230, 97%, 12%);
+			color: var(--clr-secondary-300);
+		}
+	}
+
+	&__channel-info {
+		flex: 1;
+		min-inline-size: 0;
+	}
+
+	&__channel-name {
+		font-family: var(--ff-heading);
+		font-size: var(--fs-300);
+		font-weight: 700;
+		color: var(--clr-text);
+		line-height: 1.3;
+		margin-block-end: var(--size-100);
+	}
+
+	&__channel-handle {
+		font-size: var(--fs-200);
+		color: var(--clr-text-muted);
+	}
+
+	// Newsletter signup card in sidebar
+	&__newsletter {
+		background: linear-gradient(135deg, var(--clr-dark-blue) 0%, var(--clr-secondary-600) 100%);
+		border-radius: var(--radius-xl);
+		padding: var(--size-500);
+		color: var(--clr-neutral-100);
+	}
+
+	&__newsletter-title {
+		font-family: var(--ff-heading);
+		font-size: var(--fs-500);
+		font-weight: 800;
+		margin-block-end: var(--size-200);
+	}
+
+	&__newsletter-text {
+		font-size: var(--fs-200);
+		color: hsl(210, 15%, 80%);
+		margin-block-end: var(--size-400);
+		line-height: 1.6;
+	}
+
+	&__newsletter-form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-200);
+
+		input[type='email'] {
+			inline-size: 100%;
+			padding-block: var(--size-200);
+			padding-inline: var(--size-300);
+			border-radius: var(--radius-md);
+			border: 1px solid hsl(0, 0%, 100%, 0.2);
+			background-color: hsl(0, 0%, 100%, 0.1);
+			color: var(--clr-neutral-100);
+			font-family: var(--ff-base);
+			font-size: var(--fs-300);
+
+			&::placeholder {
+				color: hsl(0, 0%, 100%, 0.55);
+			}
+
+			&:focus-visible {
+				outline: 2px solid var(--clr-primary-400);
+				outline-offset: 2px;
+				background-color: hsl(0, 0%, 100%, 0.15);
+			}
+		}
+	}
+}

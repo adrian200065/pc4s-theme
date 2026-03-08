@@ -1,0 +1,55 @@
+// ------------------------------------------
+// License Plate Section
+// ------------------------------------------
+.license-plate {
+	background-color: var(--clr-bg-alt);
+	overflow: hidden;
+}
+
+.plate-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--size-600);
+
+	@media (min-width: 64rem) {
+		flex-direction: row;
+		text-align: start;
+		gap: var(--size-800);
+	}
+}
+
+.plate-text {
+	flex: 1.2;
+
+	.section-title {
+		margin-block-end: var(--size-200);
+	}
+
+	.section-subtitle {
+		margin-block-end: var(--size-400);
+	}
+}
+
+.plate-image {
+	flex: 1;
+	perspective: 1000px;
+
+	img {
+		inline-size: 100%;
+		block-size: auto;
+		max-inline-size: 32rem;
+		border-radius: var(--radius-md);
+		filter: drop-shadow(var(--shadow-lg));
+		transform: rotateY(-15deg) rotateX(5deg) rotateZ(-2deg);
+		transition: transform var(--transition-slow);
+
+		@media (prefers-reduced-motion: reduce) {
+			transform: none;
+		}
+
+		&:hover {
+			transform: rotateY(0) rotateX(0) rotateZ(0) scale(1.05);
+		}
+	}
+}

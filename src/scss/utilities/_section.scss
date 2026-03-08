@@ -1,0 +1,63 @@
+// ------------------------------------------
+// Section Style
+// ------------------------------------------
+.section {
+	padding-block: var(--padding-block);
+
+	&__header {
+		text-align: center;
+		margin-block-end: var(--size-700);
+		max-inline-size: 50rem;
+		margin-inline: auto;
+
+		&--start {
+			text-align: start;
+			margin-inline: 0;
+		}
+	}
+
+	&__badge {
+		background-color: var(--clr-dark-blue);
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5em 1em;
+		margin-block-end: var(--size-200);
+		border: 1px solid var(--clr-secondary-500);
+		border-radius: var(--radius-full);
+		backdrop-filter: blur(4px);
+
+		&-text {
+			color: var(--clr-secondary-100);
+			font-family: var(--ff-heading);
+			font-size: var(--fs-100);
+			font-weight: 500;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+		}
+
+		&-icon {
+			background-color: var(--clr-secondary-100);
+			inline-size: 0.5rem;
+			block-size: 0.5rem;
+			border-radius: var(--radius-circle);
+			animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+		}
+	}
+
+	&__title {
+		color: var(--clr-neutral-800);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-800);
+		font-weight: 700;
+		line-height: 1.1;
+		margin-block-end: var(--size-100);
+	}
+
+	&__subtitle {
+		color: var(--clr-neutral-700);
+		font-size: var(--fs-400);
+		line-height: 1.5;
+		margin-block-end: 0;
+	}
+}

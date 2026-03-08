@@ -1,0 +1,90 @@
+// ------------------------------------------
+// Custom Properties (Variables)
+// ------------------------------------------
+:root {
+	// Color Palette
+	// PRIMARY - Red #ED1C24 (Brand Red)
+	--clr-primary-100: hsl(0, 85%, 92%);
+	--clr-primary-200: hsl(0, 85%, 82%);
+	--clr-primary-300: hsl(0, 85%, 72%);
+	--clr-primary-400: hsl(0, 85%, 62%); // Main primary (original #ED1C24)
+	--clr-primary-500: hsl(0, 85%, 52%); // #ED1C24 exactly
+	--clr-primary-600: hsl(0, 85%, 42%);
+
+	// SECONDARY - Blue #1B388C (Brand Blue)
+	--clr-secondary-100: hsl(230, 97%, 90%);
+	--clr-secondary-200: hsl(230, 97%, 80%);
+	--clr-secondary-300: hsl(230, 97%, 70%);
+	--clr-secondary-400: hsl(230, 97%, 60%);
+	--clr-secondary-500: hsl(230, 97%, 40%); // Main secondary
+	--clr-secondary-600: hsl(230, 97%, 30%); // #1B388C exactly
+
+	--clr-dark-blue: hsl(223, 48%, 11%);
+
+	// Neutral - Cool Grays
+	--clr-neutral-100: hsl(210, 20%, 98%);
+	--clr-neutral-200: hsl(210, 15%, 95%);
+	--clr-neutral-300: hsl(210, 10%, 90%);
+	--clr-neutral-400: hsl(210, 8%, 75%);
+	--clr-neutral-500: hsl(210, 6%, 55%);
+	--clr-neutral-600: hsl(210, 8%, 40%);
+	--clr-neutral-700: hsl(210, 10%, 30%);
+	--clr-neutral-800: hsl(210, 12%, 20%);
+	--clr-neutral-900: hsl(210, 15%, 12%);
+
+	// Semantic Colors
+	--clr-bg: var(--clr-neutral-100);
+	--clr-bg-alt: var(--clr-neutral-200);
+	--clr-text: var(--clr-neutral-800);
+	--clr-text-muted: var(--clr-neutral-600);
+	--clr-border: var(--clr-neutral-300);
+
+	// Font Families
+	--ff-base: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+	--ff-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+	// Font Sizes
+	--fs-100: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+	--fs-200: clamp(0.875rem, 0.8rem + 0.38vw, 1rem);
+	--fs-300: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+	--fs-400: clamp(1.125rem, 1rem + 0.63vw, 1.25rem);
+	--fs-500: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+	--fs-600: clamp(1.5rem, 1.3rem + 1vw, 1.875rem);
+	--fs-700: clamp(1.875rem, 1.6rem + 1.38vw, 2.25rem);
+	--fs-800: clamp(2.25rem, 1.8rem + 2.25vw, 3rem);
+	--fs-900: clamp(3rem, 2.2rem + 4vw, 4rem);
+
+	// Spacing Scale
+	--size-100: clamp(0.25rem, 0.2rem + 0.25vw, 0.375rem);
+	--size-200: clamp(0.5rem, 0.4rem + 0.5vw, 0.75rem);
+	--size-300: clamp(0.75rem, 0.6rem + 0.75vw, 1rem);
+	--size-400: clamp(1rem, 0.8rem + 1vw, 1.5rem);
+	--size-500: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+	--size-600: clamp(2rem, 1.5rem + 2.5vw, 3rem);
+	--size-700: clamp(3rem, 2.2rem + 4vw, 4.5rem);
+	--size-800: clamp(4rem, 3rem + 5vw, 6rem);
+
+	// Layout Properties
+	--max-width: 87.5rem;
+	--padding-inline: clamp(1rem, 0.5rem + 2.5vw, 2rem);
+	--padding-block: clamp(5rem, 2rem + 9vw, 10rem);
+
+	// Transitions
+	--transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+	--transition-base: 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	--transition-slow: 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+	// Shadows
+	--shadow-sm: 0 1px 2px hsl(210, 15%, 12%, 0.05);
+	--shadow-md: 0 4px 6px -1px hsl(210, 15%, 12%, 0.1), 0 2px 4px -2px hsl(210, 15%, 12%, 0.1);
+	--shadow-lg: 0 10px 15px -3px hsl(210, 15%, 12%, 0.1), 0 4px 6px -4px hsl(210, 15%, 12%, 0.1);
+	--shadow-xl: 0 20px 25px -5px hsl(210, 15%, 12%, 0.1), 0 8px 10px -6px hsl(210, 15%, 12%, 0.1);
+
+	// Border Radius
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 1rem;
+	--radius-xl: 1.5rem;
+	--radius-full: 100vw;
+	--radius-circle: 50%;
+}

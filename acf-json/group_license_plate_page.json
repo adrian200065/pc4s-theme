@@ -1,0 +1,730 @@
+{
+	"key": "group_license_plate_page",
+	"title": "License Plate Page — Content",
+	"fields": [
+		{
+			"key": "field_lp_tab_hero",
+			"label": "Hero Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_lp_hero_badge_text",
+			"label": "Badge Text",
+			"name": "lp_hero_badge_text",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short eyebrow label shown above the heading (e.g. \"Limited Edition\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "33.3",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Limited Edition",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_hero_title",
+			"label": "Hero Title",
+			"name": "lp_hero_title",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main heading for the hero section.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "66.7",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Support Tennessee With Your Tennessee License Plate",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_hero_lead",
+			"label": "Lead Paragraph",
+			"name": "lp_hero_lead",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Supporting paragraph displayed beneath the heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "100",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Show your commitment to youth mental health across the Volunteer State. The Youth Mental Health Matters specialty plate raises awareness and support for mental health resources right here in Tennessee.",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"rows": 4,
+			"placeholder": "",
+			"new_lines": "wpautop"
+		},
+		{
+			"key": "field_lp_hero_price_label",
+			"label": "Price Label",
+			"name": "lp_hero_price_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short label displayed before the price amount (e.g. \"Pre-Order for\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Pre-Order for",
+			"maxlength": 60,
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_hero_price_amount",
+			"label": "Price Amount",
+			"name": "lp_hero_price_amount",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "The pre-order price displayed prominently (e.g. \"$36.77\"). Include the currency symbol.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "$36.77",
+			"maxlength": 20,
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_hero_plate_image",
+			"label": "License Plate Image",
+			"name": "lp_hero_plate_image",
+			"aria-label": "",
+			"type": "image",
+			"instructions": "Photo of the license plate shown in the hero section. Recommended: 1200×600 px, WebP format.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "100",
+				"class": "",
+				"id": ""
+			},
+			"return_format": "array",
+			"library": "all",
+			"min_width": "",
+			"min_height": "",
+			"min_size": "",
+			"max_width": "",
+			"max_height": "",
+			"max_size": "",
+			"mime_types": "",
+			"preview_size": "medium"
+		},
+		{
+			"key": "field_lp_tab_progress",
+			"label": "Campaign Progress",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_lp_progress_badge_text",
+			"label": "Badge Text",
+			"name": "lp_progress_badge_text",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short eyebrow label for the progress section (e.g. \"Campaign\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "33.3",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Campaign",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_progress_title",
+			"label": "Section Title",
+			"name": "lp_progress_title",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Heading for the campaign progress section.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "66.7",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Campaign Progress",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_progress_subtitle",
+			"label": "Subtitle",
+			"name": "lp_progress_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Supporting paragraph below the section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "100",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "We need 1,000 pre-orders to bring this plate to life. Here’s where we stand — every order matters.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": ""
+		},
+		{
+			"key": "field_lp_progress_current",
+			"label": "Current Pre-Orders",
+			"name": "lp_progress_current",
+			"aria-label": "",
+			"type": "number",
+			"instructions": "The current number of pre-orders received. Update this regularly.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"default_value": 0,
+			"min": 0,
+			"max": "",
+			"step": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_progress_goal",
+			"label": "Goal (Pre-Orders Needed)",
+			"name": "lp_progress_goal",
+			"aria-label": "",
+			"type": "number",
+			"instructions": "The total number of pre-orders required to print the plate (e.g. 1000).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"default_value": 1000,
+			"min": 1,
+			"max": "",
+			"step": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_progress_note",
+			"label": "Disclaimer Note",
+			"name": "lp_progress_note",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small caption shown below the progress bar (e.g. \"Numbers are updated regularly. Pre-orders are non-binding until the goal is reached.\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "100",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Numbers are updated regularly. Pre-orders are non-binding until the goal is reached.",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_tab_how",
+			"label": "How It Works",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_lp_how_badge_text",
+			"label": "Badge Text",
+			"name": "lp_how_badge_text",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short eyebrow label for the How It Works section (e.g. \"Simple Process\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "33.3",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Simple Process",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_how_title",
+			"label": "Section Title",
+			"name": "lp_how_title",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Heading for the How It Works section.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "66.7",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "How It Works",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_how_subtitle",
+			"label": "Subtitle",
+			"name": "lp_how_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Supporting paragraph below the section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "100",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Three easy steps stand between you and a plate that makes a statement.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": ""
+		},
+		{
+			"key": "field_lp_how_steps",
+			"label": "Steps",
+			"name": "lp_how_steps",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "Add each step in the pre-order process. These are rendered as a numbered list.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"layout": "block",
+			"button_label": "Add Step",
+			"min": 0,
+			"max": 6,
+			"collapsed": "field_lp_how_step_title",
+			"rows_per_page": 20,
+			"sub_fields": [
+				{
+					"key": "field_lp_how_step_title",
+					"label": "Step Title",
+					"name": "step_title",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Short heading for this step.",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "40",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_lp_how_steps"
+				},
+				{
+					"key": "field_lp_how_step_desc",
+					"label": "Step Description",
+					"name": "step_desc",
+					"aria-label": "",
+					"type": "textarea",
+					"instructions": "One or two sentences explaining this step.",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "60",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "",
+					"maxlength": "",
+					"rows": 3,
+					"new_lines": "",
+					"parent_repeater": "field_lp_how_steps"
+				}
+			]
+		},
+		{
+			"key": "field_lp_tab_form",
+			"label": "Pre-Order Form",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_lp_form_badge_text",
+			"label": "Badge Text",
+			"name": "lp_form_badge_text",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short eyebrow label above the form section heading (e.g. \"Pre-Order\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "33.3",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Pre-Order",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_form_title",
+			"label": "Section Title",
+			"name": "lp_form_title",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Heading for the pre-order form section.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "66.7",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Pre-Order Your License Plate",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_form_subtitle",
+			"label": "Section Subtitle",
+			"name": "lp_form_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Supporting paragraph below the section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "100",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Please complete all fields. You’ll be redirected to PayPal to submit your $36.77 pre-order.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": ""
+		},
+		{
+			"key": "field_lp_form_card_heading",
+			"label": "Form Card Heading",
+			"name": "lp_form_card_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Heading displayed inside the form card (e.g. \"Pre-order Form\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Pre-order Form",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_form_card_note",
+			"label": "Form Card Note",
+			"name": "lp_form_card_note",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short note shown below the form card heading (e.g. \"All fields are required. After submission, you will be redirected to PayPal to complete your $36.77 pre-order.\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "All fields are required. After submission, you will be redirected to PayPal to complete your $36.77 pre-order.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": ""
+		},
+		{
+			"key": "field_lp_form_submit_label",
+			"label": "Submit Button Label",
+			"name": "lp_form_submit_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Text for the form submit button (e.g. \"Submit and Pay $36.77\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Submit and Pay $36.77",
+			"maxlength": 80,
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_tab_cta",
+			"label": "Page CTA",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_lp_cta_badge_text",
+			"label": "Badge Text",
+			"name": "lp_cta_badge_text",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short eyebrow label for the CTA section (e.g. \"Get Involved\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "33.3",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Get Involved",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_cta_title",
+			"label": "CTA Title",
+			"name": "lp_cta_title",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main heading for the bottom call-to-action section.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "66.7",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "Together We Drive Change",
+			"maxlength": "",
+			"allow_in_bindings": 1,
+			"placeholder": "",
+			"prepend": "",
+			"append": ""
+		},
+		{
+			"key": "field_lp_cta_subtitle",
+			"label": "CTA Subtitle",
+			"name": "lp_cta_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Supporting paragraph below the CTA heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "100",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "The license plate is just one way to show your support. Learn more about how PC4S is building healthier communities across Rutherford County and Middle Tennessee.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": ""
+		},
+		{
+			"key": "field_lp_cta_primary_link",
+			"label": "Primary Button",
+			"name": "lp_cta_primary_link",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Primary CTA button (solid style).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"return_format": "array"
+		},
+		{
+			"key": "field_lp_cta_outline_link",
+			"label": "Secondary Button",
+			"name": "lp_cta_outline_link",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Secondary CTA button (outline style).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"return_format": "array"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "templates\/license-plate-page.php"
+			}
+		]
+	],
+	"menu_order": 3,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": [
+		"the_content",
+		"excerpt",
+		"discussion",
+		"comments",
+		"revisions",
+		"slug",
+		"author",
+		"format",
+		"categories",
+		"tags",
+		"send-trackbacks"
+	],
+	"active": true,
+	"description": "Controls all editable content for the Tennessee License Plate pre-order page — hero, campaign progress, how it works steps, form section labels, and CTA.",
+	"show_in_rest": 0,
+	"display_title": "",
+	"modified": 1772733929
+}

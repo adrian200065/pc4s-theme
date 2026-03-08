@@ -1,0 +1,145 @@
+{
+    "key": "group_legal_page",
+    "title": "Legal Page",
+    "fields": [
+        {
+            "key": "field_lp_tab_content",
+            "label": "Content",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_lp_meta",
+            "label": "Meta Line",
+            "name": "lp_meta",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short introductory line displayed above the sections, e.g. \"Last updated on April 10, 2023.\" Leave blank to omit.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 1,
+            "default_value": "",
+            "placeholder": "e.g. Last updated on April 10, 2023.",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_lp_sections",
+            "label": "Sections",
+            "name": "lp_sections",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add each section of the legal document. Each section renders as an h2 heading followed by rich-text content (paragraphs, links, lists).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 2,
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_lp_section_title",
+            "button_label": "Add Section",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_lp_section_title",
+                    "label": "Section Title",
+                    "name": "section_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "h2 heading for this section, e.g. \"Introduction\".",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "e.g. Introduction",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_lp_sections"
+                },
+                {
+                    "key": "field_lp_section_content",
+                    "label": "Section Content",
+                    "name": "section_content",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Rich-text body for this section. Supports paragraphs, links, bold, italic, and lists.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_lp_sections"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/legal-page.php"
+            }
+        ]
+    ],
+    "menu_order": 20,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Fields for the shared Legal Page template (Privacy Policy, Terms of Service, etc.).",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772835575
+}

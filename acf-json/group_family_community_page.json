@@ -1,0 +1,869 @@
+{
+	"key": "group_family_community_page",
+	"title": "Family & Community Page",
+	"fields": [
+		{
+			"key": "field_fcp_tab_intro",
+			"label": "Intro Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 0,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_fcp_intro_badge",
+			"label": "Badge Text",
+			"name": "fcp_intro_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small label above the heading, e.g. \"Resources for Our Community\".",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 1,
+			"default_value": "Resources for Our Community",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_intro_heading",
+			"label": "Section Heading",
+			"name": "fcp_intro_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main <h2> heading for the intro section. Leave blank to hide the entire intro.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 2,
+			"default_value": "Supporting Families Across Rutherford County",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_intro_body_1",
+			"label": "Body Paragraph 1",
+			"name": "fcp_intro_body_1",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "First body paragraph (rendered below the heading as the section subtitle).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 3,
+			"default_value": "PC4S connects families with the tools, knowledge, and services they need to thrive. Below you\u2019ll find community resource guides, outreach materials, and mental health references \u2014 all available as free downloads.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_fcp_intro_body_2",
+			"label": "Body Paragraph 2",
+			"name": "fcp_intro_body_2",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Second body paragraph (optional, displayed below the first).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 4,
+			"default_value": "Whether you\u2019re a parent looking for guidance, an educator seeking prevention materials, or a community member wanting to connect with local services, these resources are designed to help. Our resource guides are updated regularly to ensure the most accurate and helpful information for Rutherford County residents.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_fcp_intro_cta_label",
+			"label": "CTA Button Label",
+			"name": "fcp_intro_cta_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Label for the anchor link that scrolls down to the resource list. Leave blank to hide the button.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 5,
+			"default_value": "View Resource List",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_intro_highlights",
+			"label": "Highlights List",
+			"name": "fcp_intro_highlights",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "Resource highlight items shown in the right-hand sidebar of the intro section.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 6,
+			"layout": "table",
+			"button_label": "Add Highlight",
+			"min": 0,
+			"max": 8,
+			"collapsed": "",
+			"rows_per_page": 10,
+			"sub_fields": [
+				{
+					"key": "field_fcp_highlight_title",
+					"label": "Title",
+					"name": "fcp_highlight_title",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Bold title for the highlight item, e.g. \"Family Resources\".",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "40",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. Family Resources",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_fcp_intro_highlights"
+				},
+				{
+					"key": "field_fcp_highlight_subtitle",
+					"label": "Subtitle",
+					"name": "fcp_highlight_subtitle",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Short description below the title, e.g. \"Guides for parents, caregivers & youth\".",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "60",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. Guides for parents, caregivers & youth",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_fcp_intro_highlights"
+				}
+			]
+		},
+		{
+			"key": "field_fcp_tab_resources",
+			"label": "Resource Downloads",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 10,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_fcp_res_badge",
+			"label": "Section Badge",
+			"name": "fcp_res_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small label above the resource list heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 11,
+			"default_value": "Downloads",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_res_heading",
+			"label": "Section Heading",
+			"name": "fcp_res_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main <h2> heading for the resource download cards section.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 12,
+			"default_value": "Rutherford County Resource List",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_res_subtitle",
+			"label": "Section Subtitle",
+			"name": "fcp_res_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short paragraph below the resource section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 13,
+			"default_value": "Download the latest resource guides for families, outreach workers, and mental health advocates in Rutherford County. All documents are free.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_fcp_resource_cards",
+			"label": "Resource Download Cards",
+			"name": "fcp_resource_cards",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "PDF download cards. Each card has a category label, title, description, date badge, and a file attachment.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 14,
+			"layout": "block",
+			"button_label": "Add Resource Card",
+			"min": 0,
+			"max": 12,
+			"collapsed": "field_fcp_card_title",
+			"rows_per_page": 10,
+			"sub_fields": [
+				{
+					"key": "field_fcp_card_category",
+					"label": "Category Label",
+					"name": "fcp_card_category",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Category displayed above the card title, e.g. \"Family Resources\".",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. Family Resources",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_fcp_resource_cards"
+				},
+				{
+					"key": "field_fcp_card_title",
+					"label": "Card Title",
+					"name": "fcp_card_title",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Title of the resource guide, e.g. \"Family Resources Guide\".",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. Family Resources Guide",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_fcp_resource_cards"
+				},
+				{
+					"key": "field_fcp_card_desc",
+					"label": "Description",
+					"name": "fcp_card_desc",
+					"aria-label": "",
+					"type": "textarea",
+					"instructions": "Short description of what this resource covers.",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "",
+					"maxlength": "",
+					"rows": 3,
+					"new_lines": "br",
+					"parent_repeater": "field_fcp_resource_cards"
+				},
+				{
+					"key": "field_fcp_card_date_label",
+					"label": "Date Badge Label",
+					"name": "fcp_card_date_label",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Date badge shown on the card, e.g. \"Updated January 2026\". Leave blank to hide.",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. Updated January 2026",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_fcp_resource_cards"
+				},
+				{
+					"key": "field_fcp_card_file",
+					"label": "PDF File",
+					"name": "fcp_card_file",
+					"aria-label": "",
+					"type": "file",
+					"instructions": "Upload the PDF resource file. Both the Download and View buttons link to this file.",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"return_format": "array",
+					"library": "all",
+					"min_size": "",
+					"max_size": "",
+					"mime_types": "pdf",
+					"parent_repeater": "field_fcp_resource_cards"
+				}
+			]
+		},
+		{
+			"key": "field_fcp_tab_external",
+			"label": "External Links",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 20,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_fcp_ext_badge",
+			"label": "Section Badge",
+			"name": "fcp_ext_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small label above the external links heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 21,
+			"default_value": "Trusted Partners",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_ext_heading",
+			"label": "Section Heading",
+			"name": "fcp_ext_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main <h2> heading for the external resource links section.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 22,
+			"default_value": "Additional Community Resources",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_ext_subtitle",
+			"label": "Section Subtitle",
+			"name": "fcp_ext_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short paragraph below the external links heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 23,
+			"default_value": "Explore these trusted organizations for additional support, education, and treatment resources.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_fcp_external_links",
+			"label": "External Resource Links",
+			"name": "fcp_external_links",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "Quick-link cards to trusted external resources. Each card links to an external website, phone number, or other URL.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 24,
+			"layout": "table",
+			"button_label": "Add External Link",
+			"min": 0,
+			"max": 12,
+			"collapsed": "field_fcp_link_name",
+			"rows_per_page": 10,
+			"sub_fields": [
+				{
+					"key": "field_fcp_link_name",
+					"label": "Link Name",
+					"name": "fcp_link_name",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Display name for the link card, e.g. \"Kidcentral TN\".",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "30",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. Kidcentral TN",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_fcp_external_links"
+				},
+				{
+					"key": "field_fcp_link_url",
+					"label": "URL",
+					"name": "fcp_link_url",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Full URL, phone (tel:) or other href value. Examples: https://kidcentraltn.com or tel:1-800-889-9789",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "35",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "https://... or tel:1-800-...",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_fcp_external_links"
+				},
+				{
+					"key": "field_fcp_link_desc",
+					"label": "Short Description",
+					"name": "fcp_link_desc",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Brief description displayed below the link name, e.g. \"Family & child resources\".",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "25",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. Family & child resources",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_fcp_external_links"
+				},
+				{
+					"key": "field_fcp_link_new_tab",
+					"label": "Open in New Tab",
+					"name": "fcp_link_new_tab",
+					"aria-label": "",
+					"type": "true_false",
+					"instructions": "Tick to open the link in a new browser tab.",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "10",
+						"class": "",
+						"id": ""
+					},
+					"message": "",
+					"default_value": 1,
+					"ui": 1,
+					"ui_on_text": "Yes",
+					"ui_off_text": "No",
+					"parent_repeater": "field_fcp_external_links"
+				}
+			]
+		},
+		{
+			"key": "field_fcp_tab_location",
+			"label": "Location & Map",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 30,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_fcp_loc_badge",
+			"label": "Section Badge",
+			"name": "fcp_loc_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small label above the location section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 31,
+			"default_value": "Visit Us",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_loc_heading",
+			"label": "Section Heading",
+			"name": "fcp_loc_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main <h2> heading for the Find Us section.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 32,
+			"default_value": "Find PC4S",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_loc_subtitle",
+			"label": "Section Subtitle",
+			"name": "fcp_loc_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short paragraph below the location section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 33,
+			"default_value": "Stop by our office or reach out to connect with a team member and access in-person resources.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_fcp_office_hours",
+			"label": "Office Hours",
+			"name": "fcp_office_hours",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Office hours text displayed in the info panel. Use a newline character (\\n) or two separate lines if needed. Address, phone, and email are pulled from PC4S \u2192 Settings.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 34,
+			"default_value": "Monday \u2013 Friday, 8:00 AM \u2013 5:00 PM",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_map_embed_url",
+			"label": "Google Maps Embed URL",
+			"name": "fcp_map_embed_url",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Paste only the `src` URL from a Google Maps embed code here — NOT the full <iframe> tag. Example: https://www.google.com/maps/embed?pb=!1m18...\n\nTo get this URL: Google Maps \u2192 Share \u2192 Embed a map \u2192 copy the src= value only.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 35,
+			"default_value": "",
+			"placeholder": "https://www.google.com/maps/embed?pb=...",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": ""
+		},
+		{
+			"key": "field_fcp_tab_cta",
+			"label": "CTA Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 40,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_fcp_cta_badge",
+			"label": "CTA Badge",
+			"name": "fcp_cta_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Small label above the CTA heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 41,
+			"default_value": "Get Involved",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_cta_heading",
+			"label": "CTA Heading",
+			"name": "fcp_cta_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main heading for the CTA section. Leave blank to hide the section entirely.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 42,
+			"default_value": "Need Help Finding Resources?",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_fcp_cta_subtitle",
+			"label": "CTA Subtitle",
+			"name": "fcp_cta_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short paragraph below the CTA heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 43,
+			"default_value": "Our team is here to help connect you and your family with the right services. Reach out today \u2014 no matter where you are in your journey.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_fcp_cta_primary",
+			"label": "Primary CTA Link",
+			"name": "fcp_cta_primary",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Primary action button (URL, label, and optional target). E.g. Contact Us.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 44,
+			"return_format": "array"
+		},
+		{
+			"key": "field_fcp_cta_secondary",
+			"label": "Secondary CTA Link",
+			"name": "fcp_cta_secondary",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Secondary action button (URL, label, and optional target). E.g. Upcoming Events.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 45,
+			"return_format": "array"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "templates\/family-community-page.php"
+			}
+		]
+	],
+	"menu_order": 6,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": [
+		"the_content",
+		"excerpt",
+		"discussion",
+		"comments",
+		"revisions",
+		"slug",
+		"author",
+		"format",
+		"categories",
+		"tags",
+		"send-trackbacks"
+	],
+	"active": true,
+	"description": "Fields for the Family & Community page template. Address, phone, and email are sourced from PC4S \u2192 Settings (Footer Settings). Office hours and map embed URL are editable here.",
+	"show_in_rest": 0,
+	"display_title": "",
+	"modified": 1772737700
+}

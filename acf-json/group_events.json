@@ -1,0 +1,349 @@
+{
+	"key": "group_events",
+	"title": "Event Details",
+	"fields": [
+		{
+			"key": "field_ev_date",
+			"label": "Event Date",
+			"name": "event_date",
+			"aria-label": "",
+			"type": "date_picker",
+			"instructions": "The date of this event (or first occurrence for recurring events).",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "40",
+				"class": "",
+				"id": ""
+			},
+			"display_format": "F j, Y",
+			"return_format": "Y-m-d",
+			"first_day": 1,
+			"default_to_current_date": 0,
+			"allow_in_bindings": 1
+		},
+		{
+			"key": "field_ev_start_time",
+			"label": "Start Time",
+			"name": "event_start_time",
+			"aria-label": "",
+			"type": "time_picker",
+			"instructions": "Event start time.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "30",
+				"class": "",
+				"id": ""
+			},
+			"display_format": "g:i a",
+			"return_format": "H:i",
+			"allow_in_bindings": 1
+		},
+		{
+			"key": "field_ev_end_time",
+			"label": "End Time",
+			"name": "event_end_time",
+			"aria-label": "",
+			"type": "time_picker",
+			"instructions": "Event end time (optional).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "30",
+				"class": "",
+				"id": ""
+			},
+			"display_format": "g:i a",
+			"return_format": "H:i",
+			"allow_in_bindings": 1
+		},
+		{
+			"key": "field_ev_location",
+			"label": "Location Name",
+			"name": "event_location",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Venue or address for this event.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "",
+			"placeholder": "e.g. MTSU Student Union",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_ev_details",
+			"label": "Event Details",
+			"name": "event_details",
+			"aria-label": "",
+			"type": "wysiwyg",
+			"instructions": "Full description of the event — what to expect, who it's for, any special instructions, etc.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "",
+			"tabs": "all",
+			"toolbar": "full",
+			"media_upload": 0,
+			"delay": 0
+		},
+		{
+			"key": "field_ev_cta_text",
+			"label": "CTA Button Text",
+			"name": "event_cta_text",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Label for the call-to-action button. Defaults to \"Find Out More\" when left empty.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"default_value": "",
+			"placeholder": "Find Out More",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_ev_cta_url",
+			"label": "CTA Button Link",
+			"name": "event_cta_url",
+			"aria-label": "",
+			"type": "page_link",
+			"instructions": "Optional override URL for the CTA button. Defaults to the event's own permalink when empty.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"post_type": "",
+			"taxonomy": "",
+			"allow_null": 1,
+			"allow_archives": 0,
+			"multiple": 0
+		},
+		{
+			"key": "field_ev_is_recurring",
+			"label": "Recurring Event",
+			"name": "is_recurring",
+			"aria-label": "",
+			"type": "true_false",
+			"instructions": "Enable if this event repeats on a schedule.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"message": "This is a recurring event",
+			"default_value": 0,
+			"ui": 1,
+			"ui_on_text": "Yes",
+			"ui_off_text": "No"
+		},
+		{
+			"key": "field_ev_recurrence_rule",
+			"label": "Recurrence Rule",
+			"name": "recurrence_rule",
+			"aria-label": "",
+			"type": "select",
+			"instructions": "How often does this event repeat?",
+			"required": 0,
+			"conditional_logic": [
+				[
+					{
+						"field": "field_ev_is_recurring",
+						"operator": "==",
+						"value": "1"
+					}
+				]
+			],
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"choices": {
+				"weekly": "Weekly",
+				"biweekly": "Every Two Weeks (Bi-weekly)",
+				"monthly": "Monthly (Same Day)",
+				"monthly_nth_weekday": "Monthly (Nth Weekday — e.g. 3rd Wednesday)"
+			},
+			"default_value": "biweekly",
+			"allow_null": 0,
+			"multiple": 0,
+			"ui": 0,
+			"return_format": "value",
+			"ajax": 0,
+			"placeholder": "",
+			"create_options": 0,
+			"save_options": 0
+		},
+		{
+			"key": "field_ev_recurrence_end_date",
+			"label": "Recurrence End Date",
+			"name": "recurrence_end_date",
+			"aria-label": "",
+			"type": "date_picker",
+			"instructions": "Optional. Leave blank for indefinitely recurring events.",
+			"required": 0,
+			"conditional_logic": [
+				[
+					{
+						"field": "field_ev_is_recurring",
+						"operator": "==",
+						"value": "1"
+					}
+				]
+			],
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"display_format": "F j, Y",
+			"return_format": "Y-m-d",
+			"first_day": 1,
+			"default_to_current_date": 0
+		},
+		{
+			"key": "field_ev_recurrence_weekday",
+			"label": "Weekday",
+			"name": "recurrence_weekday",
+			"aria-label": "",
+			"type": "select",
+			"instructions": "Which day of the week? (Used with Monthly Nth Weekday rule.)",
+			"required": 0,
+			"conditional_logic": [
+				[
+					{
+						"field": "field_ev_is_recurring",
+						"operator": "==",
+						"value": "1"
+					},
+					{
+						"field": "field_ev_recurrence_rule",
+						"operator": "==",
+						"value": "monthly_nth_weekday"
+					}
+				]
+			],
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"choices": {
+				"0": "Sunday",
+				"1": "Monday",
+				"2": "Tuesday",
+				"3": "Wednesday",
+				"4": "Thursday",
+				"5": "Friday",
+				"6": "Saturday"
+			},
+			"default_value": "3",
+			"allow_null": 0,
+			"multiple": 0,
+			"ui": 1,
+			"return_format": "value",
+			"ajax": 0,
+			"placeholder": "",
+			"create_options": 0,
+			"save_options": 0
+		},
+		{
+			"key": "field_ev_recurrence_occurrence",
+			"label": "Occurrence",
+			"name": "recurrence_occurrence",
+			"aria-label": "",
+			"type": "select",
+			"instructions": "Which occurrence within the month? (Used with Monthly Nth Weekday rule.)",
+			"required": 0,
+			"conditional_logic": [
+				[
+					{
+						"field": "field_ev_is_recurring",
+						"operator": "==",
+						"value": "1"
+					},
+					{
+						"field": "field_ev_recurrence_rule",
+						"operator": "==",
+						"value": "monthly_nth_weekday"
+					}
+				]
+			],
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"choices": {
+				"1": "1st",
+				"2": "2nd",
+				"3": "3rd",
+				"4": "4th",
+				"-1": "Last"
+			},
+			"default_value": "3",
+			"allow_null": 0,
+			"multiple": 0,
+			"ui": 1,
+			"return_format": "value",
+			"ajax": 0,
+			"placeholder": "",
+			"create_options": 0,
+			"save_options": 0
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "post_type",
+				"operator": "==",
+				"value": "pc4s_event"
+			}
+		]
+	],
+	"menu_order": 1,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": [
+		"the_content",
+		"excerpt",
+		"discussion",
+		"comments",
+		"revisions",
+		"slug",
+		"author",
+		"format",
+		"categories",
+		"tags",
+		"send-trackbacks"
+	],
+	"active": true,
+	"description": "Date, time, location, CTA, and recurrence settings for PC4S events.",
+	"show_in_rest": 0,
+	"display_title": "",
+	"modified": 1772500668
+}

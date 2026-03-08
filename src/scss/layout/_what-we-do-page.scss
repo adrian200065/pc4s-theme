@@ -1,0 +1,880 @@
+// ============================================================
+//  What We Do — shared page styles
+//  Covers: what-can-we-do, drug-use-know-the-facts,
+//          how-can-you-get-involved, why-prevention-works,
+//          what-prevention-coalition-does
+// ============================================================
+
+// ------------------------------------------------------------
+//  Hero Strip
+// ------------------------------------------------------------
+.what-we-do-hero {
+	background-color: var(--clr-dark-blue);
+	position: relative;
+	padding-block: var(--size-700);
+	overflow: hidden;
+
+	&::before {
+		background: radial-gradient(circle, hsl(0, 85%, 52%, 0.18) 0%, transparent 70%);
+		content: '';
+		position: absolute;
+		inset-block-start: -6rem;
+		inset-inline-end: -6rem;
+		inline-size: 28rem;
+		block-size: 28rem;
+		border-radius: var(--radius-circle);
+		pointer-events: none;
+	}
+
+	&::after {
+		background: radial-gradient(circle, hsl(230, 97%, 60%, 0.15) 0%, transparent 70%);
+		content: '';
+		position: absolute;
+		inset-block-end: -4rem;
+		inset-inline-start: -4rem;
+		inline-size: 20rem;
+		block-size: 20rem;
+		border-radius: var(--radius-circle);
+		pointer-events: none;
+	}
+
+	&__inner {
+		position: relative;
+		display: grid;
+		gap: var(--size-500);
+		align-items: center;
+		z-index: 1;
+
+		@media (min-width: 56em) {
+			grid-template-columns: 1fr auto;
+		}
+	}
+
+	&__copy {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-300);
+	}
+
+	&__badge {
+		color: var(--clr-primary-300);
+		background-color: hsl(0, 85%, 52%, 0.18);
+		font-size: var(--fs-100);
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		display: inline-flex;
+		align-items: center;
+		gap: var(--size-200);
+		inline-size: fit-content;
+		padding-inline: var(--size-300);
+		padding-block: var(--size-100);
+		border: 1px solid hsl(0, 85%, 52%, 0.35);
+		border-radius: var(--radius-full);
+	}
+
+	&__title {
+		color: var(--clr-neutral-100);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-800);
+		font-weight: 900;
+		line-height: 1.1;
+	}
+
+	&__lead {
+		color: var(--clr-neutral-300);
+		font-size: var(--fs-400);
+		line-height: 1.7;
+		max-inline-size: 56ch;
+	}
+
+	&__actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--size-300);
+		margin-block-start: var(--size-200);
+	}
+
+	&__accent {
+		display: none;
+
+		@media (min-width: 56em) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: var(--size-300);
+		}
+	}
+
+	&__accent-pill {
+		color: var(--clr-dark-blue);
+		background-color: var(--clr-neutral-100);
+		font-size: var(--fs-200);
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		gap: var(--size-200);
+		padding-inline: var(--size-400);
+		padding-block: var(--size-200);
+		border-radius: var(--radius-full);
+		box-shadow: var(--shadow-lg);
+		white-space: nowrap;
+
+		svg {
+			flex-shrink: 0;
+			inline-size: 1.25em;
+			block-size: 1.25em;
+		}
+
+		&--primary svg {
+			color: var(--clr-primary-500);
+		}
+
+		&--secondary svg {
+			color: var(--clr-secondary-500);
+		}
+	}
+}
+
+// ------------------------------------------------------------
+//  Section intro
+// ------------------------------------------------------------
+.what-we-do {
+	&__intro {
+		text-align: center;
+		max-inline-size: 64ch;
+		margin-inline: auto;
+	}
+
+	// --------------------------------------------------------
+	//  Action cards grid (used on What Can We Do? etc.)
+	// --------------------------------------------------------
+	&__grid {
+		display: grid;
+		gap: var(--size-400);
+		margin-block-start: var(--size-600);
+
+		@media (min-width: 36em) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (min-width: 64em) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	&__card {
+		background-color: var(--clr-neutral-100);
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-300);
+		padding: var(--size-500);
+		border: 1px solid var(--clr-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+		transition:
+			transform var(--transition-base),
+			box-shadow var(--transition-base);
+
+		&:hover {
+			transform: translateY(-0.25rem);
+			box-shadow: var(--shadow-lg);
+		}
+
+		border-block-start: 4px solid var(--clr-primary-500);
+
+		&--blue {
+			border-block-start-color: var(--clr-secondary-500);
+		}
+
+		&--teal {
+			border-block-start-color: hsl(168, 76%, 36%);
+		}
+	}
+
+	&__card-icon {
+		color: var(--clr-primary-500);
+		background-color: var(--clr-primary-100);
+		display: inline-flex;
+		align-items: center;
+		flex-shrink: 0;
+		justify-content: center;
+		inline-size: 3rem;
+		block-size: 3rem;
+		border-radius: var(--radius-md);
+
+		svg {
+			inline-size: 1.5rem;
+			block-size: 1.5rem;
+		}
+
+		.what-we-do__card--blue & {
+			color: var(--clr-secondary-500);
+			background-color: var(--clr-secondary-100);
+		}
+	}
+
+	&__card-title {
+		color: var(--clr-neutral-900);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-400);
+		font-weight: 700;
+	}
+
+	&__card-body {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-300);
+		line-height: 1.7;
+		flex: 1;
+	}
+
+	// --------------------------------------------------------
+	//  Plain action list (bullet-style content)
+	// --------------------------------------------------------
+	&__action-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-300);
+		padding: 0;
+		margin-block-start: var(--size-500);
+		margin-inline: 0;
+	}
+
+	&__action-item {
+		background-color: var(--clr-neutral-100);
+		display: grid;
+		grid-template-columns: 2.5rem 1fr;
+		gap: var(--size-300);
+		align-items: start;
+		padding: var(--size-400);
+		border: 1px solid var(--clr-border);
+		border-radius: var(--radius-lg);
+		transition: background-color var(--transition-fast);
+
+		&:hover {
+			background-color: var(--clr-neutral-200);
+		}
+	}
+
+	&__action-num {
+		color: var(--clr-neutral-100);
+		background-color: var(--clr-primary-500);
+		font-size: var(--fs-200);
+		font-weight: 800;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		inline-size: 2.5rem;
+		block-size: 2.5rem;
+		border-radius: var(--radius-circle);
+	}
+
+	&__action-content {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-100);
+	}
+
+	&__action-title {
+		color: var(--clr-neutral-900);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-400);
+		font-weight: 700;
+	}
+
+	&__action-desc {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-300);
+		line-height: 1.7;
+	}
+
+	// --------------------------------------------------------
+	//  Myth/Fact pairs
+	// --------------------------------------------------------
+	&__myths {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-500);
+		margin-block-start: var(--size-600);
+	}
+
+	&__myth {
+		display: grid;
+		gap: 0;
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		box-shadow: var(--shadow-md);
+	}
+
+	&__myth-row {
+		display: grid;
+		grid-template-columns: 5.5rem 1fr;
+		align-items: start;
+		gap: var(--size-400);
+		padding: var(--size-400) var(--size-500);
+
+		&--myth {
+			background-color: var(--clr-neutral-200);
+			border-block-end: 1px solid var(--clr-border);
+		}
+
+		&--fact {
+			background-color: hsl(142, 71%, 45%, 0.08);
+		}
+	}
+
+	&__myth-tag {
+		font-size: var(--fs-100);
+		font-weight: 800;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		inline-size: 4.5rem;
+		padding-inline: var(--size-200);
+		padding-block: var(--size-100);
+		margin-block-start: 0.1em;
+		border-radius: var(--radius-full);
+
+		.what-we-do__myth-row--myth & {
+			color: var(--clr-neutral-800);
+			background-color: var(--clr-neutral-400);
+		}
+
+		.what-we-do__myth-row--fact & {
+			color: hsl(142, 71%, 28%);
+			background-color: hsl(142, 71%, 45%, 0.2);
+		}
+	}
+
+	&__myth-body {
+		color: var(--clr-text);
+		font-size: var(--fs-300);
+		line-height: 1.7;
+	}
+
+	// --------------------------------------------------------
+	//  Warning signs three-column grid
+	// --------------------------------------------------------
+	&__signs-grid {
+		display: grid;
+		gap: var(--size-400);
+		margin-block-start: var(--size-600);
+
+		@media (min-width: 36em) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (min-width: 64em) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	&__signs-card {
+		background-color: var(--clr-neutral-100);
+		padding: var(--size-500);
+		border: 1px solid var(--clr-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+	}
+
+	&__signs-heading {
+		color: var(--clr-neutral-900);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-400);
+		font-weight: 700;
+		display: flex;
+		align-items: center;
+		gap: var(--size-200);
+		margin-block-end: var(--size-300);
+
+		&::before {
+			background-color: var(--clr-primary-500);
+			content: '';
+			display: block;
+			flex-shrink: 0;
+			inline-size: 0.75rem;
+			block-size: 0.75rem;
+			border-radius: var(--radius-circle);
+		}
+
+		&--behavioral::before {
+			background-color: var(--clr-secondary-500);
+		}
+
+		&--psychological::before {
+			background-color: hsl(38, 92%, 50%);
+		}
+	}
+
+	&__signs-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-200);
+		padding: 0;
+		margin: 0;
+	}
+
+	&__signs-item {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-200);
+		line-height: 1.6;
+		display: grid;
+		grid-template-columns: 1.25rem 1fr;
+		gap: var(--size-200);
+
+		&::before {
+			content: '→';
+			color: var(--clr-primary-500);
+			font-weight: 700;
+			margin-block-start: 0.05em;
+		}
+	}
+
+	// --------------------------------------------------------
+	//  Drug category pills / accordion cards
+	// --------------------------------------------------------
+	&__drugs-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-400);
+		padding: 0;
+		margin-block-start: var(--size-600);
+		margin-inline: 0;
+	}
+
+	&__drug-card {
+		background-color: var(--clr-neutral-100);
+		padding: var(--size-400) var(--size-500);
+		border: 1px solid var(--clr-border);
+		border-inline-start: 4px solid var(--clr-primary-500);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+		transition: box-shadow var(--transition-base);
+
+		&:hover {
+			box-shadow: var(--shadow-md);
+		}
+
+		&:nth-child(2) {
+			border-inline-start-color: var(--clr-secondary-500);
+		}
+		&:nth-child(3) {
+			border-inline-start-color: hsl(38, 92%, 50%);
+		}
+		&:nth-child(4) {
+			border-inline-start-color: hsl(168, 76%, 36%);
+		}
+		&:nth-child(5) {
+			border-inline-start-color: hsl(270, 60%, 55%);
+		}
+		&:nth-child(6) {
+			border-inline-start-color: hsl(340, 82%, 52%);
+		}
+	}
+
+	&__drug-name {
+		color: var(--clr-neutral-900);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-400);
+		font-weight: 800;
+		margin-block-end: var(--size-200);
+	}
+
+	&__drug-signs {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-300);
+		line-height: 1.75;
+	}
+
+	// --------------------------------------------------------
+	//  Source / citation callout
+	// --------------------------------------------------------
+	&__source {
+		color: var(--clr-secondary-600);
+		background-color: var(--clr-secondary-100);
+		font-size: var(--fs-200);
+		display: flex;
+		align-items: center;
+		gap: var(--size-300);
+		padding: var(--size-400);
+		margin-block-start: var(--size-500);
+		border: 1px solid var(--clr-secondary-200);
+		border-radius: var(--radius-lg);
+
+		svg {
+			color: var(--clr-secondary-500);
+			flex-shrink: 0;
+			inline-size: 1.25rem;
+			block-size: 1.25rem;
+		}
+
+		a {
+			color: var(--clr-secondary-600);
+			font-weight: 700;
+			text-underline-offset: 0.2em;
+
+			&:hover {
+				color: var(--clr-secondary-500);
+			}
+		}
+	}
+
+	// --------------------------------------------------------
+	//  Highlight / callout box
+	// --------------------------------------------------------
+	&__callout {
+		color: var(--clr-neutral-100);
+		background-color: var(--clr-dark-blue);
+		position: relative;
+		padding: var(--size-500) var(--size-600);
+		margin-block: var(--size-600);
+		border-radius: var(--radius-xl);
+		overflow: hidden;
+
+		&::before {
+			background: radial-gradient(circle, hsl(0, 85%, 52%, 0.2) 0%, transparent 70%);
+			content: '';
+			position: absolute;
+			inset-block-start: -3rem;
+			inset-inline-end: -3rem;
+			inline-size: 14rem;
+			block-size: 14rem;
+			border-radius: var(--radius-circle);
+			pointer-events: none;
+		}
+	}
+
+	&__callout-title {
+		color: var(--clr-neutral-100);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-600);
+		font-weight: 800;
+		position: relative;
+		margin-block-end: var(--size-300);
+	}
+
+	&__callout-text {
+		color: var(--clr-neutral-300);
+		font-size: var(--fs-400);
+		line-height: 1.75;
+		position: relative;
+		max-inline-size: 64ch;
+	}
+
+	&__callout-actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--size-300);
+		position: relative;
+		margin-block-start: var(--size-400);
+	}
+
+	// --------------------------------------------------------
+	//  Big stat numbers (used on Why Prevention Works)
+	// --------------------------------------------------------
+	&__stats {
+		display: grid;
+		gap: var(--size-400);
+		margin-block-start: var(--size-600);
+
+		@media (min-width: 36em) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (min-width: 56em) {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+	&__stat {
+		background-color: var(--clr-neutral-100);
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--size-200);
+		padding: var(--size-500);
+		border: 1px solid var(--clr-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+	}
+
+	&__stat-number {
+		color: var(--clr-primary-500);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-800);
+		font-weight: 900;
+		line-height: 1;
+	}
+
+	&__stat-label {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-200);
+		line-height: 1.5;
+	}
+
+	// --------------------------------------------------------
+	//  Coalition pillar cards (What Prevention Coalition Does)
+	// --------------------------------------------------------
+	&__pillars {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-400);
+		margin-block-start: var(--size-600);
+	}
+
+	&__pillar {
+		background-color: var(--clr-neutral-100);
+		display: grid;
+		grid-template-columns: auto 1fr;
+		gap: var(--size-400);
+		align-items: start;
+		padding: var(--size-500);
+		border: 1px solid var(--clr-border);
+		border-radius: var(--radius-xl);
+		box-shadow: var(--shadow-sm);
+		transition:
+			transform var(--transition-base),
+			box-shadow var(--transition-base);
+
+		&:hover {
+			transform: translateX(0.25rem);
+			box-shadow: var(--shadow-md);
+		}
+	}
+
+	&__pillar-icon-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		inline-size: 3.5rem;
+		block-size: 3.5rem;
+		border-radius: var(--radius-md);
+
+		svg {
+			inline-size: 1.75rem;
+			block-size: 1.75rem;
+		}
+
+		&--red {
+			color: var(--clr-primary-500);
+			background-color: var(--clr-primary-100);
+		}
+
+		&--blue {
+			color: var(--clr-secondary-500);
+			background-color: var(--clr-secondary-100);
+		}
+
+		&--amber {
+			color: hsl(38, 92%, 40%);
+			background-color: hsl(38, 100%, 92%);
+		}
+
+		&--green {
+			color: hsl(142, 71%, 28%);
+			background-color: hsl(142, 55%, 90%);
+		}
+
+		&--purple {
+			color: hsl(270, 60%, 45%);
+			background-color: hsl(270, 55%, 92%);
+		}
+	}
+
+	&__pillar-content {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-200);
+	}
+
+	&__pillar-title {
+		color: var(--clr-neutral-900);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-500);
+		font-weight: 800;
+	}
+
+	&__pillar-desc {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-300);
+		line-height: 1.75;
+	}
+
+	// --------------------------------------------------------
+	//  Involvement steps (How Can You Get Involved)
+	// --------------------------------------------------------
+	&__steps {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		margin-block-start: var(--size-600);
+
+		&::before {
+			background: linear-gradient(to bottom, var(--clr-primary-300), var(--clr-secondary-300));
+			content: '';
+			position: absolute;
+			inset-inline-start: 1.6rem;
+			inset-block: 2rem;
+			inline-size: 2px;
+			pointer-events: none;
+
+			@media (min-width: 56em) {
+				inset-inline-start: 50%;
+				transform: translateX(-50%);
+			}
+		}
+	}
+
+	&__step {
+		display: grid;
+		grid-template-columns: 3.5rem 1fr;
+		gap: var(--size-400);
+		position: relative;
+		padding-block-end: var(--size-500);
+
+		@media (min-width: 56em) {
+			text-align: right;
+			grid-template-columns: 1fr 3.5rem 1fr;
+
+			&:nth-child(even) {
+				text-align: left;
+
+				.what-we-do__step-card {
+					grid-column: 3;
+					grid-row: 1;
+				}
+
+				.what-we-do__step-node {
+					grid-column: 2;
+					grid-row: 1;
+				}
+			}
+		}
+	}
+
+	&__step-node {
+		color: var(--clr-neutral-100);
+		background-color: var(--clr-primary-500);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-400);
+		font-weight: 900;
+		flex-shrink: 0;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		inline-size: 3.5rem;
+		block-size: 3.5rem;
+		border-radius: var(--radius-circle);
+		box-shadow:
+			0 0 0 4px var(--clr-bg),
+			0 0 0 6px var(--clr-primary-300);
+		z-index: 1;
+	}
+
+	&__step-card {
+		background-color: var(--clr-neutral-100);
+		align-self: start;
+		padding: var(--size-400) var(--size-500);
+		border: 1px solid var(--clr-border);
+		border-radius: var(--radius-lg);
+		box-shadow: var(--shadow-sm);
+	}
+
+	&__step-title {
+		color: var(--clr-neutral-900);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-400);
+		font-weight: 700;
+		margin-block-end: var(--size-200);
+	}
+
+	&__step-desc {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-300);
+		line-height: 1.7;
+	}
+
+	// --------------------------------------------------------
+	//  "Why it works" evidence rows
+	// --------------------------------------------------------
+	&__evidence {
+		display: grid;
+		gap: var(--size-400);
+		margin-block-start: var(--size-600);
+
+		@media (min-width: 48em) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	&__evidence-card {
+		background: linear-gradient(135deg, var(--clr-neutral-100), var(--clr-neutral-200));
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-300);
+		padding: var(--size-500);
+		border: 1px solid var(--clr-border);
+		border-radius: var(--radius-xl);
+		box-shadow: var(--shadow-sm);
+		transition: box-shadow var(--transition-base);
+
+		&:hover {
+			box-shadow: var(--shadow-lg);
+		}
+	}
+
+	&__evidence-icon {
+		color: var(--clr-primary-500);
+		background-color: var(--clr-primary-100);
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		inline-size: 3rem;
+		block-size: 3rem;
+		border-radius: var(--radius-md);
+
+		svg {
+			inline-size: 1.5rem;
+			block-size: 1.5rem;
+		}
+
+		&--blue {
+			color: var(--clr-secondary-500);
+			background-color: var(--clr-secondary-100);
+		}
+
+		&--amber {
+			color: hsl(38, 92%, 40%);
+			background-color: hsl(38, 100%, 92%);
+		}
+
+		&--green {
+			color: hsl(142, 71%, 28%);
+			background-color: hsl(142, 55%, 90%);
+		}
+	}
+
+	&__evidence-title {
+		color: var(--clr-neutral-900);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-400);
+		font-weight: 700;
+	}
+
+	&__evidence-body {
+		color: var(--clr-neutral-800);
+		font-size: var(--fs-300);
+		line-height: 1.75;
+	}
+}

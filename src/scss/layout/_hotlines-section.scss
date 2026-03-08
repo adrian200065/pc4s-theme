@@ -1,0 +1,155 @@
+// ------------------------------------------
+// Hotlines Section
+// ------------------------------------------
+.hotlines {
+	background-color: var(--clr-bg);
+}
+
+.hotlines-header {
+	margin-block-end: var(--size-600);
+}
+
+.hotlines-heading-row {
+	display: flex;
+	align-items: center;
+	gap: var(--size-300);
+	margin-block-end: var(--size-300);
+
+	.section-title {
+		margin-block-end: 0;
+	}
+}
+
+.hotlines-alert-icon {
+	color: var(--clr-primary-500);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	inline-size: 2rem;
+	block-size: 2rem;
+
+	svg {
+		inline-size: 100%;
+		block-size: 100%;
+	}
+}
+
+.hotlines-911 {
+	color: var(--clr-primary-500);
+	font-weight: 700;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--clr-primary-500);
+		outline-offset: 0.125rem;
+		border-radius: var(--radius-sm);
+	}
+}
+
+.hotlines-grid {
+	list-style: none;
+	display: grid;
+	gap: var(--size-400);
+
+	@media (min-width: 40rem) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: 64rem) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.hotline-item {
+	background-color: hsl(0, 0%, 100%);
+	display: flex;
+	align-items: center;
+	gap: var(--size-400);
+	padding-block: var(--size-400);
+	padding-inline: var(--size-500);
+	border: 1px solid var(--clr-border);
+	border-radius: var(--radius-lg);
+	transition:
+		box-shadow var(--transition-fast),
+		border-color var(--transition-fast);
+
+	&:hover {
+		box-shadow: var(--shadow-md);
+		border-color: var(--clr-neutral-400);
+	}
+
+	&--emergency {
+		background-color: var(--clr-primary-100);
+		border-color: var(--clr-primary-200);
+
+		.hotline-icon {
+			color: var(--clr-primary-500);
+			background-color: var(--clr-primary-200);
+		}
+
+		.hotline-number {
+			color: var(--clr-primary-500);
+		}
+
+		&:hover {
+			box-shadow: var(--shadow-md);
+			border-color: var(--clr-primary-300);
+		}
+	}
+}
+
+.hotline-icon {
+	color: var(--clr-secondary-500);
+	background-color: var(--clr-secondary-100);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	inline-size: 2.5rem;
+	block-size: 2.5rem;
+	border-radius: var(--radius-full);
+
+	svg {
+		inline-size: 1.25rem;
+		block-size: 1.25rem;
+	}
+}
+
+.hotline-body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-100);
+	min-inline-size: 0;
+}
+
+.hotline-name {
+	color: var(--clr-neutral-800);
+	font-size: var(--fs-300);
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.hotline-number {
+	color: var(--clr-secondary-600);
+	font-family: var(--ff-heading);
+	font-size: var(--fs-200);
+	font-weight: 700;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 0.03em;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:focus-visible {
+		outline: 2px solid currentColor;
+		outline-offset: 0.125rem;
+		border-radius: var(--radius-sm);
+	}
+}

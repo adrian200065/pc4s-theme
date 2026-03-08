@@ -1,0 +1,332 @@
+// =============================================================================
+// _coalition-page.scss
+// Styles for coalition-business-title-vi.html
+// Sections: intro split, document resource cards, title VI info strip, CTA
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// 1. INTRO SECTION — .cb-intro
+// -----------------------------------------------------------------------------
+.cb-intro {
+	background-color: var(--clr-bg);
+
+	&__inner {
+		display: grid;
+		gap: var(--size-600);
+
+		@media (min-width: 56rem) {
+			grid-template-columns: 1fr 1fr;
+			align-items: start;
+		}
+
+		@media (min-width: 72rem) {
+			grid-template-columns: 3fr 2fr;
+			gap: var(--size-700);
+		}
+	}
+
+	&__copy {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--size-300);
+
+		.section__title {
+			margin-block-end: 0;
+		}
+	}
+
+	&__lead {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-300);
+		line-height: 1.75;
+		max-inline-size: 65ch;
+	}
+
+	// Sidebar info panel
+	&__panel {
+		color: var(--clr-neutral-100);
+		background: linear-gradient(145deg, var(--clr-dark-blue), var(--clr-secondary-600));
+		padding-block: var(--size-500);
+		padding-inline: var(--size-500);
+		border-radius: var(--radius-xl);
+		box-shadow: var(--shadow-lg);
+
+		@media (min-width: 56rem) {
+			position: sticky;
+			inset-block-start: calc(var(--size-400) + 4rem);
+		}
+	}
+
+	&__panel-heading {
+		color: var(--clr-neutral-100);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-500);
+		font-weight: 700;
+		margin-block-end: var(--size-400);
+	}
+
+	&__panel-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-300);
+		padding: 0;
+		margin: 0;
+	}
+
+	&__panel-item {
+		color: var(--clr-secondary-100);
+		font-size: var(--fs-200);
+		display: flex;
+		align-items: center;
+		gap: var(--size-300);
+
+		&::before {
+			background-color: var(--clr-primary-400);
+			content: '';
+			flex-shrink: 0;
+			inline-size: 0.5rem;
+			block-size: 0.5rem;
+			border-radius: var(--radius-circle);
+		}
+	}
+}
+
+// -----------------------------------------------------------------------------
+// 2. DOCUMENT RESOURCES — .cb-docs
+// -----------------------------------------------------------------------------
+.cb-docs {
+	background-color: var(--clr-bg-alt);
+}
+
+.cb-docs__grid {
+	display: grid;
+	gap: var(--size-400);
+	margin-block-start: var(--size-600);
+
+	@media (min-width: 36rem) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: 64rem) {
+		grid-template-columns: repeat(2, 1fr);
+		gap: var(--size-500);
+	}
+}
+
+.cb-doc-card {
+	background-color: var(--clr-bg);
+	text-decoration: none;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: var(--size-500);
+	border: 1px solid var(--clr-border);
+	border-radius: var(--radius-lg);
+	transition:
+		box-shadow var(--transition-base),
+		transform var(--transition-fast),
+		border-color var(--transition-fast);
+	overflow: hidden;
+
+	&::before {
+		background: linear-gradient(to right, var(--clr-secondary-500), var(--clr-primary-400));
+		content: '';
+		position: absolute;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+		inline-size: 100%;
+		block-size: 0.25rem;
+		transform: scaleX(0);
+		transform-origin: inline-start;
+		transition: transform var(--transition-base);
+	}
+
+	&:hover,
+	&:focus-visible {
+		box-shadow: var(--shadow-lg);
+		transform: translateY(-0.25rem);
+		border-color: var(--clr-secondary-300);
+
+		&::before {
+			transform: scaleX(1);
+		}
+
+		.cb-doc-card__icon {
+			background-color: var(--clr-secondary-500);
+
+			svg {
+				stroke: var(--clr-neutral-100);
+			}
+		}
+
+		.cb-doc-card__arrow {
+			color: var(--clr-secondary-500);
+			transform: translate(0.25rem, -0.25rem);
+		}
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--clr-primary-500);
+		outline-offset: 2px;
+	}
+
+	&__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		margin-block-end: var(--size-400);
+	}
+
+	&__icon {
+		background-color: var(--clr-secondary-100);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		inline-size: 3.5rem;
+		block-size: 3.5rem;
+		padding: 0.75rem;
+		border-radius: var(--radius-md);
+		transition: background-color var(--transition-base);
+
+		svg {
+			inline-size: 100%;
+			block-size: 100%;
+			stroke: var(--clr-secondary-500);
+			transition: stroke var(--transition-base);
+		}
+	}
+
+	&__arrow {
+		color: var(--clr-neutral-400);
+		inline-size: 1.25rem;
+		flex-shrink: 0;
+		block-size: 1.25rem;
+		transition:
+			color var(--transition-fast),
+			transform var(--transition-base);
+	}
+
+	&__tag {
+		color: var(--clr-secondary-600);
+		background-color: var(--clr-secondary-100);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-100);
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		display: inline-flex;
+		align-items: center;
+		padding-block: 0.2em;
+		padding-inline: 0.7em;
+		margin-block-end: var(--size-200);
+		border-radius: var(--radius-full);
+	}
+
+	&__title {
+		color: var(--clr-neutral-800);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-400);
+		font-weight: 700;
+		line-height: 1.3;
+		margin-block-end: var(--size-200);
+	}
+
+	&__desc {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-200);
+		line-height: 1.65;
+		flex-grow: 1;
+	}
+
+	&__cta {
+		color: var(--clr-secondary-500);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-200);
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		gap: 0.4em;
+		margin-block-start: var(--size-400);
+	}
+}
+
+// -----------------------------------------------------------------------------
+// 3. TITLE VI INFO STRIP — .cb-title6
+// -----------------------------------------------------------------------------
+.cb-title6 {
+	color: var(--clr-neutral-100);
+	background-color: var(--clr-dark-blue);
+
+	.section__badge-text {
+		color: var(--clr-secondary-100);
+	}
+
+	.section__badge {
+		border-color: var(--clr-secondary-400);
+	}
+
+	.section__title {
+		color: var(--clr-neutral-100);
+	}
+
+	.section__subtitle {
+		color: var(--clr-secondary-100);
+	}
+
+	&__grid {
+		display: grid;
+		gap: var(--size-400);
+		margin-block-start: var(--size-600);
+
+		@media (min-width: 40rem) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@media (min-width: 64rem) {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	&__item {
+		background-color: hsl(223, 48%, 16%);
+		padding-block: var(--size-500);
+		padding-inline: var(--size-400);
+		border: 1px solid hsl(230, 97%, 25%);
+		border-radius: var(--radius-lg);
+	}
+
+	&__item-icon {
+		background-color: hsl(0, 85%, 20%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		inline-size: 2.75rem;
+		block-size: 2.75rem;
+		padding: 0.6rem;
+		margin-block-end: var(--size-300);
+		border-radius: var(--radius-md);
+
+		svg {
+			inline-size: 100%;
+			block-size: 100%;
+			stroke: var(--clr-primary-300);
+		}
+	}
+
+	&__item-title {
+		color: var(--clr-neutral-100);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-300);
+		font-weight: 700;
+		margin-block-end: var(--size-200);
+	}
+
+	&__item-text {
+		color: var(--clr-secondary-200);
+		font-size: var(--fs-200);
+		line-height: 1.65;
+	}
+}

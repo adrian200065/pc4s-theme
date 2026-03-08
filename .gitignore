@@ -1,0 +1,80 @@
+# =============================================================================
+# PC4S WordPress Theme — .gitignore
+# =============================================================================
+
+# --------------------------------------------------
+# Node / Package Manager
+# --------------------------------------------------
+node_modules/
+.pnpm-store/
+.npm/
+
+# --------------------------------------------------
+# Build Outputs — compiled by Vite
+# Tracked: assets/images/, assets/fonts/ (binary,
+#          needed for deployment without a build step)
+# Ignored: compiled CSS/JS only
+# --------------------------------------------------
+assets/css/
+assets/js/
+assets/admin/
+
+# Distribution zip
+*.zip
+dist/
+
+# --------------------------------------------------
+# Development / Local Environment
+# --------------------------------------------------
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# --------------------------------------------------
+# Static Site Reference (source design only)
+# --------------------------------------------------
+static-site/
+
+# --------------------------------------------------
+# Internal Docs
+# --------------------------------------------------
+docs/
+
+# --------------------------------------------------
+# OS / System Files
+# --------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --------------------------------------------------
+# Logs & Temp Files
+# --------------------------------------------------
+*.log
+npm-debug.log*
+pnpm-debug.log*
+*.tmp
+*.temp
+.cache/
+
+# --------------------------------------------------
+# Environment / Secrets
+# --------------------------------------------------
+.env
+.env.local
+.env.*.local
+
+# --------------------------------------------------
+# WordPress
+# (This repo is the theme only — WP core is excluded)
+# --------------------------------------------------
+wp-config.php

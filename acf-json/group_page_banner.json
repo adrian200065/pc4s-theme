@@ -1,0 +1,109 @@
+{
+    "key": "group_page_banner",
+    "title": "Page Banner",
+    "fields": [
+        {
+            "key": "field_pb_title",
+            "label": "Banner Title",
+            "name": "page_banner_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Override the page title shown in the banner. Defaults to the WordPress page title when left empty.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "e.g. Upcoming Events",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_pb_subtitle",
+            "label": "Subtitle",
+            "name": "page_banner_subtitle",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Optional short supporting line displayed beneath the banner title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "e.g. Connecting Rutherford County",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_pb_show_breadcrumbs",
+            "label": "Show Breadcrumbs",
+            "name": "page_banner_show_breadcrumbs",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "Display breadcrumb navigation inside the banner. Enabled by default.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Show breadcrumbs",
+            "default_value": 1,
+            "ui": 1,
+            "ui_on_text": "Yes",
+            "ui_off_text": "No"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "pc4s_event"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 25,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Controls the page banner title, optional subtitle, and breadcrumb visibility for interior pages.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772833950
+}

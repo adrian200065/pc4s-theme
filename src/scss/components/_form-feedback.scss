@@ -1,0 +1,42 @@
+// =============================================================================
+// Form Feedback — Success & Error Messages
+// Shared across all PC4S form pages (Contact, Donate, License Plate, Newsletter)
+// =============================================================================
+
+.form-message {
+	padding: var(--size-500) var(--size-600);
+	border-radius: var(--radius-md);
+	border-inline-start: 4px solid transparent;
+
+	// Heading inside the success message (e.g. contact page h2)
+	h2,
+	h3 {
+		font-size: var(--fs-600);
+		margin-block-end: var(--size-300);
+	}
+
+	p {
+		font-size: var(--fs-300);
+		line-height: 1.6;
+		margin-block-end: 0;
+	}
+
+	// ── Success ─────────────────────────────────────────────────────
+	&--success {
+		color: hsl(142 76% 82%);
+		background-color: hsl(142 76% 14%);
+		border-color: hsl(142 76% 42%);
+
+		h2,
+		h3 {
+			color: hsl(142 76% 88%);
+		}
+	}
+
+	// ── Error ───────────────────────────────────────────────────────
+	&--error {
+		color: hsl(0 72% 82%);
+		background-color: hsl(0 72% 13%);
+		border-color: hsl(0 72% 50%);
+	}
+}

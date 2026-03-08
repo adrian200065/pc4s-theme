@@ -1,0 +1,31 @@
+// ------------------------------------------
+// Global Styles
+// ------------------------------------------
+html {
+	color: var(--clr-text);
+	background-color: var(--clr-bg);
+	font-family: var(--ff-base);
+	font-size: 100%;
+	line-height: 1.6;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.6;
+	min-block-size: 100dvh;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+// Push the footer to the bottom regardless of content length.
+// Works because body is a flex column with min-block-size: 100dvh.
+main {
+	flex: 1 0 auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}

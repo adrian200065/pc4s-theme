@@ -1,0 +1,29 @@
+// ------------------------------------------
+// News Section
+// ------------------------------------------
+.news {
+	background-color: var(--clr-secondary-100);
+}
+
+.news-content {
+	background-color: var(--clr-bg);
+	text-align: center;
+	max-inline-size: 45rem;
+	padding: var(--size-600);
+	margin-inline: auto;
+	border: 1px solid var(--clr-border);
+	border-radius: var(--radius-xl);
+
+	h3 {
+		color: var(--clr-secondary-500);
+		margin-block-end: var(--size-400);
+		font-size: var(--fs-500);
+		font-family: var(--ff-heading);
+	}
+
+	p {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-300);
+		margin-block-end: var(--size-500);
+	}
+}

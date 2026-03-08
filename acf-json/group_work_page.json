@@ -1,0 +1,1046 @@
+{
+    "key": "group_work_page",
+    "title": "Our Work Page",
+    "fields": [
+        {
+            "key": "field_owp_tab_mission",
+            "label": "Mission & Goals Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_owp_mission_badge",
+            "label": "Mission Badge Text",
+            "name": "owp_mission_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the Mission heading, e.g. \"Who We Are\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 1,
+            "default_value": "Who We Are",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_mission_heading",
+            "label": "Mission Heading",
+            "name": "owp_mission_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<h2> for the mission column. Leave blank to hide the entire Mission & Goals section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 2,
+            "default_value": "Our Mission",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_mission_lead",
+            "label": "Mission Lead Text",
+            "name": "owp_mission_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "The mission statement paragraph displayed below the Mission heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 3,
+            "default_value": "Connecting and empowering communities through education and advocacy to sustainably improve mental health and prevent substance misuse.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_owp_goals_heading",
+            "label": "Goals Heading",
+            "name": "owp_goals_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<h3> for the Goals column.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 4,
+            "default_value": "Our Goals",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_goals_body",
+            "label": "Goals Body",
+            "name": "owp_goals_body",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Body content for the Goals column. Supports basic formatting.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 5,
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_owp_tab_approach",
+            "label": "Approach Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 10,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_owp_approach_badge",
+            "label": "Badge Text",
+            "name": "owp_approach_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the Approach heading, e.g. \"Our Strategy\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 11,
+            "default_value": "Our Strategy",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_approach_heading",
+            "label": "Section Heading",
+            "name": "owp_approach_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<h2> for the Approach section. Leave blank to hide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 12,
+            "default_value": "How We Work",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_approach_subtitle",
+            "label": "Section Subtitle",
+            "name": "owp_approach_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the Approach heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 13,
+            "default_value": "Our evidence-based approach addresses substance misuse at every level — individual, community, and systems-wide.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_owp_approach_cards",
+            "label": "Approach Cards",
+            "name": "owp_approach_cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "List of approach cards. Each row is one card with a title and rich-text body.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 14,
+            "layout": "block",
+            "button_label": "Add Approach Card",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_owp_approach_card_title",
+            "rows_per_page": 10,
+            "sub_fields": [
+                {
+                    "key": "field_owp_approach_card_title",
+                    "label": "Card Title",
+                    "name": "owp_approach_card_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "<h3> heading for this approach card.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. A Public Health Approach",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_owp_approach_cards"
+                },
+                {
+                    "key": "field_owp_approach_card_body",
+                    "label": "Card Body",
+                    "name": "owp_approach_card_body",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Body content for this approach card. Supports italics for quotes.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_owp_approach_cards"
+                }
+            ]
+        },
+        {
+            "key": "field_owp_tab_programs",
+            "label": "Programs Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 20,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_owp_programs_badge",
+            "label": "Badge Text",
+            "name": "owp_programs_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the Programs heading, e.g. \"Initiatives\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 21,
+            "default_value": "Initiatives",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_programs_heading",
+            "label": "Section Heading",
+            "name": "owp_programs_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<h2> for the Programs section. Leave blank to hide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 22,
+            "default_value": "Our Programs",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_programs_subtitle",
+            "label": "Section Subtitle",
+            "name": "owp_programs_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the Programs heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 23,
+            "default_value": "Targeted initiatives that deliver real results across families, faith communities, and first responders throughout Rutherford County.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_owp_programs",
+            "label": "Programs",
+            "name": "owp_programs",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "List of program cards rendered in the program list. Each row is one program.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 24,
+            "layout": "block",
+            "button_label": "Add Program",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_owp_program_title",
+            "rows_per_page": 10,
+            "sub_fields": [
+                {
+                    "key": "field_owp_program_title",
+                    "label": "Program Title",
+                    "name": "owp_program_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "<h3> heading for this program card.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. Family Preservation Initiative",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_owp_programs"
+                },
+                {
+                    "key": "field_owp_program_desc",
+                    "label": "Program Description",
+                    "name": "owp_program_desc",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Description of this program.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_owp_programs"
+                }
+            ]
+        },
+        {
+            "key": "field_owp_tab_prevention",
+            "label": "Primary Prevention Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 30,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_owp_prev_badge",
+            "label": "Badge Text",
+            "name": "owp_prev_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the Prevention heading, e.g. \"Primary Prevention\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 31,
+            "default_value": "Primary Prevention",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_prev_heading",
+            "label": "Section Heading",
+            "name": "owp_prev_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<h2> heading for the Primary Prevention section. Leave blank to hide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 32,
+            "default_value": "Primary Prevention of Substance Misuse in Youth & Young Adults",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_prev_image",
+            "label": "Feature Image",
+            "name": "owp_prev_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Image displayed on the left of the prevention split section (e.g. a Drug Take Back flyer). Include a descriptive alt text when uploading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 33,
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_owp_prev_items",
+            "label": "Bullet List Items",
+            "name": "owp_prev_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Checklist items displayed on the right side of the Prevention section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 34,
+            "layout": "table",
+            "button_label": "Add Item",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_owp_prev_item_text",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_owp_prev_item_text",
+                    "label": "Item Text",
+                    "name": "owp_prev_item_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "One bullet-point item, e.g. \"Town Halls and Awareness Events\".",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. Town Halls and Awareness Events",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_owp_prev_items"
+                }
+            ]
+        },
+        {
+            "key": "field_owp_tab_compliance",
+            "label": "Compliance & Documents Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 40,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_owp_title6_badge",
+            "label": "Title VI Badge Text",
+            "name": "owp_title6_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the Title VI heading, e.g. \"Civil Rights\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 41,
+            "default_value": "Civil Rights",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_title6_heading",
+            "label": "Title VI Heading",
+            "name": "owp_title6_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<h2> for the Title VI compliance column. Leave blank to hide both columns.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 42,
+            "default_value": "Title VI Compliance",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_title6_body",
+            "label": "Title VI Body",
+            "name": "owp_title6_body",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "Body content for the Title VI column. Supports italics for the quoted statute.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 43,
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "basic",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_owp_docs_badge",
+            "label": "Documents Badge Text",
+            "name": "owp_docs_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the Documents heading, e.g. \"Resources\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 44,
+            "default_value": "Resources",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_docs_heading",
+            "label": "Documents Heading",
+            "name": "owp_docs_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<h2> for the Documents column.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 45,
+            "default_value": "Documents & Forms",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_docs_intro",
+            "label": "Documents Intro",
+            "name": "owp_docs_intro",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Short introductory sentence above the documents list.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 46,
+            "default_value": "Access the Prevention Coalition for Success Google Drive for our documents and forms.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_owp_documents",
+            "label": "Documents",
+            "name": "owp_documents",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "List of downloadable documents or external links. Each row renders one list item.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 47,
+            "layout": "table",
+            "button_label": "Add Document",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_owp_doc_label",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_owp_doc_label",
+                    "label": "Document Label",
+                    "name": "owp_doc_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Display name for the document link.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "60",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. Peer Prevention Youth Coalition Application",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_owp_documents"
+                },
+                {
+                    "key": "field_owp_doc_url",
+                    "label": "Document URL",
+                    "name": "owp_doc_url",
+                    "aria-label": "",
+                    "type": "url",
+                    "instructions": "Full URL to the document (Google Drive, PDF, etc.).",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "https:\/\/",
+                    "parent_repeater": "field_owp_documents"
+                }
+            ]
+        },
+        {
+            "key": "field_owp_tab_gallery",
+            "label": "Gallery Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 50,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_owp_gallery_badge",
+            "label": "Badge Text",
+            "name": "owp_gallery_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the Gallery heading, e.g. \"Community in Action\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 51,
+            "default_value": "Community in Action",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_gallery_heading",
+            "label": "Section Heading",
+            "name": "owp_gallery_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<h2> heading for the Gallery section. Leave blank to hide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 52,
+            "default_value": "Our Community in Action",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_gallery_subtitle",
+            "label": "Section Subtitle",
+            "name": "owp_gallery_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the Gallery heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 53,
+            "default_value": "See PC4S at work — connecting neighborhoods, empowering youth, and building a healthier Rutherford County together.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_owp_gallery_items",
+            "label": "Gallery Images",
+            "name": "owp_gallery_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Community event photos. Each row is one image in the grid. Add descriptive alt text when uploading images.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 54,
+            "layout": "table",
+            "button_label": "Add Photo",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_owp_gallery_image",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_owp_gallery_image",
+                    "label": "Photo",
+                    "name": "owp_gallery_image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "Upload or select an image. Ensure the media alt text is descriptive.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "parent_repeater": "field_owp_gallery_items"
+                }
+            ]
+        },
+        {
+            "key": "field_owp_tab_cta",
+            "label": "Page CTA Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 60,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_owp_cta_badge",
+            "label": "Badge Text",
+            "name": "owp_cta_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label above the CTA heading, e.g. \"Get Involved\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 61,
+            "default_value": "Get Involved",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_cta_heading",
+            "label": "CTA Heading",
+            "name": "owp_cta_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "<h2> for the page CTA. Leave blank to hide the entire CTA section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 62,
+            "default_value": "Join Our Mission",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_owp_cta_subtitle",
+            "label": "CTA Subtitle",
+            "name": "owp_cta_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the CTA heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 63,
+            "default_value": "PC4S partners with people like you — our neighbors and friends who share our mission for a safe and healthy Rutherford County.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_owp_cta_primary",
+            "label": "Primary CTA Link",
+            "name": "owp_cta_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Primary action button (URL, label, and optional target). e.g. \"Get Involved\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 64,
+            "return_format": "array"
+        },
+        {
+            "key": "field_owp_cta_secondary",
+            "label": "Secondary CTA Link",
+            "name": "owp_cta_secondary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary action button (URL, label, and optional target). e.g. \"Meet Our Team\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 65,
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/work-page.php"
+            }
+        ]
+    ],
+    "menu_order": 12,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Fields for the Our Work page template. Covers Mission & Goals, Approach cards, Programs, Primary Prevention, Title VI Compliance, Documents, Gallery, and CTA. Field prefix: owp_.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772802229
+}

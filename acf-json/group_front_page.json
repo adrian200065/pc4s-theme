@@ -1,0 +1,953 @@
+{
+	"key": "group_front_page",
+	"title": "Front Page Sections",
+	"fields": [
+		{
+			"key": "field_fp_sections",
+			"label": "Page Sections",
+			"name": "front_page_sections",
+			"aria-label": "",
+			"type": "flexible_content",
+			"instructions": "Add, reorder, and configure sections for the front page. Each layout maps to a template partial in parts/sections/.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"layouts": [
+				{
+					"key": "layout_fp_hero",
+					"name": "hero",
+					"label": "Hero",
+					"display": "block",
+					"sub_fields": [
+						{
+							"key": "field_fp_hero_bg_image",
+							"label": "Background Image",
+							"name": "bg_image",
+							"aria-label": "",
+							"type": "image",
+							"instructions": "Full-width background image. Rendered with fetchpriority=high — keep file size low.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"return_format": "id",
+							"preview_size": "medium",
+							"library": "all",
+							"min_width": "",
+							"min_height": "",
+							"min_size": "",
+							"max_width": "",
+							"max_height": "",
+							"max_size": "",
+							"mime_types": ""
+						},
+						{
+							"key": "field_fp_hero_title",
+							"label": "Title",
+							"name": "title",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Main hero heading. Use <br> for intentional line breaks (supported via wp_kses_post).",
+							"required": 1,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "Prevention Coalition For Success",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_hero_subtitle",
+							"label": "Subtitle",
+							"name": "subtitle",
+							"aria-label": "",
+							"type": "textarea",
+							"instructions": "Supporting paragraph beneath the title.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "",
+							"placeholder": "",
+							"maxlength": "",
+							"rows": 3,
+							"new_lines": "br"
+						},
+						{
+							"key": "field_fp_hero_primary_cta_text",
+							"label": "Primary CTA — Text",
+							"name": "primary_cta_text",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Label for the primary call-to-action button.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "",
+							"placeholder": "Learn More About Our Work",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_hero_primary_cta_url",
+							"label": "Primary CTA — Link",
+							"name": "primary_cta_url",
+							"aria-label": "",
+							"type": "page_link",
+							"instructions": "Pick the page the primary CTA button links to.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"post_type": "",
+							"taxonomy": "",
+							"allow_null": 1,
+							"allow_archives": 0,
+							"multiple": 0
+						},
+						{
+							"key": "field_fp_hero_secondary_cta_text",
+							"label": "Secondary CTA — Text",
+							"name": "secondary_cta_text",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Label for the secondary (ghost) call-to-action button.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "",
+							"placeholder": "Find Resources",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_hero_secondary_cta_url",
+							"label": "Secondary CTA — Link",
+							"name": "secondary_cta_url",
+							"aria-label": "",
+							"type": "page_link",
+							"instructions": "Pick the page the secondary CTA button links to.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"post_type": "",
+							"taxonomy": "",
+							"allow_null": 1,
+							"allow_archives": 0,
+							"multiple": 0
+						}
+					],
+					"min": "",
+					"max": ""
+				},
+				{
+					"key": "layout_fp_license_plate",
+					"name": "license_plate",
+					"label": "License Plate CTA",
+					"display": "block",
+					"sub_fields": [
+						{
+							"key": "field_fp_lp_badge_text",
+							"label": "Badge Text",
+							"name": "badge_text",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Small label above the heading (e.g. \"Show Your Support\").",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "Show Your Support",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_lp_title",
+							"label": "Title",
+							"name": "title",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Section heading.",
+							"required": 1,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_lp_subtitle",
+							"label": "Subtitle",
+							"name": "subtitle",
+							"aria-label": "",
+							"type": "textarea",
+							"instructions": "Supporting description text.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "",
+							"placeholder": "",
+							"maxlength": "",
+							"rows": 3,
+							"new_lines": "br"
+						},
+						{
+							"key": "field_fp_lp_cta_text",
+							"label": "CTA — Text",
+							"name": "cta_text",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Button label.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "Pre-order Your Plate Now",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_lp_cta_url",
+							"label": "CTA — Link",
+							"name": "cta_url",
+							"aria-label": "",
+							"type": "page_link",
+							"instructions": "Pick the page the CTA button links to.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"post_type": "",
+							"taxonomy": "",
+							"allow_null": 1,
+							"allow_archives": 0,
+							"multiple": 0
+						},
+						{
+							"key": "field_fp_lp_image",
+							"label": "Plate Image",
+							"name": "plate_image",
+							"aria-label": "",
+							"type": "image",
+							"instructions": "Image of the license plate.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"return_format": "id",
+							"preview_size": "medium",
+							"library": "all",
+							"min_width": "",
+							"min_height": "",
+							"min_size": "",
+							"max_width": "",
+							"max_height": "",
+							"max_size": "",
+							"mime_types": ""
+						}
+					],
+					"min": "",
+					"max": ""
+				},
+				{
+					"key": "layout_fp_about",
+					"name": "about",
+					"label": "About",
+					"display": "block",
+					"sub_fields": [
+						{
+							"key": "field_fp_about_badge_text",
+							"label": "Badge Text",
+							"name": "badge_text",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Small label above the heading (e.g. \"Coalition Overview\").",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "Coalition Overview",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_about_title",
+							"label": "Title",
+							"name": "title",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Section heading.",
+							"required": 1,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "About PC4S",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_about_subtitle",
+							"label": "Subtitle",
+							"name": "subtitle",
+							"aria-label": "",
+							"type": "textarea",
+							"instructions": "Introductory paragraph beneath the heading.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "",
+							"placeholder": "",
+							"maxlength": "",
+							"rows": 3,
+							"new_lines": "br"
+						},
+						{
+							"key": "field_fp_about_cards",
+							"label": "Cards",
+							"name": "cards",
+							"aria-label": "",
+							"type": "repeater",
+							"instructions": "Add info cards. Each card needs an icon, title, and body text.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"layout": "block",
+							"button_label": "Add Card",
+							"min": 1,
+							"max": 0,
+							"rows_per_page": 20,
+							"collapsed": "",
+							"sub_fields": [
+								{
+									"key": "field_fp_about_card_icon",
+									"label": "Icon",
+									"name": "icon",
+									"aria-label": "",
+									"type": "select",
+									"instructions": "Choose the icon that best represents this card.",
+									"required": 0,
+									"conditional_logic": false,
+									"wrapper": {
+										"width": "",
+										"class": "",
+										"id": ""
+									},
+									"choices": {
+										"vision": "Vision (Eye)",
+										"mission": "Mission (Target)",
+										"coalition": "Coalition (People)",
+										"compliance": "Compliance (Shield)"
+									},
+									"default_value": false,
+									"allow_null": 1,
+									"multiple": 0,
+									"ui": 0,
+									"return_format": "value",
+									"ajax": 0,
+									"placeholder": "",
+									"create_options": 0,
+									"save_options": 0,
+									"parent_repeater": "field_fp_about_cards"
+								},
+								{
+									"key": "field_fp_about_card_title",
+									"label": "Card Title",
+									"name": "card_title",
+									"aria-label": "",
+									"type": "text",
+									"instructions": "",
+									"required": 1,
+									"conditional_logic": false,
+									"wrapper": {
+										"width": "",
+										"class": "",
+										"id": ""
+									},
+									"default_value": "",
+									"placeholder": "",
+									"prepend": "",
+									"append": "",
+									"maxlength": "",
+									"parent_repeater": "field_fp_about_cards"
+								},
+								{
+									"key": "field_fp_about_card_content",
+									"label": "Card Content",
+									"name": "card_content",
+									"aria-label": "",
+									"type": "textarea",
+									"instructions": "",
+									"required": 1,
+									"conditional_logic": false,
+									"wrapper": {
+										"width": "",
+										"class": "",
+										"id": ""
+									},
+									"default_value": "",
+									"placeholder": "",
+									"maxlength": "",
+									"rows": 4,
+									"new_lines": "br",
+									"parent_repeater": "field_fp_about_cards"
+								}
+							]
+						}
+					],
+					"min": "",
+					"max": ""
+				},
+				{
+					"key": "layout_fp_events",
+					"name": "events",
+					"label": "Events Preview",
+					"display": "block",
+					"sub_fields": [
+						{
+							"key": "field_fp_events_badge_text",
+							"label": "Badge Text",
+							"name": "badge_text",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Small label above the heading (e.g. \"Community Calendar\").",
+							"required": 0,
+							"conditional_logic": 0,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "Community Calendar",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_events_title",
+							"label": "Title",
+							"name": "title",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Section heading.",
+							"required": 1,
+							"conditional_logic": 0,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "Upcoming Events",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_events_subtitle",
+							"label": "Subtitle",
+							"name": "subtitle",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Short tagline beneath the heading.",
+							"required": 0,
+							"conditional_logic": 0,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "Join us at our next community gathering.",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_events_view_all_url",
+							"label": "View All — Link",
+							"name": "view_all_url",
+							"aria-label": "",
+							"type": "page_link",
+							"instructions": "Pick the events archive page. Falls back to the /events/ page if left empty.",
+							"required": 0,
+							"conditional_logic": 0,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"post_type": "",
+							"taxonomy": "",
+							"allow_null": 1,
+							"allow_archives": 1,
+							"multiple": 0
+						},
+						{
+							"key": "field_fp_events_source",
+							"label": "Event Source",
+							"name": "event_source",
+							"aria-label": "",
+							"type": "select",
+							"instructions": "\"Automatic\" pulls the next upcoming events. \"Manual\" lets you hand-pick specific events.",
+							"required": 0,
+							"conditional_logic": 0,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"choices": {
+								"auto": "Automatic — upcoming events",
+								"manual": "Manual — hand-pick events"
+							},
+							"default_value": "auto",
+							"allow_null": 0,
+							"multiple": 0,
+							"ui": 1,
+							"return_format": "value",
+							"ajax": 0,
+							"placeholder": ""
+						},
+						{
+							"key": "field_fp_events_type_rows",
+							"label": "Events by Type",
+							"name": "event_type_rows",
+							"aria-label": "",
+							"type": "repeater",
+							"instructions": "Add one row per event type and choose how many events to show from it. Example: 2 × PC4S + 1 × True Blue = 3 cards, mixed. A single “All” row shows the next upcoming events of any type.",
+							"required": 0,
+							"conditional_logic": [
+								[
+									{
+										"field": "field_fp_events_source",
+										"operator": "==",
+										"value": "auto"
+									}
+								]
+							],
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"layout": "table",
+							"button_label": "Add Event Type Row",
+							"min": 1,
+							"max": 6,
+							"sub_fields": [
+								{
+									"key": "field_fp_events_row_type",
+									"label": "Event Type",
+									"name": "type_slug",
+									"aria-label": "",
+									"type": "select",
+									"instructions": "",
+									"required": 1,
+									"conditional_logic": 0,
+									"wrapper": {
+										"width": "60",
+										"class": "",
+										"id": ""
+									},
+									"choices": {
+										"all": "All Event Types",
+										"pc4s": "PC4S",
+										"true-blue": "True Blue Peers 4 Success"
+									},
+									"default_value": "all",
+									"allow_null": 0,
+									"multiple": 0,
+									"ui": 0,
+									"return_format": "value",
+									"ajax": 0,
+									"placeholder": ""
+								},
+								{
+									"key": "field_fp_events_row_count",
+									"label": "Count",
+									"name": "type_count",
+									"aria-label": "",
+									"type": "number",
+									"instructions": "",
+									"required": 1,
+									"conditional_logic": 0,
+									"wrapper": {
+										"width": "40",
+										"class": "",
+										"id": ""
+									},
+									"default_value": 2,
+									"placeholder": "2",
+									"prepend": "",
+									"append": "",
+									"min": 1,
+									"max": 8,
+									"step": 1
+								}
+							]
+						},
+						{
+							"key": "field_fp_events_featured",
+							"label": "Featured Events",
+							"name": "featured_events",
+							"aria-label": "",
+							"type": "relationship",
+							"instructions": "Select the specific events to display. Order them by dragging.",
+							"required": 0,
+							"conditional_logic": [
+								[
+									{
+										"field": "field_fp_events_source",
+										"operator": "==",
+										"value": "manual"
+									}
+								]
+							],
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"post_type": [
+								"pc4s_event"
+							],
+							"taxonomy": "",
+							"filters": [
+								"search",
+								"taxonomy"
+							],
+							"return_format": "id",
+							"min": "",
+							"max": "",
+							"elements": [
+								"featured_image"
+							]
+						}
+					],
+					"min": "",
+					"max": ""
+				},
+				{
+					"key": "layout_fp_hotlines",
+					"name": "hotlines",
+					"label": "Crisis & Emergency Resources",
+					"display": "block",
+					"sub_fields": [
+						{
+							"key": "field_fp_hotlines_title",
+							"label": "Title",
+							"name": "title",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Section heading.",
+							"required": 1,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "Crisis & Emergency Resources",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_hotlines_subtitle",
+							"label": "Subtitle",
+							"name": "subtitle",
+							"aria-label": "",
+							"type": "textarea",
+							"instructions": "Supporting text. Basic HTML (e.g. links) is allowed.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "",
+							"placeholder": "",
+							"maxlength": "",
+							"rows": 3,
+							"new_lines": "br"
+						},
+						{
+							"key": "field_fp_hotlines_items",
+							"label": "Hotlines",
+							"name": "hotlines",
+							"aria-label": "",
+							"type": "repeater",
+							"instructions": "Add each hotline entry. Emergency items are styled differently (red border).",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"layout": "table",
+							"button_label": "Add Hotline",
+							"min": 1,
+							"max": 0,
+							"rows_per_page": 20,
+							"collapsed": "",
+							"sub_fields": [
+								{
+									"key": "field_fp_hotlines_item_name",
+									"label": "Name",
+									"name": "name",
+									"aria-label": "",
+									"type": "text",
+									"instructions": "",
+									"required": 1,
+									"conditional_logic": false,
+									"wrapper": {
+										"width": "",
+										"class": "",
+										"id": ""
+									},
+									"default_value": "",
+									"placeholder": "Tennessee REDLINE",
+									"prepend": "",
+									"append": "",
+									"maxlength": "",
+									"parent_repeater": "field_fp_hotlines_items"
+								},
+								{
+									"key": "field_fp_hotlines_item_number",
+									"label": "Number",
+									"name": "number",
+									"aria-label": "",
+									"type": "text",
+									"instructions": "Formatted phone number (e.g. 800-889-9789). Digits are extracted for the tel: link automatically.",
+									"required": 1,
+									"conditional_logic": false,
+									"wrapper": {
+										"width": "",
+										"class": "",
+										"id": ""
+									},
+									"default_value": "",
+									"placeholder": "800-000-0000",
+									"prepend": "",
+									"append": "",
+									"maxlength": "",
+									"parent_repeater": "field_fp_hotlines_items"
+								},
+								{
+									"key": "field_fp_hotlines_item_is_emergency",
+									"label": "Emergency",
+									"name": "is_emergency",
+									"aria-label": "",
+									"type": "true_false",
+									"instructions": "Mark as emergency to apply the highlighted emergency styling.",
+									"required": 0,
+									"conditional_logic": false,
+									"wrapper": {
+										"width": "",
+										"class": "",
+										"id": ""
+									},
+									"message": "Is an emergency resource",
+									"default_value": 0,
+									"ui": 1,
+									"ui_on_text": "Yes",
+									"ui_off_text": "No",
+									"parent_repeater": "field_fp_hotlines_items"
+								}
+							]
+						}
+					],
+					"min": "",
+					"max": ""
+				},
+				{
+					"key": "layout_fp_news",
+					"name": "news",
+					"label": "News & Articles",
+					"display": "block",
+					"sub_fields": [
+						{
+							"key": "field_fp_news_title",
+							"label": "Title",
+							"name": "title",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Section heading.",
+							"required": 1,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "News & Articles",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_news_subtitle",
+							"label": "Subtitle",
+							"name": "subtitle",
+							"aria-label": "",
+							"type": "text",
+							"instructions": "Short tagline beneath the heading.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": "Updates and stories from our community.",
+							"placeholder": "",
+							"prepend": "",
+							"append": "",
+							"maxlength": ""
+						},
+						{
+							"key": "field_fp_news_posts_count",
+							"label": "Number of Posts",
+							"name": "posts_count",
+							"aria-label": "",
+							"type": "number",
+							"instructions": "How many recent posts to display. Defaults to 3 if left empty.",
+							"required": 0,
+							"conditional_logic": false,
+							"wrapper": {
+								"width": "",
+								"class": "",
+								"id": ""
+							},
+							"default_value": 3,
+							"placeholder": 3,
+							"prepend": "",
+							"append": "",
+							"min": 1,
+							"max": 12,
+							"step": 1
+						}
+					],
+					"min": "",
+					"max": ""
+				}
+			],
+			"button_label": "Add Section",
+			"min": "",
+			"max": ""
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_type",
+				"operator": "==",
+				"value": "front_page"
+			}
+		]
+	],
+	"menu_order": 0,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": [
+		"the_content",
+		"excerpt",
+		"discussion",
+		"comments",
+		"revisions",
+		"slug",
+		"author",
+		"format",
+		"categories",
+		"tags",
+		"send-trackbacks"
+	],
+	"active": true,
+	"description": "Flexible Content field group for the WordPress front page. Each layout maps directly to a section partial in parts/sections/.",
+	"show_in_rest": 0,
+	"display_title": "",
+	"modified": 1772496174
+}

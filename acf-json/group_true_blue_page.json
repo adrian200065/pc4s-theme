@@ -1,0 +1,760 @@
+{
+    "key": "group_true_blue_page",
+    "title": "True Blue Peers 4 Success — Page Content",
+    "fields": [
+        {
+            "key": "field_tbp_tab_hero",
+            "label": "Hero Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_tbp_hero_badge_text",
+            "label": "Badge Text",
+            "name": "tbp_hero_badge_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short eyebrow label shown above the heading (e.g. \"Recurring Meetings · MTSU Campus\").",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.3",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Recurring Meetings · MTSU Campus",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_tbp_hero_title",
+            "label": "Title — Line 1",
+            "name": "tbp_hero_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "First line of the hero heading (rendered in a plain text node).",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.3",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "True Blue",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_tbp_hero_title_span",
+            "label": "Title — Line 2 (Accent)",
+            "name": "tbp_hero_title_span",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Second line of the heading — rendered inside a <span> for accent styling.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.3",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Peers 4 Success",
+            "maxlength": "",
+            "allow_in_bindings": 1,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_tbp_hero_lead",
+            "label": "Lead Paragraph",
+            "name": "tbp_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph displayed beneath the heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_tbp_hero_cta_primary",
+            "label": "Primary CTA",
+            "name": "tbp_hero_cta_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Main call-to-action button (solid style). Typically anchors to the events section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_tbp_hero_cta_outline",
+            "label": "Secondary CTA",
+            "name": "tbp_hero_cta_outline",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary call-to-action button (outline style). Typically links to the full event calendar.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_tbp_hero_accent_eyebrow",
+            "label": "Accent Card — Eyebrow",
+            "name": "tbp_hero_accent_eyebrow",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Small label at the top of the right-hand accent card.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_tbp_hero_accent_heading",
+            "label": "Accent Card — Heading",
+            "name": "tbp_hero_accent_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Bold heading inside the accent card. Use <br> for intentional line breaks (output via wp_kses_post).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_tbp_hero_accent_desc",
+            "label": "Accent Card — Description",
+            "name": "tbp_hero_accent_desc",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting text inside the accent card describing the recurring meeting pattern.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_tbp_hero_accent_details",
+            "label": "Accent Card — Detail Items",
+            "name": "tbp_hero_accent_details",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Icon + text detail rows shown in the accent card (e.g. schedule, time, location, audience).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "button_label": "Add Detail Item",
+            "min": 0,
+            "max": 6,
+            "collapsed": "",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_tbp_hero_accent_icon",
+                    "label": "Icon",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Choose the icon to display alongside the detail text.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "calendar": "Calendar",
+                        "time": "Clock \/ Time",
+                        "location": "Location Pin",
+                        "people": "People \/ Audience"
+                    },
+                    "default_value": "calendar",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_tbp_hero_accent_details"
+                },
+                {
+                    "key": "field_tbp_hero_accent_item_text",
+                    "label": "Text",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "The detail line of text (e.g. \"Thursdays at 6:00 pm\").",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_tbp_hero_accent_details"
+                }
+            ]
+        },
+        {
+            "key": "field_tbp_tab_mission",
+            "label": "Goal & Mission Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_tbp_mission_badge_text",
+            "label": "Badge Text",
+            "name": "tbp_mission_badge_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short eyebrow label above the section title (e.g. \"Who We Are\").",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Who We Are",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_tbp_mission_title",
+            "label": "Section Title",
+            "name": "tbp_mission_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Main section heading.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Our Purpose",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_tbp_mission_subtitle",
+            "label": "Section Subtitle",
+            "name": "tbp_mission_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Optional supporting paragraph displayed beneath the section title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_tbp_mission_cards",
+            "label": "Mission Cards",
+            "name": "tbp_mission_cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add one card per statement (e.g. Goal Statement, Mission Statement). Cards are displayed in a grid.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "button_label": "Add Card",
+            "min": 0,
+            "max": 6,
+            "collapsed": "",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_tbp_mission_card_tag",
+                    "label": "Card Tag",
+                    "name": "tag",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Small label above the card title (e.g. \"Goal Statement\").",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_tbp_mission_cards"
+                },
+                {
+                    "key": "field_tbp_mission_card_title",
+                    "label": "Card Title",
+                    "name": "card_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Heading displayed on the card.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "34",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_tbp_mission_cards"
+                },
+                {
+                    "key": "field_tbp_mission_card_modifier",
+                    "label": "CSS Modifier",
+                    "name": "modifier",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional BEM modifier applied to the card element (e.g. \"goal\" produces the class tbp-mission__card--goal). Leave empty for no modifier.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. goal",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_tbp_mission_cards"
+                },
+                {
+                    "key": "field_tbp_mission_card_text",
+                    "label": "Card Body",
+                    "name": "card_text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "Card body content. Supports basic formatting (bold, lists, links).",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "100",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "visual",
+                    "toolbar": "basic",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_tbp_mission_cards"
+                }
+            ]
+        },
+        {
+            "key": "field_tbp_tab_events",
+            "label": "Events Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_tbp_events_badge_text",
+            "label": "Badge Text",
+            "name": "tbp_events_badge_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short label shown above the events section title (e.g. \"Spring 2026\").",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "34",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_tbp_events_title",
+            "label": "Section Title",
+            "name": "tbp_events_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading for the upcoming events section. Leave empty to hide the entire events section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Upcoming Meetings",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_tbp_events_subtitle",
+            "label": "Section Subtitle",
+            "name": "tbp_events_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Optional supporting description below the events heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_tbp_events_count",
+            "label": "Maximum Events to Show",
+            "name": "tbp_events_count",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "Maximum number of upcoming True Blue meetings to display. Defaults to 10 when left empty.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 10,
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "min": 1,
+            "max": 50,
+            "step": 1
+        },
+        {
+            "key": "field_tbp_events_view_all_url",
+            "label": "\"View All Events\" Link",
+            "name": "tbp_events_view_all_url",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Optional CTA link shown below the event list. Leave empty to hide the button.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_tbp_tab_funding",
+            "label": "Funding Acknowledgment",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_tbp_funding_logo",
+            "label": "Funding Partner Logo",
+            "name": "tbp_funding_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "Logo of the funding organisation (e.g. Tennessee Opioid Abatement Council). Leave empty to hide the funding bar.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "medium",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_tbp_funding_text",
+            "label": "Funding Statement",
+            "name": "tbp_funding_text",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short one-line funding attribution displayed alongside the logo.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "This project is funded under a Grant Contract with the Tennessee Opioid Abatement Council.",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_tbp_tab_cta",
+            "label": "Page CTA Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_tbp_cta_title",
+            "label": "CTA Title",
+            "name": "tbp_cta_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Heading for the bottom call-to-action section. Leave empty to hide the section.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Ready to Connect with Your Peers?",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_tbp_cta_text",
+            "label": "CTA Body Text",
+            "name": "tbp_cta_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph beneath the CTA heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_tbp_cta_primary",
+            "label": "Primary CTA Button",
+            "name": "tbp_cta_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Main action button (solid style).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_tbp_cta_outline",
+            "label": "Secondary CTA Button",
+            "name": "tbp_cta_outline",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary action button (outline style).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/true-blue-page.php"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Controls all editable content for the True Blue Peers 4 Success page — hero, mission cards, upcoming events, funding acknowledgment, and CTA section.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772670838
+}

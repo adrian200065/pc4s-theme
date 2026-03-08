@@ -1,0 +1,644 @@
+{
+    "key": "group_involved_page",
+    "title": "How Can You Get Involved Page",
+    "fields": [
+        {
+            "key": "field_hcgi_tab_hero",
+            "label": "Hero Section",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 0,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hcgi_hero_badge",
+            "label": "Badge Text",
+            "name": "hcgi_hero_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short label above the heading, e.g. \"Open to All • Always Welcome • Make a Difference\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 1,
+            "default_value": "Open to All • Always Welcome • Make a Difference",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hcgi_hero_heading",
+            "label": "Hero Heading",
+            "name": "hcgi_hero_heading",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Main h2 heading for the hero strip. Use a new line to create a line break in the rendered output.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 2,
+            "default_value": "Your Voice.\nYour Community.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_hcgi_hero_lead",
+            "label": "Lead Paragraph",
+            "name": "hcgi_hero_lead",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Short introductory paragraph below the hero heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 3,
+            "default_value": "PC4S Coalition meetings are open to the public. New members are always welcome. No experience needed — just a desire to make Rutherford County a better place.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_hcgi_hero_primary",
+            "label": "Primary Button",
+            "name": "hcgi_hero_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Primary CTA button in the hero (e.g. See Meeting Dates).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 4,
+            "return_format": "array"
+        },
+        {
+            "key": "field_hcgi_hero_secondary",
+            "label": "Secondary Button",
+            "name": "hcgi_hero_secondary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary CTA button in the hero (e.g. Ask a Question).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 5,
+            "return_format": "array"
+        },
+        {
+            "key": "field_hcgi_hero_pill_1",
+            "label": "Accent Pill 1 Label",
+            "name": "hcgi_hero_pill_1",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text for the first decorative accent pill (group\/users icon).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 6,
+            "default_value": "Open to All",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hcgi_hero_pill_2",
+            "label": "Accent Pill 2 Label",
+            "name": "hcgi_hero_pill_2",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Text for the second decorative accent pill (calendar icon).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 7,
+            "default_value": "Monthly Meetings",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hcgi_tab_meetings",
+            "label": "Coalition Meetings",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 8,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hcgi_meetings_badge",
+            "label": "Section Badge Text",
+            "name": "hcgi_meetings_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short label above the section heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 9,
+            "default_value": "Monthly Meetings",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hcgi_meetings_heading",
+            "label": "Section Heading",
+            "name": "hcgi_meetings_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "h2 heading for the Coalition Meetings section.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 10,
+            "default_value": "Join Our Coalition Meetings",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hcgi_meetings_subtitle",
+            "label": "Section Subtitle",
+            "name": "hcgi_meetings_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the section heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 11,
+            "default_value": "Every third Wednesday of the month, PC4S brings together community members, leaders, and partners to drive meaningful change.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_hcgi_meetings_cards",
+            "label": "Meeting Info Cards",
+            "name": "hcgi_meetings_cards",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add each info card. Each card shows an icon, title, and body text.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 12,
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_hcgi_card_title",
+            "button_label": "Add Card",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_hcgi_card_icon",
+                    "label": "Icon",
+                    "name": "card_icon",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Decorative icon displayed at the top of the card.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "20",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "calendar": "Calendar",
+                        "users": "Users \/ Group",
+                        "star": "Star",
+                        "heart": "Heart",
+                        "check": "Checkmark",
+                        "shield": "Shield"
+                    },
+                    "default_value": "calendar",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 1,
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
+                    "parent_repeater": "field_hcgi_meetings_cards"
+                },
+                {
+                    "key": "field_hcgi_card_modifier",
+                    "label": "Card Style Modifier",
+                    "name": "card_modifier",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional CSS modifier appended to the card class, e.g. \"blue\" adds the class what-we-do__card--blue.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "e.g. blue",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hcgi_meetings_cards"
+                },
+                {
+                    "key": "field_hcgi_card_title",
+                    "label": "Card Title",
+                    "name": "card_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "h3 title for this card.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "40",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "e.g. When We Meet",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_hcgi_meetings_cards"
+                },
+                {
+                    "key": "field_hcgi_card_body",
+                    "label": "Card Body",
+                    "name": "card_body",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Paragraph text for this card.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": "br",
+                    "parent_repeater": "field_hcgi_meetings_cards"
+                }
+            ]
+        },
+        {
+            "key": "field_hcgi_tab_steps",
+            "label": "Getting Started",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 13,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hcgi_steps_badge",
+            "label": "Section Badge Text",
+            "name": "hcgi_steps_badge",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Short label above the section heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 14,
+            "default_value": "Getting Started",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hcgi_steps_heading",
+            "label": "Section Heading",
+            "name": "hcgi_steps_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "h2 heading for the Getting Started section.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 15,
+            "default_value": "Three Ways to Get Started",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hcgi_steps_subtitle",
+            "label": "Section Subtitle",
+            "name": "hcgi_steps_subtitle",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph below the section heading.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 16,
+            "default_value": "It’s easier than you think. Here’s how to plug in and start making a difference today.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_hcgi_steps_items",
+            "label": "Steps",
+            "name": "hcgi_steps_items",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "Add each numbered step. Steps are displayed in list order.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 17,
+            "layout": "block",
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_hcgi_step_title",
+            "button_label": "Add Step",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_hcgi_step_title",
+                    "label": "Step Title",
+                    "name": "step_title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Short h3 title for this step.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "e.g. Attend a Coalition Meeting",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "parent_repeater": "field_hcgi_steps_items"
+                },
+                {
+                    "key": "field_hcgi_step_desc",
+                    "label": "Step Description",
+                    "name": "step_desc",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Supporting paragraph for this step.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": "br",
+                    "parent_repeater": "field_hcgi_steps_items"
+                }
+            ]
+        },
+        {
+            "key": "field_hcgi_tab_callout",
+            "label": "Callout \/ CTA",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 18,
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_hcgi_callout_heading",
+            "label": "Callout Heading",
+            "name": "hcgi_callout_heading",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "h2 heading inside the callout box.",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 19,
+            "default_value": "Ready to Join the Coalition?",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_hcgi_callout_text",
+            "label": "Callout Text",
+            "name": "hcgi_callout_text",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "Supporting paragraph inside the callout box.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 20,
+            "default_value": "Whether you’re a parent, educator, healthcare provider, law enforcement officer, or just a concerned neighbor — there’s a place for you at PC4S. Let’s build a safer Rutherford County together.",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "br"
+        },
+        {
+            "key": "field_hcgi_callout_primary",
+            "label": "Primary Button",
+            "name": "hcgi_callout_primary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Primary CTA button inside the callout (e.g. Contact PC4S).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 21,
+            "return_format": "array"
+        },
+        {
+            "key": "field_hcgi_callout_secondary",
+            "label": "Secondary Button",
+            "name": "hcgi_callout_secondary",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "Secondary CTA button inside the callout (e.g. View All Events).",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 22,
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates\/involved-page.php"
+            }
+        ]
+    ],
+    "menu_order": 17,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Fields for the How Can You Get Involved page template.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772823660
+}

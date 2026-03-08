@@ -1,0 +1,43 @@
+// ------------------------------------------
+// Page Banner
+// ------------------------------------------
+.page-banner {
+	background-color: var(--clr-dark-blue);
+	text-align: center;
+	position: relative;
+	padding-block: clamp(5rem, 2rem + 7vw, 8rem);
+	overflow: hidden;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			ellipse at 60% 50%,
+			var(--clr-secondary-500) 0%,
+			var(--clr-dark-blue) 70%,
+			var(--clr-dark-blue) 100%
+		);
+		opacity: 0.6;
+		pointer-events: none;
+	}
+
+	&__inner {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--size-300);
+		z-index: 1;
+	}
+
+	&__title {
+		color: hsl(0, 0%, 100%);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-800);
+		font-weight: 700;
+		line-height: 1.1;
+		letter-spacing: -0.01em;
+		margin-block-end: 0;
+	}
+}

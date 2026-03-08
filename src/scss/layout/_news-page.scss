@@ -1,0 +1,591 @@
+// =============================================================================
+// News Page
+// _news-page.scss
+// Styles for news.html — editorial magazine layout
+// =============================================================================
+
+// Category Tags
+// Coloured pill badges used throughout all news sections
+.news-tag {
+	font-family: var(--ff-heading);
+	font-size: var(--fs-100);
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	line-height: 1;
+	display: inline-flex;
+	align-items: center;
+	padding-block: 0.2em;
+	padding-inline: 0.65em;
+	border-radius: var(--radius-full);
+	white-space: nowrap;
+
+	// Opportunity — primary red
+	&--opportunity {
+		color: var(--clr-primary-600);
+		background-color: var(--clr-primary-100);
+	}
+
+	// Community — secondary blue
+	&--community {
+		color: var(--clr-secondary-600);
+		background-color: var(--clr-secondary-100);
+	}
+
+	// Program — neutral warm
+	&--program {
+		color: var(--clr-neutral-700);
+		background-color: var(--clr-neutral-200);
+	}
+
+	// Coalition — dark blue
+	&--coalition {
+		color: var(--clr-dark-blue);
+		background-color: hsl(223, 48%, 11%, 0.1);
+	}
+}
+
+// =============================================================================
+// SECTION 1 — FEATURED STORY
+// =============================================================================
+.news-featured {
+	background-color: var(--clr-bg-alt);
+}
+
+.news-hero-card {
+	background-color: var(--clr-neutral-100);
+	display: grid;
+	grid-template-columns: 1fr;
+	border-radius: var(--radius-xl);
+	box-shadow: var(--shadow-xl);
+	overflow: hidden;
+
+	@media (min-width: 48rem) {
+		grid-template-columns: 1fr 3fr;
+	}
+
+	&__media {
+		background-color: var(--clr-primary-600);
+		position: relative;
+		min-block-size: 14rem;
+		overflow: hidden;
+
+		@media (min-width: 48rem) {
+			min-block-size: unset;
+		}
+	}
+
+	&__media-inner {
+		position: absolute;
+		inset: 0;
+		background-image:
+			radial-gradient(ellipse at 30% 60%, hsl(0, 85%, 62%, 0.45) 0%, transparent 65%),
+			radial-gradient(ellipse at 80% 20%, hsl(0, 85%, 82%, 0.25) 0%, transparent 60%);
+	}
+
+	&__accent-strip {
+		background-color: var(--clr-neutral-100);
+		position: absolute;
+		inset-block: 0;
+		inset-inline-end: -1px;
+		inline-size: 3rem;
+		clip-path: polygon(100% 0, 100% 100%, 0 100%);
+
+		@media (min-width: 48rem) {
+			clip-path: polygon(100% 0, 100% 100%, 0 50%);
+			inline-size: 4rem;
+		}
+	}
+
+	// Right — editorial content column
+	&__body {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-400);
+		padding: var(--size-500) var(--size-500) var(--size-500) var(--size-500);
+
+		@media (min-width: 48rem) {
+			padding: var(--size-600);
+		}
+	}
+
+	&__meta {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--size-200);
+	}
+
+	&__date {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-100);
+	}
+
+	&__title {
+		color: var(--clr-dark-blue);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-600);
+		font-weight: 800;
+		line-height: 1.15;
+		margin: 0;
+	}
+
+	&__excerpt {
+		color: var(--clr-text);
+		font-size: var(--fs-300);
+		line-height: 1.7;
+		margin: 0;
+	}
+
+	&__footer {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--size-400);
+		margin-block-start: auto;
+
+		// External link icon inside the button
+		.btn svg {
+			flex-shrink: 0;
+			inline-size: 1rem;
+			block-size: 1rem;
+		}
+	}
+
+	&__read-time {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-100);
+		display: inline-flex;
+		align-items: center;
+		gap: var(--size-100);
+
+		svg {
+			flex-shrink: 0;
+			inline-size: 0.875rem;
+			block-size: 0.875rem;
+		}
+	}
+}
+
+// =============================================================================
+// SECTION 2 — RECENT ARTICLES GRID
+// =============================================================================
+
+.news-recent {
+	background-color: var(--clr-bg);
+}
+
+.news-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--size-500);
+
+	@media (min-width: 40rem) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (min-width: 64rem) {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: auto;
+	}
+}
+
+// News Card — base
+.news-card {
+	background-color: var(--clr-neutral-100);
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-md);
+	overflow: hidden;
+	transition:
+		box-shadow var(--transition-base),
+		transform var(--transition-base);
+
+	&:hover,
+	&:focus-within {
+		box-shadow: var(--shadow-xl);
+		transform: translateY(-0.125rem);
+	}
+
+	// Lead card spans first column, both rows at desktop
+	&--lead {
+		@media (min-width: 64rem) {
+			grid-column: 1;
+			grid-row: 1 / 2;
+		}
+	}
+
+	&__media {
+		flex-shrink: 0;
+		aspect-ratio: 16 / 9;
+		overflow: hidden;
+	}
+
+	&__img-placeholder {
+		background: linear-gradient(135deg, var(--clr-secondary-100) 0%, var(--clr-primary-100) 100%);
+		inline-size: 100%;
+		block-size: 100%;
+	}
+
+	&__body {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		gap: var(--size-300);
+		padding: var(--size-400);
+	}
+
+	&__meta {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--size-200);
+	}
+
+	&__date {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-100);
+	}
+
+	&__title {
+		color: var(--clr-dark-blue);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-400);
+		font-weight: 700;
+		line-height: 1.3;
+		margin: 0;
+
+		.news-card--lead & {
+			font-size: var(--fs-500);
+		}
+	}
+
+	&__excerpt {
+		color: var(--clr-text);
+		font-size: var(--fs-200);
+		line-height: 1.65;
+		flex: 1;
+		margin: 0;
+	}
+
+	&__link {
+		color: var(--clr-primary-500);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-200);
+		font-weight: 600;
+		text-decoration: none;
+		display: inline-flex;
+		align-items: center;
+		align-self: flex-start;
+		gap: var(--size-100);
+		margin-block-start: auto;
+		transition:
+			color var(--transition-fast),
+			gap var(--transition-fast);
+
+		svg {
+			inline-size: 1rem;
+			block-size: 1rem;
+			transition: transform var(--transition-fast);
+		}
+
+		&:hover,
+		&:focus-visible {
+			color: var(--clr-primary-600);
+			gap: var(--size-200);
+
+			svg {
+				transform: translateX(0.25rem);
+			}
+		}
+	}
+}
+
+// =============================================================================
+// SECTION 3 — ARCHIVE / MORE STORIES LIST
+// =============================================================================
+
+.news-archive {
+	background-color: var(--clr-bg-alt);
+
+	&__header {
+		display: flex;
+		align-items: center;
+		gap: var(--size-400);
+		margin-block-end: var(--size-500);
+	}
+
+	&__heading {
+		color: var(--clr-dark-blue);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-500);
+		font-weight: 800;
+		margin: 0;
+		white-space: nowrap;
+	}
+
+	&__rule {
+		background-color: var(--clr-border);
+		flex: 1;
+		block-size: 1px;
+	}
+
+	&__list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		padding: 0;
+		margin: 0;
+	}
+
+	&-item {
+		& + & {
+			border-block-start: 1px solid var(--clr-border);
+		}
+
+		> article {
+			display: grid;
+			grid-template-columns: 3.5rem 1fr auto;
+			align-items: start;
+			gap: var(--size-400);
+			padding-block: var(--size-400);
+
+			@media (min-width: 40rem) {
+				grid-template-columns: 4rem 1fr auto;
+				gap: var(--size-500);
+			}
+		}
+	}
+
+	&-item__date-block {
+		background-color: var(--clr-primary-500);
+		line-height: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		padding-block: var(--size-200);
+		padding-inline: var(--size-100);
+		border-radius: var(--radius-md);
+	}
+
+	&-item__month {
+		color: var(--clr-primary-100);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-100);
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+	}
+
+	&-item__day {
+		color: var(--clr-neutral-100);
+		font-family: var(--ff-heading);
+		font-size: var(--fs-500);
+		font-weight: 900;
+		line-height: 1;
+	}
+
+	&-item__body {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-200);
+		min-inline-size: 0;
+	}
+
+	&-item__meta {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: var(--size-200);
+
+		time {
+			color: var(--clr-text-muted);
+			font-size: var(--fs-100);
+		}
+	}
+
+	&-item__title {
+		font-family: var(--ff-heading);
+		font-size: var(--fs-400);
+		font-weight: 700;
+		line-height: 1.25;
+		margin: 0;
+
+		a {
+			color: var(--clr-dark-blue);
+			text-decoration: none;
+			transition: color var(--transition-fast);
+
+			&:hover,
+			&:focus-visible {
+				color: var(--clr-primary-500);
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&-item__excerpt {
+		color: var(--clr-text-muted);
+		font-size: var(--fs-200);
+		line-height: 1.65;
+		margin: 0;
+	}
+
+	&-item__arrow {
+		color: var(--clr-text-muted);
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		align-self: center;
+		inline-size: 2.5rem;
+		block-size: 2.5rem;
+		border: 1px solid var(--clr-border);
+		border-radius: var(--radius-circle);
+		transition:
+			color var(--transition-fast),
+			background-color var(--transition-fast),
+			border-color var(--transition-fast);
+
+		svg {
+			inline-size: 1rem;
+			block-size: 1rem;
+		}
+
+		.news-archive-item:hover &,
+		.news-archive-item:focus-within & {
+			color: var(--clr-neutral-100);
+			background-color: var(--clr-primary-500);
+			border-color: var(--clr-primary-500);
+		}
+	}
+}
+
+// =============================================================================
+// SECTION 4 — NEWSLETTER SUBSCRIBE
+// =============================================================================
+
+.news-newsletter {
+	color: var(--clr-neutral-100);
+	background-color: var(--clr-dark-blue);
+
+	.section__badge-text,
+	.section__badge-icon {
+		color: var(--clr-secondary-300);
+	}
+
+	.section__title {
+		color: var(--clr-neutral-100);
+	}
+
+	.section__subtitle {
+		color: var(--clr-neutral-400);
+	}
+
+	&__inner {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-600);
+
+		@media (min-width: 48rem) {
+			flex-direction: row;
+			align-items: center;
+			gap: var(--size-700);
+		}
+	}
+
+	&__copy {
+		flex: 1;
+
+		.section__badge {
+			margin-block-end: var(--size-300);
+		}
+
+		.section__title {
+			margin-block-end: var(--size-300);
+		}
+
+		.section__subtitle {
+			margin: 0;
+		}
+	}
+
+	&__form-wrap {
+		flex: 1;
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-300);
+	}
+
+	&__fields {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-200);
+
+		@media (min-width: 40rem) {
+			flex-direction: row;
+			align-items: stretch;
+			flex-wrap: wrap;
+		}
+	}
+
+	&__field {
+		flex: 1;
+
+		input {
+			color: var(--clr-neutral-100);
+			background-color: hsla(0, 0%, 100%, 0.08);
+			font-family: var(--ff-base);
+			font-size: var(--fs-300);
+			display: block;
+			inline-size: 100%;
+			padding-block: var(--size-200);
+			padding-inline: var(--size-300);
+			border: 1px solid hsla(0, 0%, 100%, 0.15);
+			border-radius: var(--radius-md);
+			transition:
+				background-color var(--transition-fast),
+				border-color var(--transition-fast);
+
+			&::placeholder {
+				color: hsla(0, 0%, 100%, 0.45);
+			}
+
+			&:focus-visible {
+				background-color: hsla(0, 0%, 100%, 0.12);
+				outline: 2px solid var(--clr-secondary-300);
+				outline-offset: 2px;
+				border-color: var(--clr-secondary-300);
+			}
+		}
+	}
+
+	&__disclaimer {
+		color: hsla(0, 0%, 100%, 0.45);
+		font-size: var(--fs-200);
+		margin: 0;
+
+		a {
+			color: var(--clr-secondary-300);
+
+			&:hover,
+			&:focus-visible {
+				color: var(--clr-neutral-100);
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+// =============================================================================
+// SECTION 5 — PAGE CTA
+// Handled by components/_page-cta.scss — add news-specific overrides below.
+// =============================================================================

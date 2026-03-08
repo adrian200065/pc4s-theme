@@ -1,0 +1,100 @@
+{
+    "key": "group_staff",
+    "title": "Staff Member Details",
+    "fields": [
+        {
+            "key": "field_staff_job_title",
+            "label": "Job Title",
+            "name": "staff_job_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "The staff member's role or position, e.g. \"Executive Director\" or \"Prevention Coordinator, Young Adult Peer Support\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 0,
+            "default_value": "",
+            "placeholder": "e.g. Executive Director",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_staff_phone",
+            "label": "Phone Number",
+            "name": "staff_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Contact phone number displayed on the staff card overlay, e.g. \"615-900-4882\". Leave blank to hide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 1,
+            "default_value": "",
+            "placeholder": "e.g. 615-900-4882",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_staff_email",
+            "label": "Email Address",
+            "name": "staff_email",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Contact email address displayed on the staff card overlay, e.g. \"jdoe@pc4s.org\". Leave blank to hide.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "order_no": 2,
+            "default_value": "",
+            "placeholder": "e.g. jdoe@pc4s.org",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "staff"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "Per-staff-member fields: job title, phone, and email. Staff name comes from the post title. Staff photo comes from the featured image.",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1772797750
+}

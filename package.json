@@ -1,0 +1,34 @@
+{
+	"name": "pc4s",
+	"version": "2.0.0",
+	"description": "A custom WordPress theme built with modern development practices for Prevention Coalition for Success.",
+	"author": "Adrian Simpson",
+	"license": "MIT",
+	"type": "module",
+	"scripts": {
+		"dev": "vite build --watch",
+		"build": "vite build",
+		"preview": "vite preview",
+		"clean": "rm -rf assets/css assets/js assets/admin assets/images assets/fonts",
+		"zip": "node scripts/create-zip.mjs",
+		"build:zip": "npm run build && npm run zip"
+	},
+	"keywords": [
+		"wordpress",
+		"theme",
+		"vite",
+		"sass"
+	],
+	"devDependencies": {
+		"@vitejs/plugin-legacy": "^5.4.3",
+		"archiver": "^7.0.1",
+		"autoprefixer": "^10.4.20",
+		"lightningcss": "^1.28.3",
+		"minimatch": "^10.0.1",
+		"sass": "^1.83.0",
+		"terser": "^5.37.0",
+		"vite": "^6.0.7",
+		"vite-plugin-live-reload": "^3.0.5",
+		"vite-plugin-static-copy": "^2.2.0"
+	}
+}

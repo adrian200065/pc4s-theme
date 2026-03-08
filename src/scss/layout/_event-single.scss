@@ -1,0 +1,119 @@
+// ------------------------------------------
+// Single Event Page  (single-pc4s_event.php)
+// ------------------------------------------
+
+// ── Two-column body layout ──────────────────────────────────────────
+.event-single {
+	padding-block: var(--size-800);
+
+	@media (max-width: 39.9375rem) {
+		padding-block: var(--size-700);
+	}
+}
+
+.event-single__inner {
+	display: grid;
+	align-items: start;
+	gap: var(--size-700);
+
+	@media (min-width: 60rem) {
+		grid-template-columns: 1fr 22rem;
+	}
+}
+
+// ── Main content ────────────────────────────────────────────────────
+.event-single__image {
+	margin-block-end: var(--size-600);
+	border-radius: 0.75rem;
+	overflow: hidden;
+
+	.event-single__featured-img {
+		display: block;
+		inline-size: 100%;
+		block-size: auto;
+		object-fit: cover;
+	}
+}
+
+.event-single__details {
+	font-size: var(--fs-300);
+	line-height: 1.75;
+
+	p + p {
+		margin-block-start: 1em;
+	}
+}
+
+// ── Event meta card ─────────────────────────────────────────────────
+.event-single__sidebar {
+	position: sticky;
+	top: calc(var(--header-height, 5rem) + var(--size-500));
+}
+
+.event-meta-card {
+	background-color: var(--clr-neutral-100);
+	padding: var(--size-600);
+	border: 1px solid var(--clr-border);
+	border-radius: 1rem;
+	box-shadow: 0 2px 12px hsl(210 12% 20% / 0.08);
+}
+
+.event-meta-card__heading {
+	color: var(--clr-dark-blue);
+	font-family: var(--ff-heading);
+	font-size: var(--fs-400);
+	font-weight: 700;
+	margin-block-end: var(--size-500);
+	padding-block-end: var(--size-400);
+	border-block-end: 2px solid var(--clr-primary-500);
+}
+
+.event-meta-card__list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-400);
+	padding: 0;
+	margin: 0 0 var(--size-600);
+}
+
+.event-meta-card__item {
+	color: var(--clr-text);
+	font-size: var(--fs-200);
+	line-height: 1.5;
+	display: flex;
+	align-items: flex-start;
+	gap: var(--size-300);
+}
+
+.event-meta-card__icon {
+	color: var(--clr-primary-500);
+	flex-shrink: 0;
+	inline-size: 1.25rem;
+	block-size: 1.25rem;
+	margin-block-start: 0.1em;
+
+	svg {
+		display: block;
+		inline-size: 100%;
+		block-size: 100%;
+	}
+}
+
+.event-meta-card__label {
+	display: flex;
+	flex-direction: column;
+	gap: 0.15em;
+}
+
+.event-meta-card__recurrence {
+	color: var(--clr-text-muted);
+	font-size: var(--fs-100);
+	font-style: italic;
+}
+
+.event-meta-card__cta {
+	text-align: center;
+	display: block;
+	inline-size: 100%;
+}

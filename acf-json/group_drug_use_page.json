@@ -1,0 +1,916 @@
+{
+	"key": "group_drug_use_page",
+	"title": "Drug Use: Know The Facts Page",
+	"fields": [
+		{
+			"key": "field_dktf_tab_hero",
+			"label": "Hero Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 0,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_dktf_hero_badge",
+			"label": "Badge Text",
+			"name": "dktf_hero_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short label above the heading, e.g. \"Education \u2022 Awareness \u2022 Truth\".",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 1,
+			"default_value": "Education \u2022 Awareness \u2022 Truth",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_hero_heading",
+			"label": "Hero Heading",
+			"name": "dktf_hero_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Main h2 heading for the hero strip.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 2,
+			"default_value": "The Best Defense Is Knowledge",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_hero_lead",
+			"label": "Lead Paragraph",
+			"name": "dktf_hero_lead",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Short introductory paragraph below the hero heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 3,
+			"default_value": "The best way to prevent an abuse issue from developing in your family is to stay vigilant. Understanding the warning signs and separating myth from fact puts you in the strongest position to protect the people you love.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 3,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_dktf_hero_primary",
+			"label": "Primary Button",
+			"name": "dktf_hero_primary",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Primary CTA button in the hero (links to the myths section).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 4,
+			"return_format": "array"
+		},
+		{
+			"key": "field_dktf_hero_secondary",
+			"label": "Secondary Button",
+			"name": "dktf_hero_secondary",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Secondary CTA button in the hero (links to the warning signs section).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 5,
+			"return_format": "array"
+		},
+		{
+			"key": "field_dktf_hero_pill_1",
+			"label": "Accent Pill 1 Label",
+			"name": "dktf_hero_pill_1",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Text for the first decorative accent pill (info-circle icon).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 6,
+			"default_value": "Know the Facts",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_hero_pill_2",
+			"label": "Accent Pill 2 Label",
+			"name": "dktf_hero_pill_2",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Text for the second decorative accent pill (checkmark icon).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 7,
+			"default_value": "Recovery Is Possible",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_tab_myths",
+			"label": "Myths & Facts",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 8,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_dktf_myths_badge",
+			"label": "Section Badge Text",
+			"name": "dktf_myths_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short label above the section heading, e.g. \"Myth vs. Fact\".",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 9,
+			"default_value": "Myth vs. Fact",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_myths_heading",
+			"label": "Section Heading",
+			"name": "dktf_myths_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "h2 heading for the Myths & Facts section.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 10,
+			"default_value": "Five Myths About Drug Abuse & Addiction",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_myths_subtitle",
+			"label": "Section Subtitle",
+			"name": "dktf_myths_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Supporting paragraph below the section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 11,
+			"default_value": "Misinformation costs lives. Here\u2019s what the science actually says.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_dktf_myths_items",
+			"label": "Myth / Fact Pairs",
+			"name": "dktf_myths_items",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "Add each myth and its corresponding fact. Both are displayed side-by-side.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 12,
+			"layout": "block",
+			"min": 0,
+			"max": 0,
+			"collapsed": "field_dktf_myth_text",
+			"button_label": "Add Myth \/ Fact",
+			"rows_per_page": 20,
+			"sub_fields": [
+				{
+					"key": "field_dktf_myth_text",
+					"label": "Myth",
+					"name": "myth_text",
+					"aria-label": "",
+					"type": "textarea",
+					"instructions": "The common misconception or false belief.",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "Enter the myth\u2026",
+					"maxlength": "",
+					"rows": 3,
+					"new_lines": "br",
+					"parent_repeater": "field_dktf_myths_items"
+				},
+				{
+					"key": "field_dktf_fact_text",
+					"label": "Fact",
+					"name": "fact_text",
+					"aria-label": "",
+					"type": "textarea",
+					"instructions": "The evidence-based correction to the myth above.",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "Enter the fact\u2026",
+					"maxlength": "",
+					"rows": 3,
+					"new_lines": "br",
+					"parent_repeater": "field_dktf_myths_items"
+				}
+			]
+		},
+		{
+			"key": "field_dktf_myths_source_label",
+			"label": "Source Label",
+			"name": "dktf_myths_source_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Visible link text for the source attribution (e.g. \"HelpGuide.org\").",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 13,
+			"default_value": "HelpGuide.org",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_myths_source_url",
+			"label": "Source URL",
+			"name": "dktf_myths_source_url",
+			"aria-label": "",
+			"type": "url",
+			"instructions": "Full URL for the source link.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 14,
+			"default_value": "https:\/\/www.helpguide.org\/",
+			"placeholder": "https://",
+			"instructions_placement": "label"
+		},
+		{
+			"key": "field_dktf_tab_signs",
+			"label": "Warning Signs",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 15,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_dktf_signs_badge",
+			"label": "Section Badge Text",
+			"name": "dktf_signs_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short label above the section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 16,
+			"default_value": "Warning Signs",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_signs_heading",
+			"label": "Section Heading",
+			"name": "dktf_signs_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "h2 heading for the Warning Signs section.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 17,
+			"default_value": "Signs a Friend or Family Member May Be Struggling",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_signs_subtitle",
+			"label": "Section Subtitle",
+			"name": "dktf_signs_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Supporting paragraph below the section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 18,
+			"default_value": "Drug abusers often try to conceal their symptoms and downplay their problem. If you're worried about a friend or family member, look for these warning signs.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_dktf_signs_cards",
+			"label": "Sign Category Cards",
+			"name": "dktf_signs_cards",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "Add each category of warning signs. Each card shows a heading and a list of signs.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 19,
+			"layout": "block",
+			"min": 0,
+			"max": 0,
+			"collapsed": "field_dktf_card_heading",
+			"button_label": "Add Category",
+			"rows_per_page": 20,
+			"sub_fields": [
+				{
+					"key": "field_dktf_card_heading",
+					"label": "Card Heading",
+					"name": "card_heading",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Category name, e.g. \"Physical Signs\".",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. Physical Signs",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_dktf_signs_cards"
+				},
+				{
+					"key": "field_dktf_card_modifier",
+					"label": "CSS Modifier",
+					"name": "card_modifier",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Lowercase CSS class modifier appended to the heading, e.g. \"physical\", \"behavioral\", \"psychological\".",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. physical",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_dktf_signs_cards"
+				},
+				{
+					"key": "field_dktf_card_items",
+					"label": "Signs List",
+					"name": "card_items",
+					"aria-label": "",
+					"type": "textarea",
+					"instructions": "One sign per line. Each line becomes a list item.",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "Enter one sign per line\u2026",
+					"maxlength": "",
+					"rows": 6,
+					"new_lines": "",
+					"parent_repeater": "field_dktf_signs_cards"
+				}
+			]
+		},
+		{
+			"key": "field_dktf_signs_source_label",
+			"label": "Source Label",
+			"name": "dktf_signs_source_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Visible link text for the source attribution.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 20,
+			"default_value": "HelpGuide.org",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_signs_source_url",
+			"label": "Source URL",
+			"name": "dktf_signs_source_url",
+			"aria-label": "",
+			"type": "url",
+			"instructions": "Full URL for the source link.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 21,
+			"default_value": "https:\/\/www.helpguide.org\/",
+			"placeholder": "https://"
+		},
+		{
+			"key": "field_dktf_tab_drugs",
+			"label": "Commonly Abused Drugs",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 22,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_dktf_drugs_badge",
+			"label": "Section Badge Text",
+			"name": "dktf_drugs_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short label above the section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 23,
+			"default_value": "Know the Signs",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_drugs_heading",
+			"label": "Section Heading",
+			"name": "dktf_drugs_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "h2 heading for the Commonly Abused Drugs section.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 24,
+			"default_value": "Warning Signs of Commonly Abused Drugs",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_drugs_subtitle",
+			"label": "Section Subtitle",
+			"name": "dktf_drugs_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Supporting paragraph below the section heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 25,
+			"default_value": "Each substance leaves a different footprint. Recognizing category-specific signs can save lives.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_dktf_drugs_items",
+			"label": "Drug Cards",
+			"name": "dktf_drugs_items",
+			"aria-label": "",
+			"type": "repeater",
+			"instructions": "Add each drug or drug category with its warning signs.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 26,
+			"layout": "block",
+			"min": 0,
+			"max": 0,
+			"collapsed": "field_dktf_drug_name",
+			"button_label": "Add Drug",
+			"rows_per_page": 20,
+			"sub_fields": [
+				{
+					"key": "field_dktf_drug_name",
+					"label": "Drug Name",
+					"name": "drug_name",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Name of the drug or drug category, e.g. \"Heroin\".",
+					"required": 1,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. Heroin",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_dktf_drugs_items"
+				},
+				{
+					"key": "field_dktf_drug_subtitle",
+					"label": "Subtitle \/ Examples",
+					"name": "drug_subtitle",
+					"aria-label": "",
+					"type": "text",
+					"instructions": "Optional parenthetical subtitle, e.g. \"(including Xanax, Valium, GHB)\".",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "50",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "e.g. (including Xanax, Valium, GHB)",
+					"prepend": "",
+					"append": "",
+					"maxlength": "",
+					"parent_repeater": "field_dktf_drugs_items"
+				},
+				{
+					"key": "field_dktf_drug_signs",
+					"label": "Warning Signs",
+					"name": "drug_signs",
+					"aria-label": "",
+					"type": "textarea",
+					"instructions": "Paragraph describing the observable warning signs for this drug.",
+					"required": 0,
+					"conditional_logic": 0,
+					"wrapper": {
+						"width": "",
+						"class": "",
+						"id": ""
+					},
+					"default_value": "",
+					"placeholder": "",
+					"maxlength": "",
+					"rows": 3,
+					"new_lines": "br",
+					"parent_repeater": "field_dktf_drugs_items"
+				}
+			]
+		},
+		{
+			"key": "field_dktf_drugs_source_label",
+			"label": "Source Label",
+			"name": "dktf_drugs_source_label",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Visible link text for the source attribution.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 27,
+			"default_value": "HelpGuide.org",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_drugs_source_url",
+			"label": "Source URL",
+			"name": "dktf_drugs_source_url",
+			"aria-label": "",
+			"type": "url",
+			"instructions": "Full URL for the source link.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 28,
+			"default_value": "https:\/\/www.helpguide.org\/",
+			"placeholder": "https://"
+		},
+		{
+			"key": "field_dktf_tab_cta",
+			"label": "CTA Section",
+			"name": "",
+			"aria-label": "",
+			"type": "tab",
+			"instructions": "",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 29,
+			"placement": "top",
+			"endpoint": 0,
+			"selected": 0
+		},
+		{
+			"key": "field_dktf_cta_badge",
+			"label": "Badge Text",
+			"name": "dktf_cta_badge",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "Short label above the CTA heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 30,
+			"default_value": "Need Help?",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_cta_heading",
+			"label": "CTA Heading",
+			"name": "dktf_cta_heading",
+			"aria-label": "",
+			"type": "text",
+			"instructions": "h2 heading for the CTA section.",
+			"required": 1,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 31,
+			"default_value": "You Are Not Alone",
+			"placeholder": "",
+			"prepend": "",
+			"append": "",
+			"maxlength": ""
+		},
+		{
+			"key": "field_dktf_cta_subtitle",
+			"label": "CTA Subtitle",
+			"name": "dktf_cta_subtitle",
+			"aria-label": "",
+			"type": "textarea",
+			"instructions": "Supporting paragraph below the CTA heading.",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 32,
+			"default_value": "If you or someone you care about is struggling, PC4S is here to connect you with the right resources.",
+			"placeholder": "",
+			"maxlength": "",
+			"rows": 2,
+			"new_lines": "br"
+		},
+		{
+			"key": "field_dktf_cta_primary",
+			"label": "Primary Button",
+			"name": "dktf_cta_primary",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Primary CTA button (e.g. Reach Out to PC4S).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 33,
+			"return_format": "array"
+		},
+		{
+			"key": "field_dktf_cta_secondary",
+			"label": "Secondary Button",
+			"name": "dktf_cta_secondary",
+			"aria-label": "",
+			"type": "link",
+			"instructions": "Secondary CTA button (e.g. Get Involved).",
+			"required": 0,
+			"conditional_logic": 0,
+			"wrapper": {
+				"width": "50",
+				"class": "",
+				"id": ""
+			},
+			"order_no": 34,
+			"return_format": "array"
+		}
+	],
+	"location": [
+		[
+			{
+				"param": "page_template",
+				"operator": "==",
+				"value": "templates\/drug-use-page.php"
+			}
+		]
+	],
+	"menu_order": 16,
+	"position": "normal",
+	"style": "default",
+	"label_placement": "top",
+	"instruction_placement": "label",
+	"hide_on_screen": [
+		"the_content",
+		"excerpt",
+		"discussion",
+		"comments",
+		"revisions",
+		"slug",
+		"author",
+		"format",
+		"categories",
+		"tags",
+		"send-trackbacks"
+	],
+	"active": true,
+	"description": "Fields for the Drug Use: Know The Facts page template.",
+	"show_in_rest": 0,
+	"display_title": "",
+	"modified": 1772755200
+}

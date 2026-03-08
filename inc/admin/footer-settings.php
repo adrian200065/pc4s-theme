@@ -6,7 +6,7 @@
  * and the TN Department / funding logo) through a dedicated PC4S admin page.
  *
  * All content is stored in a single option key (`pc4s_footer_settings`) to
- * minimise database round-trips. Templates retrieve values via the static
+ * minimize database round-trips. Templates retrieve values via the static
  * `FooterSettings::get()` helper which caches the option in a static
  * variable, so the DB is read at most once per request.
  *
@@ -108,11 +108,15 @@ class FooterSettings {
 			'phone'                => sanitize_text_field( $input['phone'] ?? '' ),
 			'email'                => sanitize_email( $input['email'] ?? '' ),
 			// Newsletter column
-			'newsletter_heading'   => sanitize_text_field( $input['newsletter_heading'] ?? '' ),
-			'newsletter_text'      => sanitize_textarea_field( $input['newsletter_text'] ?? '' ),
+			'newsletter_heading'   	=> sanitize_text_field( $input['newsletter_heading'] ?? '' ),
+			'newsletter_text'      	=> sanitize_textarea_field( $input['newsletter_text'] ?? '' ),
 			'newsletter_disclaimer' => wp_kses_post( $input['newsletter_disclaimer'] ?? '' ),
+			// Office hours (used on Contact Us page)
+			'office_hours_weekday'  => sanitize_text_field( $input['office_hours_weekday']  ?? '' ),
+			'office_hours_saturday' => sanitize_text_field( $input['office_hours_saturday'] ?? '' ),
+			'office_hours_sunday'   => sanitize_text_field( $input['office_hours_sunday']   ?? '' ),
 			// Funding / TN Department logo
-			'funding_logo_id'      => absint( $input['funding_logo_id'] ?? 0 ),
+			'funding_logo_id'      	=> absint( $input['funding_logo_id'] ?? 0 ),
 		];
 	}
 
@@ -136,13 +140,13 @@ class FooterSettings {
 jQuery(function($){
 	$('.pc4s-media-upload').on('click',function(e){
 		e.preventDefault();
-		var $btn=$this=this;
-		var frame=wp.media({title:$($btn).data('title')||'Select Image',multiple:false,library:{type:'image'}});
+		var $btn=$(this);
+		var frame=wp.media({title:$btn.data('title')||'Select Image',multiple:false,library:{type:'image'}});
 		frame.on('select',function(){
 			var a=frame.state().get('selection').first().toJSON();
-			$($btn).closest('.pc4s-media-field').find('input[type="hidden"]').val(a.id);
-			$($btn).closest('.pc4s-media-field').find('.pc4s-media-preview').html('<img src="'+a.url+'" style="max-width:220px;max-height:110px;display:block;object-fit:contain;margin-block-end:8px;" />');
-			$($btn).closest('.pc4s-media-field').find('.pc4s-media-clear').show();
+			$btn.closest('.pc4s-media-field').find('input[type="hidden"]').val(a.id);
+			$btn.closest('.pc4s-media-field').find('.pc4s-media-preview').html('<img src="'+a.url+'" style="max-width:220px;max-height:110px;display:block;object-fit:contain;margin-block-end:8px;" />');
+			$btn.closest('.pc4s-media-field').find('.pc4s-media-clear').show();
 		});
 		frame.open();
 	});
@@ -378,7 +382,68 @@ JS;
 
 				</article><!-- .pc4s-form-card -->
 
-				<!-- ── Card 3: Funding / TN Dept Logo ────────────────────── -->
+				<!-- ── Card 3: Office Hours ──────────────────────────────── -->
+			<article class="pc4s-form-card" aria-label="<?php esc_attr_e( 'Office Hours', 'pc4s' ); ?>">
+
+				<header class="pc4s-form-card__header">
+					<div class="pc4s-form-card__title-row">
+						<h2 class="pc4s-form-card__title"><?php esc_html_e( 'Office Hours', 'pc4s' ); ?></h2>
+					</div>
+				</header>
+
+				<div class="pc4s-form-card__body">
+					<section class="pc4s-settings-section">
+						<p class="pc4s-field-hint" style="margin-block-end:var(--size-400)">
+							<?php esc_html_e( 'Displayed in the Contact Us page sidebar. Leave a field blank to hide that row.', 'pc4s' ); ?>
+						</p>
+
+						<div class="pc4s-field-group">
+							<label class="pc4s-field-label" for="pc4s_office_hours_weekday">
+								<?php esc_html_e( 'Monday - Friday', 'pc4s' ); ?>
+							</label>
+							<input
+								type="text"
+								id="pc4s_office_hours_weekday"
+								name="<?php echo esc_attr( self::OPTION_KEY ); ?>[office_hours_weekday]"
+								value="<?php echo esc_attr( $opts['office_hours_weekday'] ?? '' ); ?>"
+								class="pc4s-field-input"
+								placeholder="<?php esc_attr_e( 'e.g. 8:00 am - 4:00 pm', 'pc4s' ); ?>"
+							/>
+						</div>
+
+						<div class="pc4s-field-group">
+							<label class="pc4s-field-label" for="pc4s_office_hours_saturday">
+								<?php esc_html_e( 'Saturday', 'pc4s' ); ?>
+							</label>
+							<input
+								type="text"
+								id="pc4s_office_hours_saturday"
+								name="<?php echo esc_attr( self::OPTION_KEY ); ?>[office_hours_saturday]"
+								value="<?php echo esc_attr( $opts['office_hours_saturday'] ?? '' ); ?>"
+								class="pc4s-field-input"
+								placeholder="<?php esc_attr_e( 'e.g. Closed', 'pc4s' ); ?>"
+							/>
+						</div>
+
+						<div class="pc4s-field-group">
+							<label class="pc4s-field-label" for="pc4s_office_hours_sunday">
+								<?php esc_html_e( 'Sunday', 'pc4s' ); ?>
+							</label>
+							<input
+								type="text"
+								id="pc4s_office_hours_sunday"
+								name="<?php echo esc_attr( self::OPTION_KEY ); ?>[office_hours_sunday]"
+								value="<?php echo esc_attr( $opts['office_hours_sunday'] ?? '' ); ?>"
+								class="pc4s-field-input"
+								placeholder="<?php esc_attr_e( 'e.g. Closed', 'pc4s' ); ?>"
+							/>
+						</div>
+					</section>
+				</div><!-- .pc4s-form-card__body -->
+
+			</article><!-- Office Hours card -->
+
+			<!-- ── Card 4: Funding / TN Dept Logo ────────────────────── -->
 				<article class="pc4s-form-card" aria-label="<?php esc_attr_e( 'Funding Logo', 'pc4s' ); ?>">
 
 					<header class="pc4s-form-card__header">

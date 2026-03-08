@@ -42,10 +42,13 @@ $intro_lead  = (string) get_field( 'cp_intro_lead' );
 
 // --- Contact Details — sourced from PC4S → Footer Settings (shared with the footer).
 // Update phone, email, and address at PC4S → Footer in the WP admin.
-$contact_phone = FooterSettings::get( 'phone' );
-$contact_email = FooterSettings::get( 'email' );
-$contact_addr1 = FooterSettings::get( 'address_line1' );
-$contact_addr2 = FooterSettings::get( 'address_line2' );
+$contact_phone   = FooterSettings::get( 'phone' );
+$contact_email   = FooterSettings::get( 'email' );
+$contact_addr1   = FooterSettings::get( 'address_line1' );
+$contact_addr2   = FooterSettings::get( 'address_line2' );
+$hours_weekday   = FooterSettings::get( 'office_hours_weekday',  __( '8:00 am – 4:00 pm', 'pc4s' ) );
+$hours_saturday  = FooterSettings::get( 'office_hours_saturday', __( 'Closed', 'pc4s' ) );
+$hours_sunday    = FooterSettings::get( 'office_hours_sunday',   __( 'Closed', 'pc4s' ) );
 
 // --- Form Labels (ACF) ---
 $form_title        = (string) get_field( 'cp_form_title' );
@@ -85,8 +88,6 @@ $cp_icon = static function ( string $type ): string {
 // ---------------------------------------------------------------------------
 get_header();
 ?>
-
-<main id="main-content">
 
 	<?php get_template_part( 'parts/content/page-banner' ); ?>
 
@@ -252,25 +253,39 @@ get_header();
 				</div><!-- .contact-form-section__info-card -->
 				<?php endif; ?>
 
+				<?php if ( $hours_weekday || $hours_saturday || $hours_sunday ) : ?>
 				<div class="contact-form-section__info-card">
 					<h2 class="contact-form-section__info-card-title"><?php esc_html_e( 'Office Hours', 'pc4s' ); ?></h2>
 					<table class="contact-form-section__hours" aria-label="<?php esc_attr_e( 'PC4S office hours', 'pc4s' ); ?>">
+						<thead class="screen-reader-text">
+							<tr>
+								<th scope="col"><?php esc_html_e( 'Day', 'pc4s' ); ?></th>
+								<th scope="col"><?php esc_html_e( 'Hours', 'pc4s' ); ?></th>
+							</tr>
+						</thead>
 						<tbody>
+							<?php if ( $hours_weekday ) : ?>
 							<tr>
-								<td>Monday &ndash; Friday</td>
-								<td>8:00 am &ndash; 4:00 pm</td>
+								<td><?php esc_html_e( 'Monday &ndash; Friday', 'pc4s' ); ?></td>
+								<td><?php echo esc_html( $hours_weekday ); ?></td>
 							</tr>
+							<?php endif; ?>
+							<?php if ( $hours_saturday ) : ?>
 							<tr>
-								<td>Saturday</td>
-								<td>Closed</td>
+								<td><?php esc_html_e( 'Saturday', 'pc4s' ); ?></td>
+								<td><?php echo esc_html( $hours_saturday ); ?></td>
 							</tr>
+							<?php endif; ?>
+							<?php if ( $hours_sunday ) : ?>
 							<tr>
-								<td>Sunday</td>
-								<td>Closed</td>
+								<td><?php esc_html_e( 'Sunday', 'pc4s' ); ?></td>
+								<td><?php echo esc_html( $hours_sunday ); ?></td>
 							</tr>
+							<?php endif; ?>
 						</tbody>
 					</table>
 				</div><!-- .contact-form-section__info-card (hours) -->
+				<?php endif; ?>
 
 			</aside><!-- .contact-form-section__sidebar -->
 
@@ -285,7 +300,7 @@ get_header();
 				<?php else : ?>
 
 					<?php if ( $cu_error ) : ?>
-					<div class="form-message form-message--error" role="alert">
+					<div class="form-message form-message--error" role="alert" id="contact-form-error" tabindex="-1">
 						<p><?php esc_html_e( 'Please fill in all required fields before submitting.', 'pc4s' ); ?></p>
 					</div>
 					<?php endif; ?>
@@ -297,12 +312,18 @@ get_header();
 						action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>"
 						novalidate
 						aria-labelledby="contact-form-heading"
+						<?php if ( $cu_error ) : ?>aria-describedby="contact-form-error"<?php endif; ?>
 					>
 						<?php wp_nonce_field( 'pc4s_form_contact_us', 'pc4s_form_nonce' ); ?>
 						<input type="hidden" name="action"      value="pc4s_form_submit" />
 						<input type="hidden" name="form_id"     value="contact_us" />
 						<input type="hidden" name="source_page" value="<?php echo esc_attr( home_url( add_query_arg( [] ) ) ); ?>" />
 						<input type="hidden" name="_redirect"   value="<?php echo esc_attr( $form_redirect ); ?>" />
+						<?php /* Honeypot — bots fill every field; real users never see this one. */ ?>
+						<div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+							<label for="contact-hp"><?php esc_html_e( 'Website', 'pc4s' ); ?></label>
+							<input type="text" id="contact-hp" name="pc4s_hp_website" tabindex="-1" autocomplete="off" value="" />
+						</div>
 
 						<h2 id="contact-form-heading" class="contact-form__title">
 							<?php echo esc_html( $form_title ?: __( 'Leave a Message', 'pc4s' ) ); ?>
@@ -434,7 +455,6 @@ get_header();
 		</div><!-- .wrapper.contact-form-section__inner -->
 	</section><!-- .contact-form-section -->
 
-</main><!-- #main-content -->
 
 <?php
 get_footer();

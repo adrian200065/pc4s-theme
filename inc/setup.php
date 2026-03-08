@@ -10,12 +10,53 @@ if (!defined('ABSPATH')) {
 }
 
 /**
+ * Show an admin notice when Advanced Custom Fields is not active.
+ * ACF is required for all page templates and the event system.
+ */
+function pc4s_acf_missing_notice(): void {
+	if ( function_exists( 'acf' ) || class_exists( 'ACF' ) ) {
+		return;
+	}
+	printf(
+		'<div class="notice notice-error"><p><strong>%s</strong> %s</p></div>',
+		esc_html__( 'PC4S Theme:', 'pc4s' ),
+		esc_html__( 'Advanced Custom Fields (ACF) is not active. Page templates, events, and staff profiles will not display correctly until ACF is installed and activated.', 'pc4s' )
+	);
+}
+add_action( 'admin_notices', 'pc4s_acf_missing_notice' );
+
+/**
+ * Stub ACF helper functions so templates don't throw fatal errors when ACF
+ * is not active. All stubs return null / empty values identical to how ACF
+ * behaves when a field has no value.
+ */
+if ( ! function_exists( 'get_field' ) ) {
+	function get_field( $selector, $post_id = false, $format_value = true ) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals
+		return null;
+	}
+}
+if ( ! function_exists( 'the_field' ) ) {
+	function the_field( $selector, $post_id = false, $format_value = true ): void { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals
+	}
+}
+if ( ! function_exists( 'have_rows' ) ) {
+	function have_rows( $selector, $post_id = false ): bool { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals
+		return false;
+	}
+}
+if ( ! function_exists( 'get_sub_field' ) ) {
+	function get_sub_field( $selector, $format_value = true ) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals
+		return null;
+	}
+}
+
+/**
  * Load theme text domain
  */
 function pc4s_load_theme_textdomain() {
     load_theme_textdomain(PC4S_TEXTDOMAIN, get_template_directory() . '/languages');
 }
-add_action('plugins_loaded', 'pc4s_load_theme_textdomain', 0);
+add_action( 'after_setup_theme', 'pc4s_load_theme_textdomain', 1 );
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -52,7 +93,6 @@ function pc4s_theme_setup() {
 
     // Editor styles
     add_theme_support('editor-styles');
-    add_editor_style('assets/css/editor-style.css');
 }
 add_action('after_setup_theme', 'pc4s_theme_setup');
 

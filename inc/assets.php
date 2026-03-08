@@ -13,42 +13,38 @@ if (!defined('ABSPATH')) {
  * Define theme enqueue function
  */
 function pc4s_enqueue_scripts() {
-    // Add time to version to prevent caching
-    $version = PC4S_THEME_VERSION . '.' . time();
-
     // Define asset paths
     $css_path = PC4S_THEME_URI . '/assets/css/main.min.css';
-    $js_path = PC4S_THEME_URI . '/assets/js/main.min.js';
-
-    // Check if files exist before enqueuing
+    $js_path  = PC4S_THEME_URI . '/assets/js/main.min.js';
     $css_file = PC4S_THEME_DIR . '/assets/css/main.min.css';
-    $js_file = PC4S_THEME_DIR . '/assets/js/main.min.js';
+    $js_file  = PC4S_THEME_DIR . '/assets/js/main.min.js';
 
-    // Enqueue main theme stylesheet (style.css)
+    // Enqueue main theme stylesheet (style.css) — versioned by theme version.
     wp_enqueue_style(
         'pc4s-style',
         get_stylesheet_uri(),
         [],
-        $version
+        PC4S_THEME_VERSION
     );
 
-    // Enqueue compiled main CSS if it exists
-    if (file_exists($css_file)) {
+    // Enqueue compiled main CSS — versioned by file modification time so the
+    // browser cache is busted only when the file actually changes.
+    if ( file_exists( $css_file ) ) {
         wp_enqueue_style(
             'pc4s-main',
             $css_path,
-            ['pc4s-style'],
-            $version
+            [ 'pc4s-style' ],
+            (string) filemtime( $css_file )
         );
     }
 
-    // Enqueue main JS if it exists
-    if (file_exists($js_file)) {
+    // Enqueue main JS — same filemtime strategy.
+    if ( file_exists( $js_file ) ) {
         wp_enqueue_script(
             'pc4s-main',
             $js_path,
             [],
-            $version,
+            (string) filemtime( $js_file ),
             true
         );
     }
@@ -68,24 +64,19 @@ function pc4s_enqueue_admin_scripts($hook) {
         return;
     }
 
-    // Add time to version to prevent caching
-    $version = PC4S_THEME_VERSION . '.' . time();
-
     // Define asset paths
     $admin_css_path = PC4S_THEME_URI . '/assets/admin/css/admin.min.css';
-    $admin_js_path = PC4S_THEME_URI . '/assets/admin/js/admin.min.js';
-
-    // Check if files exist before enqueuing
+    $admin_js_path  = PC4S_THEME_URI . '/assets/admin/js/admin.min.js';
     $admin_css_file = PC4S_THEME_DIR . '/assets/admin/css/admin.min.css';
-    $admin_js_file = PC4S_THEME_DIR . '/assets/admin/js/admin.min.js';
+    $admin_js_file  = PC4S_THEME_DIR . '/assets/admin/js/admin.min.js';
 
     // Enqueue admin styles if file exists
-    if (file_exists($admin_css_file)) {
+    if ( file_exists( $admin_css_file ) ) {
         wp_enqueue_style(
             'pc4s-admin-style',
             $admin_css_path,
             [],
-            $version
+            (string) filemtime( $admin_css_file )
         );
     }
 
@@ -102,12 +93,12 @@ function pc4s_enqueue_admin_scripts($hook) {
     }
 
     // Enqueue admin scripts if file exists
-    if (file_exists($admin_js_file)) {
+    if ( file_exists( $admin_js_file ) ) {
         wp_enqueue_script(
             'pc4s-admin-script',
             $admin_js_path,
-            ['jquery'],
-            $version,
+            [ 'jquery' ],
+            (string) filemtime( $admin_js_file ),
             true
         );
 
@@ -122,15 +113,69 @@ function pc4s_enqueue_admin_scripts($hook) {
 add_action('admin_enqueue_scripts', 'pc4s_enqueue_admin_scripts');
 
 /**
- * Add async/defer attributes to scripts
+ * Output a <link rel="preload"> for the hero background image on pages that
+ * use the flexible-content hero layout, improving LCP on image-heavy pages.
+ *
+ * Runs at priority 1 (before other wp_head output) so the hint reaches the
+ * browser as early as possible.
  */
-function pc4s_script_attributes($tag, $handle, $src) {
-    $async_scripts = ['pc4s-script'];
+function pc4s_preload_hero_image(): void {
+	if ( ! function_exists( 'get_field' ) ) {
+		return;
+	}
 
-    if (in_array($handle, $async_scripts)) {
-        return str_replace('<script ', '<script async ', $tag);
-    }
+	$post_id = get_queried_object_id();
+	if ( ! $post_id ) {
+		return;
+	}
 
-    return $tag;
+	// Map page template → ACF flexible-content field name.
+	// Add entries here when new templates with hero sections are created.
+	$field_map = [
+		'front-page'                    => 'front_page_sections',
+		'templates/what-can-page.php'   => 'wcwd_sections',
+		'templates/involved-page.php'   => 'hcgi_sections',
+		'templates/drug-use-page.php'   => 'dktf_sections',
+		'templates/prevention-page.php' => 'wpw_sections',
+	];
+
+	$template   = is_front_page() ? 'front-page' : get_page_template_slug( $post_id );
+	$field_name = $field_map[ $template ] ?? null;
+
+	if ( ! $field_name ) {
+		return;
+	}
+
+	$rows = get_field( $field_name, $post_id );
+	if ( ! is_array( $rows ) ) {
+		return;
+	}
+
+	$image_id = null;
+	foreach ( $rows as $row ) {
+		if ( isset( $row['acf_fc_layout'] ) && 'hero' === $row['acf_fc_layout'] && ! empty( $row['bg_image'] ) ) {
+			$image_id = (int) $row['bg_image'];
+			break;
+		}
+	}
+
+	if ( ! $image_id ) {
+		return;
+	}
+
+	$src = wp_get_attachment_image_url( $image_id, 'full' );
+	if ( ! $src ) {
+		return;
+	}
+
+	$srcset = wp_get_attachment_image_srcset( $image_id, 'full' );
+	$sizes  = wp_get_attachment_image_sizes( $image_id, 'full' );
+
+	printf(
+		'<link rel="preload" as="image" href="%s"%s%s fetchpriority="high">' . "\n",
+		esc_url( $src ),
+		$srcset ? ' imagesrcset="' . esc_attr( $srcset ) . '"' : '',
+		$sizes  ? ' imagesizes="'  . esc_attr( $sizes  ) . '"' : ''
+	);
 }
-add_filter('script_loader_tag', 'pc4s_script_attributes', 10, 3);
+add_action( 'wp_head', 'pc4s_preload_hero_image', 1 );

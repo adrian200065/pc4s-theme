@@ -292,6 +292,11 @@ class Custom_Forms {
 			<input type="hidden" name="form_id"     value="<?php echo esc_attr( $form_id ); ?>" />
 			<input type="hidden" name="source_page" value="<?php echo esc_attr( $source_page ); ?>" />
 			<input type="hidden" name="_redirect"   value="<?php echo esc_attr( $redirect ); ?>" />
+			<?php /* Honeypot — bots fill every field; real users never see this one. */ ?>
+			<div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+				<label for="<?php echo esc_attr( $form_id ); ?>-hp"><?php esc_html_e( 'Website', 'pc4s' ); ?></label>
+				<input type="text" id="<?php echo esc_attr( $form_id ); ?>-hp" name="pc4s_hp_website" tabindex="-1" autocomplete="off" value="" />
+			</div>
 
 			<div class="form-group">
 				<label for="<?php echo esc_attr( $email_input_id ); ?>" class="visually-hidden">
@@ -381,6 +386,16 @@ class Custom_Forms {
 			wp_die( esc_html__( 'Unknown form.', 'pc4s' ), '', [ 'response' => 404 ] );
 		}
 
+		// ── Honeypot check — bots fill all fields; humans leave this blank ────
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		if ( ! empty( $_POST['pc4s_hp_website'] ) ) {
+			// Silently pretend success to avoid telling bots they were caught.
+			wp_safe_redirect(
+				add_query_arg( [ 'pc4s_form' => 'success', 'form_id' => $form_id ], home_url( '/' ) )
+			);
+			exit;
+		}
+
 		// ── Build safe redirect base ──────────────────────────────────────────
 		$redirect_base = isset( $_POST['_redirect'] )
 			? esc_url_raw( wp_unslash( $_POST['_redirect'] ) )
@@ -415,14 +430,14 @@ class Custom_Forms {
 					break;
 				}
 			} elseif ( 'number' === $field_type ) {
-				// Validate as a positive numeric amount (supports decimals).
+				// Validate as a monetary amount: must be a number >= 1.00.
 				$float_val = (float) sanitize_text_field( $raw_value );
-				if ( $field_required && $float_val <= 0 ) {
+				if ( $field_required && $float_val < 1.00 ) {
 					$has_error = true;
 					break;
 				}
 				// Store as a clean formatted string (2 decimal places).
-				$value = $float_val > 0 ? number_format( $float_val, 2, '.', '' ) : '0.00';
+				$value = $float_val >= 1.00 ? number_format( $float_val, 2, '.', '' ) : '0.00';
 			} else {
 				$value = sanitize_text_field( $raw_value );
 				if ( $field_required && '' === $value ) {

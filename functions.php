@@ -1,5 +1,5 @@
 <?php
-/**p
+/**
  * Theme functions and definitions
  *
  * @package Pc4s
@@ -13,25 +13,8 @@ if (!defined('ABSPATH')) {
 define('PC4S_THEME_DIR', get_template_directory());
 define('PC4S_THEME_URI', get_template_directory_uri());
 define('PC4S_TEXTDOMAIN', 'pc4s');
-define('PC4S_THEME_VERSION', '$THEME_VERSION');
+define( 'PC4S_THEME_VERSION', wp_get_theme()->get( 'Version' ) );
 
-// Register autoloader
-spl_autoload_register(function ($class) {
-    $prefix = 'PC4S\\';
-    $base_dir = PC4S_THEME_DIR . '/inc/';
-
-    $len = strlen($prefix);
-    if (strncmp($prefix, $class, $len) !== 0) {
-        return;
-    }
-
-    $relative_class = substr($class, $len);
-    $file = $base_dir . str_replace('\\', '/', strtolower($relative_class)) . '.php';
-
-    if (file_exists($file)) {
-        require $file;
-    }
-});
 
 function pc4s_init() {
     // Load files that don't need translations first

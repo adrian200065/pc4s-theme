@@ -59,7 +59,7 @@ function pc4s_customize_register($wp_customize) {
     // Primary Color
     $wp_customize->add_setting('primary_color', [
         'default'           => 'hsl(0, 85%, 52%)',
-        'sanitize_callback' => 'sanitize_text_field',
+        'sanitize_callback' => 'pc4s_sanitize_color',
     ]);
 
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'primary_color', [
@@ -71,7 +71,7 @@ function pc4s_customize_register($wp_customize) {
     // Secondary Color
     $wp_customize->add_setting('secondary_color', [
         'default'           => 'hsl(230, 97%, 40%)',
-        'sanitize_callback' => 'sanitize_text_field',
+        'sanitize_callback' => 'pc4s_sanitize_color',
     ]);
 
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'secondary_color', [
@@ -81,3 +81,33 @@ function pc4s_customize_register($wp_customize) {
     ]));
 }
 add_action('customize_register', 'pc4s_customize_register');
+
+/**
+ * Sanitize a color value that may be a hex color or an HSL/HSLA expression.
+ *
+ * Accepts: #rrggbb, #rgb, hsl(h, s%, l%), hsla(h, s%, l%, a)
+ * Rejects anything else (returns empty string).
+ *
+ * @param string $value Raw customizer value.
+ * @return string Sanitized color string, or '' on failure.
+ */
+function pc4s_sanitize_color( string $value ): string {
+	// Try WP's built-in hex sanitizer first.
+	$hex = sanitize_hex_color( $value );
+	if ( $hex ) {
+		return $hex;
+	}
+
+	// Allow hsl() / hsla() with numeric components only.
+	// e.g. hsl(0, 85%, 52%) or hsla(230, 97%, 40%, 0.8)
+	$num   = '\d+(?:\.\d+)?';
+	$pct   = $num . '%';
+	$alpha = '(?:\s*,\s*(?:0?\.\d+|[01]))?';
+	$pattern = '/^hsla?\(\s*' . $num . '\s*,\s*' . $pct . '\s*,\s*' . $pct . $alpha . '\s*\)$/i';
+
+	if ( preg_match( $pattern, $value ) ) {
+		return $value;
+	}
+
+	return '';
+}

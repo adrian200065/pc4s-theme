@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header();
 ?>
 
-<main id="main-content">
     <?php
     if ( function_exists( 'have_rows' ) && have_rows( 'front_page_sections' ) ) :
         while ( have_rows( 'front_page_sections' ) ) : the_row();
@@ -27,7 +26,6 @@ get_header();
         endwhile;
     endif;
     ?>
-</main>
 
 <?php
 get_footer();

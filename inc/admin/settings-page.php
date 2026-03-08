@@ -115,9 +115,12 @@ class SettingsPage {
 		$just_saved = isset( $_GET['settings-updated'] ) && '1' === (string) $_GET['settings-updated'];
 		// phpcs:enable
 
-		$field = static fn( string $key ): string => esc_attr( self::OPTION_KEY . '[' . $key . ']' );
-		$val   = static fn( string $key, string $default = '' ): string => esc_attr( (string) ( $opts[ $key ] ?? $default ) );
+		$field   = static fn( string $key ): string => esc_attr( self::OPTION_KEY . '[' . $key . ']' );
+		$val     = static fn( string $key, string $default = '' ): string => esc_attr( (string) ( $opts[ $key ] ?? $default ) );
 		$checked = static fn( string $key ): string => checked( '1', $opts[ $key ] ?? '0', false );
+		// $locked: renders a read-only "Set via constant" notice for credential fields
+		// that are configured in wp-config.php — the live value is never echoed.
+		$locked  = static fn( string $key ): bool => self::is_constant_override( $key );
 		?>
 		<div class="wrap pc4s-admin-page pc4s-settings-page">
 
@@ -204,6 +207,11 @@ class SettingsPage {
 								<label class="pc4s-field-label" for="pc4s_paypal_client_id">
 									<?php esc_html_e( 'Client ID', 'pc4s' ); ?>
 								</label>
+								<?php if ( $locked( 'paypal_client_id' ) ) : ?>
+								<p class="pc4s-field-hint" style="font-style:italic">
+									<?php printf( esc_html__( 'Set via %s constant in wp-config.php — edit that file to change it.', 'pc4s' ), '<code>PC4S_PAYPAL_CLIENT_ID</code>' ); ?>
+								</p>
+								<?php else : ?>
 								<input
 									type="text"
 									id="pc4s_paypal_client_id"
@@ -215,6 +223,7 @@ class SettingsPage {
 									spellcheck="false"
 									aria-describedby="pc4s_paypal_client_id_hint"
 								/>
+								<?php endif; ?>
 								<div class="pc4s-info-box" id="pc4s_paypal_client_id_hint">
 									<p class="pc4s-info-box__intro"><?php esc_html_e( 'To get your Client ID:', 'pc4s' ); ?></p>
 									<ol class="pc4s-info-box__steps">
@@ -231,6 +240,11 @@ class SettingsPage {
 								<label class="pc4s-field-label" for="pc4s_paypal_hosted_button_id">
 									<?php esc_html_e( 'Hosted Button ID', 'pc4s' ); ?>
 								</label>
+								<?php if ( $locked( 'paypal_hosted_button_id' ) ) : ?>
+								<p class="pc4s-field-hint" style="font-style:italic">
+									<?php printf( esc_html__( 'Set via %s constant in wp-config.php — edit that file to change it.', 'pc4s' ), '<code>PC4S_PAYPAL_HOSTED_BUTTON_ID</code>' ); ?>
+								</p>
+								<?php else : ?>
 								<input
 									type="text"
 									id="pc4s_paypal_hosted_button_id"
@@ -241,6 +255,7 @@ class SettingsPage {
 									spellcheck="false"
 									aria-describedby="pc4s_paypal_hbid_hint"
 								/>
+								<?php endif; ?>
 								<div class="pc4s-info-box" id="pc4s_paypal_hbid_hint">
 									<p class="pc4s-info-box__intro"><?php esc_html_e( 'ID of a hosted button created in your PayPal account. Leave blank if using the JS SDK only.', 'pc4s' ); ?></p>
 									<p class="pc4s-info-box__note"><?php echo wp_kses( __( 'Example: if your PayPal code contains <code>hostedButtonId: "3TMTGXDWYCRK6"</code>, enter <code>3TMTGXDWYCRK6</code>.', 'pc4s' ), [ 'code' => [] ] ); ?></p>
@@ -349,6 +364,11 @@ class SettingsPage {
 								<label class="pc4s-field-label" for="pc4s_facebook_access_token">
 									<?php esc_html_e( 'Access Token', 'pc4s' ); ?>
 								</label>
+								<?php if ( $locked( 'facebook_access_token' ) ) : ?>
+								<p class="pc4s-field-hint" style="font-style:italic">
+									<?php printf( esc_html__( 'Set via %s constant in wp-config.php — edit that file to change it.', 'pc4s' ), '<code>PC4S_FACEBOOK_ACCESS_TOKEN</code>' ); ?>
+								</p>
+								<?php else : ?>
 								<input
 									type="text"
 									id="pc4s_facebook_access_token"
@@ -360,6 +380,7 @@ class SettingsPage {
 									spellcheck="false"
 									aria-describedby="pc4s_fb_token_hint"
 								/>
+								<?php endif; ?>
 								<div class="pc4s-info-box" id="pc4s_fb_token_hint">
 									<p class="pc4s-info-box__intro"><?php esc_html_e( 'To get your Facebook Access Token:', 'pc4s' ); ?></p>
 									<ol class="pc4s-info-box__steps">
@@ -479,10 +500,32 @@ class SettingsPage {
 		<?php
 	}
 
+	// ─── Constant map ────────────────────────────────────────────────────────
+
+	/**
+	 * Map from settings key → wp-config.php constant name.
+	 *
+	 * When a constant is defined in wp-config.php (or any file loaded before
+	 * the theme) it is used as the authoritative value and the DB field is
+	 * ignored. This keeps sensitive credentials out of the database entirely.
+	 *
+	 * To use:  define( 'PC4S_FACEBOOK_ACCESS_TOKEN', 'EAABxxx...' );
+	 */
+	private const CONSTANT_MAP = [
+		'facebook_access_token'   => 'PC4S_FACEBOOK_ACCESS_TOKEN',
+		'paypal_client_id'        => 'PC4S_PAYPAL_CLIENT_ID',
+		'paypal_hosted_button_id' => 'PC4S_PAYPAL_HOSTED_BUTTON_ID',
+	];
+
 	// ─── Template helper ─────────────────────────────────────────────────────
 
 	/**
 	 * Retrieve a single setting value.
+	 *
+	 * Resolution order:
+	 *   1. wp-config.php constant (see CONSTANT_MAP) — never touches the DB.
+	 *   2. Value stored in the wp_options DB row.
+	 *   3. $default.
 	 *
 	 * Cached in a static variable; the DB is read at most once per request.
 	 *
@@ -491,6 +534,15 @@ class SettingsPage {
 	 * @return string
 	 */
 	public static function get( string $key, string $default = '' ): string {
+		// 1. Constant override — highest priority, never stored in DB.
+		if ( isset( self::CONSTANT_MAP[ $key ] ) ) {
+			$const = self::CONSTANT_MAP[ $key ];
+			if ( defined( $const ) ) {
+				return (string) constant( $const );
+			}
+		}
+
+		// 2. DB value.
 		static $opts = null;
 		if ( null === $opts ) {
 			$opts = (array) get_option( self::OPTION_KEY, [] );
@@ -507,5 +559,20 @@ class SettingsPage {
 	 */
 	public static function is_enabled( string $key ): bool {
 		return '1' === self::get( $key );
+	}
+
+	/**
+	 * Return whether a given key's value is locked via a wp-config.php constant.
+	 * Used by the admin UI to show a "Set via constant" notice instead of an
+	 * editable input, so the live token is never echoed into the page source.
+	 *
+	 * @param string $key Setting key.
+	 * @return bool
+	 */
+	public static function is_constant_override( string $key ): bool {
+		if ( ! isset( self::CONSTANT_MAP[ $key ] ) ) {
+			return false;
+		}
+		return defined( self::CONSTANT_MAP[ $key ] );
 	}
 }

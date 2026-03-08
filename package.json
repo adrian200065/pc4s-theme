@@ -3,7 +3,7 @@
 	"version": "2.0.0",
 	"description": "A custom WordPress theme built with modern development practices for Prevention Coalition for Success.",
 	"author": "Adrian Simpson",
-	"license": "MIT",
+	"license": "GPL-2.0-or-later",
 	"type": "module",
 	"scripts": {
 		"dev": "vite build --watch",

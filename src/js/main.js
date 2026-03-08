@@ -259,9 +259,6 @@
 	// ------------------------------------------
 	// 10. Initialize
 	// ------------------------------------------
-	document.addEventListener('DOMContentLoaded', function () {
-		console.log('PC4S Website - JavaScript initialized');
-	});
 
 	// ------------------------------------------
 	// 10. Events Slider
@@ -345,13 +342,16 @@
 			{ passive: true }
 		);
 
-		// Respect reduced-motion preference — skip animation, still advance
-		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		// Respect reduced-motion preference — disable both animation and auto-advance.
+		var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (prefersReducedMotion) {
 			eventsTrack.style.scrollBehavior = 'auto';
 		}
 
 		updateNavState();
-		startAuto();
+		if (!prefersReducedMotion) {
+			startAuto();
+		}
 	}
 
 	// -------------------------------------------------------------------------

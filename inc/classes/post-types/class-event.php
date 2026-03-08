@@ -138,7 +138,7 @@ class Event {
 	}
 
 	/**
-	 * Customise the main WP_Query for the pc4s_event post-type archive.
+	 * Customize the main WP_Query for the pc4s_event post-type archive.
 	 *
 	 * Orders events by their pre-computed next-occurrence date (ASC) and
 	 * restricts the set to events that have at least one future occurrence.
@@ -172,12 +172,20 @@ class Event {
 
 	/**
 	 * Ensure default taxonomy terms exist.
-	 * Runs only if the terms are not already present (idempotent).
+	 *
+	 * Guarded by a weekly transient so the DB check only runs once per week
+	 * rather than on every request.
 	 */
 	public function seed_taxonomy_terms(): void {
+		$transient = 'pc4s_event_type_seeded';
+
+		if ( get_transient( $transient ) ) {
+			return;
+		}
+
 		$defaults = [
-			'pc4s'       => 'PC4S',
-			'true-blue'  => 'True Blue Peers 4 Success',
+			'pc4s'      => 'PC4S',
+			'true-blue' => 'True Blue Peers 4 Success',
 		];
 
 		foreach ( $defaults as $slug => $name ) {
@@ -185,5 +193,7 @@ class Event {
 				wp_insert_term( $name, self::TAXONOMY, [ 'slug' => $slug ] );
 			}
 		}
+
+		set_transient( $transient, true, WEEK_IN_SECONDS );
 	}
 }

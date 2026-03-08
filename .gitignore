@@ -63,6 +63,7 @@ Desktop.ini
 npm-debug.log*
 pnpm-debug.log*
 *.tmp
+*.tmp.*
 *.temp
 .cache/
 

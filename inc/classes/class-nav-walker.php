@@ -170,7 +170,7 @@ class Nav_Walker extends \Walker_Nav_Menu {
 		$link_class = 'nav-link' . ( $is_current ? ' nav-link--active' : '' );
 
 		return sprintf(
-			'<button class="%1$s" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="%2$s">%3$s%4$s</button>',
+			'<button class="%1$s" type="button" aria-expanded="false" aria-haspopup="menu" aria-controls="%2$s">%3$s%4$s</button>',
 			esc_attr( $link_class ),
 			esc_attr( $submenu_id ),
 			esc_html( apply_filters( 'the_title', $item->title, $item->ID ) ),

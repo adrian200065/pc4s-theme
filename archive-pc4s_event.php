@@ -38,8 +38,6 @@ $all_occurrences = EventQuery::expand_occurrences( $raw_posts );
 
 <?php get_template_part( 'parts/content/page-banner' ); ?>
 
-<main id="main-content">
-
 <?php if ( empty( $all_occurrences ) ) : ?>
 
 	<!-- ── No Events ────────────────────────────────────────────────────── -->
@@ -103,7 +101,6 @@ $all_occurrences = EventQuery::expand_occurrences( $raw_posts );
 
 					<ul
 						class="featured-event__meta"
-						role="list"
 						aria-label="<?php esc_attr_e( 'Event details', 'pc4s' ); ?>"
 					>
 
@@ -219,7 +216,6 @@ $all_occurrences = EventQuery::expand_occurrences( $raw_posts );
 				>
 					<ol
 						class="events-month-list"
-						role="list"
 						aria-label="<?php echo esc_attr( $group['label'] . ' ' . __( 'events', 'pc4s' ) ); ?>"
 					>
 						<?php foreach ( $group['occurrences'] as $occ ) : ?>
@@ -282,6 +278,5 @@ $all_occurrences = EventQuery::expand_occurrences( $raw_posts );
 		</div>
 	</section><!-- .page-cta -->
 
-</main><!-- #main-content -->
 
 <?php get_footer(); ?>

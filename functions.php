@@ -33,6 +33,7 @@ function pc4s_load_i18n_files() {
     require_once PC4S_THEME_DIR . '/inc/classes/class-custom-login.php';
     require_once PC4S_THEME_DIR . '/inc/classes/class-core-customizer.php';
     require_once PC4S_THEME_DIR . '/inc/classes/class-dashboard.php';
+    require_once PC4S_THEME_DIR . '/inc/classes/class-email-template.php';
     require_once PC4S_THEME_DIR . '/inc/classes/class-forms.php';
     require_once PC4S_THEME_DIR . '/inc/classes/post-types/class-event.php';
     require_once PC4S_THEME_DIR . '/inc/classes/post-types/class-staff.php';

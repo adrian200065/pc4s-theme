@@ -525,7 +525,7 @@ class Custom_Forms {
 	// ─── Notification ─────────────────────────────────────────────────────────
 
 	private static function send_notification_email( array $form, array $field_data, string $source_page ): void {
-		// Parse comma-separated notification_emails into a validated array.
+		// ── Resolve recipients ────────────────────────────────────────────────
 		$raw        = ! empty( $form['notification_emails'] ) ? $form['notification_emails'] : get_option( 'admin_email' );
 		$parsed     = array_map( 'trim', explode( ',', $raw ) );
 		$recipients = array_values( array_filter( $parsed, 'is_email' ) );
@@ -536,25 +536,11 @@ class Custom_Forms {
 
 		$subject = $form['subject'];
 
-		// Build body: one line per submitted field using field labels when available.
-		$field_defs = $form['fields'] ?? [];
-		$body_lines = [];
-		foreach ( $field_data as $key => $value ) {
-			$label        = isset( $field_defs[ $key ]['label'] )
-				? sanitize_text_field( $field_defs[ $key ]['label'] )
-				: ucwords( str_replace( '_', ' ', $key ) );
-			$body_lines[] = $label . ': ' . $value;
-		}
+		// ── Build branded HTML body ───────────────────────────────────────────
+		$html_body = Email_Template::build( $form, $field_data, $source_page );
+		$headers   = Email_Template::headers();
 
-		$body = sprintf(
-			/* translators: 1: form label 2: field list 3: source page URL */
-			__( "New %1\$s submission.\n\n%2\$s\n\nSource: %3\$s", 'pc4s' ),
-			$form['label'],
-			implode( "\n", $body_lines ),
-			$source_page ?: __( '(not provided)', 'pc4s' )
-		);
-
-		wp_mail( $recipients, $subject, $body );
+		wp_mail( $recipients, $subject, $html_body, $headers );
 	}
 
 	// ─── Database ────────────────────────────────────────────────────────────

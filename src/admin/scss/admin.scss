@@ -3,17 +3,10 @@
  *
  * Modern, accessible UI for all PC4S admin pages.
  *
- * Rules:
- *  - Only custom properties defined in src/scss/base/_custom-properties.scss
- *  - Logical CSS properties throughout (inline-size, padding-inline, etc.)
- *  - rem/em units only; 1px borders are the single exception
- *  - No gradients, no new CSS custom properties
- *  - Mobile-first responsive
- *
  * @package PC4S
  */
 
-// Import shared custom properties
+// ── Import shared custom properties ────────────────────────────────────────────────────────────────
 @use '../../scss/base/custom-properties';
 
 // ── Page shell ────────────────────────────────────────────────────────────────
@@ -525,22 +518,28 @@
 		&.col-id {
 			inline-size: 4rem;
 		}
+
 		&.col-form {
 			inline-size: 9rem;
 		}
+
 		&.col-first-name,
 		&.col-last-name {
 			inline-size: 7.5rem;
 		}
+
 		&.col-subject {
 			inline-size: 12rem;
 		}
+
 		&.col-message {
 			inline-size: 14rem;
 		}
+
 		&.col-date {
 			inline-size: 11rem;
 		}
+
 		&.col-actions {
 			inline-size: 5.5rem;
 		}
@@ -929,7 +928,6 @@ $_thumb-offset: calc((#{$_toggle-h} - #{$_thumb-size}) / 2);
 }
 
 .pc4s-toggle-input {
-	// Visually hidden — the track below provides the visual affordance.
 	position: absolute;
 	inline-size: 1px;
 	block-size: 1px;
@@ -985,6 +983,72 @@ $_thumb-offset: calc((#{$_toggle-h} - #{$_thumb-size}) / 2);
 	line-height: 1.4;
 }
 
+// ── SMTP page ─────────────────────────────────────────────────────────────────
+
+.pc4s-smtp-row {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--size-300);
+	padding-block: var(--size-400);
+	border-block-end: 1px solid var(--clr-border);
+
+	&:last-child {
+		border-block-end: none;
+	}
+
+	@media (min-width: 37.5em) {
+		grid-template-columns: 13rem 1fr;
+		align-items: start;
+		gap: var(--size-400);
+	}
+
+	&__fieldset {
+		display: contents;
+		min-inline-size: 0;
+		padding: 0;
+		margin: 0;
+		border: none;
+	}
+
+	&__label {
+		color: var(--clr-neutral-800);
+		font-size: var(--fs-200);
+		font-weight: 600;
+		line-height: 1.4;
+		padding-block-start: var(--size-300);
+	}
+
+	&__control {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-200);
+	}
+}
+
+// ── Radio group (encryption options) ─────────────────────────────────────────
+
+.pc4s-radio-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--size-100) var(--size-400);
+}
+
+.pc4s-radio-label {
+	color: var(--clr-text);
+	font-size: var(--fs-200);
+	display: inline-flex;
+	align-items: center;
+	gap: var(--size-200);
+	cursor: pointer;
+}
+
+.pc4s-radio {
+	accent-color: var(--clr-secondary-500);
+	block-size: 1em;
+	inline-size: 1em;
+	cursor: pointer;
+}
+
 // ── Code-style input modifier ─────────────────────────────────────────────────
 
 .pc4s-field-input--code {
@@ -1010,11 +1074,11 @@ $_thumb-offset: calc((#{$_toggle-h} - #{$_thumb-size}) / 2);
 
 	&--notice {
 		background-color: var(--clr-neutral-200);
-		border-color: var(--clr-neutral-300);
-		border-inline-start-color: var(--clr-neutral-500);
 		display: flex;
 		align-items: flex-start;
 		gap: var(--size-300);
+		border-color: var(--clr-neutral-300);
+		border-inline-start-color: var(--clr-neutral-500);
 	}
 
 	&__icon {
@@ -1033,8 +1097,8 @@ $_thumb-offset: calc((#{$_toggle-h} - #{$_thumb-size}) / 2);
 
 	&__steps {
 		color: var(--clr-text);
-		margin-block: 0 var(--size-200);
 		padding-inline-start: var(--size-400);
+		margin-block: 0 var(--size-200);
 
 		li + li {
 			margin-block-start: var(--size-100);
@@ -1070,7 +1134,6 @@ $_thumb-offset: calc((#{$_toggle-h} - #{$_thumb-size}) / 2);
 
 // ── Responsive ────────────────────────────────────────────────────────────────
 
-// Compact padding on small screens.
 @media (max-width: 37.4375em) {
 	.pc4s-form-card {
 		&__header,
@@ -1084,7 +1147,6 @@ $_thumb-offset: calc((#{$_toggle-h} - #{$_thumb-size}) / 2);
 		max-inline-size: 100%;
 	}
 
-	// Hide verbose columns on narrow screens — keeps ID, Form, Email, Date, Actions.
 	.pc4s-entries-table {
 		thead th.col-source,
 		tbody td.col-source,

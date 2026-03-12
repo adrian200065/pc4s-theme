@@ -571,7 +571,10 @@ class Custom_Forms {
 			$recipients = [ get_option( 'admin_email' ) ];
 		}
 
-		$subject = $form['subject'];
+		// Use the subject typed in the form if present, otherwise fall back to the form default.
+		$subject = ! empty( $field_data['subject_line'] )
+			? sanitize_text_field( $field_data['subject_line'] ) . ' — ' . get_bloginfo( 'name' )
+			: $form['subject'];
 
 		// ── Build branded HTML body ───────────────────────────────────────────
 		$html_body = Email_Template::build( $form, $field_data, $source_page );

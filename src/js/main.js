@@ -453,4 +453,97 @@
 			window.location.replace(cleanUrl.toString());
 		}, 5000);
 	})();
+
+	// ------------------------------------------
+	// X. Donation Amount Selector
+	// Preset buttons update the hidden `amount` input. Custom amount field
+	// also updates it and clears the active preset selection.
+	// ------------------------------------------
+	(function donationAmounts() {
+		var hiddenInput = document.getElementById('donate-amount-hidden');
+		var customInput = document.querySelector('.js-donate-custom-amount');
+		var presetBtns = document.querySelectorAll('.donate-amounts__btn');
+		var totalDisplay = document.querySelector('.js-donate-total-display');
+
+		if (!hiddenInput) return; // Not on the donate page.
+
+		function formatAmount(val) {
+			return '$' + parseFloat(val).toFixed(2);
+		}
+
+		function updateTotal(val) {
+			hiddenInput.value = val > 0 ? parseFloat(val).toFixed(2) : '';
+			if (totalDisplay) {
+				totalDisplay.textContent = val > 0 ? formatAmount(val) : '$0.00';
+			}
+		}
+
+		function selectPreset(btn) {
+			presetBtns.forEach(function (b) {
+				b.classList.remove('is-selected');
+				b.setAttribute('aria-pressed', 'false');
+			});
+			btn.classList.add('is-selected');
+			btn.setAttribute('aria-pressed', 'true');
+			if (customInput) customInput.value = '';
+			updateTotal(parseFloat(btn.dataset.amount));
+		}
+
+		presetBtns.forEach(function (btn) {
+			btn.addEventListener('click', function () {
+				selectPreset(btn);
+			});
+		});
+
+		if (customInput) {
+			customInput.addEventListener('input', function () {
+				var val = parseFloat(customInput.value);
+				// Deselect all preset buttons when custom amount is typed.
+				presetBtns.forEach(function (b) {
+					b.classList.remove('is-selected');
+					b.setAttribute('aria-pressed', 'false');
+				});
+				if (customInput.value === '') {
+					// Revert to the selected preset if custom is cleared.
+					var activePreset = document.querySelector('.donate-amounts__btn.is-selected');
+					if (activePreset) {
+						updateTotal(parseFloat(activePreset.dataset.amount));
+					} else {
+						updateTotal(0);
+					}
+				} else {
+					updateTotal(val > 0 ? val : 0);
+				}
+			});
+		}
+	})();
+
+	// ------------------------------------------
+	// X. Company Name Toggle
+	// Show/hide the company name field based on the
+	// "Is this donation on behalf of a company?" radio.
+	// ------------------------------------------
+	(function companyToggle() {
+		var radios = document.querySelectorAll('input[name="on_behalf_of_company"]');
+		var companyGroup = document.getElementById('donate-company-group');
+		var companyInput = companyGroup ? companyGroup.querySelector('input') : null;
+
+		if (!radios.length || !companyGroup) return;
+
+		function updateVisibility() {
+			var checked = document.querySelector('input[name="on_behalf_of_company"]:checked');
+			var show = checked && checked.value === 'yes';
+			companyGroup.setAttribute('data-visible', show ? 'true' : 'false');
+			companyGroup.setAttribute('aria-hidden', show ? 'false' : 'true');
+			if (companyInput) companyInput.required = show;
+			if (!show && companyInput) companyInput.value = '';
+		}
+
+		radios.forEach(function (radio) {
+			radio.addEventListener('change', updateVisibility);
+		});
+
+		// Run once on load to match the initial checked state.
+		updateVisibility();
+	})();
 })();

@@ -17,6 +17,7 @@ use PC4S\Admin\FooterSettings;
 use PC4S\Admin\FormsPage;
 use PC4S\Admin\FormEntriesPage;
 use PC4S\Admin\SettingsPage;
+use PC4S\Admin\SmtpPage;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -138,6 +139,16 @@ class Pc4sAdminMenu {
 			'manage_options',
 			'pc4s-settings',
 			[ SettingsPage::get_instance(), 'render_page' ]
+		);
+
+		// ── SMTP submenu ───────────────────────────────────────────────────────
+		add_submenu_page(
+			self::PARENT_SLUG,
+			__( 'SMTP Settings', 'pc4s' ),
+			__( 'SMTP', 'pc4s' ),
+			'manage_options',
+			'pc4s-smtp',
+			[ SmtpPage::get_instance(), 'render_page' ]
 		);	}
 
 }

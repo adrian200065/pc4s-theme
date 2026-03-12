@@ -201,7 +201,7 @@ $_support_email = $data['support_email'] ?? '';
 			<input type="hidden" name="_redirect"   value="<?php echo esc_attr( $_redirect_url ); ?>" />
 
 			<?php /* Honeypot — bots fill every field; real users never see this. */ ?>
-			<div style="position:absolute;inset-inline-start:-9999px;inset-block-start:auto;inline-size:1px;block-size:1px;overflow:hidden;" aria-hidden="true">
+			<div style="display:none;" aria-hidden="true">
 				<label for="dash-support-hp"><?php esc_html_e( 'Website', PC4S_TEXTDOMAIN ); ?></label>
 				<input type="text" id="dash-support-hp" name="pc4s_hp_website" tabindex="-1" autocomplete="off" value="" />
 			</div>

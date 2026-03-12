@@ -324,7 +324,7 @@ get_header();
 						<input type="hidden" name="source_page" value="<?php echo esc_attr( home_url( add_query_arg( [] ) ) ); ?>" />
 						<input type="hidden" name="_redirect"   value="<?php echo esc_attr( $form_redirect ); ?>" />
 						<?php /* Honeypot — bots fill every field; real users never see this one. */ ?>
-						<div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+							<div style="display:none;" aria-hidden="true">
 							<label for="contact-hp"><?php esc_html_e( 'Website', 'pc4s' ); ?></label>
 							<input type="text" id="contact-hp" name="pc4s_hp_website" tabindex="-1" autocomplete="off" value="" />
 						</div>

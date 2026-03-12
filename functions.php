@@ -42,6 +42,7 @@ function pc4s_load_i18n_files() {
     require_once PC4S_THEME_DIR . '/inc/admin/forms-page.php';
     require_once PC4S_THEME_DIR . '/inc/admin/form-entries-page.php';
     require_once PC4S_THEME_DIR . '/inc/admin/settings-page.php';
+    require_once PC4S_THEME_DIR . '/inc/admin/smtp-page.php';
     require_once PC4S_THEME_DIR . '/inc/classes/admin/class-admin-menu.php';
     require_once PC4S_THEME_DIR . '/inc/classes/class-event-query.php';
 
@@ -49,6 +50,9 @@ function pc4s_load_i18n_files() {
     PC4S\Classes\CustomLogin::get_instance();
     PC4S\Classes\CoreCustomizer::get_instance();
     PC4S\Classes\Dashboard::get_instance();
+
+    // Bootstrap form handling (registers admin_post handlers + DB table check).
+    PC4S\Classes\Custom_Forms::init();
 
     // Initialize event system
     PC4S\Classes\PostTypes\Event::get_instance();
@@ -62,5 +66,8 @@ function pc4s_load_i18n_files() {
     PC4S\Admin\FormsPage::get_instance();
     PC4S\Admin\FormEntriesPage::get_instance();
     PC4S\Admin\SettingsPage::get_instance();
+    // SmtpPage must be instantiated on every request so the phpmailer_init
+    // hook is registered for both admin and frontend wp_mail() calls.
+    PC4S\Admin\SmtpPage::get_instance();
 }
 add_action('init', 'pc4s_load_i18n_files', 0);

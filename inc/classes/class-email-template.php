@@ -7,7 +7,7 @@
  * submitted. All three rendering engines — desktop clients, webmail, and
  * mobile — are handled through a hybrid table/CSS approach.
  *
- * Design system (all colours in HSL, mirroring _custom-properties.scss):
+ * Design system (all colors in HSL, mirroring _custom-properties.scss):
  *   Dark bg:     hsl(223, 48%, 11%)  — header / footer (--clr-dark-blue)
  *   Red accent:  hsl(0, 85%, 52%)    — accent bar / badge (--clr-primary-500)
  *   Blue:        hsl(230, 97%, 30%)  — links / info card  (--clr-secondary-600)
@@ -42,13 +42,13 @@ class Email_Template {
 	private const C_MUTED   = 'hsl(210, 8%, 40%)';    // label / subtext
 	private const C_BORDER  = 'hsl(210, 10%, 90%)';   // row dividers
 	private const C_PAGE_BG = 'hsl(210, 15%, 95%)';   // outer wrapper
-	private const C_WHITE   = '#ffffff';
+	private const C_WHITE   = 'hsl(0, 0%, 100%)';
 	private const C_ROW_ALT = 'hsl(217, 33%, 97%)';   // alternating row
 	private const C_INFO_BG = 'hsl(230, 60%, 97%)';   // info notice bg
 	private const C_INFO_BD = 'hsl(230, 45%, 88%)';   // info notice border
 	private const C_INFO_TX = 'hsl(230, 97%, 25%)';   // info notice text
 
-	/** Per-form-type badge colours (fallback: blue). */
+	/** Per-form-type badge colors (fallback: blue). */
 	private const BADGE_COLORS = [
 		'contact_us'    => self::C_BLUE,
 		'donate'        => 'hsl(142, 71%, 35%)',  // green
@@ -62,7 +62,7 @@ class Email_Template {
 	 * Build the complete HTML notification email for a form submission.
 	 *
 	 * @param array  $form        Form definition (id, label, fields, …).
-	 * @param array  $field_data  Submitted and sanitised field values.
+	 * @param array  $field_data  Submitted and sanitized field values.
 	 * @param string $source_page URL of the originating page.
 	 * @return string             Complete UTF-8 HTML email string.
 	 */
@@ -180,23 +180,23 @@ class Email_Template {
 		return <<<HTML
 <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;">
   <tr>
-    <td style="padding:32px 40px 0;">
+    <td style="padding:2rem 2.5rem 0;">
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;">
         <tr>
           <td class="total-label-td"
               id="donation-amount-label"
-              style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:20px;font-weight:700;color:{$c_text};line-height:1.2;vertical-align:middle;">
+              style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:1.25rem;font-weight:700;color:{$c_text};line-height:1.2;vertical-align:middle;">
             Donation Amount
           </td>
           <td class="total-value-td"
               align="right"
               aria-labelledby="donation-amount-label"
-              style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:32px;font-weight:800;color:{$c_red};line-height:1.2;vertical-align:middle;">
+              style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:2rem;font-weight:800;color:{$c_red};line-height:1.2;vertical-align:middle;">
             {$amount_fmt}
           </td>
         </tr>
       </table>
-      <hr role="separator" style="height:1px;background-color:{$c_border};border:none;margin:20px 0 0;">
+      <hr role="separator" style="height:1px;background-color:{$c_border};border:none;margin:1.25rem 0 0;">
     </td>
   </tr>
 </table>
@@ -208,7 +208,7 @@ HTML;
 	 *
 	 * @param string $label     Field label (already escaped).
 	 * @param string $value     Field value (already escaped unless $raw = true).
-	 * @param string $bg        Row background colour.
+	 * @param string $bg        Row background color.
 	 * @param bool   $escape    Whether to esc_html() the value.
 	 */
 	private static function field_row( string $label, string $value, string $bg, bool $escape = true ): string {
@@ -221,15 +221,15 @@ HTML;
 		return <<<HTML
 <tr>
   <td class="field-row-cell"
-      style="background-color:{$bg};padding:14px 40px;border-bottom:1px solid {$c_border};">
+      style="background-color:{$bg};padding:.875rem 2.5rem;border-bottom:1px solid {$c_border};">
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse:collapse;">
       <tr>
         <td class="field-label-td"
-            style="font-family:{$ff};font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{$c_muted};width:38%;padding-right:16px;vertical-align:top;">
+            style="font-family:{$ff};font-size:.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{$c_muted};width:38%;padding-right:1rem;vertical-align:top;">
           {$label}
         </td>
         <td class="field-value-td"
-            style="font-family:{$ff};font-size:15px;color:{$c_text};line-height:1.5;vertical-align:top;">
+            style="font-family:{$ff};font-size:.9375rem;color:{$c_text};line-height:1.5;vertical-align:top;">
           {$value_out}
         </td>
       </tr>
@@ -252,9 +252,9 @@ HTML;
 		return <<<HTML
 <tr>
   <td class="field-row-cell"
-      style="background-color:{$bg};padding:16px 40px;border-bottom:1px solid {$c_border};">
-    <p style="margin:0 0 6px;font-family:{$ff};font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{$c_muted};">{$label}</p>
-    <p style="margin:0;font-family:{$ff};font-size:15px;color:{$c_text};line-height:1.65;">{$value_out}</p>
+      style="background-color:{$bg};padding:1rem 2.5rem;border-bottom:1px solid {$c_border};">
+    <p style="margin:0 0 0.375rem;font-family:{$ff};font-size:.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{$c_muted};">{$label}</p>
+    <p style="margin:0;font-family:{$ff};font-size:.9375rem;color:{$c_text};line-height:1.65;">{$value_out}</p>
   </td>
 </tr>
 HTML;
@@ -322,227 +322,233 @@ HTML;
 
   <style>
     /* ── Reset ───────────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; }
+    *, 
+	*::before, 
+	*::after { 
+		box-sizing: border-box; 
+	}
     body, table, td, a {
-      -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust:     100%;
+		-webkit-text-size-adjust: 100%;
+		-ms-text-size-adjust:     100%;
     }
     table, td {
-      mso-table-lspace: 0pt;
-      mso-table-rspace: 0pt;
+		mso-table-lspace: 0pt;
+		mso-table-rspace: 0pt;
     }
     img {
-      -ms-interpolation-mode: bicubic;
-      border:          0;
-      height:          auto;
-      line-height:     100%;
-      outline:         none;
-      text-decoration: none;
+		line-height:     100%;
+		text-decoration: none;
+		-ms-interpolation-mode: bicubic;
+		border:          0;
+		height:          auto;
+		outline:         none;
     }
 
     /* ── Suppress Apple data-detectors link styling ─────────────────── */
     a[x-apple-data-detectors] {
-      color:           inherit !important;
-      text-decoration: none   !important;
-      font-size:       inherit !important;
-      font-family:     inherit !important;
-      font-weight:     inherit !important;
-      line-height:     inherit !important;
+		color:           inherit !important;
+		text-decoration: none   !important;
+		font-size:       inherit !important;
+		font-family:     inherit !important;
+		font-weight:     inherit !important;
+		line-height:     inherit !important;
     }
     /* Gmail blue-link override */
     u + #body a,
     #MessageViewBody a {
-      color:           inherit;
-      text-decoration: none;
-      font-size:       inherit;
-      font-family:     inherit;
-      font-weight:     inherit;
-      line-height:     inherit;
+		color:           inherit;
+		font-size:       inherit;
+		font-family:     inherit;
+		font-weight:     inherit;
+		text-decoration: none;
+		line-height:     inherit;
     }
 
     /* ── CSS Custom Properties (supported in modern clients) ─────────── */
     :root {
-      --email-dark:    <?php echo $c_dark; ?>;
-      --email-red:     <?php echo $c_red; ?>;
-      --email-blue:    <?php echo $c_blue; ?>;
-      --email-text:    <?php echo $c_text; ?>;
-      --email-muted:   <?php echo $c_muted; ?>;
-      --email-border:  <?php echo $c_border; ?>;
-      --email-page-bg: <?php echo $c_page_bg; ?>;
-      --email-white:   <?php echo $c_white; ?>;
+		--email-dark:    <?php echo $c_dark; ?>;
+		--email-red:     <?php echo $c_red; ?>;
+		--email-blue:    <?php echo $c_blue; ?>;
+		--email-text:    <?php echo $c_text; ?>;
+		--email-muted:   <?php echo $c_muted; ?>;
+		--email-border:  <?php echo $c_border; ?>;
+		--email-page-bg: <?php echo $c_page_bg; ?>;
+		--email-white:   <?php echo $c_white; ?>;
     }
 
     /* ── Base ────────────────────────────────────────────────────────── */
     body {
-      margin:           0 !important;
-      padding:          0 !important;
-      background-color: <?php echo $c_page_bg; ?>;
-      color:            <?php echo $c_text; ?>;
-      font-family:      <?php echo $ff; ?>;
+		color:            <?php echo $c_text; ?>;
+		background-color: <?php echo $c_page_bg; ?>;
+		font-family:      <?php echo $ff; ?>;
+		padding:          0 !important;
+		margin:           0 !important;
     }
 
     /* ── Container ───────────────────────────────────────────────────── */
     .email-outer {
-      background-color: <?php echo $c_page_bg; ?>;
-      padding-block:    32px;
+		background-color: <?php echo $c_page_bg; ?>;
+		padding-block:    2rem;
     }
     .email-container {
-      max-width:        640px;
-      margin-inline:    auto;
-      background-color: <?php echo $c_white; ?>;
-      border-radius:    8px;
-      overflow:         hidden;
-      box-shadow:       0 4px 24px hsl(210,15%,12%,0.10);
+		background-color: <?php echo $c_white; ?>;
+		max-width:        62.5rem;
+		margin-inline:    auto;
+		border-radius:    .5rem;
+		overflow:         hidden;
+		box-shadow:       0 4px 24px hsl(210,15%,12%,0.10);
     }
 
     /* ── Header ─────────────────────────────────────────────────────── */
     .email-header {
-      background-color: <?php echo $c_dark; ?>;
-      padding:          28px 40px;
+		background-color: <?php echo $c_dark; ?>;
+		padding:          1.75rem 2.5rem;
     }
     .header-date {
-      font-family: <?php echo $ff; ?>;
-      font-size:   13px;
-      color:       hsl(210,20%,70%);
-      text-align:  right;
-      line-height: 1.5;
-      white-space: nowrap;
+		color:       hsl(210,20%,70%);
+		font-family: <?php echo $ff; ?>;
+		font-size:   .8125rem;
+		text-align:  right;
+		line-height: 1.5;
+		white-space: nowrap;
     }
 
     /* ── Accent bar ──────────────────────────────────────────────────── */
     .accent-bar {
-      height:           4px;
-      background-color: <?php echo $c_red; ?>;
-      line-height:      0;
-      font-size:        0;
+		background-color: <?php echo $c_red; ?>;
+		font-size:        0;
+		line-height:      0;
+		height:           .25rem;
     }
 
     /* ── Hero ────────────────────────────────────────────────────────── */
     .email-hero {
-      background-color: <?php echo $c_dark; ?>;
-      padding:          32px 40px 40px;
+		background-color: <?php echo $c_dark; ?>;
+		padding:          2rem 2.5rem 2.5rem;
     }
     .hero-badge {
-      display:          inline-block;
-      font-family:      <?php echo $ff; ?>;
-      font-size:        11px;
-      font-weight:      700;
-      letter-spacing:   0.10em;
-      text-transform:   uppercase;
-      color:            <?php echo $c_white; ?>;
-      background-color: <?php echo $badge_color; ?>;
-      padding:          4px 12px;
-      border-radius:    100px;
-      margin-bottom:    14px;
+		color:            <?php echo $c_white; ?>;
+		background-color: <?php echo $badge_color; ?>;
+		font-family:      <?php echo $ff; ?>;
+		font-size:        .75rem;
+		font-weight:      700;
+		letter-spacing:   0.10em;
+		text-transform:   uppercase;
+		display:          inline-block;
+		padding:          .25rem .75rem;
+		margin-bottom:    .875rem;
+		border-radius:    6.25rem;
     }
     .hero-title {
-      margin:           0;
-      font-family:      <?php echo $ff; ?>;
-      font-size:        32px;
-      font-weight:      800;
-      color:            <?php echo $c_white; ?>;
-      line-height:      1.15;
-      letter-spacing:   -0.02em;
+		color:            <?php echo $c_white; ?>;
+		font-family:      <?php echo $ff; ?>;
+		font-size:        2rem;
+		font-weight:      800;
+		line-height:      1.15;
+		letter-spacing:   -0.02em;
+		margin:           0;
     }
     .hero-subtitle {
-      margin:      10px 0 0;
-      font-family: <?php echo $ff; ?>;
-      font-size:   15px;
-      color:       hsl(210,20%,72%);
-      line-height: 1.5;
+		color:       hsl(210,20%,72%);
+		font-family: <?php echo $ff; ?>;
+		font-size:   .9375rem;
+		line-height: 1.5;
+		margin:      10px 0 0;
     }
 
     /* ── Body ────────────────────────────────────────────────────────── */
-    .email-body { background-color: <?php echo $c_white; ?>; }
+    .email-body { 
+		background-color: <?php echo $c_white; ?>;
+	 }
 
     /* Info notice card */
     .info-card {
-      margin:           28px 40px 0;
-      padding:          14px 18px;
-      background-color: <?php echo $c_info_bg; ?>;
-      border:           1px solid <?php echo $c_info_bd; ?>;
-      border-radius:    8px;
+		background-color: <?php echo $c_info_bg; ?>;
+		border:           1px solid <?php echo $c_info_bd; ?>;
+		border-radius:    .5rem;
+		padding:          .875rem 1.125rem;
+		margin:           1.75rem 2.5rem 0;
     }
     .info-icon {
-      display:          inline-block;
-      width:            22px;
-      height:           22px;
-      background-color: <?php echo $c_blue; ?>;
-      border-radius:    50%;
-      color:            <?php echo $c_white; ?>;
-      text-align:       center;
-      line-height:      22px;
-      font-size:        13px;
-      font-weight:      800;
-      font-family:      <?php echo $ff; ?>;
-      flex-shrink:      0;
+		color:            <?php echo $c_white; ?>;
+		background-color: <?php echo $c_blue; ?>;
+		font-family:      <?php echo $ff; ?>;
+		font-size:        .8125rem;
+		font-weight:      800;
+		text-align:       center;
+		line-height:      1.375rem;
+		display:          inline-block;
+		flex-shrink:      0;
+		width:            1.375rem;
+		height:           1.375rem;
+		border-radius:    50%;
     }
     .info-text {
-      margin:      0;
-      font-family: <?php echo $ff; ?>;
-      font-size:   14px;
-      color:       <?php echo $c_info_tx; ?>;
-      line-height: 1.55;
+		color:       <?php echo $c_info_tx; ?>;
+		font-family: <?php echo $ff; ?>;
+		font-size:   .875rem;
+		line-height: 1.55;
+		margin:      0;
     }
 
     /* Fields section header */
     .section-label {
-      padding:     24px 40px 10px;
+		padding:     1.5rem 2.5rem .625rem;
     }
     .section-label-text {
-      margin:          0;
-      font-family:     <?php echo $ff; ?>;
-      font-size:       11px;
-      font-weight:     700;
-      letter-spacing:  0.08em;
-      text-transform:  uppercase;
-      color:           <?php echo $c_muted; ?>;
+		color:           <?php echo $c_muted; ?>;
+		font-family:     <?php echo $ff; ?>;
+		font-size:       .75rem;
+		font-weight:     700;
+		letter-spacing:  0.08em;
+		text-transform:  uppercase;
+		margin:          0;
     }
 
     /* ── Footer ─────────────────────────────────────────────────────── */
     .email-footer {
-      background-color: <?php echo $c_dark; ?>;
-      padding:          32px 40px;
+		background-color: <?php echo $c_dark; ?>;
+		padding:          2rem 2.5rem;
     }
     .footer-addr {
-      margin:      0 0 16px;
-      font-family: <?php echo $ff; ?>;
-      font-size:   13px;
-      color:       hsl(210,20%,60%);
-      line-height: 1.7;
+		color:       hsl(210,20%,60%);
+		font-family: <?php echo $ff; ?>;
+		font-size:   .8125rem;
+		line-height: 1.7;
+		margin:      0 0 1rem;
     }
     .footer-divider {
-      height:           1px;
-      background-color: hsl(223,40%,20%);
-      border:           none;
-      margin:           0 0 18px;
+		background-color: hsl(223,40%,20%);
+		border:           none;
+		margin:           0 0 1.125rem;
+		height:           1px;
     }
     .footer-note {
-      margin:      0;
-      font-family: <?php echo $ff; ?>;
-      font-size:   12px;
-      color:       hsl(210,15%,45%);
-      line-height: 1.6;
+		color:       hsl(210,15%,45%);
+		font-family: <?php echo $ff; ?>;
+		font-size:   .75rem;
+		line-height: 1.6;
+		margin:      0;
     }
 
     /* ── Responsive ──────────────────────────────────────────────────── */
-    @media screen and (max-width: 640px) {
+    @media screen and (max-width: 62.5rem) {
       .email-outer      { padding-block: 0 !important; }
       .email-container  { border-radius: 0 !important; box-shadow: none !important; }
-      .email-header     { padding: 18px 24px !important; }
-      .email-hero       { padding: 22px 24px 30px !important; }
-      .hero-title       { font-size: 24px !important; }
-      .info-card        { margin: 24px 24px 0 !important; }
-      .section-label    { padding: 20px 24px 8px !important; }
-      .email-footer     { padding: 24px !important; }
-      .field-row-cell   { padding: 12px 24px !important; }
+      .email-header     { padding: 1.125rem 1.5rem !important; }
+      .email-hero       { padding: 1.375rem 1.5rem 1.875rem !important; }
+      .hero-title       { font-size: 1.5rem !important; }
+      .info-card        { margin: 1.5rem 1.5rem 0 !important; }
+      .section-label    { padding: 1.25rem 1.5rem 0.5rem !important; }
+      .email-footer     { padding: 1.5rem !important; }
+      .field-row-cell   { padding: 0.75rem 1.5rem !important; }
       /* Stack label / value on narrow screens */
       .field-label-td,
       .field-value-td   { display: block !important; width: 100% !important; padding-right: 0 !important; }
       /* Stack donation total */
       .total-label-td,
       .total-value-td   { display: block !important; width: 100% !important; }
-      .total-value-td   { text-align: left !important; font-size: 24px !important; }
+      .total-value-td   { text-align: left !important; font-size: 1.5rem !important; }
     }
 
     /* ── Dark mode ───────────────────────────────────────────────────── */
@@ -572,14 +578,14 @@ HTML;
 
   <!--
     ══════════════════════════════════════════════════════════════════════
-    OUTER WRAPPER — full-width background colour
+    OUTER WRAPPER — full-width background color
     ══════════════════════════════════════════════════════════════════════
   -->
   <table role="presentation"
          border="0" cellpadding="0" cellspacing="0"
          width="100%"
          class="email-outer"
-         style="border-collapse:collapse;background-color:<?php echo $c_page_bg; ?>;padding-top:32px;padding-bottom:32px;">
+         style="border-collapse:collapse;background-color:<?php echo $c_page_bg; ?>;padding-top:2rem;padding-bottom:2rem;">
     <tr>
       <td align="center" style="padding:0;">
 
@@ -592,14 +598,14 @@ HTML;
                border="0" cellpadding="0" cellspacing="0"
                width="100%"
                class="email-container"
-               style="border-collapse:collapse;max-width:640px;background-color:<?php echo $c_white; ?>;border-radius:8px;overflow:hidden;box-shadow:0 4px 24px hsl(210,15%,12%,0.10);">
+               style="border-collapse:collapse;max-width:62.5rem;background-color:<?php echo $c_white; ?>;border-radius:.5rem;overflow:hidden;box-shadow:0 .25rem 1.5rem hsl(210,15%,12%,0.10);">
 
           <!-- ╔══════════════════════════════════════════════════════════╗ -->
           <!-- ║  HEADER — dark background, logo left, date right        ║ -->
           <!-- ╚══════════════════════════════════════════════════════════╝ -->
           <tr>
             <td class="email-header"
-                style="background-color:<?php echo $c_dark; ?>;padding:28px 40px;">
+                style="background-color:<?php echo $c_dark; ?>;padding:1.75rem 2.5rem;">
               <table role="presentation"
                      border="0" cellpadding="0" cellspacing="0"
                      width="100%"
@@ -613,14 +619,14 @@ HTML;
                            alt="<?php echo esc_attr( $site_name ); ?>"
                            width="140"
                            height="auto"
-                           style="display:block;border:0;height:auto;max-height:52px;width:auto;max-width:160px;">
+                           style="display:block;border:0;height:auto;max-height:3.25rem;width:auto;max-width:10rem;">
                     </a>
                   </td>
                   <!-- Date/time -->
                   <td valign="middle"
                       align="right"
                       class="header-date"
-                      style="font-family:<?php echo $ff; ?>;font-size:13px;color:hsl(210,20%,70%);text-align:right;line-height:1.5;white-space:nowrap;">
+                      style="font-family:<?php echo $ff; ?>;font-size:.8125rem;color:hsl(210,20%,70%);text-align:right;line-height:1.5;white-space:nowrap;">
                     <time datetime="<?php echo $date_iso; ?>">
                       <?php echo $date_fmt; ?><br>
                       <span aria-label="at <?php echo $time_fmt; ?>"><?php echo $time_fmt; ?></span>
@@ -645,24 +651,24 @@ HTML;
           <!-- ╚══════════════════════════════════════════════════════════╝ -->
           <tr>
             <td class="email-hero"
-                style="background-color:<?php echo $c_dark; ?>;padding:32px 40px 40px;">
+                style="background-color:<?php echo $c_dark; ?>;padding:2rem 2.5rem 2.5rem;">
 
               <!-- Badge pill -->
               <div class="hero-badge"
-                   style="display:inline-block;font-family:<?php echo $ff; ?>;font-size:11px;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:<?php echo $c_white; ?>;background-color:<?php echo $badge_color; ?>;padding:4px 12px;border-radius:100px;margin-bottom:14px;">
+                   style="display:inline-block;font-family:<?php echo $ff; ?>;font-size:.6875rem;font-weight:700;letter-spacing:0.10em;text-transform:uppercase;color:<?php echo $c_white; ?>;background-color:<?php echo $badge_color; ?>;padding:.25rem .75rem;border-radius:6.25rem;margin-bottom:.875rem;">
                 <?php echo $form_label; ?>
               </div>
 
               <!-- Heading -->
               <h1 class="hero-title"
                   role="heading" aria-level="1"
-                  style="margin:0;font-family:<?php echo $ff; ?>;font-size:32px;font-weight:800;color:<?php echo $c_white; ?>;line-height:1.15;letter-spacing:-0.02em;">
+                  style="margin:0;font-family:<?php echo $ff; ?>;font-size:2rem;font-weight:800;color:<?php echo $c_white; ?>;line-height:1.15;letter-spacing:-0.02em;">
                 New <?php echo $form_label; ?> Received
               </h1>
 
               <!-- Sub-heading -->
               <p class="hero-subtitle"
-                 style="margin:10px 0 0;font-family:<?php echo $ff; ?>;font-size:15px;color:hsl(210,20%,72%);line-height:1.5;">
+                 style="margin:.625rem 0 0;font-family:<?php echo $ff; ?>;font-size:.9375rem;color:hsl(210,20%,72%);line-height:1.5;">
                 Someone submitted the
                 <strong style="color:<?php echo $c_white; ?>;font-weight:600;"><?php echo $form_label; ?></strong>
                 form on your website.
@@ -686,7 +692,7 @@ HTML;
               <div class="info-card"
                    role="note"
                    aria-label="Notification information"
-                   style="margin:28px 40px 0;padding:14px 18px;background-color:<?php echo $c_info_bg; ?>;border:1px solid <?php echo $c_info_bd; ?>;border-radius:8px;">
+                   style="margin:1.75rem 2.5rem 0;padding:.875rem 1.125rem;background-color:<?php echo $c_info_bg; ?>;border:1px solid <?php echo $c_info_bd; ?>;border-radius:.5rem;">
                 <table role="presentation"
                        border="0" cellpadding="0" cellspacing="0"
                        width="100%"
@@ -695,17 +701,17 @@ HTML;
                     <!-- "i" icon -->
                     <td valign="top"
                         width="32"
-                        style="padding-right:10px;padding-top:2px;">
+                        style="padding-right:.625rem;padding-top:.1215rem;">
                       <div class="info-icon"
                            aria-hidden="true"
-                           style="display:inline-block;width:22px;height:22px;background-color:<?php echo $c_blue; ?>;border-radius:50%;color:<?php echo $c_white; ?>;text-align:center;line-height:22px;font-size:13px;font-weight:800;font-family:<?php echo $ff; ?>;">
+                           style="display:inline-block;width:1.375rem;height:1.375rem;background-color:<?php echo $c_blue; ?>;border-radius:50%;color:<?php echo $c_white; ?>;text-align:center;line-height:1.375rem;font-size:.8125rem;font-weight:800;font-family:<?php echo $ff; ?>;">
                         i
                       </div>
                     </td>
                     <!-- Text -->
                     <td valign="top">
                       <p class="info-text"
-                         style="margin:0;font-family:<?php echo $ff; ?>;font-size:14px;color:<?php echo $c_info_tx; ?>;line-height:1.55;">
+                         style="margin:0;font-family:<?php echo $ff; ?>;font-size:.875rem;color:<?php echo $c_info_tx; ?>;line-height:1.55;">
                         <strong>This is an automated notification.</strong>
                         It was generated when someone submitted the <?php echo $form_label; ?> form
                         on <a href="<?php echo $site_url; ?>"
@@ -718,10 +724,10 @@ HTML;
               </div><!-- / .info-card -->
 
               <!-- "Submission Details" section label -->
-              <div class="section-label" style="padding:24px 40px 10px;">
+              <div class="section-label" style="padding:1.5rem 2.5rem .625rem;">
                 <h2 class="section-label-text"
                     role="heading" aria-level="2"
-                    style="margin:0;font-family:<?php echo $ff; ?>;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:<?php echo $c_muted; ?>;">
+                    style="margin:0;font-family:<?php echo $ff; ?>;font-size:.6875rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:<?php echo $c_muted; ?>;">
                   Submission Details
                 </h2>
               </div>
@@ -737,7 +743,7 @@ HTML;
               </table>
 
               <!-- Bottom spacer -->
-              <div style="height:40px;line-height:40px;font-size:0;" aria-hidden="true">&nbsp;</div>
+              <div style="height:2.5rem;line-height:2.5rem;font-size:0;" aria-hidden="true">&nbsp;</div>
 
             </td>
           </tr><!-- / BODY -->
@@ -747,7 +753,7 @@ HTML;
           <!-- ╚══════════════════════════════════════════════════════════╝ -->
           <tr>
             <td class="email-footer"
-                style="background-color:<?php echo $c_dark; ?>;padding:32px 40px;">
+                style="background-color:<?php echo $c_dark; ?>;padding:2rem 2.5rem;">
 
               <!-- Footer logo -->
               <a href="<?php echo $site_url; ?>"
@@ -756,13 +762,13 @@ HTML;
                      alt="<?php echo esc_attr( $site_name ); ?>"
                      width="100"
                      height="auto"
-                     style="display:block;border:0;height:auto;max-height:40px;width:auto;margin-bottom:16px;">
+                     style="display:block;border:0;height:auto;max-height:2.5rem;width:auto;margin-bottom:1rem;">
               </a>
 
-              <!-- Organisation info -->
-              <address style="font-style:normal;" aria-label="Organisation contact information">
+              <!-- Organization info -->
+              <address style="font-style:normal;" aria-label="Organization contact information">
                 <p class="footer-addr"
-                   style="margin:0 0 16px;font-family:<?php echo $ff; ?>;font-size:13px;color:hsl(210,20%,60%);line-height:1.7;">
+                   style="margin:0 0 1rem;font-family:<?php echo $ff; ?>;font-size:.8125rem;color:hsl(210,20%,60%);line-height:1.7;">
                   <?php echo $site_name; ?><br>
                   <a href="<?php echo $site_url; ?>"
                      style="color:hsl(210,20%,72%);text-decoration:underline;"><?php echo $site_display_url; ?></a>
@@ -772,11 +778,11 @@ HTML;
               <!-- Divider -->
               <hr class="footer-divider"
                   role="separator"
-                  style="height:1px;background-color:hsl(223,40%,20%);border:none;margin:0 0 18px;">
+                  style="height:1px;background-color:hsl(223,40%,20%);border:none;margin:0 0 1.125rem;">
 
               <!-- Automated-message note -->
               <p class="footer-note"
-                 style="margin:0;font-family:<?php echo $ff; ?>;font-size:12px;color:hsl(210,15%,45%);line-height:1.6;">
+                 style="margin:0;font-family:<?php echo $ff; ?>;font-size:.75rem;color:hsl(210,15%,45%);line-height:1.6;">
                 This is an automated admin notification sent by
                 <a href="<?php echo $site_url; ?>"
                    style="color:hsl(210,20%,65%);text-decoration:underline;"><?php echo $site_name; ?></a>.

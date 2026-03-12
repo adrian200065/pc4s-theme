@@ -30,6 +30,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use PC4S\Admin\FooterSettings;
+use PC4S\Classes\Custom_Forms;
 
 // ---------------------------------------------------------------------------
 // Resolve all fields once — zero duplicate DB calls in the markup below.
@@ -70,6 +71,9 @@ $cu_error   = ( 'error'   === $qs_status && 'contact_us' === $qs_form_id );
 
 $form_redirect = esc_url_raw( home_url( add_query_arg( [] ) ) );
 $form_redirect = remove_query_arg( [ 'pc4s_form', 'form_id' ], $form_redirect );
+
+// Load form-field definitions (merged with any admin-saved overrides).
+$_cu_fields = Custom_Forms::get_form( 'contact_us' )['fields'] ?? [];
 
 // ---------------------------------------------------------------------------
 // Inline SVG helper — returns a hardcoded safe SVG by icon key.
@@ -341,34 +345,32 @@ get_header();
 						<div class="contact-form__row">
 							<div class="contact-form__group">
 								<label for="contact-first-name" class="contact-form__label">
-									<?php esc_html_e( 'First Name', 'pc4s' ); ?>
-									<abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr>
-								</label>
-								<input
-									type="text"
-									id="contact-first-name"
-									name="first_name"
-									class="contact-form__input"
-									placeholder="<?php esc_attr_e( 'First Name', 'pc4s' ); ?>"
-									autocomplete="given-name"
-									required
-									aria-required="true"
+								<?php echo esc_html( $_cu_fields['first_name']['label'] ); ?>
+								<?php if ( ! empty( $_cu_fields['first_name']['required'] ) ) : ?><abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr><?php endif; ?>
+							</label>
+							<input
+								type="text"
+								id="contact-first-name"
+								name="first_name"
+								class="contact-form__input"
+								placeholder="<?php echo esc_attr( $_cu_fields['first_name']['placeholder'] ?? '' ); ?>"
+								autocomplete="given-name"
+								<?php echo ! empty( $_cu_fields['first_name']['required'] ) ? 'required aria-required="true"' : ''; ?>
 								/>
 							</div>
 							<div class="contact-form__group">
 								<label for="contact-last-name" class="contact-form__label">
-									<?php esc_html_e( 'Last Name', 'pc4s' ); ?>
-									<abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr>
-								</label>
-								<input
-									type="text"
-									id="contact-last-name"
-									name="last_name"
-									class="contact-form__input"
-									placeholder="<?php esc_attr_e( 'Last Name', 'pc4s' ); ?>"
-									autocomplete="family-name"
-									required
-									aria-required="true"
+								<?php echo esc_html( $_cu_fields['last_name']['label'] ); ?>
+								<?php if ( ! empty( $_cu_fields['last_name']['required'] ) ) : ?><abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr><?php endif; ?>
+							</label>
+							<input
+								type="text"
+								id="contact-last-name"
+								name="last_name"
+								class="contact-form__input"
+								placeholder="<?php echo esc_attr( $_cu_fields['last_name']['placeholder'] ?? '' ); ?>"
+								autocomplete="family-name"
+								<?php echo ! empty( $_cu_fields['last_name']['required'] ) ? 'required aria-required="true"' : ''; ?>
 								/>
 							</div>
 						</div><!-- .contact-form__row -->
@@ -376,18 +378,17 @@ get_header();
 						<!-- Email -->
 						<div class="contact-form__group">
 							<label for="contact-email" class="contact-form__label">
-								<?php esc_html_e( 'Email Address', 'pc4s' ); ?>
-								<abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr>
-							</label>
-							<input
-								type="email"
-								id="contact-email"
-								name="email"
-								class="contact-form__input"
-								placeholder="<?php esc_attr_e( 'Email Address', 'pc4s' ); ?>"
-								autocomplete="email"
-								required
-								aria-required="true"
+							<?php echo esc_html( $_cu_fields['email']['label'] ); ?>
+							<?php if ( ! empty( $_cu_fields['email']['required'] ) ) : ?><abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr><?php endif; ?>
+						</label>
+						<input
+							type="email"
+							id="contact-email"
+							name="email"
+							class="contact-form__input"
+							placeholder="<?php echo esc_attr( $_cu_fields['email']['placeholder'] ?? '' ); ?>"
+							autocomplete="email"
+							<?php echo ! empty( $_cu_fields['email']['required'] ) ? 'required aria-required="true"' : ''; ?>
 								inputmode="email"
 							/>
 						</div><!-- .contact-form__group -->
@@ -395,34 +396,32 @@ get_header();
 						<!-- Subject -->
 						<div class="contact-form__group">
 							<label for="contact-subject" class="contact-form__label">
-								<?php esc_html_e( 'Subject', 'pc4s' ); ?>
-								<abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr>
-							</label>
-							<input
-								type="text"
-								id="contact-subject"
-								name="subject_line"
-								class="contact-form__input"
-								placeholder="<?php esc_attr_e( 'Subject', 'pc4s' ); ?>"
-								required
-								aria-required="true"
+							<?php echo esc_html( $_cu_fields['subject_line']['label'] ); ?>
+							<?php if ( ! empty( $_cu_fields['subject_line']['required'] ) ) : ?><abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr><?php endif; ?>
+						</label>
+						<input
+							type="text"
+							id="contact-subject"
+							name="subject_line"
+							class="contact-form__input"
+							placeholder="<?php echo esc_attr( $_cu_fields['subject_line']['placeholder'] ?? '' ); ?>"
+							<?php echo ! empty( $_cu_fields['subject_line']['required'] ) ? 'required aria-required="true"' : ''; ?>
 							/>
 						</div><!-- .contact-form__group -->
 
 						<!-- Message -->
 						<div class="contact-form__group">
 							<label for="contact-message" class="contact-form__label">
-								<?php esc_html_e( 'Message', 'pc4s' ); ?>
-								<abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr>
-							</label>
-							<textarea
-								id="contact-message"
-								name="message"
-								class="contact-form__textarea"
-								placeholder="<?php esc_attr_e( 'Message', 'pc4s' ); ?>"
-								rows="7"
-								required
-								aria-required="true"
+							<?php echo esc_html( $_cu_fields['message']['label'] ); ?>
+							<?php if ( ! empty( $_cu_fields['message']['required'] ) ) : ?><abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr><?php endif; ?>
+						</label>
+						<textarea
+							id="contact-message"
+							name="message"
+							class="contact-form__textarea"
+							placeholder="<?php echo esc_attr( $_cu_fields['message']['placeholder'] ?? '' ); ?>"
+							rows="7"
+							<?php echo ! empty( $_cu_fields['message']['required'] ) ? 'required aria-required="true"' : ''; ?>
 							></textarea>
 						</div><!-- .contact-form__group -->
 

@@ -9,8 +9,7 @@
  *   1. Page Banner      — parts/content/page-banner.php
  *   2. Why Give         — badge, heading, body, CTA
  *   3. Donation Form    — preset amounts, personal info, trust sidebar
- *   4. Events           — upcoming True Blue Peers 4 Success events
- *   5. More Ways (CTA)  — badge, heading, subtitle, action links
+ *   4. More Ways (CTA)  — badge, heading, subtitle, action links
  *
  * ACF field group: group_donate_page (acf-json/group_donate_page.json)
  *   – Manages all editable content. No hardcoded strings in markup.
@@ -36,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use PC4S\Classes\EventQuery;
+use PC4S\Classes\Custom_Forms;
 
 // ---------------------------------------------------------------------------
 // Resolve all ACF fields once — zero duplicate DB calls in the markup below.
@@ -64,33 +63,12 @@ $privacy_text      = (string) get_field( 'dp_privacy_text' );
 $trust_heading = (string) get_field( 'dp_trust_heading' );
 $trust_items   = (array)  get_field( 'dp_trust_items' ) ?: [];
 
-// --- Events Section ---
-$events_badge    = (string) get_field( 'dp_events_badge' );
-$events_heading  = (string) get_field( 'dp_events_heading' );
-$events_subtitle = (string) get_field( 'dp_events_subtitle' );
-$events_count    = max( 1, (int) get_field( 'dp_events_count' ) ?: 4 );
-$events_view_all = (string) get_field( 'dp_events_view_all_url' );
-
 // --- CTA Section ---
 $cta_badge     = (string) get_field( 'dp_cta_badge' );
 $cta_heading   = (string) get_field( 'dp_cta_heading' );
 $cta_subtitle  = (string) get_field( 'dp_cta_subtitle' );
 $cta_primary   = get_field( 'dp_cta_primary' );   // link field (array|null)
 $cta_secondary = get_field( 'dp_cta_secondary' ); // link field (array|null)
-
-// ---------------------------------------------------------------------------
-// Events Query — True Blue Peers 4 Success, executed once, cached locally.
-// ---------------------------------------------------------------------------
-$events_query   = null;
-$has_events     = false;
-
-if ( $events_heading ) {
-	$events_query = EventQuery::get_upcoming( $events_count, [ 'true-blue' ] );
-	$has_events   = $events_query->have_posts();
-	if ( ! $has_events ) {
-		wp_reset_postdata();
-	}
-}
 
 // ---------------------------------------------------------------------------
 // Form feedback — set by Custom_Forms::handle_submission() via query string.
@@ -105,6 +83,9 @@ $dn_error   = ( 'error'   === $qs_status && 'donate' === $qs_form_id );
 
 $form_redirect = esc_url_raw( home_url( add_query_arg( [] ) ) );
 $form_redirect = remove_query_arg( [ 'pc4s_form', 'form_id' ], $form_redirect );
+
+// Load form-field definitions (merged with any admin-saved overrides).
+$_dn_fields = Custom_Forms::get_form( 'donate' )['fields'] ?? [];
 
 // ---------------------------------------------------------------------------
 // Safe inline SVG helper — check-mark icon used in the trust sidebar.
@@ -301,33 +282,32 @@ get_header();
 							<div class="donate-form__row">
 								<div class="donate-form__group">
 									<label for="donor-first-name" class="donate-form__label">
-										<?php esc_html_e( 'First Name', 'pc4s' ); ?>
-										<abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr>
-									</label>
-									<input
-										type="text"
-										id="donor-first-name"
-										name="first_name"
-										class="donate-form__input"
-										autocomplete="given-name"
-										required
-										aria-required="true"
-										placeholder="<?php esc_attr_e( 'First Name', 'pc4s' ); ?>"
+											<?php echo esc_html( $_dn_fields['first_name']['label'] ); ?>
+											<?php if ( ! empty( $_dn_fields['first_name']['required'] ) ) : ?><abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr><?php endif; ?>
+										</label>
+										<input
+											type="text"
+											id="donor-first-name"
+											name="first_name"
+											class="donate-form__input"
+											autocomplete="given-name"
+											<?php echo ! empty( $_dn_fields['first_name']['required'] ) ? 'required aria-required="true"' : ''; ?>
+											placeholder="<?php echo esc_attr( $_dn_fields['first_name']['placeholder'] ?? '' ); ?>"
 									/>
 								</div>
 								<div class="donate-form__group">
 									<label for="donor-last-name" class="donate-form__label">
-										<?php esc_html_e( 'Last Name', 'pc4s' ); ?>
-									</label>
-									<input
-										type="text"
-										id="donor-last-name"
-										name="last_name"
-										class="donate-form__input"
-										autocomplete="family-name"
-										required
-										aria-required="true"
-										placeholder="<?php esc_attr_e( 'Last Name', 'pc4s' ); ?>"
+											<?php echo esc_html( $_dn_fields['last_name']['label'] ); ?>
+											<?php if ( ! empty( $_dn_fields['last_name']['required'] ) ) : ?><abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr><?php endif; ?>
+										</label>
+										<input
+											type="text"
+											id="donor-last-name"
+											name="last_name"
+											class="donate-form__input"
+											autocomplete="family-name"
+											<?php echo ! empty( $_dn_fields['last_name']['required'] ) ? 'required aria-required="true"' : ''; ?>
+											placeholder="<?php echo esc_attr( $_dn_fields['last_name']['placeholder'] ?? '' ); ?>"
 									/>
 								</div>
 							</div><!-- .donate-form__row -->
@@ -369,7 +349,7 @@ get_header();
 								aria-hidden="true"
 							>
 								<label for="donor-company-name" class="donate-form__label">
-									<?php esc_html_e( 'Company Name', 'pc4s' ); ?>
+									<?php echo esc_html( $_dn_fields['company_name']['label'] ); ?>
 									<abbr title="<?php esc_attr_e( 'required when visible', 'pc4s' ); ?>" aria-hidden="true">*</abbr>
 								</label>
 								<input
@@ -378,15 +358,15 @@ get_header();
 									name="company_name"
 									class="donate-form__input"
 									autocomplete="organization"
-									placeholder="<?php esc_attr_e( 'Your company name', 'pc4s' ); ?>"
+									placeholder="<?php echo esc_attr( $_dn_fields['company_name']['placeholder'] ?? '' ); ?>"
 								/>
 							</div>
 
 							<!-- Email -->
 							<div class="donate-form__group">
 								<label for="donor-email" class="donate-form__label">
-									<?php esc_html_e( 'Email Address', 'pc4s' ); ?>
-									<abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr>
+									<?php echo esc_html( $_dn_fields['email']['label'] ); ?>
+									<?php if ( ! empty( $_dn_fields['email']['required'] ) ) : ?><abbr title="<?php esc_attr_e( 'required', 'pc4s' ); ?>" aria-hidden="true">*</abbr><?php endif; ?>
 								</label>
 								<input
 									type="email"
@@ -394,9 +374,8 @@ get_header();
 									name="email"
 									class="donate-form__input"
 									autocomplete="email"
-									required
-									aria-required="true"
-									placeholder="<?php esc_attr_e( 'Email Address', 'pc4s' ); ?>"
+									<?php echo ! empty( $_dn_fields['email']['required'] ) ? 'required aria-required="true"' : ''; ?>
+									placeholder="<?php echo esc_attr( $_dn_fields['email']['placeholder'] ?? '' ); ?>"
 									inputmode="email"
 								/>
 							</div>
@@ -478,178 +457,7 @@ get_header();
 
 
 	<?php /* ================================================================
-	   SECTION 4: True Blue Peers 4 Success Events
-	   ================================================================ */ ?>
-	<?php if ( $events_heading && $has_events ) : ?>
-	<section
-		class="section events-preview donate-events"
-		id="donate-events"
-		aria-labelledby="donate-events-heading"
-	>
-		<div class="wrapper">
-			<div class="events-header">
-				<div class="section__header section__header--start">
-
-					<?php if ( $events_badge ) : ?>
-					<div class="section__badge">
-						<span class="section__badge-icon" aria-hidden="true"></span>
-						<span class="section__badge-text"><?php echo esc_html( $events_badge ); ?></span>
-					</div>
-					<?php endif; ?>
-
-					<h2 id="donate-events-heading" class="section__title">
-						<?php echo esc_html( $events_heading ); ?>
-					</h2>
-
-					<?php if ( $events_subtitle ) : ?>
-					<p class="section__subtitle"><?php echo wp_kses_post( $events_subtitle ); ?></p>
-					<?php endif; ?>
-
-				</div><!-- .section__header -->
-
-				<?php if ( $events_view_all ) : ?>
-				<a
-					href="<?php echo esc_url( $events_view_all ); ?>"
-					class="view-all-link"
-					aria-label="<?php esc_attr_e( 'View all upcoming events', 'pc4s' ); ?>"
-				>
-					<?php esc_html_e( 'View All Events', 'pc4s' ); ?>
-					<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<line x1="5" y1="12" x2="19" y2="12"></line>
-						<polyline points="12 5 19 12 12 19"></polyline>
-					</svg>
-				</a>
-				<?php endif; ?>
-
-			</div><!-- .events-header -->
-		</div><!-- .wrapper -->
-
-		<div class="wrapper">
-			<div
-				class="events-slider"
-				role="region"
-				aria-label="<?php esc_attr_e( 'Upcoming True Blue events slider', 'pc4s' ); ?>"
-				aria-roledescription="carousel"
-			>
-
-				<button
-					class="events-nav events-nav--prev"
-					type="button"
-					aria-label="<?php esc_attr_e( 'Previous event', 'pc4s' ); ?>"
-					aria-controls="donate-events-track"
-				>
-					<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<polyline points="15 18 9 12 15 6"></polyline>
-					</svg>
-				</button>
-
-				<ol class="events-track" id="donate-events-track" aria-live="polite">
-					<?php
-					$i            = 0;
-					$total_slides = $events_query->post_count;
-
-					while ( $events_query->have_posts() ) :
-						$events_query->the_post();
-						$i++;
-
-						$ev_id          = (int) get_the_ID();
-						$ev_date        = (string) get_field( 'event_date' );
-						$ev_start       = (string) get_field( 'event_start_time' );
-						$ev_end         = (string) get_field( 'event_end_time' );
-						$ev_location    = (string) get_field( 'event_location' );
-						$ev_cta_url     = (string) ( get_field( 'event_cta_url' ) ?: get_permalink() );
-						$ev_cta_text    = (string) ( get_field( 'event_cta_text' ) ?: __( 'Find Out More', 'pc4s' ) );
-						$ev_ts          = $ev_date ? strtotime( $ev_date ) : 0;
-						$ev_day         = $ev_ts ? gmdate( 'j', $ev_ts ) : '';
-						$ev_month       = $ev_ts ? strtoupper( gmdate( 'M', $ev_ts ) ) : '';
-						$ev_dt_start    = $ev_ts && $ev_start ? esc_attr( $ev_date . 'T' . $ev_start ) : '';
-						$ev_dt_end      = $ev_ts && $ev_end   ? esc_attr( $ev_date . 'T' . $ev_end )   : '';
-
-						$slide_label = sprintf(
-							/* translators: 1: slide number, 2: total, 3: event title */
-							esc_attr__( 'Event %1$d of %2$d: %3$s', 'pc4s' ),
-							$i,
-							$total_slides,
-							get_the_title()
-						);
-					?>
-					<li
-						class="event-slide"
-						role="group"
-						aria-roledescription="slide"
-						aria-label="<?php echo esc_attr( $slide_label ); ?>"
-					>
-
-						<div class="event-slide-panel" aria-hidden="true">
-							<?php if ( $ev_day && $ev_month ) : ?>
-							<div class="event-badge">
-								<span class="event-badge-day"><?php echo esc_html( $ev_day ); ?></span>
-								<span class="event-badge-month"><?php echo esc_html( $ev_month ); ?></span>
-							</div>
-							<?php endif; ?>
-						</div>
-
-						<div class="event-slide-content">
-							<h3 class="event-slide__title">
-								<a href="<?php echo esc_url( $ev_cta_url ); ?>">
-									<?php the_title(); ?>
-								</a>
-							</h3>
-
-							<?php if ( $ev_ts ) : ?>
-							<p class="event-slide__meta">
-								<time
-									class="event-slide__date"
-									<?php if ( $ev_dt_start ) : ?>datetime="<?php echo esc_attr( $ev_dt_start ); ?>"<?php endif; ?>
-								>
-									<?php
-									$display = $ev_month . ' ' . $ev_day;
-									if ( $ev_start ) {
-										$display .= ' @ ' . gmdate( 'g:i a', strtotime( $ev_start ) );
-									}
-									echo esc_html( $display );
-									?>
-								</time>
-
-								<?php if ( $ev_location ) : ?>
-								<span class="event-slide__sep" aria-hidden="true">&mdash;</span>
-								<span class="event-slide__location"><?php echo esc_html( $ev_location ); ?></span>
-								<?php endif; ?>
-							</p>
-							<?php endif; ?>
-
-							<a
-								href="<?php echo esc_url( $ev_cta_url ); ?>"
-								class="event-slide__cta btn btn--outline"
-							>
-								<?php echo esc_html( $ev_cta_text ); ?>
-							</a>
-						</div><!-- .event-slide-content -->
-
-					</li><!-- .event-slide -->
-					<?php endwhile; wp_reset_postdata(); ?>
-				</ol><!-- .events-track -->
-
-				<button
-					class="events-nav events-nav--next"
-					type="button"
-					aria-label="<?php esc_attr_e( 'Next event', 'pc4s' ); ?>"
-					aria-controls="donate-events-track"
-				>
-					<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<polyline points="9 18 15 12 9 6"></polyline>
-					</svg>
-				</button>
-
-			</div><!-- .events-slider -->
-		</div><!-- .wrapper -->
-
-	</section><!-- .donate-events -->
-	<?php endif; ?>
-
-
-	<?php /* ================================================================
-	   SECTION 5: More Ways to Support (CTA)
+	   SECTION 4: More Ways to Support (CTA)
 	   ================================================================ */ ?>
 	<?php if ( $cta_heading ) : ?>
 	<section class="section page-cta donate-cta" aria-labelledby="donate-cta-heading">

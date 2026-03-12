@@ -33,6 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use PC4S\Admin\SettingsPage;
+use PC4S\Classes\Custom_Forms;
 
 // ---------------------------------------------------------------------------
 // Resolve all ACF fields once — zero duplicate DB calls in the markup below.
@@ -112,6 +113,9 @@ $lp_error   = ( 'error'   === $qs_status && 'license_plate' === $qs_form_id );
  */
 $form_redirect  = esc_url_raw( home_url( add_query_arg( [] ) ) );
 $form_redirect  = remove_query_arg( [ 'pc4s_form', 'form_id' ], $form_redirect );
+
+// Load form-field definitions (merged with any admin-saved overrides).
+$_lp_fields = Custom_Forms::get_form( 'license_plate' )['fields'] ?? [];
 
 // ---------------------------------------------------------------------------
 // County list — all 95 Tennessee counties (static data).
@@ -512,19 +516,18 @@ get_header();
 					<div class="lp-form__row">
 						<div class="lp-form__group">
 							<label for="lp-first-name" class="lp-form__label">
-								<?php esc_html_e( 'First Name', 'pc4s' ); ?>
-								<span class="lp-form__required" aria-hidden="true">*</span>
-							</label>
-							<input
-								type="text"
-								id="lp-first-name"
-								name="first_name"
-								class="lp-form__input"
-								autocomplete="given-name"
-								required
-								aria-required="true"
-								aria-describedby="lp-first-name-hint"
-								placeholder="<?php esc_attr_e( 'e.g., Jane', 'pc4s' ); ?>"
+							<?php echo esc_html( $_lp_fields['first_name']['label'] ); ?>
+							<?php if ( ! empty( $_lp_fields['first_name']['required'] ) ) : ?><span class="lp-form__required" aria-hidden="true">*</span><?php endif; ?>
+						</label>
+						<input
+							type="text"
+							id="lp-first-name"
+							name="first_name"
+							class="lp-form__input"
+							autocomplete="given-name"
+							<?php echo ! empty( $_lp_fields['first_name']['required'] ) ? 'required aria-required="true"' : ''; ?>
+							aria-describedby="lp-first-name-hint"
+							placeholder="<?php echo esc_attr( $_lp_fields['first_name']['placeholder'] ?? '' ); ?>"
 							/>
 							<span id="lp-first-name-hint" class="lp-form__hint">
 								<?php esc_html_e( 'Enter your legal first name.', 'pc4s' ); ?>
@@ -532,19 +535,18 @@ get_header();
 						</div>
 						<div class="lp-form__group">
 							<label for="lp-last-name" class="lp-form__label">
-								<?php esc_html_e( 'Last Name', 'pc4s' ); ?>
-								<span class="lp-form__required" aria-hidden="true">*</span>
-							</label>
-							<input
-								type="text"
-								id="lp-last-name"
-								name="last_name"
-								class="lp-form__input"
-								autocomplete="family-name"
-								required
-								aria-required="true"
-								aria-describedby="lp-last-name-hint"
-								placeholder="<?php esc_attr_e( 'e.g., Smith', 'pc4s' ); ?>"
+							<?php echo esc_html( $_lp_fields['last_name']['label'] ); ?>
+							<?php if ( ! empty( $_lp_fields['last_name']['required'] ) ) : ?><span class="lp-form__required" aria-hidden="true">*</span><?php endif; ?>
+						</label>
+						<input
+							type="text"
+							id="lp-last-name"
+							name="last_name"
+							class="lp-form__input"
+							autocomplete="family-name"
+							<?php echo ! empty( $_lp_fields['last_name']['required'] ) ? 'required aria-required="true"' : ''; ?>
+							aria-describedby="lp-last-name-hint"
+							placeholder="<?php echo esc_attr( $_lp_fields['last_name']['placeholder'] ?? '' ); ?>"
 							/>
 							<span id="lp-last-name-hint" class="lp-form__hint">
 								<?php esc_html_e( 'Enter your legal last name.', 'pc4s' ); ?>
@@ -555,19 +557,18 @@ get_header();
 					<!-- Street Address -->
 					<div class="lp-form__group">
 						<label for="lp-street-address" class="lp-form__label">
-							<?php esc_html_e( 'Street Address', 'pc4s' ); ?>
-							<span class="lp-form__required" aria-hidden="true">*</span>
-						</label>
-						<input
-							type="text"
-							id="lp-street-address"
-							name="street_address"
-							class="lp-form__input"
-							autocomplete="street-address"
-							required
-							aria-required="true"
-							aria-describedby="lp-street-hint"
-							placeholder="<?php esc_attr_e( 'e.g., 123 Main Street', 'pc4s' ); ?>"
+						<?php echo esc_html( $_lp_fields['street_address']['label'] ); ?>
+						<?php if ( ! empty( $_lp_fields['street_address']['required'] ) ) : ?><span class="lp-form__required" aria-hidden="true">*</span><?php endif; ?>
+					</label>
+					<input
+						type="text"
+						id="lp-street-address"
+						name="street_address"
+						class="lp-form__input"
+						autocomplete="street-address"
+						<?php echo ! empty( $_lp_fields['street_address']['required'] ) ? 'required aria-required="true"' : ''; ?>
+						aria-describedby="lp-street-hint"
+						placeholder="<?php echo esc_attr( $_lp_fields['street_address']['placeholder'] ?? '' ); ?>"
 						/>
 						<span id="lp-street-hint" class="lp-form__hint">
 							<?php esc_html_e( 'Include apartment or unit number if applicable.', 'pc4s' ); ?>
@@ -578,19 +579,18 @@ get_header();
 					<div class="lp-form__row">
 						<div class="lp-form__group">
 							<label for="lp-city" class="lp-form__label">
-								<?php esc_html_e( 'City', 'pc4s' ); ?>
-								<span class="lp-form__required" aria-hidden="true">*</span>
-							</label>
-							<input
-								type="text"
-								id="lp-city"
-								name="city"
-								class="lp-form__input"
-								autocomplete="address-level2"
-								required
-								aria-required="true"
-								aria-describedby="lp-city-hint"
-								placeholder="<?php esc_attr_e( 'e.g., Murfreesboro', 'pc4s' ); ?>"
+							<?php echo esc_html( $_lp_fields['city']['label'] ); ?>
+							<?php if ( ! empty( $_lp_fields['city']['required'] ) ) : ?><span class="lp-form__required" aria-hidden="true">*</span><?php endif; ?>
+						</label>
+						<input
+							type="text"
+							id="lp-city"
+							name="city"
+							class="lp-form__input"
+							autocomplete="address-level2"
+							<?php echo ! empty( $_lp_fields['city']['required'] ) ? 'required aria-required="true"' : ''; ?>
+							aria-describedby="lp-city-hint"
+							placeholder="<?php echo esc_attr( $_lp_fields['city']['placeholder'] ?? '' ); ?>"
 							/>
 							<span id="lp-city-hint" class="lp-form__hint">
 								<?php esc_html_e( 'Enter your city.', 'pc4s' ); ?>
@@ -598,16 +598,15 @@ get_header();
 						</div>
 						<div class="lp-form__group">
 							<label for="lp-state" class="lp-form__label">
-								<?php esc_html_e( 'State', 'pc4s' ); ?>
-								<span class="lp-form__required" aria-hidden="true">*</span>
-							</label>
-							<select
-								id="lp-state"
-								name="state"
-								class="lp-form__select"
-								autocomplete="address-level1"
-								required
-								aria-required="true"
+							<?php echo esc_html( $_lp_fields['state']['label'] ); ?>
+							<?php if ( ! empty( $_lp_fields['state']['required'] ) ) : ?><span class="lp-form__required" aria-hidden="true">*</span><?php endif; ?>
+						</label>
+						<select
+							id="lp-state"
+							name="state"
+							class="lp-form__select"
+							autocomplete="address-level1"
+							<?php echo ! empty( $_lp_fields['state']['required'] ) ? 'required aria-required="true"' : ''; ?>
 								aria-describedby="lp-state-hint"
 							>
 								<?php foreach ( $us_states as $abbr => $label ) : ?>
@@ -627,19 +626,18 @@ get_header();
 					<div class="lp-form__row">
 						<div class="lp-form__group">
 							<label for="lp-zip-code" class="lp-form__label">
-								<?php esc_html_e( 'Zip Code', 'pc4s' ); ?>
-								<span class="lp-form__required" aria-hidden="true">*</span>
-							</label>
-							<input
-								type="text"
-								id="lp-zip-code"
-								name="zip_code"
-								class="lp-form__input"
-								autocomplete="postal-code"
-								required
-								aria-required="true"
-								aria-describedby="lp-zip-hint"
-								placeholder="<?php esc_attr_e( 'e.g., 37129', 'pc4s' ); ?>"
+							<?php echo esc_html( $_lp_fields['zip_code']['label'] ); ?>
+							<?php if ( ! empty( $_lp_fields['zip_code']['required'] ) ) : ?><span class="lp-form__required" aria-hidden="true">*</span><?php endif; ?>
+						</label>
+						<input
+							type="text"
+							id="lp-zip-code"
+							name="zip_code"
+							class="lp-form__input"
+							autocomplete="postal-code"
+							<?php echo ! empty( $_lp_fields['zip_code']['required'] ) ? 'required aria-required="true"' : ''; ?>
+							aria-describedby="lp-zip-hint"
+							placeholder="<?php echo esc_attr( $_lp_fields['zip_code']['placeholder'] ?? '' ); ?>"
 								pattern="\d{5}(-\d{4})?"
 								inputmode="numeric"
 							/>
@@ -649,15 +647,14 @@ get_header();
 						</div>
 						<div class="lp-form__group">
 							<label for="lp-county" class="lp-form__label">
-								<?php esc_html_e( 'County', 'pc4s' ); ?>
-								<span class="lp-form__required" aria-hidden="true">*</span>
-							</label>
-							<select
-								id="lp-county"
-								name="county"
-								class="lp-form__select"
-								required
-								aria-required="true"
+							<?php echo esc_html( $_lp_fields['county']['label'] ); ?>
+							<?php if ( ! empty( $_lp_fields['county']['required'] ) ) : ?><span class="lp-form__required" aria-hidden="true">*</span><?php endif; ?>
+						</label>
+						<select
+							id="lp-county"
+							name="county"
+							class="lp-form__select"
+							<?php echo ! empty( $_lp_fields['county']['required'] ) ? 'required aria-required="true"' : ''; ?>
 								aria-describedby="lp-county-hint"
 							>
 								<option value="" disabled selected><?php esc_html_e( 'Select your Tennessee county', 'pc4s' ); ?></option>
@@ -676,19 +673,18 @@ get_header();
 					<!-- Email Address -->
 					<div class="lp-form__group">
 						<label for="lp-email" class="lp-form__label">
-							<?php esc_html_e( 'Email Address', 'pc4s' ); ?>
-							<span class="lp-form__required" aria-hidden="true">*</span>
-						</label>
-						<input
-							type="email"
-							id="lp-email"
-							name="email"
-							class="lp-form__input"
-							autocomplete="email"
-							required
-							aria-required="true"
-							aria-describedby="lp-email-hint"
-							placeholder="<?php esc_attr_e( 'e.g., jane@example.com', 'pc4s' ); ?>"
+						<?php echo esc_html( $_lp_fields['email']['label'] ); ?>
+						<?php if ( ! empty( $_lp_fields['email']['required'] ) ) : ?><span class="lp-form__required" aria-hidden="true">*</span><?php endif; ?>
+					</label>
+					<input
+						type="email"
+						id="lp-email"
+						name="email"
+						class="lp-form__input"
+						autocomplete="email"
+						<?php echo ! empty( $_lp_fields['email']['required'] ) ? 'required aria-required="true"' : ''; ?>
+						aria-describedby="lp-email-hint"
+						placeholder="<?php echo esc_attr( $_lp_fields['email']['placeholder'] ?? '' ); ?>"
 							inputmode="email"
 						/>
 						<span id="lp-email-hint" class="lp-form__hint">

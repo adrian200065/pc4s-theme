@@ -177,7 +177,44 @@ class Custom_Forms {
 				'confirmation_message' => __( "Thank you for reaching out! We'll get back to you within one business day.", 'pc4s' ),
 				'error_message'        => __( 'Please fill in all required fields before submitting.', 'pc4s' ),
 			],
+
+			// ── Dashboard Support ─────────────────────────────────────────────────
+			'dashboard_support' => [
+				'id'    => 'dashboard_support',
+				'label' => __( 'Dashboard Support', 'pc4s' ),
+				'fields' => [
+					'name'    => [ 'type' => 'text',     'label' => __( 'Name',    'pc4s' ), 'required' => true ],
+					'email'   => [ 'type' => 'email',    'label' => __( 'Email',   'pc4s' ), 'required' => true ],
+					'subject' => [ 'type' => 'text',     'label' => __( 'Subject', 'pc4s' ), 'required' => true ],
+					'message' => [ 'type' => 'textarea', 'label' => __( 'Message', 'pc4s' ), 'required' => true ],
+				],
+				'notification_emails'  => get_option( 'admin_email' ),
+				'subject'              => __( 'New Dashboard Support Request — PC4S', 'pc4s' ),
+				'confirmation_message' => __( "Thank you! We'll get back to you shortly.", 'pc4s' ),
+				'error_message'        => __( 'Please fill in all required fields before submitting.', 'pc4s' ),
+			],
 		];
+
+		// Merge saved dynamically edited field settings (label, placeholder, required)
+		foreach ( self::$forms as $id => &$form ) {
+			$saved = self::get_saved_settings( $id );
+			if ( ! empty( $saved['fields'] ) && is_array( $saved['fields'] ) ) {
+				foreach ( $saved['fields'] as $fkey => $fdata ) {
+					if ( isset( $form['fields'][ $fkey ] ) ) {
+						if ( isset( $fdata['label'] ) && '' !== $fdata['label'] ) {
+							$form['fields'][ $fkey ]['label'] = $fdata['label'];
+						}
+						if ( isset( $fdata['placeholder'] ) ) {
+							$form['fields'][ $fkey ]['placeholder'] = $fdata['placeholder'];
+						}
+						if ( isset( $fdata['required'] ) ) {
+							$form['fields'][ $fkey ]['required'] = (bool) $fdata['required'];
+						}
+					}
+				}
+			}
+		}
+		unset( $form );
 	}
 
 	/**

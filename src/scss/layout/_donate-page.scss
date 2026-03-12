@@ -19,6 +19,12 @@
 .donate-why__body {
 	color: var(--clr-text-muted);
 	font-size: var(--fs-300);
+
+	p {
+		@media (min-width: 64rem) {
+			inline-size: 80ch;
+		}
+	}
 }
 
 // =========================================
@@ -63,7 +69,6 @@
 	margin-block-end: var(--size-500);
 }
 
-// Amount presets
 .donate-amounts {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -110,7 +115,6 @@
 	}
 }
 
-// Custom amount row
 .donate-custom {
 	display: flex;
 	flex-direction: column;
@@ -170,7 +174,6 @@
 	}
 }
 
-// Form divider
 .donate-divider {
 	background-color: var(--clr-border);
 	block-size: 1px;
@@ -178,7 +181,6 @@
 	border: none;
 }
 
-// Personal info section heading
 .donate-section-heading {
 	color: var(--clr-text);
 	font-family: var(--ff-heading);
@@ -187,7 +189,6 @@
 	margin-block-end: var(--size-400);
 }
 
-// Form grid
 .donate-form {
 	display: flex;
 	flex-direction: column;
@@ -253,7 +254,6 @@
 	}
 }
 
-// Radio group
 .donate-form__radio-group {
 	display: flex;
 	flex-direction: column;
@@ -322,7 +322,6 @@
 	}
 }
 
-// Company name field (conditionally visible)
 .donate-form__group--company {
 	display: none;
 
@@ -331,7 +330,6 @@
 	}
 }
 
-// Donation total bar
 .donate-total {
 	display: flex;
 	align-items: center;
@@ -390,7 +388,6 @@
 	}
 }
 
-// --------- Sidebar trust card ---------
 .donate-trust {
 	display: flex;
 	flex-direction: column;
@@ -468,4 +465,8 @@
 			color: var(--clr-secondary-300);
 		}
 	}
+}
+
+.donate-cta {
+	background-color: var(--clr-neutral-100);
 }

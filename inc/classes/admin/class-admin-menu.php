@@ -57,7 +57,7 @@ class Pc4sAdminMenu {
 			self::PARENT_SLUG,                                 // Menu slug
 			[ DashboardPage::get_instance(), 'render_page' ],  // Callback
 			'dashicons-groups',                                // Icon
-			25                                                 // Position
+			3,                                                 // Position
 		);
 
 		// ── Overview submenu (replaces the auto-created duplicate) ───────────

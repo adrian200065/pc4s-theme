@@ -59,8 +59,12 @@ add_action('wp_enqueue_scripts', 'pc4s_enqueue_scripts');
  * @param string $hook The current admin page hook suffix.
  */
 function pc4s_enqueue_admin_scripts($hook) {
-    // Limit to PC4S admin pages only.
-    if ( strpos( $hook, 'pc4s' ) === false ) {
+    // Load on PC4S admin pages and on the main WordPress dashboard (index.php)
+    // which hosts the PC4S Admin Center widget.
+    $is_pc4s_page      = strpos( $hook, 'pc4s' ) !== false;
+    $is_wp_dashboard   = 'index.php' === $hook;
+
+    if ( ! $is_pc4s_page && ! $is_wp_dashboard ) {
         return;
     }
 
@@ -82,6 +86,7 @@ function pc4s_enqueue_admin_scripts($hook) {
 
     // Check if we're on a settings page
     $is_dashboard_page = (
+        'index.php' === $hook ||
         strpos($hook, 'pc4s-dashboard') !== false ||
         'toplevel_page_pc4s-dashboard' === $hook ||
         'pc4s-dashboard-dashboard_page_pc4s-dashboard' === $hook

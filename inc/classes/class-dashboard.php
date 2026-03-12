@@ -89,8 +89,8 @@ class Dashboard {
     public function add_dashboard_widget() {
         wp_add_dashboard_widget(
             'custom_theme_dashboard_widget',
-            __('PC4S Dashboard Tools', PC4S_TEXTDOMAIN),
-            [$this, 'render_dashboard_widget']
+            __( 'PC4S Admin Center', PC4S_TEXTDOMAIN ),
+            [ $this, 'render_dashboard_widget' ]
         );
     }
 
@@ -98,7 +98,50 @@ class Dashboard {
      * Render dashboard widget content
      */
     public function render_dashboard_widget() {
+        $data = $this->get_widget_data();
         include get_template_directory() . '/templates/dashboard-widget.php';
+    }
+
+    /**
+     * Collect all data the dashboard template needs.
+     *
+     * @return array{
+     *   form_status: string,
+     *   redirect_url: string,
+     *   support_email: string,
+     *   urls: array<string, string>
+     * }
+     */
+    private function get_widget_data(): array {
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+        $qs_status  = isset( $_GET['pc4s_form'] ) ? sanitize_key( $_GET['pc4s_form'] ) : '';
+        $qs_form_id = isset( $_GET['form_id'] )   ? sanitize_key( $_GET['form_id'] )   : '';
+        // phpcs:enable
+
+        $form_status = ( 'dashboard_support' === $qs_form_id ) ? $qs_status : '';
+
+        return [
+            'form_status'   => $form_status,
+            'redirect_url'  => admin_url( 'index.php' ),
+            'support_email' => get_option( 'admin_email', '' ),
+            'urls'          => [
+                'new_page'       => admin_url( 'post-new.php?post_type=page' ),
+                'edit_pages'     => admin_url( 'edit.php?post_type=page' ),
+                'new_post'       => admin_url( 'post-new.php' ),
+                'media'          => admin_url( 'upload.php' ),
+                'new_event'      => admin_url( 'post-new.php?post_type=pc4s_event' ),
+                'events'         => admin_url( 'edit.php?post_type=pc4s_event' ),
+                'new_staff'      => admin_url( 'post-new.php?post_type=pc4s_staff' ),
+                'staff'          => admin_url( 'edit.php?post_type=pc4s_staff' ),
+                'form_entries'   => admin_url( 'admin.php?page=pc4s-form-entries' ),
+                'forms'          => admin_url( 'admin.php?page=pc4s-forms' ),
+                'settings'       => admin_url( 'admin.php?page=pc4s-settings' ),
+                'menus'          => admin_url( 'nav-menus.php' ),
+                'view_site'      => home_url( '/' ),
+                'customizer'     => admin_url( 'customize.php' ),
+                'site_health'    => admin_url( 'site-health.php' ),
+            ],
+        ];
     }
 
     /**

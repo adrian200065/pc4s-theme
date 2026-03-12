@@ -75,10 +75,26 @@ class FormsPage {
 		$subject              = sanitize_text_field( wp_unslash( $_POST['subject']              ?? '' ) );
 		$confirmation_message = sanitize_textarea_field( wp_unslash( $_POST['confirmation_message'] ?? '' ) );
 
+		// ── Sanitize fields array ─────────────────────────────────────────────
+		$fields_data = [];
+		if ( isset( $_POST['fields'] ) && is_array( $_POST['fields'] ) ) {
+			foreach ( wp_unslash( $_POST['fields'] ) as $fkey => $fdata ) {
+				$fkey = sanitize_key( $fkey );
+				if ( isset( $fdata['label'] ) ) {
+					$fields_data[ $fkey ]['label'] = sanitize_text_field( $fdata['label'] );
+				}
+				if ( isset( $fdata['placeholder'] ) ) {
+					$fields_data[ $fkey ]['placeholder'] = sanitize_text_field( $fdata['placeholder'] );
+				}
+				$fields_data[ $fkey ]['required'] = ! empty( $fdata['required'] );
+			}
+		}
+
 		Custom_Forms::save_settings( $form_id, [
 			'notification_emails'  => $notification_emails,
 			'subject'              => $subject,
 			'confirmation_message' => $confirmation_message,
+			'fields'               => $fields_data,
 		] );
 
 		wp_safe_redirect(
@@ -232,7 +248,7 @@ class FormsPage {
 							</div>
 						</section>
 
-						<!-- Form fields overview (read-only) -->
+						<!-- Form fields overview (editable) -->
 						<section class="pc4s-settings-section">
 							<h3 class="pc4s-settings-section__title"><?php esc_html_e( 'Form Fields', 'pc4s' ); ?></h3>
 							<div class="pc4s-table-wrap">
@@ -247,18 +263,29 @@ class FormsPage {
 										</tr>
 									</thead>
 									<tbody>
-										<?php foreach ( $form['fields'] as $fkey => $field ) : ?>
+										<?php foreach ( $form['fields'] as $fkey => $field ) : 
+											// Fetch currently saved values if they exist, otherwise fallback to defaults
+											$saved_f_label       = $saved['fields'][$fkey]['label'] ?? $field['label'];
+											$saved_f_placeholder = $saved['fields'][$fkey]['placeholder'] ?? ( $field['placeholder'] ?? '' );
+											$saved_f_required    = isset( $saved['fields'][$fkey]['required'] ) ? $saved['fields'][$fkey]['required'] : ! empty( $field['required'] );
+										?>
 										<tr>
 											<td><code><?php echo esc_html( $fkey ); ?></code></td>
 											<td><?php echo esc_html( $field['type'] ); ?></td>
-											<td><?php echo esc_html( $field['label'] ); ?></td>
-											<td><?php echo esc_html( $field['placeholder'] ?? '—' ); ?></td>
 											<td>
-												<?php if ( ! empty( $field['required'] ) ) : ?>
-												<span class="pc4s-badge pc4s-badge--yes"><?php esc_html_e( 'Yes', 'pc4s' ); ?></span>
+												<input type="text" class="pc4s-field-input" name="fields[<?php echo esc_attr( $fkey ); ?>][label]" value="<?php echo esc_attr( $saved_f_label ); ?>" aria-label="<?php esc_attr_e( 'Label for ', 'pc4s' ); echo esc_attr( $fkey ); ?>" />
+											</td>
+											<td>
+												<?php if ( ! in_array( $field['type'], [ 'checkbox', 'radio', 'select' ], true ) ) : ?>
+													<input type="text" class="pc4s-field-input" name="fields[<?php echo esc_attr( $fkey ); ?>][placeholder]" value="<?php echo esc_attr( $saved_f_placeholder ); ?>" aria-label="<?php esc_attr_e( 'Placeholder for ', 'pc4s' ); echo esc_attr( $fkey ); ?>" />
 												<?php else : ?>
-												<span class="pc4s-badge"><?php esc_html_e( 'No', 'pc4s' ); ?></span>
+													<span class="pc4s-text-muted">—</span>
 												<?php endif; ?>
+											</td>
+											<td>
+												<label class="pc4s-checkbox-label" style="display: flex; align-items: center;">
+													<input type="checkbox" name="fields[<?php echo esc_attr( $fkey ); ?>][required]" value="1" <?php checked( $saved_f_required ); ?> />
+												</label>
 											</td>
 										</tr>
 										<?php endforeach; ?>

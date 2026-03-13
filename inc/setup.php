@@ -186,3 +186,19 @@ function pc4s_maybe_flush_rewrite_rules(): void {
 	}
 }
 add_action( 'admin_init', 'pc4s_maybe_flush_rewrite_rules' );
+
+/**
+ * Grant the custom pc4s_manage capability to Editor and Administrator roles.
+ *
+ * Stored in the DB via WP_Role — only runs when the capability is missing,
+ * so the overhead on normal requests is negligible.
+ */
+function pc4s_grant_manage_capability(): void {
+	foreach ( [ 'editor', 'administrator' ] as $role_name ) {
+		$role = get_role( $role_name );
+		if ( $role && ! $role->has_cap( 'pc4s_manage' ) ) {
+			$role->add_cap( 'pc4s_manage' );
+		}
+	}
+}
+add_action( 'admin_init', 'pc4s_grant_manage_capability' );

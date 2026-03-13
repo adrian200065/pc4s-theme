@@ -39,6 +39,12 @@ class CustomLogin {
         // Logout redirect
         add_action('wp_logout', [$this, 'redirect_after_logout']);
 
+        // Dynamically point the nav Login item to the WP login/logout URL
+        add_filter('wp_nav_menu_objects', [$this, 'dynamic_login_menu_item'], 10, 2);
+
+        // Ensure the WP login form always redirects to the dashboard
+        add_filter('login_redirect', [$this, 'redirect_login_to_dashboard'], 10, 3);
+
         // Admin bar customization - use correct hook with higher priority
         add_action('admin_bar_menu', [$this, 'customize_admin_bar'], 25);
         add_action('wp_before_admin_bar_render', [$this, 'modify_admin_bar_howdy']);
@@ -145,6 +151,49 @@ class CustomLogin {
         }
 
         return $error;
+    }
+
+    /**
+     * Always redirect to the dashboard after a successful login.
+     *
+     * @param string   $redirect_to           The requested redirect destination.
+     * @param string   $requested_redirect_to The originally requested redirect.
+     * @param \WP_User|\WP_Error $user         The logged-in user (or error).
+     * @return string
+     */
+    public function redirect_login_to_dashboard( $redirect_to, $requested_redirect_to, $user ): string {
+        if ( $user instanceof \WP_User ) {
+            return admin_url();
+        }
+        return $redirect_to;
+    }
+
+    /**
+     * Dynamically set the Login menu item URL to the WP login or logout URL.
+     *
+     * Any nav menu item carrying the CSS class "nav-link--login" is treated as
+     * the login/logout toggle:
+     *   - Logged-out visitors  → wp_login_url()  (redirects to dashboard after login)
+     *   - Logged-in users      → wp_logout_url() + label changes to "Logout"
+     *
+     * @param \WP_Post[] $items Menu item objects.
+     * @return \WP_Post[]
+     */
+    public function dynamic_login_menu_item( array $items ): array {
+        foreach ( $items as $item ) {
+            if ( ! in_array( 'nav-link--login', (array) $item->classes, true ) ) {
+                continue;
+            }
+
+            if ( is_user_logged_in() ) {
+                $item->url   = wp_logout_url( home_url( '/' ) );
+                $item->title = __( 'Logout', PC4S_TEXTDOMAIN );
+            } else {
+                $item->url = wp_login_url( admin_url() );
+            }
+        }
+
+        return $items;
     }
 
     /**

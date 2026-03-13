@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class FormsPage {
 
-	const CAPABILITY = 'manage_options';
+	const CAPABILITY = 'pc4s_manage';
 	const NONCE_KEY  = 'pc4s_form_settings_nonce';
 	const ACTION     = 'pc4s_save_form_settings';
 

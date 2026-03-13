@@ -103,7 +103,7 @@ class Pc4sAdminMenu {
 			self::PARENT_SLUG,
 			__( 'Forms', 'pc4s' ),
 			__( 'Forms', 'pc4s' ),
-			'manage_options',
+			'pc4s_manage',
 			'pc4s-forms',
 			[ FormsPage::get_instance(), 'render_page' ]
 		);
@@ -113,7 +113,7 @@ class Pc4sAdminMenu {
 			self::PARENT_SLUG,
 			__( 'Form Entries', 'pc4s' ),
 			__( 'Form Entries', 'pc4s' ),
-			'manage_options',
+			'pc4s_manage',
 			'pc4s-form-entries',
 			[ FormEntriesPage::get_instance(), 'render_page' ]
 		);
@@ -123,20 +123,20 @@ class Pc4sAdminMenu {
 			self::PARENT_SLUG,
 			__( 'Footer Settings', 'pc4s' ),
 			__( 'Footer', 'pc4s' ),
-			'manage_options',
+			'pc4s_manage',
 			'pc4s-footer-settings',
 			[ FooterSettings::get_instance(), 'render_page' ]
 		);
 		if ( $footer_hook ) {
 			FooterSettings::get_instance()->set_page_hook( $footer_hook );
 		}
-		
+
 		// ── Settings submenu ───────────────────────────────────────────────────
 		add_submenu_page(
 			self::PARENT_SLUG,
 			__( 'PC4S Settings', 'pc4s' ),
 			__( 'Settings', 'pc4s' ),
-			'manage_options',
+			'pc4s_manage',
 			'pc4s-settings',
 			[ SettingsPage::get_instance(), 'render_page' ]
 		);
@@ -146,7 +146,7 @@ class Pc4sAdminMenu {
 			self::PARENT_SLUG,
 			__( 'SMTP Settings', 'pc4s' ),
 			__( 'SMTP', 'pc4s' ),
-			'manage_options',
+			'pc4s_manage',
 			'pc4s-smtp',
 			[ SmtpPage::get_instance(), 'render_page' ]
 		);	}

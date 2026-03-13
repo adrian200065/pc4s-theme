@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class FormEntriesPage {
 
-	const CAPABILITY = 'manage_options';
+	const CAPABILITY = 'pc4s_manage';
 	const PER_PAGE   = 25;
 
 	/** @var FormEntriesPage|null */

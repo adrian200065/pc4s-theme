@@ -25,6 +25,10 @@ export default defineConfig({
 					src: 'src/fonts/**/*',
 					dest: 'fonts',
 				},
+				{
+					src: 'src/admin/js/chart.umd.min.js',
+					dest: 'admin/js',
+				},
 			],
 		}),
 	],

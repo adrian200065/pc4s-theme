@@ -40,7 +40,7 @@ class SmtpPage {
 	const TEST_NONCE   = 'pc4s_smtp_test_email';
 
 	/** Capability required to view / save. */
-	const CAPABILITY   = 'manage_options';
+const CAPABILITY   = 'pc4s_manage';
 
 	// ─── Singleton ───────────────────────────────────────────────────────────
 

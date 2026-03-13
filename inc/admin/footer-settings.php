@@ -34,7 +34,7 @@ class FooterSettings {
 	/**
 	 * Capability required to edit these settings.
 	 */
-	const CAPABILITY = 'manage_options';
+const CAPABILITY = 'pc4s_manage';
 
 	// ─── Singleton ──────────────────────────────────────────────────────────
 

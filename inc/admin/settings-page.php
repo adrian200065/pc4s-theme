@@ -37,7 +37,7 @@ class SettingsPage {
 	const OPTION_GROUP = 'pc4s_settings_group';
 
 	/** Capability required to view / save this page. */
-	const CAPABILITY  = 'manage_options';
+const CAPABILITY  = 'pc4s_manage';
 
 	// ─── Singleton ──────────────────────────────────────────────────────────
 
@@ -96,6 +96,7 @@ class SettingsPage {
 			// ── Google Analytics ────────────────────────────────────────────
 			'ga_enabled'              => ! empty( $input['ga_enabled'] ) ? '1' : '0',
 			'ga_measurement_id'       => sanitize_text_field( $input['ga_measurement_id']  ?? '' ),
+			'ga_property_id'          => sanitize_text_field( $input['ga_property_id']     ?? '' ),
 		];
 	}
 
@@ -155,6 +156,39 @@ class SettingsPage {
 					</header>
 
 					<div class="pc4s-form-card__body">
+
+						<!-- ── Step-by-step setup guide (collapsible) ──────── -->
+						<details class="pc4s-ga-setup-guide">
+							<summary class="pc4s-ga-setup-guide__summary">
+								<svg class="pc4s-ga-setup-guide__icon" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 9a1 1 0 0 0 0 2v3a1 1 0 0 0 1 1h1a1 1 0 1 0 0-2v-3a1 1 0 0 0-1-1H9z" clip-rule="evenodd"/></svg>
+								<?php esc_html_e( 'How to connect PayPal (setup guide)', 'pc4s' ); ?>
+							</summary>
+							<div class="pc4s-ga-setup-guide__body">
+								<ol class="pc4s-ga-setup-steps">
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Create or access a PayPal Business account', 'pc4s' ); ?></strong>
+										<p><?php echo wp_kses( __( 'Go to <a href="https://www.paypal.com/business" target="_blank" rel="noopener noreferrer">paypal.com/business</a> and sign in. If you don\'t have a business account, create one — a business account is required to accept payments.', 'pc4s' ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></p>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Get your Client ID from the Developer Dashboard', 'pc4s' ); ?></strong>
+										<ol class="pc4s-ga-setup-step__sub">
+											<li><?php echo wp_kses( __( 'Log in to the <a href="https://developer.paypal.com" target="_blank" rel="noopener noreferrer">PayPal Developer Dashboard</a>.', 'pc4s' ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></li>
+											<li><?php esc_html_e( 'Go to My Apps &amp; Credentials.', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( 'Under REST API apps, open your app or create a new one.', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( "Copy the Client ID (starts with 'A' or 'BAA'). Use the Sandbox ID for testing, the Live ID for production.", 'pc4s' ); ?></li>
+										</ol>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Get your Hosted Button ID (optional)', 'pc4s' ); ?></strong>
+										<p><?php esc_html_e( 'Only needed if using PayPal Hosted Buttons. In your PayPal account go to Sell → More ways to get paid. Open or create a button, then copy the hostedButtonId value from the code snippet.', 'pc4s' ); ?></p>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Enter your credentials and save', 'pc4s' ); ?></strong>
+										<p><?php esc_html_e( 'Paste your PayPal email, Client ID, and (optionally) Hosted Button ID into the fields below. Set the currency code and toggle Sandbox mode off when going live.', 'pc4s' ); ?></p>
+									</li>
+								</ol>
+							</div><!-- .pc4s-ga-setup-guide__body -->
+						</details><!-- .pc4s-ga-setup-guide -->
 
 						<!-- Sandbox toggle -->
 						<section class="pc4s-settings-section">
@@ -224,16 +258,9 @@ class SettingsPage {
 									aria-describedby="pc4s_paypal_client_id_hint"
 								/>
 								<?php endif; ?>
-								<div class="pc4s-info-box" id="pc4s_paypal_client_id_hint">
-									<p class="pc4s-info-box__intro"><?php esc_html_e( 'To get your Client ID:', 'pc4s' ); ?></p>
-									<ol class="pc4s-info-box__steps">
-										<li><?php echo wp_kses( __( 'Log in to <a href="https://developer.paypal.com" target="_blank" rel="noopener noreferrer">PayPal Developer Dashboard</a>', 'pc4s' ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></li>
-										<li><?php esc_html_e( 'Go to My Apps &amp; Credentials', 'pc4s' ); ?></li>
-										<li><?php esc_html_e( 'Under REST API apps, find your app or create one', 'pc4s' ); ?></li>
-										<li><?php esc_html_e( "Copy the Client ID (starts with 'A' or 'BAA')", 'pc4s' ); ?></li>
-									</ol>
-									<p class="pc4s-info-box__note"><?php esc_html_e( 'Use Sandbox Client ID for testing, Live Client ID for production.', 'pc4s' ); ?></p>
-								</div>
+							<p id="pc4s_paypal_client_id_hint" class="pc4s-field-hint">
+								<?php esc_html_e( 'Your PayPal REST API Client ID. Use Sandbox for testing, Live for production. See the setup guide above for details.', 'pc4s' ); ?>
+							</p>
 							</div>
 
 							<div class="pc4s-field-group">
@@ -256,10 +283,9 @@ class SettingsPage {
 									aria-describedby="pc4s_paypal_hbid_hint"
 								/>
 								<?php endif; ?>
-								<div class="pc4s-info-box" id="pc4s_paypal_hbid_hint">
-									<p class="pc4s-info-box__intro"><?php esc_html_e( 'ID of a hosted button created in your PayPal account. Leave blank if using the JS SDK only.', 'pc4s' ); ?></p>
-									<p class="pc4s-info-box__note"><?php echo wp_kses( __( 'Example: if your PayPal code contains <code>hostedButtonId: "3TMTGXDWYCRK6"</code>, enter <code>3TMTGXDWYCRK6</code>.', 'pc4s' ), [ 'code' => [] ] ); ?></p>
-								</div>
+							<p id="pc4s_paypal_hbid_hint" class="pc4s-field-hint">
+								<?php echo wp_kses( __( 'Optional. The ID from a hosted button in your PayPal account (e.g. <code>3TMTGXDWYCRK6</code>). Leave blank if not using hosted buttons.', 'pc4s' ), [ 'code' => [] ] ); ?>
+							</p>
 							</div>
 
 							<div class="pc4s-field-group">
@@ -307,6 +333,48 @@ class SettingsPage {
 					</header>
 
 					<div class="pc4s-form-card__body">
+
+						<!-- ── Step-by-step setup guide (collapsible) ──────── -->
+						<details class="pc4s-ga-setup-guide">
+							<summary class="pc4s-ga-setup-guide__summary">
+								<svg class="pc4s-ga-setup-guide__icon" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 9a1 1 0 0 0 0 2v3a1 1 0 0 0 1 1h1a1 1 0 1 0 0-2v-3a1 1 0 0 0-1-1H9z" clip-rule="evenodd"/></svg>
+								<?php esc_html_e( 'How to connect Facebook (setup guide)', 'pc4s' ); ?>
+							</summary>
+							<div class="pc4s-ga-setup-guide__body">
+								<ol class="pc4s-ga-setup-steps">
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Find your Facebook Page ID', 'pc4s' ); ?></strong>
+										<ol class="pc4s-ga-setup-step__sub">
+											<li><?php esc_html_e( 'Go to your Facebook Page and click "About".', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( 'Scroll to the bottom — the Page ID is listed there.', 'pc4s' ); ?></li>
+											<li><?php echo wp_kses( __( 'Alternatively, open <a href="https://business.facebook.com/" target="_blank" rel="noopener noreferrer">Meta Business Suite</a>; the Page ID appears in the URL as <strong>profile.php?id=XXXXXXX</strong>.', 'pc4s' ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ], 'strong' => [] ] ); ?></li>
+										</ol>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Create a Facebook App for API access', 'pc4s' ); ?></strong>
+										<ol class="pc4s-ga-setup-step__sub">
+											<li><?php echo wp_kses( __( 'Go to <a href="https://developers.facebook.com/" target="_blank" rel="noopener noreferrer">developers.facebook.com</a> and create a developer account if needed.', 'pc4s' ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></li>
+											<li><?php esc_html_e( 'Click "My Apps" → "Create App" and choose the "Business" type.', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( 'Complete the setup wizard and note your App ID.', 'pc4s' ); ?></li>
+										</ol>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Generate a Page Access Token', 'pc4s' ); ?></strong>
+										<ol class="pc4s-ga-setup-step__sub">
+											<li><?php echo wp_kses( __( 'Open <a href="https://developers.facebook.com/tools/explorer/" target="_blank" rel="noopener noreferrer">Meta Graph API Explorer</a>.', 'pc4s' ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></li>
+											<li><?php esc_html_e( 'Select your app and click "Generate Access Token".', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( 'Grant the "pages_show_list" and "pages_read_engagement" permissions, then copy the token.', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( 'For long-term use, exchange it for a long-lived Page Access Token — short-lived tokens expire in ~1 hour.', 'pc4s' ); ?></li>
+										</ol>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Enter your details and save', 'pc4s' ); ?></strong>
+										<p><?php esc_html_e( 'Paste your Facebook Page URL, Page ID, and Access Token into the fields below, then save settings.', 'pc4s' ); ?></p>
+									</li>
+								</ol>
+							</div><!-- .pc4s-ga-setup-guide__body -->
+						</details><!-- .pc4s-ga-setup-guide -->
+
 						<section class="pc4s-settings-section">
 							<h3 class="pc4s-settings-section__title"><?php esc_html_e( 'Page Details', 'pc4s' ); ?></h3>
 
@@ -344,15 +412,9 @@ class SettingsPage {
 									spellcheck="false"
 									aria-describedby="pc4s_fb_id_hint"
 								/>
-								<div class="pc4s-info-box" id="pc4s_fb_id_hint">
-									<p class="pc4s-info-box__intro"><?php esc_html_e( 'To find your Facebook Page ID:', 'pc4s' ); ?></p>
-									<ol class="pc4s-info-box__steps">
-										<li><?php esc_html_e( 'Go to your Facebook Page and click "About"', 'pc4s' ); ?></li>
-										<li><?php esc_html_e( 'Scroll to the bottom — Page ID is listed there', 'pc4s' ); ?></li>
-										<li><?php echo wp_kses( __( 'Alternatively, log in to <a href="https://business.facebook.com/" target="_blank" rel="noopener noreferrer">Meta Business Suite</a>, open your page, and the Page ID appears in the URL: facebook.com/profile.php?id=<strong>XXXXXXX</strong>', 'pc4s' ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ], 'strong' => [] ] ); ?></li>
-									</ol>
-									<p class="pc4s-info-box__note"><?php esc_html_e( 'Used internally — not displayed to visitors.', 'pc4s' ); ?></p>
-								</div>
+								<p id="pc4s_fb_id_hint" class="pc4s-field-hint">
+								<?php esc_html_e( 'Numeric ID of your Facebook Page. Used internally — not displayed to visitors. See the setup guide above for how to find it.', 'pc4s' ); ?>
+							</p>
 							</div>
 
 						</section>
@@ -381,16 +443,9 @@ class SettingsPage {
 									aria-describedby="pc4s_fb_token_hint"
 								/>
 								<?php endif; ?>
-								<div class="pc4s-info-box" id="pc4s_fb_token_hint">
-									<p class="pc4s-info-box__intro"><?php esc_html_e( 'To get your Facebook Access Token:', 'pc4s' ); ?></p>
-									<ol class="pc4s-info-box__steps">
-										<li><?php echo wp_kses( __( 'Go to <a href="https://developers.facebook.com/tools/explorer/" target="_blank" rel="noopener noreferrer">Meta Graph API Explorer</a>', 'pc4s' ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></li>
-										<li><?php esc_html_e( 'Select your app and click "Generate Access Token"', 'pc4s' ); ?></li>
-										<li><?php esc_html_e( 'Grant "pages_show_list" and "pages_read_engagement" permissions', 'pc4s' ); ?></li>
-										<li><?php esc_html_e( 'Click "Generate Token" and copy the result', 'pc4s' ); ?></li>
-									</ol>
-									<p class="pc4s-info-box__note"><?php esc_html_e( 'For long-term use, generate a long-lived Page Access Token. Short-lived tokens expire in ~1 hour.', 'pc4s' ); ?></p>
-								</div>
+								<p id="pc4s_fb_token_hint" class="pc4s-field-hint">
+								<?php esc_html_e( 'A long-lived Page Access Token from Meta Graph API Explorer. Short-lived tokens expire in ~1 hour. See the setup guide above for step-by-step instructions.', 'pc4s' ); ?>
+							</p>
 							</div>
 
 						</section>
@@ -440,10 +495,79 @@ class SettingsPage {
 							<h2 class="pc4s-form-card__title"><?php esc_html_e( 'Google Analytics', 'pc4s' ); ?></h2>
 							<code class="pc4s-form-badge">GA4</code>
 						</div>
+						<?php
+						$ga    = \PC4S\Classes\Admin\GoogleAnalytics::get_instance();
+						$ga_status = $ga->get_connection_status();
+						?>
+						<div class="pc4s-ga-status-badge pc4s-ga-status-badge--<?php echo esc_attr( $ga_status ?: 'disconnected' ); ?>" role="status">
+							<span class="pc4s-ga-status-badge__dot" aria-hidden="true"></span>
+							<?php
+							if ( 'connected' === $ga_status ) {
+								esc_html_e( 'Connected', 'pc4s' );
+							} elseif ( 'error' === $ga_status ) {
+								esc_html_e( 'Connection Error', 'pc4s' );
+							} else {
+								esc_html_e( 'Not Connected', 'pc4s' );
+							}
+							?>
+						</div>
 					</header>
 
 					<div class="pc4s-form-card__body">
+
+						<!-- ── Step-by-step setup guide (collapsible) ──────── -->
+						<details class="pc4s-ga-setup-guide">
+							<summary class="pc4s-ga-setup-guide__summary">
+								<svg class="pc4s-ga-setup-guide__icon" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 9a1 1 0 0 0 0 2v3a1 1 0 0 0 1 1h1a1 1 0 1 0 0-2v-3a1 1 0 0 0-1-1H9z" clip-rule="evenodd"/></svg>
+								<?php esc_html_e( 'How to connect Google Analytics (setup guide)', 'pc4s' ); ?>
+							</summary>
+							<div class="pc4s-ga-setup-guide__body">
+
+								<ol class="pc4s-ga-setup-steps">
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Create or access your Google Analytics account', 'pc4s' ); ?></strong>
+										<p><?php echo wp_kses( __( 'Go to <a href="https://analytics.google.com/" target="_blank" rel="noopener noreferrer">Google Analytics</a>. Sign in and create an account for your website if you don\'t have one.', 'pc4s' ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></p>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Create a GA4 property (if needed)', 'pc4s' ); ?></strong>
+										<p><?php esc_html_e( 'In Google Analytics → Admin → Property → Create Property. Select "Web" as the platform. Complete the setup wizard.', 'pc4s' ); ?></p>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Find your Measurement ID &amp; Property ID', 'pc4s' ); ?></strong>
+										<p><?php esc_html_e( 'Measurement ID (e.g. G-XXXXXXX): Admin → Data Streams → your stream → Measurement ID.', 'pc4s' ); ?></p>
+										<p><?php esc_html_e( 'Property ID (numeric): Admin → Property Settings → Property ID (top right).', 'pc4s' ); ?></p>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Create a Google Cloud service account', 'pc4s' ); ?></strong>
+										<ol class="pc4s-ga-setup-step__sub">
+											<li><?php echo wp_kses( __( 'Open the <a href="https://console.cloud.google.com/" target="_blank" rel="noopener noreferrer">Google Cloud Console</a>.', 'pc4s' ), [ 'a' => [ 'href' => [], 'target' => [], 'rel' => [] ] ] ); ?></li>
+											<li><?php esc_html_e( 'Create or select a project.', 'pc4s' ); ?></li>
+											<li><?php echo wp_kses( __( 'Go to <strong>APIs &amp; Services → Enabled APIs</strong> and enable the <strong>Google Analytics Data API</strong>.', 'pc4s' ), [ 'strong' => [] ] ); ?></li>
+											<li><?php echo wp_kses( __( 'Go to <strong>IAM &amp; Admin → Service Accounts → Create Service Account</strong>.', 'pc4s' ), [ 'strong' => [] ] ); ?></li>
+											<li><?php esc_html_e( 'Give it any name, then click "Create and Continue". Skip optional role/user steps.', 'pc4s' ); ?></li>
+											<li><?php echo wp_kses( __( 'Open the service account → <strong>Keys</strong> tab → <strong>Add Key → Create new key → JSON</strong>. Download the JSON file.', 'pc4s' ), [ 'strong' => [] ] ); ?></li>
+										</ol>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Grant the service account access to your GA4 property', 'pc4s' ); ?></strong>
+										<ol class="pc4s-ga-setup-step__sub">
+											<li><?php esc_html_e( 'In Google Analytics → Admin → Property Access Management.', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( 'Click "+" and add the service account email (from the JSON, the "client_email" field).', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( 'Assign the "Viewer" role, then save.', 'pc4s' ); ?></li>
+										</ol>
+									</li>
+									<li class="pc4s-ga-setup-step">
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Paste the JSON key and connect below', 'pc4s' ); ?></strong>
+										<p><?php esc_html_e( 'Open the downloaded JSON file in a text editor, select all the contents, and paste it into the "Service Account JSON" field below.', 'pc4s' ); ?></p>
+									</li>
+								</ol>
+
+							</div><!-- .pc4s-ga-setup-guide__body -->
+						</details><!-- .pc4s-ga-setup-guide -->
+
+						<!-- ── Tracking (in the main Settings-API form) ───── -->
 						<section class="pc4s-settings-section">
+							<h3 class="pc4s-settings-section__title"><?php esc_html_e( 'Tracking', 'pc4s' ); ?></h3>
 
 							<div class="pc4s-field-group">
 								<label class="pc4s-toggle-label" for="pc4s_ga_enabled">
@@ -483,7 +607,30 @@ class SettingsPage {
 								</p>
 							</div>
 
+							<div class="pc4s-field-group">
+								<label class="pc4s-field-label" for="pc4s_ga_property_id">
+									<?php esc_html_e( 'Property ID', 'pc4s' ); ?>
+									<span class="pc4s-field-required" aria-label="<?php esc_attr_e( 'required for dashboard', 'pc4s' ); ?>">*</span>
+								</label>
+								<input
+									type="text"
+									id="pc4s_ga_property_id"
+									name="<?php echo $field( 'ga_property_id' ); // phpcs:ignore ?>"
+									value="<?php echo $val( 'ga_property_id' ); // phpcs:ignore ?>"
+									class="pc4s-field-input pc4s-field-input--code pc4s-field-input--narrow"
+									placeholder="123456789"
+									autocomplete="off"
+									spellcheck="false"
+									pattern="[0-9]+"
+									aria-describedby="pc4s_ga_pid_hint"
+								/>
+								<p id="pc4s_ga_pid_hint" class="pc4s-field-hint">
+									<?php esc_html_e( 'Numeric GA4 Property ID — found in Google Analytics → Admin → Property Settings. Required for the analytics dashboard.', 'pc4s' ); ?>
+								</p>
+							</div>
+
 						</section>
+
 					</div><!-- .pc4s-form-card__body -->
 
 					<footer class="pc4s-form-card__footer">
@@ -492,7 +639,121 @@ class SettingsPage {
 						</button>
 					</footer>
 
-				</article><!-- Google Analytics card -->
+				</article><!-- Google Analytics tracking card -->
+
+			</form>
+
+			<!-- ── Card: Google Analytics Credentials (separate form) ─── -->
+			<?php
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended
+			$ga_msg_key = sanitize_key( $_GET['ga_status'] ?? '' );
+			// phpcs:enable
+			$ga_messages = [
+				'saved'          => [ 'type' => 'success', 'text' => __( 'Service-account credentials saved successfully.', 'pc4s' ) ],
+				'disconnected'   => [ 'type' => 'success', 'text' => __( 'Google Analytics has been disconnected.', 'pc4s' ) ],
+				'empty'          => [ 'type' => 'error',   'text' => __( 'No JSON was provided. Please paste your service-account key.', 'pc4s' ) ],
+				'invalid_json'   => [ 'type' => 'error',   'text' => __( 'Invalid service-account JSON. Ensure you pasted the entire file contents and that the "type" is "service_account".', 'pc4s' ) ],
+				'encrypt_failed' => [ 'type' => 'error',   'text' => __( 'Could not encrypt credentials (PHP OpenSSL may be unavailable). Contact your host.', 'pc4s' ) ],
+			];
+			?>
+
+			<?php if ( isset( $ga_messages[ $ga_msg_key ] ) ) : ?>
+			<div class="pc4s-admin-notice pc4s-admin-notice--<?php echo esc_attr( $ga_messages[ $ga_msg_key ]['type'] ); ?>" role="status" aria-live="polite">
+				<svg class="pc4s-admin-notice__icon" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+					<?php if ( 'success' === $ga_messages[ $ga_msg_key ]['type'] ) : ?>
+					<path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm3.707-9.293a1 1 0 0 0-1.414-1.414L9 10.586 7.707 9.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4z" clip-rule="evenodd"/>
+					<?php else : ?>
+					<path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/>
+					<?php endif; ?>
+				</svg>
+				<span><?php echo esc_html( $ga_messages[ $ga_msg_key ]['text'] ); ?></span>
+			</div>
+			<?php endif; ?>
+
+			<article class="pc4s-form-card" aria-label="<?php esc_attr_e( 'Google Analytics API Credentials', 'pc4s' ); ?>">
+
+				<header class="pc4s-form-card__header">
+					<div class="pc4s-form-card__title-row">
+						<h2 class="pc4s-form-card__title"><?php esc_html_e( 'GA4 API Credentials', 'pc4s' ); ?></h2>
+						<code class="pc4s-form-badge">Service Account</code>
+					</div>
+				</header>
+
+				<div class="pc4s-form-card__body">
+
+					<div class="pc4s-info-box pc4s-info-box--notice" role="note">
+						<svg class="pc4s-info-box__icon" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor">
+							<path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0zm-7-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 9a1 1 0 0 0 0 2v3a1 1 0 0 0 1 1h1a1 1 0 1 0 0-2v-3a1 1 0 0 0-1-1H9z" clip-rule="evenodd"/>
+						</svg>
+						<p class="pc4s-info-box__note"><?php esc_html_e( 'Credentials are encrypted with AES-256 before being stored. The private key is never exposed in page source or API responses.', 'pc4s' ); ?></p>
+					</div>
+
+					<?php if ( $ga->has_credentials() ) : ?>
+					<div class="pc4s-ga-creds-stored">
+						<svg class="pc4s-ga-creds-stored__icon" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1zm3 8V5.5a3 3 0 1 0-6 0V9h6z" clip-rule="evenodd"/></svg>
+						<span><?php esc_html_e( 'Service-account credentials are stored securely.', 'pc4s' ); ?></span>
+					</div>
+					<?php endif; ?>
+
+					<!-- Paste new credentials -->
+					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+						<?php wp_nonce_field( 'pc4s_save_ga_creds' ); ?>
+						<input type="hidden" name="action" value="pc4s_save_ga_creds" />
+
+						<div class="pc4s-field-group">
+							<label class="pc4s-field-label" for="pc4s_ga_sa_json">
+								<?php echo $ga->has_credentials() ? esc_html__( 'Paste new Service Account JSON (to update)', 'pc4s' ) : esc_html__( 'Service Account JSON', 'pc4s' ); ?>
+							</label>
+							<textarea
+								id="pc4s_ga_sa_json"
+								name="pc4s_ga_service_account_json"
+								class="pc4s-field-textarea pc4s-field-input--code"
+								rows="8"
+								placeholder='<?php echo $ga->has_credentials() ? esc_attr__( 'Credentials stored — paste a new JSON to replace them.', 'pc4s' ) : esc_attr__( 'Paste the full contents of your service-account JSON key file here…', 'pc4s' ); ?>'
+								autocomplete="off"
+								spellcheck="false"
+								aria-describedby="pc4s_ga_sa_hint"
+							></textarea>
+							<p id="pc4s_ga_sa_hint" class="pc4s-field-hint">
+								<?php esc_html_e( 'The JSON file downloaded from Google Cloud → Service Accounts → Keys. Must include "type": "service_account".', 'pc4s' ); ?>
+							</p>
+						</div>
+
+						<div class="pc4s-ga-creds-actions">
+							<button type="submit" class="pc4s-btn pc4s-btn--primary">
+								<svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" style="width:1em;height:1em"><path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z" clip-rule="evenodd"/></svg>
+								<?php echo $ga->has_credentials() ? esc_html__( 'Update Credentials', 'pc4s' ) : esc_html__( 'Save Credentials', 'pc4s' ); ?>
+							</button>
+
+							<button
+								type="button"
+								class="pc4s-btn pc4s-btn--ghost pc4s-btn--sm js-ga-test-btn"
+								data-nonce="<?php echo esc_attr( wp_create_nonce( 'pc4s-admin-nonce' ) ); ?>"
+								<?php echo $ga->has_credentials() ? '' : 'disabled'; ?>
+							>
+								<svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" style="width:1em;height:1em"><path fill-rule="evenodd" d="M2 10a8 8 0 1 1 16 0A8 8 0 0 1 2 10zm6.39-2.908a.75.75 0 0 1 .766.027l3.5 2.25a.75.75 0 0 1 0 1.262l-3.5 2.25A.75.75 0 0 1 8 12.25v-4.5a.75.75 0 0 1 .39-.658z" clip-rule="evenodd"/></svg>
+								<?php esc_html_e( 'Test Connection', 'pc4s' ); ?>
+							</button>
+							<span class="pc4s-ga-test-result" role="status" aria-live="polite"></span>
+						</div>
+
+					</form>
+
+					<?php if ( $ga->has_credentials() ) : ?>
+					<!-- Disconnect form -->
+					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="pc4s-ga-disconnect-form">
+						<?php wp_nonce_field( 'pc4s_clear_ga_creds' ); ?>
+						<input type="hidden" name="action" value="pc4s_clear_ga_creds" />
+						<button type="submit" class="pc4s-btn pc4s-btn--danger pc4s-btn--sm" onclick="return confirm('<?php esc_attr_e( 'Remove Google Analytics credentials? This cannot be undone.', 'pc4s' ); ?>')">
+							<svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" style="width:1em;height:1em"><path fill-rule="evenodd" d="M8.75 1A2.75 2.75 0 0 0 6 3.75v.443c-.795.077-1.584.176-2.365.298a.75.75 0 1 0 .23 1.482l.149-.022.841 10.518A2.75 2.75 0 0 0 7.596 19h4.807a2.75 2.75 0 0 0 2.742-2.53l.841-10.52.149.023a.75.75 0 0 0 .23-1.482A41.03 41.03 0 0 0 14 3.193V3.75A2.75 2.75 0 0 0 11.25 1h-2.5zM10 4c.84 0 1.673.025 2.5.075V3.75c0-.69-.56-1.25-1.25-1.25h-2.5c-.69 0-1.25.56-1.25 1.25v.325C8.327 4.025 9.16 4 10 4zM8.58 7.72a.75.75 0 0 0-1.5.06l.3 7.5a.75.75 0 1 0 1.5-.06l-.3-7.5zm4.34.06a.75.75 0 1 0-1.5-.06l-.3 7.5a.75.75 0 1 0 1.5.06l.3-7.5z" clip-rule="evenodd"/></svg>
+							<?php esc_html_e( 'Disconnect Google Analytics', 'pc4s' ); ?>
+						</button>
+					</form>
+					<?php endif; ?>
+
+				</div><!-- .pc4s-form-card__body -->
+
+			</article><!-- GA credentials card -->
 
 			</form>
 

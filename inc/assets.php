@@ -95,14 +95,28 @@ function pc4s_enqueue_admin_scripts($hook) {
     // Always enqueue WordPress media scripts on dashboard page
     if ($is_dashboard_page) {
         wp_enqueue_media();
+
+        // Enqueue Chart.js for the analytics dashboard.
+        wp_enqueue_script(
+            'chartjs',
+            PC4S_THEME_URI . '/assets/admin/js/chart.umd.min.js',
+            [],
+            '4.4.7',
+            true
+        );
     }
 
     // Enqueue admin scripts if file exists
     if ( file_exists( $admin_js_file ) ) {
+        $js_deps = [ 'jquery' ];
+        if ( $is_dashboard_page ) {
+            $js_deps[] = 'chartjs';
+        }
+
         wp_enqueue_script(
             'pc4s-admin-script',
             $admin_js_path,
-            [ 'jquery' ],
+            $js_deps,
             (string) filemtime( $admin_js_file ),
             true
         );

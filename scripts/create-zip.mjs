@@ -40,7 +40,6 @@ const config = {
 		'.editorconfig',
 		'.stylelintrc.json',
 		'phpcs.xml.dist',
-		'.vscode/**',
 		'package.json',
 		'package-lock.json',
 		'pnpm-lock.yaml',
@@ -61,6 +60,7 @@ const config = {
 		'theme-dev.md',
 		'html/**',
 		'docs/**',
+		'static-site/**',
 		'memory-bank/**',
 		'scripts/**',
 
@@ -85,6 +85,7 @@ const config = {
 		'.gitattributes',
 		'.DS_Store',
 		'Thumbs.db',
+		'.vscode/**',
 		'.claude/**',
 
 		// Installation script
@@ -98,7 +99,7 @@ const config = {
 function shouldExclude(filePath) {
 	const relativePath = path.relative(rootDir, filePath);
 
-	return config.zipIgnoreGlob.some(pattern => {
+	return config.zipIgnoreGlob.some((pattern) => {
 		return minimatch(relativePath, pattern, { dot: true });
 	});
 }
@@ -109,7 +110,7 @@ function shouldExclude(filePath) {
 function getAllFiles(dirPath, arrayOfFiles = []) {
 	const files = fs.readdirSync(dirPath);
 
-	files.forEach(file => {
+	files.forEach((file) => {
 		const filePath = path.join(dirPath, file);
 
 		if (fs.statSync(filePath).isDirectory()) {
@@ -142,7 +143,7 @@ async function createZip() {
 		// Create write stream
 		const output = fs.createWriteStream(zipFilePath);
 		const archive = archiver('zip', {
-			zlib: { level: 9 } // Maximum compression
+			zlib: { level: 9 }, // Maximum compression
 		});
 
 		// Handle events
@@ -178,7 +179,7 @@ async function createZip() {
 		console.log(`\n📋 Processing files...`);
 
 		// Add files to archive
-		allFiles.forEach(filePath => {
+		allFiles.forEach((filePath) => {
 			const relativePath = path.relative(rootDir, filePath);
 
 			if (shouldExclude(filePath)) {
@@ -224,7 +225,6 @@ async function main() {
 		console.log('\n===========================================');
 		console.log('  ✅ Done!');
 		console.log('===========================================\n');
-
 	} catch (error) {
 		console.error('\n❌ Error:', error.message);
 		process.exit(1);

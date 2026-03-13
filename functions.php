@@ -44,6 +44,7 @@ function pc4s_load_i18n_files() {
     require_once PC4S_THEME_DIR . '/inc/admin/settings-page.php';
     require_once PC4S_THEME_DIR . '/inc/admin/smtp-page.php';
     require_once PC4S_THEME_DIR . '/inc/classes/admin/class-admin-menu.php';
+    require_once PC4S_THEME_DIR . '/inc/classes/admin/class-google-analytics.php';
     require_once PC4S_THEME_DIR . '/inc/classes/class-event-query.php';
 
     // Initialize custom login, core customizer, and dashboard
@@ -58,6 +59,7 @@ function pc4s_load_i18n_files() {
     PC4S\Classes\PostTypes\Event::get_instance();
     PC4S\Classes\PostTypes\Staff::get_instance();
     PC4S\Classes\Admin\Pc4sAdminMenu::get_instance();
+    PC4S\Classes\Admin\GoogleAnalytics::get_instance();
     PC4S\Classes\EventQuery::register_hooks();
 
     // Initialize admin settings pages (must come before admin_menu fires).

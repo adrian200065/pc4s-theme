@@ -100,7 +100,7 @@ class DashboardPage {
 			<header class="pc4s-admin-header">
 				<h1 class="pc4s-admin-header__title"><?php esc_html_e( 'PC4S Overview', 'pc4s' ); ?></h1>
 				<p class="pc4s-admin-header__description">
-					<?php esc_html_e( 'Manage events, configure forms, and update footer content from here.', 'pc4s' ); ?>
+					<?php esc_html_e( 'Manage events, configure forms, and update shared contact and footer content from here.', 'pc4s' ); ?>
 				</p>
 			</header>
 
@@ -158,8 +158,8 @@ class DashboardPage {
 
 				<a href="<?php echo esc_url( $urls['footer'] ); ?>" class="pc4s-quick-link-card">
 					<span class="pc4s-quick-link-card__icon dashicons dashicons-editor-insertmore" aria-hidden="true"></span>
-					<strong class="pc4s-quick-link-card__title"><?php esc_html_e( 'Footer Settings', 'pc4s' ); ?></strong>
-					<span class="pc4s-quick-link-card__desc"><?php esc_html_e( 'Tagline, contact info, newsletter text', 'pc4s' ); ?></span>
+					<strong class="pc4s-quick-link-card__title"><?php esc_html_e( 'Contact Info', 'pc4s' ); ?></strong>
+					<span class="pc4s-quick-link-card__desc"><?php esc_html_e( 'Shared contact details, office hours, and footer content', 'pc4s' ); ?></span>
 				</a>
 
 				<a href="<?php echo esc_url( $urls['forms'] ); ?>" class="pc4s-quick-link-card">

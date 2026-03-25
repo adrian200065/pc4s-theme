@@ -3,7 +3,8 @@
  * PC4S Settings Page
  *
  * Central settings panel for site-wide integrations. Currently includes:
- *   - PayPal (email, Client ID, Hosted Button ID, sandbox mode, currency)
+ *   - PayPal (email, Client ID, Donate button ID, License Plate button ID,
+ *     sandbox mode, currency)
  *   - Google Analytics (GA4 Measurement ID, enable/disable)
  *
  * Settings are stored in a single option key (`pc4s_settings`) to keep DB
@@ -39,6 +40,16 @@ class SettingsPage {
 	/** Capability required to view / save this page. */
 const CAPABILITY  = 'pc4s_manage';
 
+	/**
+	 * PayPal button setting keys keyed by form ID.
+	 *
+	 * @var array<string,string>
+	 */
+	private const PAYPAL_BUTTON_KEY_MAP = [
+		'donate'        => 'paypal_donate_button_id',
+		'license_plate' => 'paypal_license_plate_button_id',
+	];
+
 	// ─── Singleton ──────────────────────────────────────────────────────────
 
 	/** @var SettingsPage|null */
@@ -53,6 +64,7 @@ const CAPABILITY  = 'pc4s_manage';
 
 	private function __construct() {
 		add_action( 'admin_init', [ $this, 'register_settings' ] );
+		add_filter( 'option_page_capability_' . self::OPTION_GROUP, [ $this, 'option_page_capability' ] );
 	}
 
 	// ─── Settings API ───────────────────────────────────────────────────────
@@ -69,6 +81,15 @@ const CAPABILITY  = 'pc4s_manage';
 	}
 
 	/**
+	 * Override the Settings API capability used by options.php.
+	 *
+	 * @return string
+	 */
+	public function option_page_capability(): string {
+		return self::CAPABILITY;
+	}
+
+	/**
 	 * Sanitize all settings fields before they are stored.
 	 *
 	 * @param mixed $input Raw $_POST data submitted by the settings form.
@@ -79,24 +100,55 @@ const CAPABILITY  = 'pc4s_manage';
 			return [];
 		}
 
+		$existing = (array) get_option( self::OPTION_KEY, [] );
+
+		$sanitize_text = static function ( string $key, string $default = '' ) use ( $input, $existing ): string {
+			if ( array_key_exists( $key, $input ) ) {
+				return sanitize_text_field( $input[ $key ] ?? '' );
+			}
+
+			return (string) ( $existing[ $key ] ?? $default );
+		};
+
+		$sanitize_email = static function ( string $key, string $default = '' ) use ( $input, $existing ): string {
+			if ( array_key_exists( $key, $input ) ) {
+				return sanitize_email( $input[ $key ] ?? '' );
+			}
+
+			return (string) ( $existing[ $key ] ?? $default );
+		};
+
+		$sanitize_url = static function ( string $key, string $default = '' ) use ( $input, $existing ): string {
+			if ( array_key_exists( $key, $input ) ) {
+				return sanitize_url( $input[ $key ] ?? '' );
+			}
+
+			return (string) ( $existing[ $key ] ?? $default );
+		};
+
+		$sanitize_button_id = static function ( string $key ) use ( $sanitize_text ): string {
+			return strtoupper( $sanitize_text( $key ) );
+		};
+
 		return [
 			// ── PayPal ─────────────────────────────────────────────────────
-			'paypal_email'            => sanitize_email( $input['paypal_email']            ?? '' ),
-			'paypal_client_id'        => sanitize_text_field( $input['paypal_client_id']   ?? '' ),
-			'paypal_hosted_button_id' => sanitize_text_field( $input['paypal_hosted_button_id'] ?? '' ),
+			'paypal_email'            => $sanitize_email( 'paypal_email' ),
+			'paypal_client_id'        => $sanitize_text( 'paypal_client_id' ),
+			'paypal_donate_button_id' => $sanitize_button_id( 'paypal_donate_button_id' ),
+			'paypal_license_plate_button_id' => $sanitize_button_id( 'paypal_license_plate_button_id' ),
 			'paypal_sandbox'          => ! empty( $input['paypal_sandbox'] ) ? '1' : '0',
-			'paypal_currency'         => strtoupper( sanitize_text_field( $input['paypal_currency'] ?? 'USD' ) ),
+			'paypal_currency'         => strtoupper( $sanitize_text( 'paypal_currency', 'USD' ) ),
 
 			// ── Facebook ────────────────────────────────────────────────────
-			'facebook_page_url'       => sanitize_url( $input['facebook_page_url']        ?? '' ),
-			'facebook_page_id'        => sanitize_text_field( $input['facebook_page_id']  ?? '' ),
-			'facebook_access_token'   => sanitize_text_field( $input['facebook_access_token'] ?? '' ),
-			'facebook_feed_limit'     => min( 50, max( 1, absint( $input['facebook_feed_limit'] ?? 10 ) ) ),
+			'facebook_page_url'       => $sanitize_url( 'facebook_page_url' ),
+			'facebook_page_id'        => $sanitize_text( 'facebook_page_id' ),
+			'facebook_access_token'   => $sanitize_text( 'facebook_access_token' ),
+			'facebook_feed_limit'     => min( 50, max( 1, absint( $input['facebook_feed_limit'] ?? ( $existing['facebook_feed_limit'] ?? 10 ) ) ) ),
 
 			// ── Google Analytics ────────────────────────────────────────────
 			'ga_enabled'              => ! empty( $input['ga_enabled'] ) ? '1' : '0',
-			'ga_measurement_id'       => sanitize_text_field( $input['ga_measurement_id']  ?? '' ),
-			'ga_property_id'          => sanitize_text_field( $input['ga_property_id']     ?? '' ),
+			'ga_measurement_id'       => $sanitize_text( 'ga_measurement_id' ),
+			'ga_property_id'          => $sanitize_text( 'ga_property_id' ),
 		];
 	}
 
@@ -122,6 +174,7 @@ const CAPABILITY  = 'pc4s_manage';
 		// $locked: renders a read-only "Set via constant" notice for credential fields
 		// that are configured in wp-config.php — the live value is never echoed.
 		$locked  = static fn( string $key ): bool => self::is_constant_override( $key );
+		$paypal_notices = $this->get_paypal_notices();
 		?>
 		<div class="wrap pc4s-admin-page pc4s-settings-page">
 
@@ -140,6 +193,19 @@ const CAPABILITY  = 'pc4s_manage';
 				<span><?php esc_html_e( 'Settings saved successfully.', 'pc4s' ); ?></span>
 			</div>
 			<?php endif; ?>
+
+			<?php foreach ( $paypal_notices as $paypal_notice ) : ?>
+			<div class="pc4s-admin-notice pc4s-admin-notice--<?php echo esc_attr( $paypal_notice['type'] ); ?>" role="status" aria-live="polite">
+				<svg class="pc4s-admin-notice__icon" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" focusable="false">
+					<?php if ( 'success' === $paypal_notice['type'] ) : ?>
+					<path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm3.707-9.293a1 1 0 0 0-1.414-1.414L9 10.586 7.707 9.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4z" clip-rule="evenodd"/>
+					<?php else : ?>
+					<path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM8.28 7.22a.75.75 0 0 0-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 1 0 1.06 1.06L10 11.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L11.06 10l1.72-1.72a.75.75 0 0 0-1.06-1.06L10 8.94 8.28 7.22z" clip-rule="evenodd"/>
+					<?php endif; ?>
+				</svg>
+				<span><?php echo esc_html( $paypal_notice['text'] ); ?></span>
+			</div>
+			<?php endforeach; ?>
 
 			<form method="post" action="options.php" novalidate>
 
@@ -179,12 +245,17 @@ const CAPABILITY  = 'pc4s_manage';
 										</ol>
 									</li>
 									<li class="pc4s-ga-setup-step">
-										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Get your Hosted Button ID (optional)', 'pc4s' ); ?></strong>
-										<p><?php esc_html_e( 'Only needed if using PayPal Hosted Buttons. In your PayPal account go to Sell → More ways to get paid. Open or create a button, then copy the hostedButtonId value from the code snippet.', 'pc4s' ); ?></p>
+										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Create two hosted buttons in PayPal', 'pc4s' ); ?></strong>
+										<ol class="pc4s-ga-setup-step__sub">
+											<li><?php esc_html_e( 'In your PayPal account go to Sell → More ways to get paid and create or open a hosted button for donations.', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( 'Copy the hostedButtonId for that button and save it as the Donate Hosted Button ID below.', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( 'Create or open a separate hosted button for the License Plate pre-order flow.', 'pc4s' ); ?></li>
+											<li><?php esc_html_e( 'Copy that hostedButtonId and save it as the License Plate Hosted Button ID below.', 'pc4s' ); ?></li>
+										</ol>
 									</li>
 									<li class="pc4s-ga-setup-step">
 										<strong class="pc4s-ga-setup-step__title"><?php esc_html_e( 'Enter your credentials and save', 'pc4s' ); ?></strong>
-										<p><?php esc_html_e( 'Paste your PayPal email, Client ID, and (optionally) Hosted Button ID into the fields below. Set the currency code and toggle Sandbox mode off when going live.', 'pc4s' ); ?></p>
+										<p><?php esc_html_e( 'Paste your PayPal email, Client ID, Donate Hosted Button ID, and License Plate Hosted Button ID into the fields below. Set the currency code and toggle Sandbox mode off when going live.', 'pc4s' ); ?></p>
 									</li>
 								</ol>
 							</div><!-- .pc4s-ga-setup-guide__body -->
@@ -259,33 +330,46 @@ const CAPABILITY  = 'pc4s_manage';
 								/>
 								<?php endif; ?>
 							<p id="pc4s_paypal_client_id_hint" class="pc4s-field-hint">
-								<?php esc_html_e( 'Your PayPal REST API Client ID. Use Sandbox for testing, Live for production. See the setup guide above for details.', 'pc4s' ); ?>
+								<?php esc_html_e( 'Your PayPal REST API Client ID. Optional for the current hosted-button redirect flow, but required if you later switch to PayPal SDK checkout buttons.', 'pc4s' ); ?>
 							</p>
 							</div>
 
 							<div class="pc4s-field-group">
-								<label class="pc4s-field-label" for="pc4s_paypal_hosted_button_id">
-									<?php esc_html_e( 'Hosted Button ID', 'pc4s' ); ?>
+								<label class="pc4s-field-label" for="pc4s_paypal_donate_button_id">
+									<?php esc_html_e( 'Donate Hosted Button ID', 'pc4s' ); ?>
 								</label>
-								<?php if ( $locked( 'paypal_hosted_button_id' ) ) : ?>
-								<p class="pc4s-field-hint" style="font-style:italic">
-									<?php printf( esc_html__( 'Set via %s constant in wp-config.php — edit that file to change it.', 'pc4s' ), '<code>PC4S_PAYPAL_HOSTED_BUTTON_ID</code>' ); ?>
-								</p>
-								<?php else : ?>
 								<input
 									type="text"
-									id="pc4s_paypal_hosted_button_id"
-									name="<?php echo $field( 'paypal_hosted_button_id' ); // phpcs:ignore ?>"
-									value="<?php echo $val( 'paypal_hosted_button_id' ); // phpcs:ignore ?>"
+									id="pc4s_paypal_donate_button_id"
+									name="<?php echo $field( 'paypal_donate_button_id' ); // phpcs:ignore ?>"
+									value="<?php echo $val( 'paypal_donate_button_id' ); // phpcs:ignore ?>"
 									class="pc4s-field-input pc4s-field-input--code"
 									autocomplete="off"
 									spellcheck="false"
-									aria-describedby="pc4s_paypal_hbid_hint"
+									aria-describedby="pc4s_paypal_donate_hbid_hint"
 								/>
-								<?php endif; ?>
-							<p id="pc4s_paypal_hbid_hint" class="pc4s-field-hint">
-								<?php echo wp_kses( __( 'Optional. The ID from a hosted button in your PayPal account (e.g. <code>3TMTGXDWYCRK6</code>). Leave blank if not using hosted buttons.', 'pc4s' ), [ 'code' => [] ] ); ?>
-							</p>
+								<p id="pc4s_paypal_donate_hbid_hint" class="pc4s-field-hint">
+									<?php esc_html_e( 'Required for the Donate form. Use the hosted button ID created for donations in your PayPal account.', 'pc4s' ); ?>
+								</p>
+							</div>
+
+							<div class="pc4s-field-group">
+								<label class="pc4s-field-label" for="pc4s_paypal_license_plate_button_id">
+									<?php esc_html_e( 'License Plate Hosted Button ID', 'pc4s' ); ?>
+								</label>
+								<input
+									type="text"
+									id="pc4s_paypal_license_plate_button_id"
+									name="<?php echo $field( 'paypal_license_plate_button_id' ); // phpcs:ignore ?>"
+									value="<?php echo $val( 'paypal_license_plate_button_id' ); // phpcs:ignore ?>"
+									class="pc4s-field-input pc4s-field-input--code"
+									autocomplete="off"
+									spellcheck="false"
+									aria-describedby="pc4s_paypal_license_plate_hbid_hint"
+								/>
+								<p id="pc4s_paypal_license_plate_hbid_hint" class="pc4s-field-hint">
+									<?php esc_html_e( 'Required for the License Plate form. Use the hosted button ID created for license plate payments in your PayPal account.', 'pc4s' ); ?>
+								</p>
 							</div>
 
 							<div class="pc4s-field-group">
@@ -775,8 +859,23 @@ const CAPABILITY  = 'pc4s_manage';
 	private const CONSTANT_MAP = [
 		'facebook_access_token'   => 'PC4S_FACEBOOK_ACCESS_TOKEN',
 		'paypal_client_id'        => 'PC4S_PAYPAL_CLIENT_ID',
-		'paypal_hosted_button_id' => 'PC4S_PAYPAL_HOSTED_BUTTON_ID',
+		'paypal_donate_button_id' => 'PC4S_PAYPAL_DONATE_BUTTON_ID',
+		'paypal_license_plate_button_id' => 'PC4S_PAYPAL_LICENSE_PLATE_BUTTON_ID',
 	];
+
+	/**
+	 * Resolve the hosted button ID for a specific form.
+	 *
+	 * @param string $form_id Form identifier.
+	 * @return string
+	 */
+	public static function get_paypal_button_id( string $form_id ): string {
+		if ( isset( self::PAYPAL_BUTTON_KEY_MAP[ $form_id ] ) ) {
+			return self::get( self::PAYPAL_BUTTON_KEY_MAP[ $form_id ] );
+		}
+
+		return '';
+	}
 
 	// ─── Template helper ─────────────────────────────────────────────────────
 
@@ -835,5 +934,139 @@ const CAPABILITY  = 'pc4s_manage';
 			return false;
 		}
 		return defined( self::CONSTANT_MAP[ $key ] );
+	}
+
+	/**
+	 * Build PayPal validation notices shown on the settings page.
+	 *
+	 * @return array<int,array{type:string,text:string}>
+	 */
+	private function get_paypal_notices(): array {
+		$notices = [];
+
+		if ( '' === self::get( 'paypal_client_id' ) ) {
+			$notices[] = [
+				'type' => 'warning',
+				'text' => __( 'PayPal Client ID is currently blank. That does not block the current hosted-button redirect flow, but it will be required if you later switch to PayPal SDK checkout buttons.', 'pc4s' ),
+			];
+		}
+
+		$paypal_sandbox = self::is_enabled( 'paypal_sandbox' );
+		$environment    = $paypal_sandbox ? __( 'sandbox', 'pc4s' ) : __( 'live', 'pc4s' );
+		$contexts       = [
+			'donate'        => __( 'Donate', 'pc4s' ),
+			'license_plate' => __( 'License Plate', 'pc4s' ),
+		];
+
+		foreach ( $contexts as $form_id => $label ) {
+			$button_id = self::get_paypal_button_id( $form_id );
+
+			if ( '' === $button_id ) {
+				$notices[] = [
+					'type' => 'warning',
+					'text' => sprintf( __( '%s does not have a PayPal hosted button ID configured yet.', 'pc4s' ), $label ),
+				];
+				continue;
+			}
+
+			$validation = $this->validate_paypal_button_id( $button_id, $paypal_sandbox );
+
+			if ( 'invalid' === $validation['status'] ) {
+				$notices[] = [
+					'type' => 'error',
+					'text' => sprintf( __( '%1$s PayPal button validation failed in %2$s mode: %3$s', 'pc4s' ), $label, $environment, $validation['message'] ),
+				];
+				continue;
+			}
+
+			if ( 'unreachable' === $validation['status'] ) {
+				$notices[] = [
+					'type' => 'warning',
+					'text' => sprintf( __( '%1$s PayPal button could not be validated in %2$s mode right now: %3$s', 'pc4s' ), $label, $environment, $validation['message'] ),
+				];
+				continue;
+			}
+		}
+
+		return $notices;
+	}
+
+	/**
+	 * Validate a PayPal hosted button ID against the active environment.
+	 *
+	 * @param string $button_id Hosted button ID.
+	 * @param bool   $sandbox   Whether sandbox mode is enabled.
+	 * @return array{status:string,message:string}
+	 */
+	private function validate_paypal_button_id( string $button_id, bool $sandbox ): array {
+		$button_id = strtoupper( trim( $button_id ) );
+
+		if ( ! preg_match( '/^[A-Z0-9]{8,32}$/', $button_id ) ) {
+			return [
+				'status'  => 'invalid',
+				'message' => __( 'The hosted button ID format looks invalid.', 'pc4s' ),
+			];
+		}
+
+		$transient_key = 'pc4s_paypal_btn_' . md5( ( $sandbox ? 'sandbox:' : 'live:' ) . $button_id );
+		$cached        = get_transient( $transient_key );
+		if ( is_array( $cached ) && isset( $cached['status'], $cached['message'] ) ) {
+			return $cached;
+		}
+
+		$paypal_base = $sandbox
+			? 'https://www.sandbox.paypal.com/cgi-bin/webscr'
+			: 'https://www.paypal.com/cgi-bin/webscr';
+
+		$response = wp_remote_get(
+			add_query_arg(
+				[
+					'cmd'              => '_s-xclick',
+					'hosted_button_id' => $button_id,
+				],
+				$paypal_base
+			),
+			[
+				'timeout'     => 10,
+				'redirection' => 5,
+				'user-agent'  => 'PC4S PayPal Validator; ' . home_url( '/' ),
+			]
+		);
+
+		if ( is_wp_error( $response ) ) {
+			$result = [
+				'status'  => 'unreachable',
+				'message' => $response->get_error_message(),
+			];
+			set_transient( $transient_key, $result, 10 * MINUTE_IN_SECONDS );
+			return $result;
+		}
+
+		$body = strtolower( wp_strip_all_tags( (string) wp_remote_retrieve_body( $response ) ) );
+		$error_markers = [
+			"things don't appear to be working at the moment",
+			"something doesn't look right",
+			"can't be completed using paypal",
+			'choose another way to pay',
+		];
+
+		foreach ( $error_markers as $marker ) {
+			if ( false !== strpos( $body, strtolower( $marker ) ) ) {
+				$result = [
+					'status'  => 'invalid',
+					'message' => __( 'PayPal returned an error page for this button ID.', 'pc4s' ),
+				];
+				set_transient( $transient_key, $result, 10 * MINUTE_IN_SECONDS );
+				return $result;
+			}
+		}
+
+		$result = [
+			'status'  => 'valid',
+			'message' => __( 'The hosted button responded successfully.', 'pc4s' ),
+		];
+		set_transient( $transient_key, $result, 10 * MINUTE_IN_SECONDS );
+
+		return $result;
 	}
 }

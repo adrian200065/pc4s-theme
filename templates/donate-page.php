@@ -18,7 +18,7 @@
  *   1. User selects preset or enters custom amount (JS populates hidden `amount` input).
  *   2. Form submits → admin-post.php → Custom_Forms::handle_submission().
  *   3. Handler stores entry, emails admin, then redirects to PayPal with amount.
- *   Configure PayPal Hosted Button ID at PC4S → Settings.
+ *   Configure the Donate hosted button ID at PC4S → Settings.
  *
  * Form ID: donate  (registered in PC4S\Classes\Custom_Forms)
  *   Nonce action: pc4s_form_donate
@@ -35,6 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use PC4S\Admin\SettingsPage;
 use PC4S\Classes\Custom_Forms;
 
 // ---------------------------------------------------------------------------
@@ -80,6 +81,9 @@ $qs_form_id = isset( $_GET['form_id'] )   ? sanitize_key( $_GET['form_id'] )   :
 
 $dn_success = ( 'success' === $qs_status && 'donate' === $qs_form_id );
 $dn_error   = ( 'error'   === $qs_status && 'donate' === $qs_form_id );
+
+$paypal_button_id  = SettingsPage::get_paypal_button_id( 'donate' );
+$paypal_has_config = ! empty( $paypal_button_id );
 
 $form_redirect = esc_url_raw( home_url( add_query_arg( [] ) ) );
 $form_redirect = remove_query_arg( [ 'pc4s_form', 'form_id' ], $form_redirect );
@@ -194,6 +198,19 @@ get_header();
 						<?php if ( $dn_error ) : ?>
 						<div class="form-message form-message--error" role="alert">
 							<p><?php esc_html_e( 'Please fill in all required fields and select or enter a donation amount.', 'pc4s' ); ?></p>
+						</div>
+						<?php endif; ?>
+
+						<?php if ( ! $paypal_has_config ) : ?>
+						<div class="form-message form-message--warning" role="alert">
+							<p>
+								<?php esc_html_e( 'Online payment is not yet configured for donations.', 'pc4s' ); ?>
+								<?php if ( current_user_can( 'pc4s_manage' ) ) : ?>
+									<a href="<?php echo esc_url( admin_url( 'admin.php?page=pc4s-settings' ) ); ?>">
+										<?php esc_html_e( 'Configure PayPal in PC4S Settings →', 'pc4s' ); ?>
+									</a>
+								<?php endif; ?>
+							</p>
 						</div>
 						<?php endif; ?>
 

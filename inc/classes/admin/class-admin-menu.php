@@ -89,15 +89,6 @@ class Pc4sAdminMenu {
 			'edit.php?post_type=' . Staff::POST_TYPE
 		);
 
-		// ── Event Types taxonomy submenu ─────────────────────────────────────
-		add_submenu_page(
-			self::PARENT_SLUG,
-			__( 'Event Types', 'pc4s' ),
-			__( 'Event Types', 'pc4s' ),
-			'manage_categories',
-			'edit-tags.php?taxonomy=' . Event::TAXONOMY . '&post_type=' . Event::POST_TYPE
-		);
-
 		// ── Forms submenu ────────────────────────────────────────────────────
 		add_submenu_page(
 			self::PARENT_SLUG,
@@ -121,8 +112,8 @@ class Pc4sAdminMenu {
 		// ── Footer settings submenu ──────────────────────────────────────────
 		$footer_hook = add_submenu_page(
 			self::PARENT_SLUG,
-			__( 'Footer Settings', 'pc4s' ),
-			__( 'Footer', 'pc4s' ),
+			__( 'Contact Info & Footer Settings', 'pc4s' ),
+			__( 'Contact Info', 'pc4s' ),
 			'pc4s_manage',
 			'pc4s-footer-settings',
 			[ FooterSettings::get_instance(), 'render_page' ]

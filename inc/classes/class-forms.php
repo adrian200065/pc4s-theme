@@ -511,7 +511,7 @@ class Custom_Forms {
 
 		// ── Redirect — PayPal or standard success page ─────────────────────────
 		if ( ! empty( $form['paypal_redirect'] ) ) {
-			$button_id = SettingsPage::get( 'paypal_hosted_button_id' );
+			$button_id = SettingsPage::get_paypal_button_id( $form_id );
 			if ( $button_id ) {
 				$paypal_sandbox = SettingsPage::is_enabled( 'paypal_sandbox' );
 				$paypal_base    = $paypal_sandbox
@@ -519,7 +519,7 @@ class Custom_Forms {
 					: 'https://www.paypal.com/cgi-bin/webscr';
 				$paypal_params = [
 					'cmd'              => '_s-xclick',
-					'hosted_button_id' => rawurlencode( $button_id ),
+					'hosted_button_id' => $button_id,
 				];
 
 				// Pass the donor-selected amount when the form includes an amount field

@@ -58,6 +58,7 @@ const CAPABILITY   = 'pc4s_manage';
 		add_action( 'admin_init', [ $this, 'register_settings' ] );
 		add_action( 'admin_init', [ $this, 'maybe_send_test_email' ] );
 		add_action( 'phpmailer_init', [ $this, 'configure_phpmailer' ] );
+		add_filter( 'option_page_capability_' . self::OPTION_GROUP, [ $this, 'option_page_capability' ] );
 	}
 
 	// ─── PHPMailer configuration ─────────────────────────────────────────────
@@ -125,6 +126,15 @@ const CAPABILITY   = 'pc4s_manage';
 			self::OPTION_KEY,
 			[ 'sanitize_callback' => [ $this, 'sanitize' ] ]
 		);
+	}
+
+	/**
+	 * Override the Settings API capability used by options.php.
+	 *
+	 * @return string
+	 */
+	public function option_page_capability(): string {
+		return self::CAPABILITY;
 	}
 
 	/**

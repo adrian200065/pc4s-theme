@@ -1,9 +1,9 @@
 <?php
 /**
- * Footer Settings — Admin submenu page
+ * Contact Info & Footer Settings — Admin submenu page
  *
- * Manages editable footer content (tagline, contact info, newsletter text,
- * and the TN Department / funding logo) through a dedicated PC4S admin page.
+ * Manages shared contact information, office hours, newsletter text,
+ * and footer-specific content through a dedicated PC4S admin page.
  *
  * All content is stored in a single option key (`pc4s_footer_settings`) to
  * minimize database round-trips. Templates retrieve values via the static
@@ -30,6 +30,11 @@ class FooterSettings {
 	 * WordPress options key for all footer settings.
 	 */
 	const OPTION_KEY = 'pc4s_footer_settings';
+
+	/**
+	 * Settings API group name.
+	 */
+	const OPTION_GROUP = 'pc4s_footer_settings_group';
 
 	/**
 	 * Capability required to edit these settings.
@@ -61,6 +66,7 @@ const CAPABILITY = 'pc4s_manage';
 	private function __construct() {
 		add_action( 'admin_init', [ $this, 'register_settings' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ] );
+		add_filter( 'option_page_capability_' . self::OPTION_GROUP, [ $this, 'option_page_capability' ] );
 	}
 
 	/**
@@ -81,12 +87,21 @@ const CAPABILITY = 'pc4s_manage';
 	 */
 	public function register_settings(): void {
 		register_setting(
-			'pc4s_footer_settings_group',
+			self::OPTION_GROUP,
 			self::OPTION_KEY,
 			[
 				'sanitize_callback' => [ $this, 'sanitize' ],
 			]
 		);
+	}
+
+	/**
+	 * Override the Settings API capability used by options.php.
+	 *
+	 * @return string
+	 */
+	public function option_page_capability(): string {
+		return self::CAPABILITY;
 	}
 
 	/**
@@ -182,9 +197,9 @@ JS;
 		<div class="wrap pc4s-admin-page pc4s-footer-page">
 
 			<header class="pc4s-admin-header">
-				<h1 class="pc4s-admin-header__title"><?php esc_html_e( 'Footer Settings', 'pc4s' ); ?></h1>
+				<h1 class="pc4s-admin-header__title"><?php esc_html_e( 'Contact Info & Footer Settings', 'pc4s' ); ?></h1>
 				<p class="pc4s-admin-header__description">
-					<?php esc_html_e( 'Manage tagline, contact info, newsletter text, and the funding logo displayed in the site footer.', 'pc4s' ); ?>
+					<?php esc_html_e( 'Manage shared contact details used across the site, office hours shown on the Contact page, newsletter text, and footer-only content like the tagline and funding logo.', 'pc4s' ); ?>
 				</p>
 			</header>
 
@@ -193,13 +208,13 @@ JS;
 				<svg class="pc4s-admin-notice__icon" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" focusable="false">
 					<path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm3.707-9.293a1 1 0 0 0-1.414-1.414L9 10.586 7.707 9.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4z" clip-rule="evenodd"/>
 				</svg>
-				<span><?php esc_html_e( 'Footer settings saved successfully.', 'pc4s' ); ?></span>
+				<span><?php esc_html_e( 'Contact info and footer settings saved successfully.', 'pc4s' ); ?></span>
 			</div>
 			<?php endif; ?>
 
 			<form method="post" action="options.php" novalidate>
 
-				<?php settings_fields( 'pc4s_footer_settings_group' ); ?>
+				<?php settings_fields( self::OPTION_GROUP ); ?>
 
 				<!-- ── Card 1: Brand & Contact ───────────────────────────── -->
 				<article class="pc4s-form-card" aria-label="<?php esc_attr_e( 'Brand & Contact', 'pc4s' ); ?>">
@@ -394,7 +409,7 @@ JS;
 				<div class="pc4s-form-card__body">
 					<section class="pc4s-settings-section">
 						<p class="pc4s-field-hint" style="margin-block-end:var(--size-400)">
-							<?php esc_html_e( 'Displayed in the Contact Us page sidebar. Leave a field blank to hide that row.', 'pc4s' ); ?>
+							<?php esc_html_e( 'Displayed on the Contact page. Leave a field blank to hide that row.', 'pc4s' ); ?>
 						</p>
 
 						<div class="pc4s-field-group">
@@ -505,7 +520,7 @@ JS;
 
 					<footer class="pc4s-form-card__footer">
 						<button type="submit" class="pc4s-btn pc4s-btn--primary">
-							<?php esc_html_e( 'Save Footer Settings', 'pc4s' ); ?>
+							<?php esc_html_e( 'Save Contact Info & Footer Settings', 'pc4s' ); ?>
 						</button>
 					</footer>
 

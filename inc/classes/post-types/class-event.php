@@ -48,6 +48,74 @@ class Event {
 		add_action( 'init', [ $this, 'register_taxonomy' ] );
 		add_action( 'init', [ $this, 'seed_taxonomy_terms' ] );
 		add_action( 'pre_get_posts', [ $this, 'filter_archive_query' ] );
+		add_filter( 'manage_' . self::POST_TYPE . '_posts_columns', [ $this, 'set_columns' ] );
+		add_action( 'manage_' . self::POST_TYPE . '_posts_custom_column', [ $this, 'render_column' ], 10, 2 );
+		add_action( 'admin_head', [ $this, 'column_styles' ] );
+	}
+
+	/**
+	 * Define the admin list-table columns.
+	 *
+	 * Adds a recurring-status column after the event title.
+	 *
+	 * @param  array<string,string> $columns
+	 * @return array<string,string>
+	 */
+	public function set_columns( array $columns ): array {
+		$new = [];
+
+		foreach ( $columns as $key => $label ) {
+			$new[ $key ] = $label;
+
+			if ( 'title' === $key ) {
+				$new['event_recurring'] = __( 'Recurring', 'pc4s' );
+			}
+		}
+
+		return $new;
+	}
+
+	/**
+	 * Render content for each custom column cell.
+	 *
+	 * @param string $column  Column key.
+	 * @param int    $post_id Current post ID.
+	 */
+	public function render_column( string $column, int $post_id ): void {
+		if ( 'event_recurring' !== $column ) {
+			return;
+		}
+
+		$is_recurring = function_exists( 'get_field' ) ? (bool) get_field( 'is_recurring', $post_id ) : false;
+		$rule         = function_exists( 'get_field' ) ? (string) get_field( 'recurrence_rule', $post_id ) : '';
+
+		if ( ! $is_recurring ) {
+			echo '<span aria-hidden="true">&mdash;</span>';
+			return;
+		}
+
+		$labels = [
+			'weekly'              => __( 'Weekly', 'pc4s' ),
+			'biweekly'            => __( 'Every Two Weeks', 'pc4s' ),
+			'monthly'             => __( 'Monthly', 'pc4s' ),
+			'monthly_nth_weekday' => __( 'Monthly (Nth Weekday)', 'pc4s' ),
+		];
+
+		echo esc_html( $labels[ $rule ] ?? __( 'Yes', 'pc4s' ) );
+	}
+
+	/**
+	 * Inline styles for the recurring column on the Events list table.
+	 */
+	public function column_styles(): void {
+		$screen = get_current_screen();
+		if ( ! $screen || 'edit-' . self::POST_TYPE !== $screen->id ) {
+			return;
+		}
+
+		echo '<style>
+			.column-event_recurring { width: 180px; }
+		</style>';
 	}
 
 	/**
@@ -88,8 +156,8 @@ class Event {
 				'public'             => true,
 				'publicly_queryable' => true,
 				'show_ui'            => true,
-				'show_in_menu'       => false, // Placed under PC4S top-level menu.
-				'show_in_nav_menus'  => true,  // Exposes the CPT archive in Appearance → Menus.
+				'show_in_menu'       => false,
+				'show_in_nav_menus'  => true,
 				'show_in_rest'       => false,
 				'query_var'          => true,
 				'rewrite'            => [ 'slug' => 'events' ],

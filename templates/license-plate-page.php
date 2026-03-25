@@ -17,7 +17,8 @@
  * ACF field group: group_license_plate_page
  *   (acf-json/group_license_plate_page.json)
  *
- * PayPal integration: reads hosted button ID and sandbox flag from
+ * PayPal integration: reads the license-plate hosted button ID and sandbox
+ * flag from
  *   PC4S\Admin\SettingsPage (PC4S → Settings in wp-admin).
  *
  * Form entry storage: PC4S\Classes\Custom_Forms ('license_plate' form ID).
@@ -84,7 +85,7 @@ $cta_outline_link = get_field( 'lp_cta_outline_link' );   // array: url, title, 
 // ---------------------------------------------------------------------------
 // PayPal settings (read from PC4S Settings admin page).
 // ---------------------------------------------------------------------------
-$paypal_button_id = SettingsPage::get( 'paypal_hosted_button_id' );
+$paypal_button_id = SettingsPage::get_paypal_button_id( 'license_plate' );
 $paypal_sandbox   = SettingsPage::is_enabled( 'paypal_sandbox' );
 $paypal_base      = $paypal_sandbox
 	? 'https://www.sandbox.paypal.com/cgi-bin/webscr'
@@ -488,7 +489,7 @@ get_header();
 				<div class="form-message form-message--warning" role="alert">
 					<p>
 						<?php esc_html_e( 'Online payment is not yet configured.', 'pc4s' ); ?>
-						<?php if ( current_user_can( 'manage_options' ) ) : ?>
+						<?php if ( current_user_can( 'pc4s_manage' ) ) : ?>
 							<a href="<?php echo esc_url( admin_url( 'admin.php?page=pc4s-settings' ) ); ?>">
 								<?php esc_html_e( 'Configure PayPal in PC4S Settings →', 'pc4s' ); ?>
 							</a>

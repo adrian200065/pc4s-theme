@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 define('PC4S_THEME_DIR', get_template_directory());
 define('PC4S_THEME_URI', get_template_directory_uri());
 define('PC4S_TEXTDOMAIN', 'pc4s');
-define( 'PC4S_THEME_VERSION', wp_get_theme()->get( 'Version' ) );
+define('PC4S_THEME_VERSION', wp_get_theme()->version);
 
 
 function pc4s_init() {

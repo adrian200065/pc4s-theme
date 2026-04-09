@@ -318,13 +318,13 @@ const CAPABILITY  = 'pc4s_manage';
 								</p>
 								<?php else : ?>
 								<input
-									type="text"
+									type="password"
 									id="pc4s_paypal_client_id"
 									name="<?php echo $field( 'paypal_client_id' ); // phpcs:ignore ?>"
 									value="<?php echo $val( 'paypal_client_id' ); // phpcs:ignore ?>"
 									class="pc4s-field-input pc4s-field-input--code"
 									placeholder="AaBbCcDd..."
-									autocomplete="off"
+									autocomplete="new-password"
 									spellcheck="false"
 									aria-describedby="pc4s_paypal_client_id_hint"
 								/>

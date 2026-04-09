@@ -511,26 +511,44 @@ class Custom_Forms {
 
 		// ── Redirect — PayPal or standard success page ─────────────────────────
 		if ( ! empty( $form['paypal_redirect'] ) ) {
+			$paypal_sandbox = SettingsPage::is_enabled( 'paypal_sandbox' );
+			$paypal_base    = $paypal_sandbox
+				? 'https://www.sandbox.paypal.com/cgi-bin/webscr'
+				: 'https://www.paypal.com/cgi-bin/webscr';
+
+			// When the form collects a variable donation amount, use cmd=_donations
+			// (standard PayPal donation command) which honours the `amount` URL
+			// parameter. cmd=_s-xclick (hosted button) stores its amount server-side
+			// on PayPal and silently ignores any `amount` query parameter — that is
+			// why the checkout page was always showing $0.
+			$has_variable_amount = ! empty( $field_data['amount'] ) && (float) $field_data['amount'] > 0;
+			$paypal_email        = SettingsPage::get( 'paypal_email' );
+
+			if ( $has_variable_amount && $paypal_email ) {
+				$paypal_params = [
+					'cmd'           => '_donations',
+					'business'      => $paypal_email,
+					'item_name'     => __( 'Donation to PC4S', 'pc4s' ),
+					'amount'        => number_format( (float) $field_data['amount'], 2, '.', '' ),
+					'currency_code' => SettingsPage::get( 'paypal_currency', 'USD' ),
+					'no_note'       => '0',
+					'return'        => add_query_arg( [ 'pc4s_form' => 'success', 'form_id' => $form_id ], $redirect_base ),
+					'cancel_return' => add_query_arg( [ 'pc4s_form' => 'cancel',  'form_id' => $form_id ], $redirect_base ),
+				];
+				$paypal_url = add_query_arg( $paypal_params, $paypal_base );
+				wp_redirect( esc_url_raw( $paypal_url ) ); // External URL — wp_safe_redirect would block it.
+				exit;
+			}
+
+			// Fixed-price forms (e.g. license plate pre-order) use a hosted button.
 			$button_id = SettingsPage::get_paypal_button_id( $form_id );
 			if ( $button_id ) {
-				$paypal_sandbox = SettingsPage::is_enabled( 'paypal_sandbox' );
-				$paypal_base    = $paypal_sandbox
-					? 'https://www.sandbox.paypal.com/cgi-bin/webscr'
-					: 'https://www.paypal.com/cgi-bin/webscr';
 				$paypal_params = [
 					'cmd'              => '_s-xclick',
 					'hosted_button_id' => $button_id,
 				];
-
-				// Pass the donor-selected amount when the form includes an amount field
-				// (e.g. the Donate form). PayPal donation buttons accept `amount` as
-				// a query parameter to pre-fill or override the hosted button amount.
-				if ( ! empty( $field_data['amount'] ) && (float) $field_data['amount'] > 0 ) {
-					$paypal_params['amount'] = number_format( (float) $field_data['amount'], 2, '.', '' );
-				}
-
 				$paypal_url = add_query_arg( $paypal_params, $paypal_base );
-				wp_redirect( esc_url_raw( $paypal_url ) ); // External URL — wp_safe_redirect would block it.
+				wp_redirect( esc_url_raw( $paypal_url ) );
 				exit;
 			}
 			// PayPal not configured — fall through to standard success redirect.

@@ -30,10 +30,11 @@ class CoreCustomizer {
         add_filter('use_block_editor_for_post_type', [$this, 'manage_gutenberg_editor'], 10, 2);
 
         // Admin interface customization
-        add_action('admin_head', [$this, 'manage_admin_notices']);
-        add_filter('admin_footer_text', [$this, 'customize_admin_footer_text']);
-        add_filter('update_footer', [$this, 'customize_version_text'], 20);
-        add_action('admin_bar_menu', [$this, 'remove_wp_logo'], 999);
+        add_action( 'admin_head', [$this, 'manage_admin_notices'] );
+        add_filter( 'admin_footer_text', [$this, 'customize_admin_footer_text'] );
+        add_filter( 'update_footer', [$this, 'customize_version_text'], 20 );
+        add_action( 'admin_bar_menu', [$this, 'remove_wp_logo'], 999 );
+		add_action( 'init', [$this, 'hide_admin_bar_on_frontend'] );
 
         // Comments — fully disabled.
         add_action('admin_menu', [$this, 'remove_comments_menu']);
@@ -153,6 +154,16 @@ class CoreCustomizer {
             $wp_admin_bar->remove_node('wp-logo');
         }
     }
+
+	/**
+	 * Remove the admin bar on every frontend page while keeping
+	 * it visible inside the WordPress dashboard.
+	 */
+	public function hide_admin_bar_on_frontend(): void {
+		if ( ! is_admin() ) {
+			add_filter( 'show_admin_bar', '__return_false' );
+		}
+	}
 
     /**
      * Remove comments menu from admin

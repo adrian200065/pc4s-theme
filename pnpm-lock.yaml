@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@vitejs/plugin-legacy':
         specifier: ^5.4.3
-        version: 5.4.3(terser@5.46.0)(vite@6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0))
+        version: 5.4.3(terser@5.46.0)(vite@6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0))
       archiver:
         specifier: ^7.0.1
         version: 7.0.1
@@ -30,14 +30,14 @@ importers:
         specifier: ^5.37.0
         version: 5.46.0
       vite:
-        specifier: ^6.0.7
-        version: 6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)
+        specifier: ^6.4.2
+        version: 6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)
       vite-plugin-live-reload:
         specifier: ^3.0.5
-        version: 3.0.5(vite@6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0))
+        version: 3.0.5(vite@6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0))
       vite-plugin-static-copy:
         specifier: ^2.2.0
-        version: 2.3.2(vite@6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0))
+        version: 2.3.2(vite@6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0))
 
 packages:
 
@@ -1719,8 +1719,8 @@ packages:
     peerDependencies:
       vite: ^5.0.0 || ^6.0.0
 
-  vite@6.4.1:
-    resolution: {integrity: sha512-+Oxm7q9hDoLMyJOYfUYBuHQo+dkAloi33apOPP56pzj+vsdJDzr+j1NISE5pyaAuKL4A3UD34qd0lx5+kfKp2g==}
+  vite@6.4.2:
+    resolution: {integrity: sha512-2N/55r4JDJ4gdrCvGgINMy+HH3iRpNIz8K6SFwVsA+JbQScLiC+clmAxBgwiSPgcG9U15QmvqCGWzMbqda5zGQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
     peerDependencies:
@@ -2697,7 +2697,7 @@ snapshots:
 
   '@types/estree@1.0.8': {}
 
-  '@vitejs/plugin-legacy@5.4.3(terser@5.46.0)(vite@6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0))':
+  '@vitejs/plugin-legacy@5.4.3(terser@5.46.0)(vite@6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0))':
     dependencies:
       '@babel/core': 7.29.0
       '@babel/preset-env': 7.29.0(@babel/core@7.29.0)
@@ -2708,7 +2708,7 @@ snapshots:
       regenerator-runtime: 0.14.1
       systemjs: 6.15.1
       terser: 5.46.0
-      vite: 6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)
+      vite: 6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -3455,22 +3455,22 @@ snapshots:
 
   util-deprecate@1.0.2: {}
 
-  vite-plugin-live-reload@3.0.5(vite@6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)):
+  vite-plugin-live-reload@3.0.5(vite@6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)):
     dependencies:
       chokidar: 3.6.0
       picocolors: 1.1.1
-      vite: 6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)
+      vite: 6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)
 
-  vite-plugin-static-copy@2.3.2(vite@6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)):
+  vite-plugin-static-copy@2.3.2(vite@6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)):
     dependencies:
       chokidar: 3.6.0
       fast-glob: 3.3.3
       fs-extra: 11.3.3
       p-map: 7.0.4
       picocolors: 1.1.1
-      vite: 6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)
+      vite: 6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0)
 
-  vite@6.4.1(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0):
+  vite@6.4.2(lightningcss@1.31.1)(sass@1.97.3)(terser@5.46.0):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)

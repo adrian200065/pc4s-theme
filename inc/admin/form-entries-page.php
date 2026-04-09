@@ -328,18 +328,18 @@ class FormEntriesPage {
 			fputcsv( $output, [
 				$row->id,
 				$row->form_id,
-				$data['first_name']     ?? '',
-				$data['last_name']      ?? '',
-				$data['company_name']   ?? '',
+				$this->sanitize_csv_cell( $data['first_name']     ?? '' ),
+				$this->sanitize_csv_cell( $data['last_name']      ?? '' ),
+				$this->sanitize_csv_cell( $data['company_name']   ?? '' ),
 				$data['email']          ?? '',
 				$data['amount']         ?? '',
-				$data['street_address'] ?? '',
-				$data['city']           ?? '',
-				$data['state']          ?? '',
+				$this->sanitize_csv_cell( $data['street_address'] ?? '' ),
+				$this->sanitize_csv_cell( $data['city']           ?? '' ),
+				$this->sanitize_csv_cell( $data['state']          ?? '' ),
 				$data['zip_code']       ?? '',
-				$data['county']         ?? '',
-				$data['subject_line']   ?? '',
-				$data['message']        ?? '',
+				$this->sanitize_csv_cell( $data['county']         ?? '' ),
+				$this->sanitize_csv_cell( $data['subject_line']   ?? '' ),
+				$this->sanitize_csv_cell( $data['message']        ?? '' ),
 				$row->source_page ?? '',
 				$row->submitted_at,
 			] );
@@ -347,6 +347,25 @@ class FormEntriesPage {
 
 		fclose( $output );
 		exit;
+	}
+
+	/**
+	 * Prevent CSV formula injection by prefixing cells that start with a
+	 * spreadsheet formula trigger character (=, +, -, @, tab, carriage return).
+	 * Excel and LibreOffice interpret leading = + - @ as function calls.
+	 *
+	 * @param string $value Raw cell value from user-submitted data.
+	 * @return string       Safe cell value.
+	 */
+	private function sanitize_csv_cell( string $value ): string {
+		if ( '' === $value ) {
+			return $value;
+		}
+		$triggers = [ '=', '+', '-', '@', "\t", "\r" ];
+		if ( in_array( $value[0], $triggers, true ) ) {
+			return "'" . $value;
+		}
+		return $value;
 	}
 
 	// ─── Helpers ─────────────────────────────────────────────────────────────

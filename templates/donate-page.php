@@ -101,14 +101,18 @@ $initial_amount = $sponsor_amount > 0 ? $sponsor_amount : $default_preset;
 
 // Determine whether $initial_amount matches one of the configured preset buttons.
 // If it doesn't, the amount is placed in the custom-amount input instead.
+// When arriving from a sponsorship tier the amount always goes into the custom input
+// (paired with the tier-name label), so preset-matching is skipped in that case.
 $initial_matches_preset = false;
-foreach ( $amount_presets as $_ap ) {
-	if ( (int) ( $_ap['dp_preset_amount'] ?? 0 ) === $initial_amount ) {
-		$initial_matches_preset = true;
-		break;
+if ( ! $sponsor_level ) {
+	foreach ( $amount_presets as $_ap ) {
+		if ( (int) ( $_ap['dp_preset_amount'] ?? 0 ) === $initial_amount ) {
+			$initial_matches_preset = true;
+			break;
+		}
 	}
+	unset( $_ap );
 }
-unset( $_ap );
 
 // ---------------------------------------------------------------------------
 // Safe inline SVG helper — check-mark icon used in the trust sidebar.

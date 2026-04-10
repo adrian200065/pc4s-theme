@@ -118,7 +118,10 @@ $total_events = $events_query->post_count;
                     $events_query->the_post();
                     $i++;
 
-                    $event_date       = get_field( 'event_date' );       // Y-m-d
+                    // Use the pre-computed next-occurrence date so recurring events
+                    // always display their upcoming date, not the original base date.
+                    $event_date       = (string) get_post_meta( get_the_ID(), EventQuery::NEXT_OCC_META, true )
+                                        ?: (string) get_field( 'event_date' ); // Y-m-d
                     $event_start      = get_field( 'event_start_time' ); // H:i
                     $event_end        = get_field( 'event_end_time' );   // H:i
                     $event_location   = get_field( 'event_location' );

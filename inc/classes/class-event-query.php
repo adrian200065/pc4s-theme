@@ -462,14 +462,24 @@ class EventQuery {
 	}
 
 	// ──────────────────────────────────────────────────────────────────────
-	// ACF save hook — kept in this class to avoid scattering logic
+	// ACF save hook + WP-Cron refresh — kept in this class to avoid
+	// scattering logic
 	// ──────────────────────────────────────────────────────────────────────
 
 	/**
-	 * Registers the ACF save hook. Called once from functions.php.
+	 * Registers the ACF save hook and the daily WP-Cron refresh job.
+	 * Called once from functions.php.
 	 */
 	public static function register_hooks(): void {
 		add_action( 'acf/save_post', [ self::class, 'update_next_occurrence_on_save' ], 20 );
+
+		// Daily cron: keep next-occurrence meta fresh for recurring events so
+		// values don't go stale when a month rolls over between admin saves.
+		add_action( 'pc4s_refresh_recurring_events', [ self::class, 'refresh_all_recurring_events' ] );
+
+		if ( ! wp_next_scheduled( 'pc4s_refresh_recurring_events' ) ) {
+			wp_schedule_event( time(), 'daily', 'pc4s_refresh_recurring_events' );
+		}
 	}
 
 	/**
@@ -488,6 +498,35 @@ class EventQuery {
 			update_post_meta( (int) $post_id, self::NEXT_OCC_META, $next );
 		} else {
 			delete_post_meta( (int) $post_id, self::NEXT_OCC_META );
+		}
+	}
+
+	/**
+	 * Re-compute and persist `_event_next_occurrence` for every published event.
+	 *
+	 * Invoked daily by WP-Cron (pc4s_refresh_recurring_events) so that
+	 * recurring events whose stored date has passed always advance to their
+	 * next future occurrence, preventing them from disappearing from the
+	 * Events page, front-page section, and True Blue page when a new month
+	 * begins without anyone re-saving the post in the admin.
+	 */
+	public static function refresh_all_recurring_events(): void {
+		$post_ids = get_posts( [
+			'post_type'      => Event::POST_TYPE,
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'no_found_rows'  => true,
+			'fields'         => 'ids',
+		] );
+
+		foreach ( $post_ids as $post_id ) {
+			$next = self::compute_next_occurrence( (int) $post_id );
+
+			if ( $next ) {
+				update_post_meta( (int) $post_id, self::NEXT_OCC_META, $next );
+			} else {
+				delete_post_meta( (int) $post_id, self::NEXT_OCC_META );
+			}
 		}
 	}
 }

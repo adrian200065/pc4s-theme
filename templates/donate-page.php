@@ -281,17 +281,36 @@ get_header();
 									placeholder="10.00"
 									aria-label="<?php esc_attr_e( 'Enter a custom donation amount in dollars', 'pc4s' ); ?>"
 									inputmode="decimal"
-										<?php if ( $initial_amount > 0 && ! $initial_matches_preset ) : ?>value="<?php echo esc_attr( (string) $initial_amount ); ?>"<?php endif; ?>
+									<?php if ( $initial_amount > 0 && ! $initial_matches_preset ) : ?>value="<?php echo esc_attr( (string) $initial_amount ); ?>"<?php endif; ?>
+								/>
+							</div>
+						</div><!-- .donate-custom -->
+
+						<hr class="donate-divider" />
+
+						<!-- Personal Info Form -->
+						<form
+							class="donate-form"
+							id="donate-personal-form"
+							method="post"
+							action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>"
+							novalidate
+							aria-label="<?php esc_attr_e( 'Donation personal information form', 'pc4s' ); ?>"
+						>
+							<?php wp_nonce_field( 'pc4s_form_donate', 'pc4s_form_nonce' ); ?>
+							<input type="hidden" name="action"      value="pc4s_form_submit" />
 							<input type="hidden" name="form_id"     value="donate" />
 							<input type="hidden" name="source_page" value="<?php echo esc_attr( home_url( add_query_arg( [] ) ) ); ?>" />
-							<input type="hidden" name="_redirect"   value="<?php echo esc_attr( $form_redirect ); ?>" />								<?php if ( $sponsor_level ) : ?>
-								<input type="hidden" name="sponsor_level" value="<?php echo esc_attr( $sponsor_level ); ?>" />
-								<?php endif; ?>								<!-- Amount is populated by PHP on page load and updated by JS on interaction. -->
-								<input
-									type="hidden"
-									id="donate-amount-hidden"
-									name="amount"
-									value="<?php echo esc_attr( $initial_amount > 0 ? (string) $initial_amount : '' ); ?>"
+							<input type="hidden" name="_redirect"   value="<?php echo esc_attr( $form_redirect ); ?>" />
+							<?php if ( $sponsor_level ) : ?>
+							<input type="hidden" name="sponsor_level" value="<?php echo esc_attr( $sponsor_level ); ?>" />
+							<?php endif; ?>
+							<!-- Amount is populated by PHP on page load and updated by JS on interaction. -->
+							<input
+								type="hidden"
+								id="donate-amount-hidden"
+								name="amount"
+								value="<?php echo esc_attr( $initial_amount > 0 ? (string) $initial_amount : '' ); ?>"
 								aria-label="<?php esc_attr_e( 'Donation amount', 'pc4s' ); ?>"
 							/>
 

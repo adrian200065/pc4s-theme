@@ -264,10 +264,10 @@ get_header();
 						</div>
 						<?php endif; ?>
 
-						<!-- Custom amount -->
+						<!-- Custom amount — label is replaced with sponsorship tier name when arriving from the Sponsor section -->
 						<div class="donate-custom">
 							<label for="donate-custom-amount" class="donate-custom__label">
-								<?php esc_html_e( 'Custom Amount', 'pc4s' ); ?>
+								<?php echo $sponsor_level ? esc_html( $sponsor_level ) : esc_html__( 'Custom Amount', 'pc4s' ); ?>
 							</label>
 							<div class="donate-custom__input-wrap">
 								<span class="donate-custom__symbol" aria-hidden="true">$</span>

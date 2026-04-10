@@ -144,11 +144,12 @@ class Custom_Forms {
 			'label'           => __( 'Donate', 'pc4s' ),
 			'paypal_redirect' => true,
 			'fields'          => [
-				'first_name'   => [ 'type' => 'text',   'label' => __( 'First Name',      'pc4s' ), 'required' => true  ],
-				'last_name'    => [ 'type' => 'text',   'label' => __( 'Last Name',       'pc4s' ), 'required' => false ],
-				'company_name' => [ 'type' => 'text',   'label' => __( 'Company Name',    'pc4s' ), 'required' => false ],
-				'email'        => [ 'type' => 'email',  'label' => __( 'Email Address',   'pc4s' ), 'required' => true  ],
-				'amount'       => [ 'type' => 'number', 'label' => __( 'Donation Amount', 'pc4s' ), 'required' => true  ],
+				'first_name'    => [ 'type' => 'text',   'label' => __( 'First Name',        'pc4s' ), 'required' => true  ],
+				'last_name'     => [ 'type' => 'text',   'label' => __( 'Last Name',         'pc4s' ), 'required' => false ],
+				'company_name'  => [ 'type' => 'text',   'label' => __( 'Company Name',      'pc4s' ), 'required' => false ],
+				'email'         => [ 'type' => 'email',  'label' => __( 'Email Address',     'pc4s' ), 'required' => true  ],
+				'amount'        => [ 'type' => 'number', 'label' => __( 'Donation Amount',   'pc4s' ), 'required' => true  ],
+				'sponsor_level' => [ 'type' => 'text',   'label' => __( 'Sponsorship Level', 'pc4s' ), 'required' => false ],
 			],
 			'notification_emails'  => ! empty( $dn_saved['notification_emails'] )
 										? $dn_saved['notification_emails']

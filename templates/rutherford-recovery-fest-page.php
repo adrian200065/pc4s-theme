@@ -454,7 +454,23 @@ get_header();
 					<?php endif; ?>
 
 					<?php if ( ! empty( $tier_cta ) ) :
-						$t_url    = esc_url( $tier_cta['url'] ?? '#' );
+						$t_raw_url = $tier_cta['url'] ?? '#';
+
+						// Strip non-numeric characters from the price (e.g. "$1,000" → 1000)
+						// and append sponsor_level + sponsor_amount to the donate-page URL so
+						// the form can be pre-filled with the correct tier and amount.
+						$tier_price_num = (int) preg_replace( '/[^0-9]/', '', $tier_price );
+						if ( $tier_name && $tier_price_num > 0 ) {
+							$t_raw_url = add_query_arg(
+								[
+									'sponsor_level'  => rawurlencode( $tier_name ),
+									'sponsor_amount' => $tier_price_num,
+								],
+								$t_raw_url
+							);
+						}
+
+						$t_url    = esc_url( $t_raw_url );
 						$t_title  = esc_html( $tier_cta['title'] ?? __( 'Sponsor Now', 'pc4s' ) );
 						$t_target = ! empty( $tier_cta['target'] )
 							? ' target="' . esc_attr( $tier_cta['target'] ) . '"'

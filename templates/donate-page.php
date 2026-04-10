@@ -75,8 +75,11 @@ $cta_secondary = get_field( 'dp_cta_secondary' ); // link field (array|null)
 // Form feedback — set by Custom_Forms::handle_submission() via query string.
 // ---------------------------------------------------------------------------
 // phpcs:disable WordPress.Security.NonceVerification.Recommended
-$qs_status  = isset( $_GET['pc4s_form'] ) ? sanitize_key( $_GET['pc4s_form'] ) : '';
-$qs_form_id = isset( $_GET['form_id'] )   ? sanitize_key( $_GET['form_id'] )   : '';
+$qs_status      = isset( $_GET['pc4s_form'] )      ? sanitize_key( $_GET['pc4s_form'] )                              : '';
+$qs_form_id     = isset( $_GET['form_id'] )        ? sanitize_key( $_GET['form_id'] )                                : '';
+// Sponsorship pre-fill — passed via URL query params from the RRF Sponsor Tiers section.
+$sponsor_amount = isset( $_GET['sponsor_amount'] ) ? absint( $_GET['sponsor_amount'] )                               : 0;
+$sponsor_level  = isset( $_GET['sponsor_level'] )  ? sanitize_text_field( wp_unslash( $_GET['sponsor_level'] ) )    : '';
 // phpcs:enable
 
 $dn_success = ( 'success' === $qs_status && 'donate' === $qs_form_id );
@@ -90,6 +93,22 @@ $form_redirect = remove_query_arg( [ 'pc4s_form', 'form_id' ], $form_redirect );
 
 // Load form-field definitions (merged with any admin-saved overrides).
 $_dn_fields = Custom_Forms::get_form( 'donate' )['fields'] ?? [];
+
+// Resolve the amount to pre-select on the form.
+// When arriving from a sponsorship tier, $sponsor_amount takes precedence over
+// the ACF-configured default preset amount.
+$initial_amount = $sponsor_amount > 0 ? $sponsor_amount : $default_preset;
+
+// Determine whether $initial_amount matches one of the configured preset buttons.
+// If it doesn't, the amount is placed in the custom-amount input instead.
+$initial_matches_preset = false;
+foreach ( $amount_presets as $_ap ) {
+	if ( (int) ( $_ap['dp_preset_amount'] ?? 0 ) === $initial_amount ) {
+		$initial_matches_preset = true;
+		break;
+	}
+}
+unset( $_ap );
 
 // ---------------------------------------------------------------------------
 // Safe inline SVG helper — check-mark icon used in the trust sidebar.
@@ -230,7 +249,7 @@ get_header();
 									if ( $preset_val < 1 ) {
 										continue;
 									}
-									$is_default = ( $preset_val === $default_preset );
+									$is_default = ( $preset_val === $initial_amount );
 								?>
 								<button
 									type="button"
@@ -262,32 +281,17 @@ get_header();
 									placeholder="10.00"
 									aria-label="<?php esc_attr_e( 'Enter a custom donation amount in dollars', 'pc4s' ); ?>"
 									inputmode="decimal"
-								/>
-							</div>
-						</div><!-- .donate-custom -->
-
-						<hr class="donate-divider" />
-
-						<!-- Personal Info Form -->
-						<form
-							class="donate-form"
-							id="donate-personal-form"
-							method="post"
-							action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>"
-							novalidate
-							aria-label="<?php esc_attr_e( 'Donation personal information form', 'pc4s' ); ?>"
-						>
-							<?php wp_nonce_field( 'pc4s_form_donate', 'pc4s_form_nonce' ); ?>
-							<input type="hidden" name="action"      value="pc4s_form_submit" />
+										<?php if ( $initial_amount > 0 && ! $initial_matches_preset ) : ?>value="<?php echo esc_attr( (string) $initial_amount ); ?>"<?php endif; ?>
 							<input type="hidden" name="form_id"     value="donate" />
 							<input type="hidden" name="source_page" value="<?php echo esc_attr( home_url( add_query_arg( [] ) ) ); ?>" />
-							<input type="hidden" name="_redirect"   value="<?php echo esc_attr( $form_redirect ); ?>" />
-							<!-- Amount is populated by JS when user selects/types. -->
-							<input
-								type="hidden"
-								id="donate-amount-hidden"
-								name="amount"
-								value="<?php echo esc_attr( $default_preset > 0 ? (string) $default_preset : '' ); ?>"
+							<input type="hidden" name="_redirect"   value="<?php echo esc_attr( $form_redirect ); ?>" />								<?php if ( $sponsor_level ) : ?>
+								<input type="hidden" name="sponsor_level" value="<?php echo esc_attr( $sponsor_level ); ?>" />
+								<?php endif; ?>								<!-- Amount is populated by PHP on page load and updated by JS on interaction. -->
+								<input
+									type="hidden"
+									id="donate-amount-hidden"
+									name="amount"
+									value="<?php echo esc_attr( $initial_amount > 0 ? (string) $initial_amount : '' ); ?>"
 								aria-label="<?php esc_attr_e( 'Donation amount', 'pc4s' ); ?>"
 							/>
 
@@ -403,7 +407,7 @@ get_header();
 									<?php echo esc_html( $total_label ?: __( 'Donation Total:', 'pc4s' ) ); ?>
 								</span>
 								<span class="donate-total__amount js-donate-total-display" id="donate-total-display">
-									<?php echo esc_html( $default_preset > 0 ? '$' . number_format( $default_preset ) . '.00' : '$0.00' ); ?>
+									<?php echo esc_html( $initial_amount > 0 ? '$' . number_format( $initial_amount ) . '.00' : '$0.00' ); ?>
 								</span>
 							</div>
 
